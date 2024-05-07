@@ -1,0 +1,10 @@
+cmake_minimum_required(VERSION 3.24)
+project(CppLecture)
+
+set(CMAKE_CXX_STANDARD 17)
+
+add_executable(function_hanoi function_hanoi.cpp)
+add_executable(preprocessor_macro_example preprocessor_macro_example.cpp)
+add_executable(pointer_2 pointer_2.cpp)
+add_executable(memory_management_function memory_management_function.cpp)
+add_executable(stringArrayDecay string_array_decay.cpp)

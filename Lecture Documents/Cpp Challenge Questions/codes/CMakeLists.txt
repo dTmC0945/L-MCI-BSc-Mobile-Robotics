@@ -1,0 +1,15 @@
+cmake_minimum_required(VERSION 3.24)
+project(Challenge)
+
+set(CMAKE_CXX_STANDARD 14)
+
+add_executable(1_pythagoreanTriplets 1_Pythagorean_Triplets.cpp)
+add_executable(2_collatzConjecture 2_Collatz_Conjecture.cpp)
+add_executable(3_circularPrime 3_Circular_Primes.cpp)
+add_executable(4_sumOfFourPowers 4_The_Sum_of_Four_Powers.cpp)
+add_executable(5_distinctTerms 5_Distinct_Terms.cpp)
+add_executable(6_primeFactors 6_Prime_Factors.cpp)
+add_executable(7_goldbach 7_The_Goldbach_Conjecture.cpp)
+add_executable(8_Factorisation 8_Factorisation.cpp)
+add_executable(9_DigitSum 9_Sum_of_Digits.cpp)
+add_executable(10_PrimeSum 10_Sum_of_Primes.cpp)
