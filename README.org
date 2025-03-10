@@ -1,0 +1,138 @@
+#+title: BSc Mobile Robotics
+
+** Table of Contents :TOC_2:
+  - [[#lecture-information][Lecture Information]]
+  - [[#requirements-and-the-learning-outcomes][Requirements and the Learning Outcomes]]
+  - [[#grading-of-the-lecture][Grading of the Lecture]]
+  - [[#lecture-sources][Lecture Sources]]
+  - [[#content-and-unit-distribution][Content and Unit Distribution]]
+  - [[#lecture-table-of-contents][Lecture Table of Contents]]
+  - [[#related-links][Related Links]]
+
+** Lecture Information
+
+- *WARNING:* This is the content only covered by me as this lecture is shared by
+  both me and Prof. Bernhard Hollaus, Ph.D.
+- The goal of this lecture is to introduce to you mobile robotics, from its
+  mechanical construction, to planning and to controlling
+- This lecture will start with mathematical ideas and will continue with Linux
+  and ROS programming.
+
+The structure for this lecture is as follows.
+
+| DESCRIPTION        | VALUE                                       |
+| Official Name      | Mobile Robotics                             |
+| Lecture Code       | MRV                                         |
+| Module Code        | MECH-B-4-MRV-MRO-ILV                        |
+| Degree             | B.Sc                                        |
+| Program Name       | Mechatronik Design Innovation               |
+| Lecture Name       | Drive Systems                               |
+| Semester           | 4                                           |
+| Season             | SS                                          |
+| Room Type          | Lecture Room                                |
+| Assignments        | Personal Assignment A Personal Assignment B |
+| Lecturer           | Daniel T. McGuiness, Ph.D                   |
+| Module Responsible | BnM                                         |
+| Software           | Python, ROS2, Linux                         |
+| Hardware           | -                                           |
+| SWS Total          | 4                                           |
+| SWS Teaching       | 4                                           |
+| UE Total           | 60                                          |
+| ECTS               | 5                                           |
+| Lecture Type       | ILV                                         |
+
+** Requirements and the Learning Outcomes
+
+- The student should be comfortable with working with either python
+  and/or C++.
+
+- For a refreshment on its content the students are encouraged to read the
+  materials presented in the following repos:
+
+- [[https://github.com/dTmC0945/L-MCI-BSc-Python-for-Engineering-and-Economics][B.Sc Python for Engineering and Economics]]
+
+| REQUIREMENTS       | TAUGHT LECTURE  | CODE | DEGREE | OUTCOME           |
+| C/C++ Programming  | Programming II  | PRO2 | B.Sc   | ROS 2 Programming |
+| Python Programming | Software Design | SWD  | B.Sc   | Linux Experience  |
+| -                  | -               | IOT  | B.Sc   | Programming       |
+| -                  | -               | -    | -      | -                 |
+| -                  | -               | -    | -      | -                 |
+
+** Grading of the Lecture
+
+- The lecture will have two personal assignments for you to work with as
+  individuals.
+      
+| ASSIGNMENT TYPE       | VALUE |
+| Personal Assignment A |    50 |
+| Personal Assignment B |    50 |
+| SUM                   |   100 |
+
+** Lecture Sources
+
+The following are a table of documentation which are useful resources which
+goes well with the lectures.
+
+| AUTHOR        | TITLE                                                 | PUBLISHER             |
+| M. M. Bassa   | A very informal journey through ROS 2                 | Self-Published        |
+| F. M. Rico    | A Concise Introduction to Robot Programming with ROS2 | Taylor Francis (2022) |
+| B. Stroustrup | Programming Principles and Practice using C++         | Addison Wesley (2014) |
+
+** Content and Unit Distribution
+
+- The content and unit distribution of the lecture is as follows where a unit
+  is defined as 45 min lecture.
+    
+| ORDER | TOPIC                   | UNITS | SELF STUDY |
+|     1 | Locomotion              |     4 |          8 |
+|     2 | Mobile Robot Kinematics |     4 |          8 |
+|     3 | Perception - I          |     4 |          8 |
+|     4 | Perception - II         |     4 |          8 |
+|     5 | Perception - III        |     4 |          8 |
+|     6 | Localisation - I        |     4 |          8 |
+|     7 | Localisation - II       |     4 |          8 |
+|     8 | Localisation - III      |     4 |          8 |
+|     9 | Path Planning - I       |     4 |          8 |
+|    10 | Path Planning - II      |     4 |          8 |
+|    11 | Welcome to Linux        |     4 |          8 |
+|    12 | Files and Permissions   |     4 |          8 |
+|    13 | ROS 2 Fundamentals      |     4 |          8 |
+|    14 | ROS 2 CLI Libraries     |     4 |          8 |
+|    15 | ROS 2 Simulation        |     4 |          8 |
+|    16 | SUM                     |    60 |        120 |
+
+** Lecture Table of Contents
+
+The structure of the M.Sc Drive Systems can be grouped into three (3) parts:
+
+1. Mechanics of Mobile Robotics
+2. GNU/Linux Operating System
+3. ROS 2 Programming
+
+Below is the detailed structure of the lecture.
+
+- Locomotion
+  - Introduction
+    - Key Issues for Locomotion
+  - Legged Mobile Robots
+      - Leg Configurations and Stability
+    - Examples of Legged Robot Locomotion
+      - Single Leg
+      - Two Legs (Bipedal)
+      - Four Legs (Quadruped)
+      - Six Legs (Hexapod)
+  - Wheeled Mobile Robots
+    - Design
+    - Stability
+    - Manoeuvrability
+    - Controllability
+    - Case Studies for Wheeled Motion
+      - Synchro Drive
+      - Omnidirectional Drive
+      - Omnidirectional locomotion with three spheric wheels
+      - Omnidirectional locomotion with four swedish wheels
+      - Omnidirectional locomotion with four castor wheels and eight motors
+      - Tracked Slip/Skid Locomotion
+    - Walking Wheels
+
+(-DTMc 2025)
