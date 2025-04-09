@@ -11,8 +11,6 @@
 
 ** Lecture Information
 
-- *WARNING:* This is the content only covered by me as this lecture is shared by
-  both me and Prof. Bernhard Hollaus, Ph.D.
 - The goal of this lecture is to introduce to you mobile robotics, from its
   mechanical construction, to planning and to controlling
 - This lecture will start with mathematical ideas and will continue with Linux
