@@ -1,0 +1,6994 @@
+<!DOCTYPE html>
+<html lang="en-US" xml:lang="en-US">
+ <head>
+  <title>
+   6 Working with Files and Folders
+  </title>
+  <meta charset="utf-8"/>
+  <meta content="TeX4ht (https://tug.org/tex4ht/)" name="generator"/>
+  <meta content="width=device-width,initial-scale=1" name="viewport"/>
+  <link href="MobileRoboticsLectureBook.css" rel="stylesheet" type="text/css"/>
+  <meta content="MobileRoboticsLectureBook.tex" name="src"/>
+  <script async="async" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/mml-chtml.js" type="text/javascript">
+  </script>
+  <link href="flatweb.css" rel="stylesheet" type="text/css"/>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js">
+  </script>
+  <script src="flatjs.js">
+  </script>
+  <link href="https://unpkg.com/@highlightjs/cdn-assets@11.3.1/styles/atom-one-dark.min.css" rel="stylesheet"/>
+  <script src="https://unpkg.com/@highlightjs/cdn-assets@11.3.1/highlight.min.js">
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/dockerfile.min.js">
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/cpp.min.js">
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/makefile.min.js">
+  </script>
+  <script src="https://unpkg.com/highlightjs-copy/dist/highlightjs-copy.min.js">
+  </script>
+  <link href="https://unpkg.com/highlightjs-copy/dist/highlightjs-copy.min.css" rel="stylesheet"/>
+  <script src="flatjs.js">
+  </script>
+  <header>
+  </header>
+ </head>
+ <body id="top">
+  <nav class="wide">
+   <div class="contents">
+    <h3 style="font-weight:lighter; padding: 20px 0 20px 0;">
+     6
+   
+     
+   
+
+   Working with Files and Folders
+    </h3>
+    <h4 style="font-weight:lighter">
+     Chapter Table of Contents
+    </h4>
+    <ul>
+     <div class="chapterTOCS">
+      <li>
+       <span class="sectionToc">
+        <small>
+         6.1
+        </small>
+        <a href="#x8-1230006.1">
+         Introduction
+        </a>
+       </span>
+      </li>
+      <li>
+       <span class="sectionToc">
+        <small>
+         6.2
+        </small>
+        <a href="#x8-1240006.2">
+         A Detailed Look in ls Command
+        </a>
+       </span>
+      </li>
+      <li>
+       <span class="sectionToc">
+        <small>
+         6.3
+        </small>
+        <a href="#x8-1250006.3">
+         Creating and Removing Folders
+        </a>
+       </span>
+      </li>
+      <li>
+       <span class="sectionToc">
+        <small>
+         6.4
+        </small>
+        <a href="#x8-1260006.4">
+         Move, Copy and Delete Files and Folders
+        </a>
+       </span>
+      </li>
+      <li>
+       <span class="sectionToc">
+        <small>
+         6.5
+        </small>
+        <a href="#x8-1270006.5">
+         Role to Users and sudo
+        </a>
+       </span>
+      </li>
+      <li>
+       <span class="sectionToc">
+        <small>
+         6.6
+        </small>
+        <a href="#x8-1280006.6">
+         File Permissions
+        </a>
+       </span>
+      </li>
+      <li>
+       <span class="sectionToc">
+        <small>
+         6.7
+        </small>
+        <a href="#x8-1310006.7">
+         Hard and Symbolic Links
+        </a>
+       </span>
+      </li>
+      <li>
+       <span class="subsectionToc" style="font-size:12px;margin:0px;">
+        <small>
+         6.7.1
+        </small>
+        <a href="#x8-1320006.7.1">
+         Symbolic Links
+        </a>
+       </span>
+      </li>
+      <li>
+       <span class="sectionToc">
+        <small>
+         6.8
+        </small>
+        <a href="#x8-1340006.8">
+         The Linux File System
+        </a>
+       </span>
+      </li>
+      <li>
+       <span class="sectionToc">
+        <small>
+         6.9
+        </small>
+        <a href="#x8-1350006.9">
+         Common Command-Line Tools and Tasks
+        </a>
+       </span>
+      </li>
+      <li>
+       <span class="subsectionToc" style="font-size:12px;margin:0px;">
+        <small>
+         6.9.1
+        </small>
+        <a href="#x8-1360006.9.1">
+         The UNIX Philosophy
+        </a>
+       </span>
+      </li>
+      <li>
+       <span class="subsectionToc" style="font-size:12px;margin:0px;">
+        <small>
+         6.9.2
+        </small>
+        <a href="#x8-1370006.9.2">
+         Connecting Commands with Pipes
+        </a>
+       </span>
+      </li>
+      <li>
+       <span class="subsectionToc" style="font-size:12px;margin:0px;">
+        <small>
+         6.9.3
+        </small>
+        <a href="#x8-1380006.9.3">
+         Viewing Text Files with cat, head, tail, and less
+        </a>
+       </span>
+      </li>
+      <li>
+       <span class="sectionToc">
+        <small>
+         6.10
+        </small>
+        <a href="#x8-1390006.10">
+         Advanced Topics
+        </a>
+       </span>
+      </li>
+      <li>
+       <span class="subsectionToc" style="font-size:12px;margin:0px;">
+        <small>
+         6.10.1
+        </small>
+        <a href="#x8-1400006.10.1">
+         Find Linux Distribution and Kernel Information
+        </a>
+       </span>
+      </li>
+      <li>
+       <span class="subsectionToc" style="font-size:12px;margin:0px;">
+        <small>
+         6.10.2
+        </small>
+        <a href="#x8-1410006.10.2">
+         Find System Hardware and Disk Information
+        </a>
+       </span>
+      </li>
+     </div>
+    </ul>
+    <div class="prev-next" style="text-align: center">
+     <p class="noindent">
+      <a href="MobileRoboticsLectureBookch7.html" style="float:right; font-size:10px">
+       NEXT CHAPTER →
+      </a>
+      <a href="MobileRoboticsLectureBookch5.html" style="float:left; font-size:10px">
+       ← PREV CHAPTER
+      </a>
+     </p>
+    </div>
+    <div id="author-info" style="bottom: 0; padding-bottom: 10px;">
+     <div id="author-logo">
+      <img src="figures/logo.svg" style="margin: 10px 0;"/>
+      <div>
+       <div>
+        <h4 style="color:#7aa0b8; font-weight:lighter;">
+         WebBook | D. T. McGuiness, P.hD
+        </h4>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </nav>
+  <div class="page">
+   <article class="chapter">
+    <h1 class="chapterHead">
+     <div class="number">
+      6
+     </div>
+     <a id="x8-1220006">
+     </a>
+     Working with Files and Folders
+    </h1>
+    <div class="section-control" style="text-align: center">
+     <a id="prev-section" onclick="goPrev()" style="float:left;">
+      ← Previous Section
+     </a>
+     <a id="next-section" onclick="goNext()" style="float:right;">
+      Next Section →
+     </a>
+    </div>
+    <div class="section-head" id="section-1" sec="section-1">
+     <h2 class="sectionHead">
+      <a aria-label="Link to this section in PDF version" class="pdf-link" href="MobileRoboticsLectureBook.pdf#section.6.1" style="color: red;  position: absolute;  left: -30px;" target="_blank">
+       <svg class="bi bi-file-pdf" fill="currentColor" height="20" viewbox="0 0 16 16" width="20" xmlns="http://www.w3.org/2000/svg">
+        <path d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z">
+        </path>
+        <path d="M4.603 12.087a.81.81 0 0 1-.438-.42c-.195-.388-.13-.776.08-1.102.198-.307.526-.568.897-.787a7.68 7.68 0 0 1 1.482-.645 19.701 19.701 0 0 0 1.062-2.227 7.269 7.269 0 0 1-.43-1.295c-.086-.4-.119-.796-.046-1.136.075-.354.274-.672.65-.823.192-.077.4-.12.602-.077a.7.7 0 0 1 .477.365c.088.164.12.356.127.538.007.187-.012.395-.047.614-.084.51-.27 1.134-.52 1.794a10.954 10.954 0 0 0 .98 1.686 5.753 5.753 0 0 1 1.334.05c.364.065.734.195.96.465.12.144.193.32.2.518.007.192-.047.382-.138.563a1.04 1.04 0 0 1-.354.416.856.856 0 0 1-.51.138c-.331-.014-.654-.196-.933-.417a5.716 5.716 0 0 1-.911-.95 11.642 11.642 0 0 0-1.997.406 11.311 11.311 0 0 1-1.021 1.51c-.29.35-.608.655-.926.787a.793.793 0 0 1-.58.029zm1.379-1.901c-.166.076-.32.156-.459.238-.328.194-.541.383-.647.547-.094.145-.096.25-.04.361.01.022.02.036.026.044a.27.27 0 0 0 .035-.012c.137-.056.355-.235.635-.572a8.18 8.18 0 0 0 .45-.606zm1.64-1.33a12.647 12.647 0 0 1 1.01-.193 11.666 11.666 0 0 1-.51-.858 20.741 20.741 0 0 1-.5 1.05zm2.446.45c.15.162.296.3.435.41.24.19.407.253.498.256a.107.107 0 0 0 .07-.015.307.307 0 0 0 .094-.125.436.436 0 0 0 .059-.2.095.095 0 0 0-.026-.063c-.052-.062-.2-.152-.518-.209a3.881 3.881 0 0 0-.612-.053zM8.078 5.8a6.7 6.7 0 0 0 .2-.828c.031-.188.043-.343.038-.465a.613.613 0 0 0-.032-.198.517.517 0 0 0-.145.04c-.087.035-.158.106-.196.283-.04.192-.03.469.046.822.024.111.054.227.09.346z">
+        </path>
+       </svg>
+      </a>
+      <small class="titlemark">
+       6.1
+      </small>
+      <a id="x8-1230006.1">
+      </a>
+      Introduction
+     </h2>
+     <p class="noindent">
+      If
+you’ve
+ever
+worked
+with
+computers
+for
+any
+amount
+of
+time,
+you
+would
+probably
+be
+familiar
+with
+the
+concept
+of
+      <span id="bold" style="font-weight:bold;">
+       files
+      </span>
+      and
+folders.
+      <alert style="color: #821131;">
+       <span id="bold" style="font-weight:bold;">
+        <sup class="textsuperscript">
+         1
+        </sup>
+       </span>
+      </alert>
+      <span class="marginnote">
+       <alert style="color: #821131;">
+        <span id="bold" style="font-weight:bold;">
+         <sup class="textsuperscript">
+          1
+         </sup>
+        </span>
+       </alert>
+       <span id="textcolor1275">
+        I
+                                                                                
+                                                                                
+mean
+this
+is
+in
+hope
+that
+you
+are
+familiar
+otherwise
+we
+might
+have
+a
+problem.
+       </span>
+      </span>
+      Files
+are
+a
+collection
+of
+information
+representing
+photos,
+documents,
+      <a href="https://en.wikipedia.org/wiki/Source_code">
+       source
+code
+      </a>,
+      <a href="https://en.wikipedia.org/wiki/Database">
+       databases
+      </a>
+      and
+all
+kinds
+of
+other
+things.
+     </p>
+     <p class="noindent">
+      They can be thought as the basic unit of data storage we work with a
+      <a class="glossary" href="MobileRoboticsLectureBookli2.html#glo:gui">
+       GUI
+      </a>. That’s still pretty much the same in the
+      <a class="glossary" href="MobileRoboticsLectureBookli2.html#glo:cli">
+       CLI
+      </a>
+      as well.
+There are two <alert style="color: #821131;">(2)</alert>  commands that needs explaining. These are called <span id="textcolor1276"><code class="verb">file</code></span>
+      and <span id="textcolor1277"><code class="verb">stat</code></span>. Both these commands can look at a file and
+learn some things about it.
+     </p>
+     <ul class="itemize1">
+      <li class="itemize">
+       <p class="noindent">
+        The first one, <span id="textcolor1279"><code class="verb">file</code></span>
+        will generally be able to tell what kind of file you’re asking about.
+       </p>
+       <ul class="itemize2">
+        <li class="itemize">
+         <p class="noindent">
+          If
+a
+file’s
+name
+isn’t
+clear
+or
+if
+it
+doesn’t
+have
+an
+extension,
+sometimes
+it
+can
+be
+tricky
+to
+figure
+out
+what
+                                                                                
+                                                                                
+         
+exactly
+it
+is.
+         </p>
+        </li>
+        <li class="itemize">
+         <p class="noindent">
+          Using <span id="textcolor1280"><code class="verb">file</code></span>,
+will
+give
+you
+some
+insight
+into
+whether
+something
+is
+an
+archive
+or
+an
+executable
+file
+or
+say,
+a
+text
+file
+or
+other
+kind
+of
+document.
+         </p>
+        </li>
+       </ul>
+      </li>
+      <li class="itemize">
+       <p class="noindent">
+        The second one, <span id="textcolor1282"><code class="verb">stat</code></span>, on the other-hand, tells you some extended information about a file.
+       </p>
+      </li>
+     </ul>
+     <div class="informationblock" id="tcolobox-19">
+      <div class="title">
+       <p class="noindent">
+        <span id="bold" style="font-weight:bold;">
+         Information
+        </span>
+        : The <span id="textcolor1284"><code class="verb">file</code></span>
+        Command
+       </p>
+      </div>
+      <div class="box-content">
+       <p class="noindent">
+        Determines the type of a file. It identifies file types by examining their content rather than their file extensions.
+       </p>
+      </div>
+     </div>
+     <div class="informationblock" id="tcolobox-20">
+      <div class="title">
+       <p class="noindent">
+        <span id="bold" style="font-weight:bold;">
+         Information
+        </span>
+        : The <span id="textcolor1286"><code class="verb">stat</code></span>
+        Command
+       </p>
+      </div>
+      <div class="box-content">
+       <p class="noindent">
+        Provide detailed statistics about files and file systems. It displays crucial information such as file size, permissions,
+ownership, and timestamps.
+       </p>
+      </div>
+     </div>
+     <p class="noindent">
+      To have a quick test, lets have a file called <span id="textcolor1287"><code class="verb">sample.txt</code></span>
+      with the contents of the following:
+     </p>
+     <p class="noindent">
+     </p>
+     <div class="code-block">
+      <div class="code-lang">
+       text
+      </div>
+      <pre><div class="language-text" id="fancyvrb25" style="padding:20px;border-radius: 3px;"><a id="x8-123002r47"></a>It was the best of times, it was the worst of times, it was the age of wisdom, 
+<a id="x8-123004r48"></a>it was the age of foolishness, it was the epoch of belief, it was the epoch of 
+<a id="x8-123006r49"></a>incredulity, it was the season of light, it was the season of darkness, it was 
+<a id="x8-123008r50"></a>the spring of hope, it was the winter of despair.</div></pre>
+     </div>
+     <p class="noindent">
+      Now while we now what it contains, let’s assume we don’t. To see what kind of formatting this file contains we run the <span id="textcolor1288"><code class="verb">file</code></span>
+      command:
+     </p>
+     <p class="noindent">
+     </p>
+     <div class="code-block">
+      <div class="code-lang">
+       bash
+      </div>
+      <pre><div class="language-bash" id="fancyvrb26" style="padding:20px;border-radius: 3px;"><a id="x8-123010r55"></a><span id="textcolor1289">cd</span><span id="textcolor1290"> </span>~/Downloads<span id="textcolor1291"> </span><span id="textcolor1292">||</span><span id="textcolor1293"> </span><span id="textcolor1294">exit</span><span id="textcolor1295"> </span><span id="textcolor1296">&amp;&amp;</span> 
+<a id="x8-123012r56"></a><span id="textcolor1297">      </span>file<span id="textcolor1298"> </span>sample.txt</div></pre>
+     </div>
+     <div class="tcolorbox tcolorbox" id="tcolobox-21">
+      <div class="tcolorbox-content">
+       <div class="code-block">
+        <div class="code-lang">
+         text
+        </div>
+        <pre><div class="language-text" id="fancyvrb27" style="padding:20px;border-radius: 3px;"><a id="x8-123014r1"></a>sample.txt: ASCII text</div></pre>
+       </div>
+      </div>
+     </div>
+     <p class="noindent">
+      As
+we
+can
+see
+this
+command
+tells
+us
+                                                                                
+                                                                                
+                                                                              
+the
+file
+has
+an
+      <a href="https://en.wikipedia.org/wiki/ASCII">
+       ASCII
+      </a>
+      formatting
+which
+means
+it
+is
+generally
+supported
+by
+almost
+all
+computers
+without
+the
+need
+of
+additional
+text
+encoding.
+      <alert style="color: #821131;">
+       <span id="bold" style="font-weight:bold;">
+        <sup class="textsuperscript">
+         2
+        </sup>
+       </span>
+      </alert>
+      <span class="marginnote">
+       <alert style="color: #821131;">
+        <span id="bold" style="font-weight:bold;">
+         <sup class="textsuperscript">
+          2
+         </sup>
+        </span>
+       </alert>
+       <span id="textcolor1299">
+        an
+acronym
+for
+American
+Standard
+Code
+for
+Information
+Interchange,
+is
+a
+character
+encoding
+standard
+for
+representing
+a
+particular
+set
+of
+95
+(English
+language
+focused)
+printable
+and
+33
+control
+characters
+-
+a
+total
+of
+128
+code
+points.
+The
+set
+of
+available
+punctuation
+had
+significant
+                                                                                
+                                                                                
+                                                                           
+impact
+on
+the
+syntax
+of
+computer
+languages
+and
+text
+markup.
+ASCII
+hugely
+influenced
+the
+design
+of
+character
+sets
+used
+by
+modern
+computers;
+for
+example,
+the
+first
+128
+code
+points
+of
+Unicode
+are
+the
+same
+as
+ASCII.
+       </span>
+      </span>
+      To
+get
+more
+information
+about
+the
+file
+we
+invoke
+the <span id="textcolor1300"><code class="verb">stat</code></span>
+      command:
+     </p>
+     <p class="noindent">
+     </p>
+     <div class="code-block">
+      <div class="code-lang">
+       bash
+      </div>
+      <pre><div class="language-bash" id="fancyvrb28" style="padding:20px;border-radius: 3px;"><a id="x8-123016r67"></a><span id="textcolor1301">cd</span><span id="textcolor1302"> </span>~/Downloads<span id="textcolor1303"> </span><span id="textcolor1304">||</span><span id="textcolor1305"> </span><span id="textcolor1306">exit</span><span id="textcolor1307"> </span><span id="textcolor1308">&amp;&amp;</span> 
+<a id="x8-123018r68"></a><span id="textcolor1309">        </span>stat<span id="textcolor1310"> </span>sample.txt</div></pre>
+     </div>
+     <div class="tcolorbox tcolorbox" id="tcolobox-22">
+      <div class="tcolorbox-content">
+       <div class="code-block">
+        <div class="code-lang">
+         text
+        </div>
+        <pre><div class="language-text" id="fancyvrb29" style="padding:20px;border-radius: 3px;"><a id="x8-123020r1"></a>16777232 85091780 -rw-r--r-- 1 danielmcguiness staff 0 287 "Mar  4 19:05:27 2025" \ 
+<a id="x8-123022r2"></a>"Mar  4 19:05:15 2025" "Mar  4 19:05:16 2025" "Mar  4 19:05:15 2025" 4096 8 0 sample.txt</div></pre>
+       </div>
+      </div>
+     </div>
+     <p class="noindent">
+      As
+we
+can
+see,
+we
+have
+a
+bit
+                                                                                
+                                                                                
+more
+information
+about
+the
+file,
+regarding
+its
+user,
+the
+date
+in
+which
+it
+was
+modified,
+the
+size
+and
+more.
+As
+we’ll
+see
+when
+we
+look
+at
+the <span id="textcolor1311"><code class="verb">ls</code></span>
+      command,
+some
+of
+this
+is
+available
+there.
+These
+commands
+can
+be
+helpful
+to
+know
+about
+if
+you
+come
+across
+an
+unknown
+file.
+In
+the
+graphical
+environment
+      <alert style="color: #821131;">
+       <span id="bold" style="font-weight:bold;">
+        <sup class="textsuperscript">
+         3
+        </sup>
+       </span>
+      </alert>
+      <span class="marginnote">
+       <alert style="color: #821131;">
+        <span id="bold" style="font-weight:bold;">
+         <sup class="textsuperscript">
+          3
+         </sup>
+        </span>
+       </alert>
+       <span id="textcolor1312">
+        i.e.,
+GUI
+       </span>
+      </span>
+      ,
+we
+can
+navigate
+around
+these
+files
+and
+folders
+with
+the
+                                                                                
+                                                                                
+mouse,
+seeing
+how
+they’re
+organized
+and
+finding
+out
+information
+about
+them.
+We
+can
+do
+the
+same
+thing
+in
+a
+CLI
+      <alert style="color: #821131;">
+       <span id="bold" style="font-weight:bold;">
+        <sup class="textsuperscript">
+         4
+        </sup>
+       </span>
+      </alert>
+      <span class="marginnote">
+       <alert style="color: #821131;">
+        <span id="bold" style="font-weight:bold;">
+         <sup class="textsuperscript">
+          4
+         </sup>
+        </span>
+       </alert>
+       <span id="textcolor1313">
+        In
+a
+much
+faster,
+but
+more
+unforgiving
+way.
+       </span>
+      </span>
+      .
+     </p>
+     <p class="noindent">
+      In
+the
+file
+browser,
+we
+can
+navigate
+to
+the <span id="textcolor1314"><code class="verb">Linux Tutorials</code></span>
+      file.
+From
+the
+Home
+folder,
+you
+can
+click
+on
+Desktop.
+There’s
+the
+file.
+In
+this
+graphical
+interface,
+we
+can
+see
+pretty
+easily
+what
+folder
+you
+are
+working
+in.
+                                                                                
+                                                                                
+Over
+here
+in
+the
+Terminal,
+we
+get
+a
+clue
+about
+what
+folder
+we’re
+working
+in
+on
+the
+prompt.
+The
+tilda <span id="textcolor1315">(<code class="verb">~</code>)</span>
+the
+character,
+right
+here,
+means
+your
+home
+folder.
+     </p>
+     <p class="noindent">
+      To
+match
+up
+with
+where
+the
+file
+browser
+is,
+the
+Linux
+Tutorials
+folder,
+you’ll
+need
+to
+navigate
+into
+the
+Desktop
+and
+then
+into
+Linux
+Tutorials.
+To
+do
+that,
+use
+the <span id="textcolor1316"><code class="verb">cd</code></span>
+      command
+which
+stands
+for
+      <span id="bold" style="font-weight:bold;">
+       change
+directory
+      </span>
+      (for
+                                                                                
+                                                                                
+more
+information
+try
+typing <span id="textcolor1317"><code class="verb">man cd</code></span>
+      in
+your
+terminal
+window).
+Start
+by
+typing
+the
+path
+that
+we
+want
+to
+go
+to.
+Type <span id="textcolor1318"><code class="verb">De</code></span>
+      and
+then
+press
+      <kbd>
+       Tab
+      </kbd>
+      to
+auto
+complete,
+since
+Bash
+knows
+what’s
+available.
+Right
+now,
+nothing
+else
+in
+you
+Home
+folder
+should
+start
+with
+De
+except
+Desktop.
+Then
+press
+      <kbd>
+       Return
+      </kbd>
+      to
+run
+that
+command.
+Since
+we’ve
+navigated
+to
+a
+different
+folder,
+the
+prompt
+on
+your
+terminal
+                                                                                
+                                                                                
+window
+should
+change.
+     </p>
+     <p class="noindent">
+      Now,
+it
+says
+tilde
+slash
+Desktop <span id="textcolor1319">(<code class="verb">~/Desktop</code>)</span>,
+indicating
+that
+the
+present
+working
+directory
+is
+the
+documents
+residing
+inside
+of
+the <span id="textcolor1320"><code class="verb">/home</code></span>
+      folder.
+You
+can
+also
+find
+that
+out
+by
+typing <span id="textcolor1321"><code class="verb">pwd</code></span>
+      no
+your
+terminal
+window,
+for
+print
+working
+directory.
+     </p>
+     <p class="noindent">
+      That
+shows
+the
+full
+path,
+or
+absolute
+path
+of
+a
+folder
+where
+you
+are
+currently
+working.
+An
+absolute
+path
+starts
+from
+the
+root
+of
+the
+                                                                                
+                                                                                
+file
+system,
+the
+highest
+level
+of
+the
+structure
+where
+files
+are
+stored.
+Inside
+of
+the
+root,
+the
+home
+folders
+for
+users
+are
+stored
+in
+the <span id="textcolor1322"><code class="verb">/home</code></span>
+      folder,
+and
+then
+my
+user’s
+home
+folder
+is
+represented
+by
+your
+user
+name.
+     </p>
+     <p class="noindent">
+      Inside
+that
+is
+documents
+but
+we
+need
+to
+go
+one
+folder
+deeper
+to
+get
+inside
+the <span id="textcolor1323"><code class="verb">Linux Tutorials</code></span>
+      folder.
+Write <span id="textcolor1324"><code class="verb">cd Linux Tutorials</code></span>
+      and
+press
+      <kbd>
+       Return
+      </kbd>
+      ,
+but
+we
+get
+an
+error.
+                                                                                
+                                                                                
+You
+can
+see
+here
+that
+Bash
+thinks
+that
+we’re
+trying
+to
+get
+into
+the
+folder
+called
+just
+Linux.
+That’s
+because <span id="textcolor1325"><code class="verb">cd</code></span>
+      has
+interpreted
+Linux
+Tutorials,
+as
+two
+words,
+two
+separate
+arguments,
+because
+there’s
+a
+space
+in
+between
+the
+words.
+You
+have
+to
+tell
+Bash
+that
+the
+      <span id="bold" style="font-weight:bold;">
+       space
+is
+part
+of
+the
+name
+      </span>
+      ,
+not
+a
+separator
+between
+two
+arguments
+or
+commands.
+     </p>
+     <p class="noindent">
+      There
+are
+two
+ways
+to
+do
+this.
+                                                                                
+                                                                                
+The
+first
+way
+is
+to
+put
+the
+string
+of
+text
+inside
+quotes
+("
+"),
+but
+the
+more
+common
+thing
+you’ll
+see
+is
+to
+just
+escape
+a
+special
+characters.
+In
+this
+case
+the
+space
+between
+Linux
+and
+Tutorials.
+To
+let
+Bash
+know
+that
+the
+space
+is
+part
+of
+the
+folder
+name,
+not
+a
+break
+in
+the
+command,
+we
+type
+a
+back
+slash
+()
+in
+front
+of
+it.
+Escaping
+                                                                                
+                                                                                
+a
+character
+means
+that
+it’s
+treated
+literally
+instead
+of
+having
+any
+other
+special
+meaning.
+     </p>
+     <p class="noindent">
+      That
+works
+for
+one
+character
+at
+a
+time.
+If
+we
+had
+two
+spaces
+in
+there,
+we
+need
+to
+escape
+each
+space
+character
+individually.
+So,
+again
+type
+[ <span id="textcolor1326"><code class="verb">cd space Linux\ Tutorial</code></span>
+      ]
+and
+press
+Enter.
+Now
+when
+we
+type
+[ <span id="textcolor1327"><code class="verb">pwd</code></span>
+      ],
+we
+can
+see
+where
+we
+are.
+     </p>
+     <p class="noindent">
+     </p>
+     <div class="code-block">
+      <div class="code-lang">
+       bash
+      </div>
+      <pre><div class="language-bash" id="fancyvrb30" style="padding:20px;border-radius: 3px;"><a id="x8-123024r81"></a>ls</div></pre>
+     </div>
+     <p class="noindent">
+     </p>
+     <div class="code-block">
+      <div class="code-lang">
+       bash
+      </div>
+      <pre><div class="language-bash" id="fancyvrb31" style="padding:20px;border-radius: 3px;"><a id="x8-123026r92"></a>ls</div></pre>
+     </div>
+     <p class="noindent">
+      Now
+that
+we’re
+                                                                                
+                                                                                
+inside
+the
+tutorial
+files
+folder,
+Type <span id="textcolor1328"><code class="verb">ls</code></span>
+      again
+to
+see
+what
+we’ve
+got.
+     </p>
+     <p class="noindent">
+     </p>
+     <div class="code-block">
+      <div class="code-lang">
+       bash
+      </div>
+      <pre><div class="language-bash" id="fancyvrb32" style="padding:20px;border-radius: 3px;"><a id="x8-123028r101"></a><span id="textcolor1329"><italic>#+begin_src bash :dir (concat "/docker:student@" (nth 0 (split-string (shell-command-to-string "docker ps | grep 'mci:linux' | awk -F ' ' '{print $1}'| tr -d '\n' | xargs") "\n")) ":/") :results output replace :session shared</italic></span></div></pre>
+     </div>
+     <div class="tcolorbox tcolorbox" id="tcolobox-23">
+      <div class="tcolorbox-content">
+       <div class="code-block">
+        <div class="code-lang">
+         text
+        </div>
+        <pre><div class="language-text" id="fancyvrb33" style="padding:20px;border-radius: 3px;"><a id="x8-123030r1"></a>#+begin_example 
+<a id="x8-123032r2"></a>/home/student/Desktop/Linux Tutorials 
+<a id="x8-123034r3"></a>#+end_example 
+<a id="x8-123036r4"></a> 
+<a id="x8-123038r5"></a>#+NAME: NFF-4 
+<a id="x8-123040r6"></a>#+begin_src bash :dir (concat "/docker:student@" (nth 0 (split-string (shell-command-to-string "docker ps | grep 'mci:linux' | awk -F ' ' '{print $1}'| tr -d '\n' | xargs") "\n")) ":/") :results output replace :session shared 
+<a id="x8-123042r7"></a>ls -R Books/ 
+<a id="x8-123044r8"></a>#+end_src 
+<a id="x8-123046r9"></a> 
+<a id="x8-123048r10"></a>#+RESULTS: NFF-4 
+<a id="x8-123050r11"></a>#+begin_example 
+<a id="x8-123052r12"></a>Books/: 
+<a id="x8-123054r13"></a>Classics  Fantasy  Literature  Music  Poetry  Sci-Fi  Science 
+<a id="x8-123056r14"></a> 
+<a id="x8-123058r15"></a>Books/Classics: 
+<a id="x8-123060r16"></a>'Charles Dickens'  'Herman Mellvile'  'Jane Austen' 
+<a id="x8-123062r17"></a> 
+<a id="x8-123064r18"></a>'Books/Classics/Charles Dickens': 
+<a id="x8-123066r19"></a> 
+<a id="x8-123068r20"></a>'Books/Classics/Herman Mellvile': 
+<a id="x8-123070r21"></a> 
+<a id="x8-123072r22"></a>'Books/Classics/Jane Austen': 
+<a id="x8-123074r23"></a> 
+<a id="x8-123076r24"></a>Books/Fantasy: 
+<a id="x8-123078r25"></a>'Brandon Sanderson'  'G. R. R. Martin'    'J.R.R. Tolkien'  'Robert Jordan' 
+<a id="x8-123080r26"></a> 
+<a id="x8-123082r27"></a>'Books/Fantasy/Brandon Sanderson': 
+<a id="x8-123084r28"></a> 
+<a id="x8-123086r29"></a>'Books/Fantasy/G. R. R. Martin': 
+<a id="x8-123088r30"></a> 
+<a id="x8-123090r31"></a>'Books/Fantasy/J.R.R. Tolkien': 
+<a id="x8-123092r32"></a>Unfinished_LotR_Sequel.txt 
+<a id="x8-123094r33"></a> 
+<a id="x8-123096r34"></a>'Books/Fantasy/Robert Jordan': 
+<a id="x8-123098r35"></a> 
+<a id="x8-123100r36"></a>Books/Literature: 
+<a id="x8-123102r37"></a>American  English  Greek  Turkish 
+<a id="x8-123104r38"></a> 
+<a id="x8-123106r39"></a>Books/Literature/American: 
+<a id="x8-123108r40"></a> 
+<a id="x8-123110r41"></a>Books/Literature/English: 
+<a id="x8-123112r42"></a> 
+<a id="x8-123114r43"></a>Books/Literature/Greek: 
+<a id="x8-123116r44"></a> 
+<a id="x8-123118r45"></a>Books/Literature/Turkish: 
+<a id="x8-123120r46"></a> 
+<a id="x8-123122r47"></a>Books/Music: 
+<a id="x8-123124r48"></a> 
+<a id="x8-123126r49"></a>Books/Poetry: 
+<a id="x8-123128r50"></a> 
+<a id="x8-123130r51"></a>Books/Sci-Fi: 
+<a id="x8-123132r52"></a>'Arthur C. Clarke'  'Frank Herbert'  'Isaac Asimov' 
+<a id="x8-123134r53"></a> 
+<a id="x8-123136r54"></a>'Books/Sci-Fi/Arthur C. Clarke': 
+<a id="x8-123138r55"></a> 
+<a id="x8-123140r56"></a>'Books/Sci-Fi/Frank Herbert':</div></pre>
+       </div>
+      </div>
+     </div>
+     <p class="noindent">
+     </p>
+    </div>
+    <div class="section-head" id="section-2" sec="section-2">
+     <h2 class="sectionHead">
+      <a aria-label="Link to this section in PDF version" class="pdf-link" href="MobileRoboticsLectureBook.pdf#section.6.2" style="color: red;  position: absolute;  left: -30px;" target="_blank">
+       <svg class="bi bi-file-pdf" fill="currentColor" height="20" viewbox="0 0 16 16" width="20" xmlns="http://www.w3.org/2000/svg">
+        <path d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z">
+        </path>
+        <path d="M4.603 12.087a.81.81 0 0 1-.438-.42c-.195-.388-.13-.776.08-1.102.198-.307.526-.568.897-.787a7.68 7.68 0 0 1 1.482-.645 19.701 19.701 0 0 0 1.062-2.227 7.269 7.269 0 0 1-.43-1.295c-.086-.4-.119-.796-.046-1.136.075-.354.274-.672.65-.823.192-.077.4-.12.602-.077a.7.7 0 0 1 .477.365c.088.164.12.356.127.538.007.187-.012.395-.047.614-.084.51-.27 1.134-.52 1.794a10.954 10.954 0 0 0 .98 1.686 5.753 5.753 0 0 1 1.334.05c.364.065.734.195.96.465.12.144.193.32.2.518.007.192-.047.382-.138.563a1.04 1.04 0 0 1-.354.416.856.856 0 0 1-.51.138c-.331-.014-.654-.196-.933-.417a5.716 5.716 0 0 1-.911-.95 11.642 11.642 0 0 0-1.997.406 11.311 11.311 0 0 1-1.021 1.51c-.29.35-.608.655-.926.787a.793.793 0 0 1-.58.029zm1.379-1.901c-.166.076-.32.156-.459.238-.328.194-.541.383-.647.547-.094.145-.096.25-.04.361.01.022.02.036.026.044a.27.27 0 0 0 .035-.012c.137-.056.355-.235.635-.572a8.18 8.18 0 0 0 .45-.606zm1.64-1.33a12.647 12.647 0 0 1 1.01-.193 11.666 11.666 0 0 1-.51-.858 20.741 20.741 0 0 1-.5 1.05zm2.446.45c.15.162.296.3.435.41.24.19.407.253.498.256a.107.107 0 0 0 .07-.015.307.307 0 0 0 .094-.125.436.436 0 0 0 .059-.2.095.095 0 0 0-.026-.063c-.052-.062-.2-.152-.518-.209a3.881 3.881 0 0 0-.612-.053zM8.078 5.8a6.7 6.7 0 0 0 .2-.828c.031-.188.043-.343.038-.465a.613.613 0 0 0-.032-.198.517.517 0 0 0-.145.04c-.087.035-.158.106-.196.283-.04.192-.03.469.046.822.024.111.054.227.09.346z">
+        </path>
+       </svg>
+      </a>
+      <small class="titlemark">
+       6.2
+      </small>
+      <a id="x8-1240006.2">
+      </a>
+      A  Detailed  Look  in  ls  Command
+     </h2>
+     <p class="noindent">
+      As the <span id="textcolor1330"><code class="verb">ls</code></span>
+      command is one of the more useful commands, it is worth looking into it in a bit more
+detail. As discussed, <span id="textcolor1331"><code class="verb">ls</code></span>
+      is a command in the
+      <a class="glossary" href="MobileRoboticsLectureBookli2.html#glo:cli">
+       CLI
+      </a>
+      which allows us to lists the contents of a directory.
+     </p>
+     <p class="noindent">
+     </p>
+     <div class="code-block">
+      <div class="code-lang">
+       bash
+      </div>
+      <pre><div class="language-bash" id="fancyvrb34" style="padding:20px;border-radius: 3px;"><a id="x8-124002r179"></a><span id="textcolor1332">cd</span><span id="textcolor1333"> </span><span id="textcolor1334">"home/ubuntu/Desktop/Linux Tutorials"</span><span id="textcolor1335"> </span><span id="textcolor1336">&amp;&amp;</span><span id="textcolor1337"> </span>ls</div></pre>
+     </div>
+     <div class="tcolorbox tcolorbox" id="tcolobox-24">
+      <div class="tcolorbox-content">
+       <div class="code-block">
+        <div class="code-lang">
+         text
+        </div>
+        <pre><div class="language-text" id="fancyvrb35" style="padding:20px;border-radius: 3px;"><a id="x8-124004r1"></a>Books  Data.txt  Folder  Poem.txt</div></pre>
+       </div>
+      </div>
+     </div>
+     <p class="noindent">
+      This command is highly useful as it’s
+      <alert style="color: #821131;">
+       short
+      </alert>
+      and has an
+      <alert style="color: #821131;">
+       easily changeable output
+      </alert>
+      . The output
+itself is pretty useful, and therefore it’s worth taking some time to understand what it shows.
+     </p>
+     <div class="knowledge">
+      <p class="noindent"> <span id="textcolor1338"><code class="verb">ls</code></span>, just by itself gives a list, and depending on the environment, the items might have some colour or they might not. The colouration is
+helpful but it’s not critical to use in <span id="textcolor1339"><code class="verb">ls</code></span>. If it is not visible, try running <span id="textcolor1340"><code class="verb">ls</code></span>
+       with the dash dash colour equals always option <span id="textcolor1341">(<code class="verb">--color=always</code>)</span>.
+      </p>
+     </div>
+     <p class="noindent">
+      Let’s go to the file Linux Tutorials and look around. As we have changed the path in our previous code, and
+as long as we are using the same terminal window, our path should still be in <span id="textcolor1342"><code class="verb">Linux Tutorials</code></span>. However if it
+is not the case, please Write <span id="textcolor1343"><code class="verb">cd Desktop/Linux\ Tutorials/</code></span>. Once we are in the directory, write the following:
+     </p>
+     <p class="noindent">
+     </p>
+     <div class="code-block">
+      <div class="code-lang">
+       bash
+      </div>
+      <pre><div class="language-bash" id="fancyvrb36" style="padding:20px;border-radius: 3px;"><a id="x8-124006r194"></a>ls<span id="textcolor1344"> </span>-l</div></pre>
+     </div>
+     <div class="tcolorbox tcolorbox" id="tcolobox-25">
+      <div class="tcolorbox-content">
+       <div class="code-block">
+        <div class="code-lang">
+         text
+        </div>
+        <pre><div class="language-text" id="fancyvrb37" style="padding:20px;border-radius: 3px;"><a id="x8-124008r1"></a>total 20 
+<a id="x8-124010r2"></a>drwxrwxr-x 1 ubuntu ubuntu 4096 Nov 22  2020 Books 
+<a id="x8-124012r3"></a>-rw-rw-r-- 1 ubuntu ubuntu  102 Nov 20  2020 Data.txt 
+<a id="x8-124014r4"></a>drwxrwxr-x 1 ubuntu ubuntu 4096 Nov 20  2020 Folder 
+<a id="x8-124016r5"></a>-rw-rw-r-- 1 ubuntu ubuntu  592 Nov 18  2020 Poem.txt</div></pre>
+       </div>
+      </div>
+     </div>
+     <p class="noindent">
+      Here, the <span id="textcolor1345"><code class="verb">-l</code></span>
+      is used to see more information about the files within the directory. The first column on the left shows whether an item is:
+     </p>
+     <ul class="itemize1">
+      <li class="itemize">
+       <p class="noindent">
+        A
+folder
+or
+a
+directory
+which
+will
+be
+shown
+with
+a <span id="textcolor1347"><code class="verb">d</code></span>,
+       </p>
+      </li>
+      <li class="itemize">
+       <p class="noindent">
+        A
+link
+which
+will
+be
+shown
+with
+a <span id="textcolor1349"><code class="verb">l</code></span>,
+       </p>
+      </li>
+      <li class="itemize">
+       <p class="noindent">
+        A
+file,
+which
+is
+a
+dash <span id="textcolor1351">(<code class="verb">-</code>)</span>.
+This
+means
+that
+the
+attribute
+is
+missing
+or
+offset.
+       </p>
+      </li>
+     </ul>
+     <p class="noindent">
+      If the output shows colours, folders will generally be blue text. Links will generally be light blue text and files
+will generally be grey or they’ll be black or white depending on the background colour of your terminal.
+     </p>
+     <p class="noindent">
+      The next set of columns show a representation of the permissions on the file. What different kinds of users are allowed to do with
+the file. Further to the right, we see the owner of the file, and the group setting of the file. Then we see the size
+of the file in bytes, which can be a little bit easier to read with a <span id="textcolor1352"><code class="verb">-h</code></span>
+      option. Clear the screen and use <span id="textcolor1353"><code class="verb">ls -lh</code></span>.
+     </p>
+     <p class="noindent">
+     </p>
+     <div class="code-block">
+      <div class="code-lang">
+       bash
+      </div>
+      <pre><div class="language-bash" id="fancyvrb38" style="padding:20px;border-radius: 3px;"><a id="x8-124018r208"></a>ls<span id="textcolor1354"> </span>-lh</div></pre>
+     </div>
+     <div class="tcolorbox tcolorbox" id="tcolobox-26">
+      <div class="tcolorbox-content">
+       <div class="code-block">
+        <div class="code-lang">
+         text
+        </div>
+        <pre><div class="language-text" id="fancyvrb39" style="padding:20px;border-radius: 3px;"><a id="x8-124020r1"></a>total 20K 
+<a id="x8-124022r2"></a>drwxrwxr-x 1 ubuntu ubuntu 4.0K Nov 22  2020 Books 
+<a id="x8-124024r3"></a>-rw-rw-r-- 1 ubuntu ubuntu  102 Nov 20  2020 Data.txt 
+<a id="x8-124026r4"></a>drwxrwxr-x 1 ubuntu ubuntu 4.0K Nov 20  2020 Folder 
+<a id="x8-124028r5"></a>-rw-rw-r-- 1 ubuntu ubuntu  592 Nov 18  2020 Poem.txt</div></pre>
+       </div>
+      </div>
+     </div>
+     <p class="noindent">
+      This calls out the size post fixes. <span id="textcolor1355"><code class="verb">k</code></span>
+      for kilo, <span id="textcolor1356"><code class="verb">m</code></span>
+      for mega, <span id="textcolor1357"><code class="verb">g</code></span>
+      for giga, and <span id="textcolor1358"><code class="verb">t</code></span>
+      for terabytes. Then there’s the date and time that the file
+was modified. Finally the file name, or in the case of a link, which we’ll explore a bit later. <span id="textcolor1359"><code class="verb">ls</code></span>
+      with is wide variety of
+options, give you a whole lot of helpful information about folders and files, so it’s a good command to know about.
+     </p>
+     <p class="noindent">
+     </p>
+    </div>
+    <div class="section-head" id="section-3" sec="section-3">
+     <h2 class="sectionHead">
+      <a aria-label="Link to this section in PDF version" class="pdf-link" href="MobileRoboticsLectureBook.pdf#section.6.3" style="color: red;  position: absolute;  left: -30px;" target="_blank">
+       <svg class="bi bi-file-pdf" fill="currentColor" height="20" viewbox="0 0 16 16" width="20" xmlns="http://www.w3.org/2000/svg">
+        <path d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z">
+        </path>
+        <path d="M4.603 12.087a.81.81 0 0 1-.438-.42c-.195-.388-.13-.776.08-1.102.198-.307.526-.568.897-.787a7.68 7.68 0 0 1 1.482-.645 19.701 19.701 0 0 0 1.062-2.227 7.269 7.269 0 0 1-.43-1.295c-.086-.4-.119-.796-.046-1.136.075-.354.274-.672.65-.823.192-.077.4-.12.602-.077a.7.7 0 0 1 .477.365c.088.164.12.356.127.538.007.187-.012.395-.047.614-.084.51-.27 1.134-.52 1.794a10.954 10.954 0 0 0 .98 1.686 5.753 5.753 0 0 1 1.334.05c.364.065.734.195.96.465.12.144.193.32.2.518.007.192-.047.382-.138.563a1.04 1.04 0 0 1-.354.416.856.856 0 0 1-.51.138c-.331-.014-.654-.196-.933-.417a5.716 5.716 0 0 1-.911-.95 11.642 11.642 0 0 0-1.997.406 11.311 11.311 0 0 1-1.021 1.51c-.29.35-.608.655-.926.787a.793.793 0 0 1-.58.029zm1.379-1.901c-.166.076-.32.156-.459.238-.328.194-.541.383-.647.547-.094.145-.096.25-.04.361.01.022.02.036.026.044a.27.27 0 0 0 .035-.012c.137-.056.355-.235.635-.572a8.18 8.18 0 0 0 .45-.606zm1.64-1.33a12.647 12.647 0 0 1 1.01-.193 11.666 11.666 0 0 1-.51-.858 20.741 20.741 0 0 1-.5 1.05zm2.446.45c.15.162.296.3.435.41.24.19.407.253.498.256a.107.107 0 0 0 .07-.015.307.307 0 0 0 .094-.125.436.436 0 0 0 .059-.2.095.095 0 0 0-.026-.063c-.052-.062-.2-.152-.518-.209a3.881 3.881 0 0 0-.612-.053zM8.078 5.8a6.7 6.7 0 0 0 .2-.828c.031-.188.043-.343.038-.465a.613.613 0 0 0-.032-.198.517.517 0 0 0-.145.04c-.087.035-.158.106-.196.283-.04.192-.03.469.046.822.024.111.054.227.09.346z">
+        </path>
+       </svg>
+      </a>
+      <small class="titlemark">
+       6.3
+      </small>
+      <a id="x8-1250006.3">
+      </a>
+      Creating  and  Removing  Folders
+     </h2>
+     <p class="noindent">
+      Sometimes, we’ll need to create folders to organise our files, and sometimes we’ll need to remove folders as well. Sometimes it is
+good to know how to do it using the
+      <a class="glossary" href="MobileRoboticsLectureBookli2.html#glo:cli">
+       CLI
+      </a>. Currently this is the content of <span id="textcolor1360"><code class="verb">Linux Tutorials</code></span>. There is a single folder and a text file.
+     </p>
+     <p class="noindent">
+      First, create a new folder or directory here in <span id="textcolor1361"><code class="verb">Linux Tutorials</code></span>
+      folder with <span id="textcolor1362"><code class="verb">mkdir</code></span>
+      which
+stands for make directory, and give it a name. Let’s call it <span id="textcolor1363"><code class="verb">Folder</code></span>, to keep it simple.
+     </p>
+     <p class="noindent">
+     </p>
+     <div class="code-block">
+      <div class="code-lang">
+       bash
+      </div>
+      <pre><div class="language-bash" id="fancyvrb40" style="padding:20px;border-radius: 3px;"><a id="x8-125002r224"></a>mkdir<span id="textcolor1364"> </span>Folder</div></pre>
+     </div>
+     <p class="noindent">
+      If we observe the file content, we can see the folder has appeared. We can also see the
+content of this directory with the command <span id="textcolor1365"><code class="verb">ls -l</code></span>. There is the Folder we have just created.
+     </p>
+     <p class="noindent">
+     </p>
+     <div class="code-block">
+      <div class="code-lang">
+       bash
+      </div>
+      <pre><div class="language-bash" id="fancyvrb41" style="padding:20px;border-radius: 3px;"><a id="x8-125004r229"></a>ls<span id="textcolor1366"> </span>-l</div></pre>
+     </div>
+     <div class="tcolorbox tcolorbox" id="tcolobox-27">
+      <div class="tcolorbox-content">
+       <div class="code-block">
+        <div class="code-lang">
+         text
+        </div>
+        <pre><div class="language-text" id="fancyvrb42" style="padding:20px;border-radius: 3px;"><a id="x8-125006r1"></a>total 20 
+<a id="x8-125008r2"></a>drwxrwxr-x 1 ubuntu ubuntu 4096 Nov 22  2020 Books 
+<a id="x8-125010r3"></a>-rw-rw-r-- 1 ubuntu ubuntu  102 Nov 20  2020 Data.txt 
+<a id="x8-125012r4"></a>drwxrwxr-x 1 ubuntu ubuntu 4096 Nov 20  2020 Folder 
+<a id="x8-125014r5"></a>-rw-rw-r-- 1 ubuntu ubuntu  592 Nov 18  2020 Poem.txt</div></pre>
+       </div>
+      </div>
+     </div>
+     <p class="noindent">
+      If we put a name after <span id="textcolor1367"><code class="verb">mkdir</code></span>, it assumes we want to create a folder inside of the current working directory. In this case, this
+would be <span id="textcolor1368"><code class="verb">Linux Tutorials</code></span>. We can also specify a path outside the current folder or a folder deeper inside the working folder.
+     </p>
+     <p class="noindent">
+      For example, Add a new folder inside our Books folder for Poetry. For that we have to write <span id="textcolor1369"><code class="verb">mkdir Books/Lyrics</code></span>.
+     </p>
+     <p class="noindent">
+     </p>
+     <div class="code-block">
+      <div class="code-lang">
+       bash
+      </div>
+      <pre><div class="language-bash" id="fancyvrb43" style="padding:20px;border-radius: 3px;"><a id="x8-125016r243"></a>mkdir<span id="textcolor1370"> </span>Books/Lyrics</div></pre>
+     </div>
+     <p class="noindent">
+      What if we wanted to create a subfolder within a new folder? For example, let’s say we want to make a Beethoven folder inside a
+Music folder. Instead of creating a Music folder and then creating a Beethoven folder inside of it, we can do it all at once using
+the <span id="textcolor1371"><code class="verb">-p</code></span>
+      option for <span id="textcolor1372"><code class="verb">mkdir</code></span>. This option creates any parent folders that are needed, so in this case, it’ll create the
+Music folder for us and then create the Beethoven folder after that. Write mkdir -p Books/Music/Beethoven.
+     </p>
+     <p class="noindent">
+     </p>
+     <div class="code-block">
+      <div class="code-lang">
+       bash
+      </div>
+      <pre><div class="language-bash" id="fancyvrb44" style="padding:20px;border-radius: 3px;"><a id="x8-125018r248"></a>mkdir<span id="textcolor1373"> </span>-p<span id="textcolor1374"> </span>Books/Music/Beethoven</div></pre>
+     </div>
+     <p class="noindent">
+      Here are the newly created files. This is a versatile command. We can also remove empty directories using the
+rmdir command for remove directory. Let’s go remove the Beethoven folder that we just created. For that,
+we have to write write rmdir Books/Music/Beethoven and now if we take a look inside the Music folder,
+it’s empty. One thing to keep in mind about removing folders this way is that in order to remove a folder,
+it has to be empty. That means it’s a little more tedious to remove a large folder structure with rmdir.
+     </p>
+     <p class="noindent">
+     </p>
+    </div>
+    <div class="section-head" id="section-4" sec="section-4">
+     <h2 class="sectionHead">
+      <a aria-label="Link to this section in PDF version" class="pdf-link" href="MobileRoboticsLectureBook.pdf#section.6.4" style="color: red;  position: absolute;  left: -30px;" target="_blank">
+       <svg class="bi bi-file-pdf" fill="currentColor" height="20" viewbox="0 0 16 16" width="20" xmlns="http://www.w3.org/2000/svg">
+        <path d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z">
+        </path>
+        <path d="M4.603 12.087a.81.81 0 0 1-.438-.42c-.195-.388-.13-.776.08-1.102.198-.307.526-.568.897-.787a7.68 7.68 0 0 1 1.482-.645 19.701 19.701 0 0 0 1.062-2.227 7.269 7.269 0 0 1-.43-1.295c-.086-.4-.119-.796-.046-1.136.075-.354.274-.672.65-.823.192-.077.4-.12.602-.077a.7.7 0 0 1 .477.365c.088.164.12.356.127.538.007.187-.012.395-.047.614-.084.51-.27 1.134-.52 1.794a10.954 10.954 0 0 0 .98 1.686 5.753 5.753 0 0 1 1.334.05c.364.065.734.195.96.465.12.144.193.32.2.518.007.192-.047.382-.138.563a1.04 1.04 0 0 1-.354.416.856.856 0 0 1-.51.138c-.331-.014-.654-.196-.933-.417a5.716 5.716 0 0 1-.911-.95 11.642 11.642 0 0 0-1.997.406 11.311 11.311 0 0 1-1.021 1.51c-.29.35-.608.655-.926.787a.793.793 0 0 1-.58.029zm1.379-1.901c-.166.076-.32.156-.459.238-.328.194-.541.383-.647.547-.094.145-.096.25-.04.361.01.022.02.036.026.044a.27.27 0 0 0 .035-.012c.137-.056.355-.235.635-.572a8.18 8.18 0 0 0 .45-.606zm1.64-1.33a12.647 12.647 0 0 1 1.01-.193 11.666 11.666 0 0 1-.51-.858 20.741 20.741 0 0 1-.5 1.05zm2.446.45c.15.162.296.3.435.41.24.19.407.253.498.256a.107.107 0 0 0 .07-.015.307.307 0 0 0 .094-.125.436.436 0 0 0 .059-.2.095.095 0 0 0-.026-.063c-.052-.062-.2-.152-.518-.209a3.881 3.881 0 0 0-.612-.053zM8.078 5.8a6.7 6.7 0 0 0 .2-.828c.031-.188.043-.343.038-.465a.613.613 0 0 0-.032-.198.517.517 0 0 0-.145.04c-.087.035-.158.106-.196.283-.04.192-.03.469.046.822.024.111.054.227.09.346z">
+        </path>
+       </svg>
+      </a>
+      <small class="titlemark">
+       6.4
+      </small>
+      <a id="x8-1260006.4">
+      </a>
+      Move,  Copy  and  Delete  Files  and  Folders
+     </h2>
+     <p class="noindent">
+      It’s pretty common to need to move, copy, and delete files in our day to day GUI activities, and this is also true when
+you are working using a CLI. Some experienced command line users would even argue that it is more efficient
+and effective to do file management using CLI than GUI as GUI might take more time with mouse movements.
+     </p>
+     <p class="noindent">
+      In light of this, the first command for you to learn using in CLI file management to you here is <span id="textcolor1375"><code class="verb">cp</code></span>
+      which stands for copy. Remember if you don’t
+remember or know how a command options work use the <span id="textcolor1376"><code class="verb">man</code></span>
+      command followed by the command you want to know more about (i.e., <span id="textcolor1377"><code class="verb">man cp</code></span>
+      ).)
+     </p>
+     <div class="informationblock" id="tcolobox-28">
+      <div class="title">
+       <p class="noindent">
+        <span id="bold" style="font-weight:bold;">
+         Information
+        </span>
+        : The <span id="textcolor1379"><code class="verb">cp</code></span>
+        Command
+       </p>
+      </div>
+      <div class="box-content">
+       <p class="noindent">
+        A command in Unix and Unix-like operating systems for copying files and directories.
+       </p>
+      </div>
+     </div>
+     <p class="noindent">
+      Let’s make a duplicate copy of our <span id="textcolor1380"><code class="verb">Poem.txt</code></span>
+      file. As we can see, we are at the right directory to do any duplication.
+     </p>
+     <p class="noindent">
+     </p>
+     <div class="code-block">
+      <div class="code-lang">
+       bash
+      </div>
+      <pre><div class="language-bash" id="fancyvrb45" style="padding:20px;border-radius: 3px;"><a id="x8-126002r255"></a>ls<span id="textcolor1381"> </span>-l</div></pre>
+     </div>
+     <div class="tcolorbox tcolorbox" id="tcolobox-29">
+      <div class="tcolorbox-content">
+       <div class="code-block">
+        <div class="code-lang">
+         text
+        </div>
+        <pre><div class="language-text" id="fancyvrb46" style="padding:20px;border-radius: 3px;"><a id="x8-126004r1"></a>total 20 
+<a id="x8-126006r2"></a>drwxrwxr-x 1 ubuntu ubuntu 4096 May 19 06:07 Books 
+<a id="x8-126008r3"></a>-rw-rw-r-- 1 ubuntu ubuntu  102 Nov 20  2020 Data.txt 
+<a id="x8-126010r4"></a>drwxrwxr-x 1 ubuntu ubuntu 4096 Nov 20  2020 Folder 
+<a id="x8-126012r5"></a>-rw-rw-r-- 1 ubuntu ubuntu  592 Nov 18  2020 Poem.txt</div></pre>
+       </div>
+      </div>
+     </div>
+     <p class="noindent">
+      Let’s
+write
+to
+the
+terminal
+      <alert style="color: #821131;">
+       <span id="bold" style="font-weight:bold;">
+        <sup class="textsuperscript">
+         5
+        </sup>
+       </span>
+      </alert>
+      <span class="marginnote">
+       <alert style="color: #821131;">
+        <span id="bold" style="font-weight:bold;">
+         <sup class="textsuperscript">
+          5
+         </sup>
+        </span>
+       </alert>
+       <span id="textcolor1382">
+        if
+you
+don’t
+have
+a
+terminal
+window
+open
+you
+can
+open
+one
+using
+        <kbd>
+         Ctrl
+        </kbd>
+        +
+        <kbd>
+         Alt
+        </kbd>
+        +
+        <kbd>
+         T
+        </kbd>
+       </span>
+      </span>
+      , <span id="textcolor1383"><code class="verb">cp Poem.txt poem_Copy.txt</code></span>.
+The
+first
+file
+name
+is
+the
+file
+you
+want
+to
+copy <span id="textcolor1384">(<code class="verb">Poem.txt</code>)</span>,
+and
+the
+second
+file
+name
+is
+where
+                                                                                
+                                                                                
+you
+want
+to
+copy
+it
+to <span id="textcolor1385">(<code class="verb">Poem_Copy.txt</code>)</span>.
+     </p>
+     <p class="noindent">
+     </p>
+     <div class="code-block">
+      <div class="code-lang">
+       bash
+      </div>
+      <pre><div class="language-bash" id="fancyvrb47" style="padding:20px;border-radius: 3px;"><a id="x8-126014r269"></a>cp<span id="textcolor1386"> </span>Poem.txt<span id="textcolor1387"> </span>Poem_Copy.txt</div></pre>
+     </div>
+     <p class="noindent">
+      Press
+      <kbd>
+       Return
+      </kbd>
+      ,
+and
+then
+take
+a
+look
+at
+the
+contents
+of
+this
+folder
+again
+with <span id="textcolor1388"><code class="verb">ls -h</code></span>.
+Here
+we
+can
+see,
+there’s
+the
+original <span id="textcolor1389"><code class="verb">Poem.txt</code></span>
+      file,
+and
+here’s <span id="textcolor1390"><code class="verb">Poem_Copy.txt</code></span>.
+You
+can
+also
+copy
+a
+file
+to
+a
+different
+path.
+For
+example,
+we
+can
+copy
+our <span id="textcolor1391"><code class="verb">Poem.txt</code></span>
+      file
+into
+our <span id="textcolor1392"><code class="verb">/Poetry</code></span>
+      folder
+inside
+the <span id="textcolor1393"><code class="verb">/Books</code></span>
+      folder.
+To
+do
+                                                                                
+                                                                                
+that,
+write <span id="textcolor1394"><code class="verb">cp Poem.txt</code></span>,
+and
+then
+use
+      <kbd>
+       Tab
+      </kbd>
+      completion
+to
+get
+to <span id="textcolor1395"><code class="verb">Books/Poetry</code></span>.
+     </p>
+     <p class="noindent">
+     </p>
+     <div class="code-block">
+      <div class="code-lang">
+       bash
+      </div>
+      <pre><div class="language-bash" id="fancyvrb48" style="padding:20px;border-radius: 3px;"><a id="x8-126016r274"></a>cp<span id="textcolor1396"> </span>Poem.txt<span id="textcolor1397"> </span>Books/Poetry</div></pre>
+     </div>
+     <p class="noindent">
+      If
+we
+list
+the
+folder,
+we
+can
+see
+that
+the
+file’s
+been
+copied
+there.
+     </p>
+     <p class="noindent">
+     </p>
+     <div class="code-block">
+      <div class="code-lang">
+       bash
+      </div>
+      <pre><div class="language-bash" id="fancyvrb49" style="padding:20px;border-radius: 3px;"><a id="x8-126018r279"></a><span id="textcolor1398">cd</span><span id="textcolor1399"> </span>Books/Poetry<span id="textcolor1400"> </span><span id="textcolor1401">&amp;&amp;</span><span id="textcolor1402"> </span>ls<span id="textcolor1403"> </span>-h</div></pre>
+     </div>
+     <div class="tcolorbox tcolorbox" id="tcolobox-30">
+      <div class="tcolorbox-content">
+       <div class="code-block">
+        <div class="code-lang">
+         text
+        </div>
+        <pre><div class="language-text" id="fancyvrb50" style="padding:20px;border-radius: 3px;"><a id="x8-126020r1"></a>Poem.txt</div></pre>
+       </div>
+      </div>
+     </div>
+     <p class="noindent">
+      Let’s take a look at moving a file rather than copying it. In principle, the move command has two <alert style="color: #821131;">(2)</alert>  uses:
+     </p>
+     <dl class="enumerate-enumitem">
+      <dt class="enumerate-enumitem">
+       1.
+      </dt>
+      <dd class="enumerate-enumitem">
+       You
+can
+use
+it
+to
+move
+files
+between
+folders,
+      </dd>
+      <dt class="enumerate-enumitem">
+       2.
+      </dt>
+      <dd class="enumerate-enumitem">
+       You
+can
+also
+use
+it
+to
+rename
+files.
+      </dd>
+     </dl>
+     <p class="noindent">
+      The command for move is <span id="textcolor1404"><code class="verb">mv</code></span>, so using this command let’s move the <span id="textcolor1405"><code class="verb">Poem_Copy.txt</code></span>
+      to the <span id="textcolor1406"><code class="verb">/Books</code></span>
+      subfolder inside the <span id="textcolor1407"><code class="verb">/Linux Tutorial</code></span>
+      folder.
+     </p>
+     <p class="noindent">
+     </p>
+     <div class="code-block">
+      <div class="code-lang">
+       bash
+      </div>
+      <pre><div class="language-bash" id="fancyvrb51" style="padding:20px;border-radius: 3px;"><a id="x8-126024r289"></a><span id="textcolor1408">cd</span><span id="textcolor1409"> </span>-<span id="textcolor1410"> </span><span id="textcolor1411">&amp;&amp;</span><span id="textcolor1412"> </span>mv<span id="textcolor1413"> </span>Poem_Copy.txt<span id="textcolor1414"> </span>Books/<span id="textcolor1415"> </span></div></pre>
+     </div>
+     <p class="noindent">
+      And we can check that the file’s in that folder. And then we can see that it’s no longer in the original
+folder by using <span id="textcolor1416"><code class="verb">ls</code></span>
+      here. It is also possible, as we mentioned before, to rename files with the <span id="textcolor1417"><code class="verb">mv</code></span>
+      command.
+     </p>
+     <div class="informationblock" id="tcolobox-31">
+      <div class="title">
+       <p class="noindent">
+        <span id="bold" style="font-weight:bold;">
+         Information
+        </span>
+        : The <span id="textcolor1419"><code class="verb">mv</code></span>
+        command
+       </p>
+      </div>
+      <div class="box-content">
+       <p class="noindent">
+        Moves one or more files or directories from one place to another.
+       </p>
+      </div>
+     </div>
+     <p class="noindent">
+      Let’s try it. Let’s rename the <span id="textcolor1420"><code class="verb">Poem_Copy.txt</code></span>
+      to <span id="textcolor1421"><code class="verb">Poem_Duplicate.txt</code></span>
+      using the <span id="textcolor1422"><code class="verb">mv</code></span>
+      command.
+     </p>
+     <p class="noindent">
+     </p>
+     <div class="code-block">
+      <div class="code-lang">
+       bash
+      </div>
+      <pre><div class="language-bash" id="fancyvrb52" style="padding:20px;border-radius: 3px;"><a id="x8-126026r308"></a><span id="textcolor1423">cd</span><span id="textcolor1424"> </span>Books<span id="textcolor1425"> </span><span id="textcolor1426">&amp;&amp;</span><span id="textcolor1427"> </span>mv<span id="textcolor1428"> </span>Poem_Copy.txt<span id="textcolor1429"> </span>Poem_Duplicate.txt</div></pre>
+     </div>
+     <p class="noindent">
+     </p>
+     <div class="code-block">
+      <div class="code-lang">
+       bash
+      </div>
+      <pre><div class="language-bash" id="fancyvrb53" style="padding:20px;border-radius: 3px;"><a id="x8-126028r452"></a>rm<span id="textcolor1430"> </span>-rf<span id="textcolor1431"> </span>./</div></pre>
+     </div>
+     <p class="noindent">
+     </p>
+     <div class="code-block">
+      <div class="code-lang">
+       bash
+      </div>
+      <pre><div class="language-bash" id="fancyvrb54" style="padding:20px;border-radius: 3px;"><a id="x8-126030r464"></a>ls</div></pre>
+     </div>
+     <p class="noindent">
+     </p>
+    </div>
+    <div class="section-head" id="section-5" sec="section-5">
+     <h2 class="sectionHead">
+      <a aria-label="Link to this section in PDF version" class="pdf-link" href="MobileRoboticsLectureBook.pdf#section.6.5" style="color: red;  position: absolute;  left: -30px;" target="_blank">
+       <svg class="bi bi-file-pdf" fill="currentColor" height="20" viewbox="0 0 16 16" width="20" xmlns="http://www.w3.org/2000/svg">
+        <path d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z">
+        </path>
+        <path d="M4.603 12.087a.81.81 0 0 1-.438-.42c-.195-.388-.13-.776.08-1.102.198-.307.526-.568.897-.787a7.68 7.68 0 0 1 1.482-.645 19.701 19.701 0 0 0 1.062-2.227 7.269 7.269 0 0 1-.43-1.295c-.086-.4-.119-.796-.046-1.136.075-.354.274-.672.65-.823.192-.077.4-.12.602-.077a.7.7 0 0 1 .477.365c.088.164.12.356.127.538.007.187-.012.395-.047.614-.084.51-.27 1.134-.52 1.794a10.954 10.954 0 0 0 .98 1.686 5.753 5.753 0 0 1 1.334.05c.364.065.734.195.96.465.12.144.193.32.2.518.007.192-.047.382-.138.563a1.04 1.04 0 0 1-.354.416.856.856 0 0 1-.51.138c-.331-.014-.654-.196-.933-.417a5.716 5.716 0 0 1-.911-.95 11.642 11.642 0 0 0-1.997.406 11.311 11.311 0 0 1-1.021 1.51c-.29.35-.608.655-.926.787a.793.793 0 0 1-.58.029zm1.379-1.901c-.166.076-.32.156-.459.238-.328.194-.541.383-.647.547-.094.145-.096.25-.04.361.01.022.02.036.026.044a.27.27 0 0 0 .035-.012c.137-.056.355-.235.635-.572a8.18 8.18 0 0 0 .45-.606zm1.64-1.33a12.647 12.647 0 0 1 1.01-.193 11.666 11.666 0 0 1-.51-.858 20.741 20.741 0 0 1-.5 1.05zm2.446.45c.15.162.296.3.435.41.24.19.407.253.498.256a.107.107 0 0 0 .07-.015.307.307 0 0 0 .094-.125.436.436 0 0 0 .059-.2.095.095 0 0 0-.026-.063c-.052-.062-.2-.152-.518-.209a3.881 3.881 0 0 0-.612-.053zM8.078 5.8a6.7 6.7 0 0 0 .2-.828c.031-.188.043-.343.038-.465a.613.613 0 0 0-.032-.198.517.517 0 0 0-.145.04c-.087.035-.158.106-.196.283-.04.192-.03.469.046.822.024.111.054.227.09.346z">
+        </path>
+       </svg>
+      </a>
+      <small class="titlemark">
+       6.5
+      </small>
+      <a id="x8-1270006.5">
+      </a>
+      Role  to  Users  and  sudo
+     </h2>
+     <p class="noindent">
+      Linux is a multi-user environment. Now, what this means is that multiple users can use an operating system.
+This is a concept we’re familiar with nowadays but was a new idea decades ago when Unix came on the scene
+when it was mostly used by specialized engineers and programmers. In principle I can have a user, someone else
+can have a user in the same operating system, but our files are kept separate in our individual home folders.
+     </p>
+     <aside class="wrapfig-r">
+      <img alt="PIC" height="" src="figures/Working-with-Files-and-Folders/raster/boo.jpg" width="100%"/>
+      <a id="x8-127001r1">
+      </a>
+      <figcaption class="caption">
+       <span class="id">
+        Figure 6.1:
+       </span>
+       <span class="content">
+        Beware of the sudo ghost.
+       </span>
+      </figcaption>
+     </aside>
+     <p class="noindent">
+      We can create files that only one or another user can access. At the command line, we can switch between users
+with the <span id="textcolor1432"><code class="verb">su</code></span>
+      command, which is variously referred to as set user, switch user, or substitute user. To use <span id="textcolor1433"><code class="verb">su</code></span>, we
+write the command followed by the name of the user we want to switch to. Probably the most common
+use of switching users at the command line is to do some system administration tasks. There are two basic
+user roles in Linux. There’s the
+      <span id="bold" style="font-weight:bold;">
+       normal user
+      </span>
+      and the
+      <span id="bold" style="font-weight:bold;">
+       superuser
+      </span>
+      . The difference here is one of privilege.
+     </p>
+     <p class="noindent">
+      The normal user can modify, create, delete, and move their own files, but they can’t make changes to the system.
+They can’t install software, they can’t make changes to system files, and generally speaking, they can’t browse
+other users’ home folders. The superuser, which is called root, can make changes to the system. It can install
+software, it can start and stop services, and so on. Normal users can be granted the ability to temporarily use
+root’s power through a command called <span id="textcolor1434"><code class="verb">sudo</code></span>. It’s uncommon and it’s really bad practice to log into the root user
+directly to do normal work. In fact, on many systems, the root user is actually disabled and can’t be logged into.
+     </p>
+     <p class="noindent">
+      You only want to borrow root’s power when you really need it, so let’s take a look at that. Let’s try to see what’s inside root’s
+home folder, which is located at the root of the drive. These are two different meanings of the word root, which can be a little
+confusing. Remember, when we’re talking about a file system, the root is at the highest level of the organizational structure
+and that’s represented by a single slash. When we’re talking about accessing users, root is the superuser. You
+could probably draw some parallels between levels in a hierarchy, but just keep in mind there’s two different
+meanings for the word root on Linux. Let’s see what happens when I write <span id="textcolor1435"><code class="verb">ls /root</code></span>, and I see I’m denied permission.
+     </p>
+     <p class="noindent">
+     </p>
+     <div class="code-block">
+      <div class="code-lang">
+       bash
+      </div>
+      <pre><div class="language-bash" id="fancyvrb55" style="padding:20px;border-radius: 3px;"><a id="x8-127003r442"></a>ls<span id="textcolor1436"> </span>/root</div></pre>
+     </div>
+     <div class="tcolorbox tcolorbox" id="tcolobox-32">
+      <div class="tcolorbox-content">
+       <div class="code-block">
+        <div class="code-lang">
+         text
+        </div>
+        <pre><div class="language-text" id="fancyvrb56" style="padding:20px;border-radius: 3px;"><a id="x8-127005r1"></a>ls: cannot open directory '/root': Permission denied</div></pre>
+       </div>
+      </div>
+     </div>
+     <p class="noindent">
+      We need to use the <span id="textcolor1437"><code class="verb">sudo</code></span>
+      command to gain root’s privileges to see inside there. This command basically tells the system to run
+whatever command is after it with superuser privileges instead of the normal user’s privileges. So, write <span id="textcolor1438"><code class="verb">sudo ls /root</code></span>. I’m
+prompted for my password. This is a good sign that the computer understood that I want superuser privileges.
+     </p>
+     <div class="informationblock" id="tcolobox-33">
+      <div class="title">
+       <p class="noindent">
+        <span id="bold" style="font-weight:bold;">
+         Information
+        </span>
+        : Removing password from the system
+       </p>
+      </div>
+      <div class="box-content">
+       <p class="noindent">
+        While it is not recommended, Linux gives you options to do anything and this includes
+        <span id="bold" style="font-weight:bold;">
+         removing
+        </span>
+        user password from
+the computer. This would allow you to run <span id="textcolor1439"><code class="verb">sudo</code></span>
+        commands without ever be. You start first use the <span id="textcolor1440"><code class="verb">passwd</code></span>
+        command to
+delete the password of the user (which is you)
+       </p>
+       <div class="code-block">
+        <div class="code-lang">
+         bash
+        </div>
+        <pre><div class="language-bash" id="fancyvrb57" style="padding:20px;border-radius: 3px;"><a id="x8-127007r528"></a>sudo<span id="textcolor1441"> </span>passwd<span id="textcolor1442"> </span>-d<span id="textcolor1443"> </span>username</div></pre>
+       </div>
+       <p class="noindent">
+        After entering you username in place of <span id="textcolor1444"><code class="verb">username</code></span>, if you see
+        <alert style="color: #821131;">
+         password expiry information changed
+        </alert>
+        in the output,
+the password has been deleted successfully and now you can do all superuser actions without the need of a
+password.
+       </p>
+      </div>
+     </div>
+     <p class="noindent">
+     </p>
+    </div>
+    <div class="section-head" id="section-6" sec="section-6">
+     <h2 class="sectionHead">
+      <a aria-label="Link to this section in PDF version" class="pdf-link" href="MobileRoboticsLectureBook.pdf#section.6.6" style="color: red;  position: absolute;  left: -30px;" target="_blank">
+       <svg class="bi bi-file-pdf" fill="currentColor" height="20" viewbox="0 0 16 16" width="20" xmlns="http://www.w3.org/2000/svg">
+        <path d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z">
+        </path>
+        <path d="M4.603 12.087a.81.81 0 0 1-.438-.42c-.195-.388-.13-.776.08-1.102.198-.307.526-.568.897-.787a7.68 7.68 0 0 1 1.482-.645 19.701 19.701 0 0 0 1.062-2.227 7.269 7.269 0 0 1-.43-1.295c-.086-.4-.119-.796-.046-1.136.075-.354.274-.672.65-.823.192-.077.4-.12.602-.077a.7.7 0 0 1 .477.365c.088.164.12.356.127.538.007.187-.012.395-.047.614-.084.51-.27 1.134-.52 1.794a10.954 10.954 0 0 0 .98 1.686 5.753 5.753 0 0 1 1.334.05c.364.065.734.195.96.465.12.144.193.32.2.518.007.192-.047.382-.138.563a1.04 1.04 0 0 1-.354.416.856.856 0 0 1-.51.138c-.331-.014-.654-.196-.933-.417a5.716 5.716 0 0 1-.911-.95 11.642 11.642 0 0 0-1.997.406 11.311 11.311 0 0 1-1.021 1.51c-.29.35-.608.655-.926.787a.793.793 0 0 1-.58.029zm1.379-1.901c-.166.076-.32.156-.459.238-.328.194-.541.383-.647.547-.094.145-.096.25-.04.361.01.022.02.036.026.044a.27.27 0 0 0 .035-.012c.137-.056.355-.235.635-.572a8.18 8.18 0 0 0 .45-.606zm1.64-1.33a12.647 12.647 0 0 1 1.01-.193 11.666 11.666 0 0 1-.51-.858 20.741 20.741 0 0 1-.5 1.05zm2.446.45c.15.162.296.3.435.41.24.19.407.253.498.256a.107.107 0 0 0 .07-.015.307.307 0 0 0 .094-.125.436.436 0 0 0 .059-.2.095.095 0 0 0-.026-.063c-.052-.062-.2-.152-.518-.209a3.881 3.881 0 0 0-.612-.053zM8.078 5.8a6.7 6.7 0 0 0 .2-.828c.031-.188.043-.343.038-.465a.613.613 0 0 0-.032-.198.517.517 0 0 0-.145.04c-.087.035-.158.106-.196.283-.04.192-.03.469.046.822.024.111.054.227.09.346z">
+        </path>
+       </svg>
+      </a>
+      <small class="titlemark">
+       6.6
+      </small>
+      <a id="x8-1280006.6">
+      </a>
+      File  Permissions
+     </h2>
+     <p class="noindent">
+      At a first glance, file permissions can seem rather cryptic as these were devised when every key stroke mattered.
+We’ve seen them before when listing files in a directory but it’s not immediately clear what they mean.
+     </p>
+     <p class="noindent">
+      For example, <span id="textcolor1445"><code class="verb">rwxr-xr-x</code></span>
+      might not make any sense right now, but hopefully after this section you will have a working
+understanding of the file permission system in Linux. The sequence of letters breaks down into three <alert style="color: #821131;">(3)</alert>  groups:
+     </p>
+     <p class="noindent">
+     </p>
+     <dl class="enumerate-enumitem">
+      <dt class="enumerate-enumitem">
+       1.
+      </dt>
+      <dd class="enumerate-enumitem">
+       The
+First
+represents
+the
+user,
+or
+the
+owner
+of
+the
+file,
+      </dd>
+      <dt class="enumerate-enumitem">
+       2.
+      </dt>
+      <dd class="enumerate-enumitem">
+       Second
+group
+of
+three
+represents
+the
+group
+that
+owns
+the
+file,
+      </dd>
+      <dt class="enumerate-enumitem">
+       3.
+      </dt>
+      <dd class="enumerate-enumitem">
+       Third
+group
+represents
+all
+other
+users
+not
+in
+the
+group
+that
+owns
+the
+file.
+      </dd>
+     </dl>
+     <p class="noindent">
+      Each of the groups of three breaks down into three individual letters, which stand for
+     </p>
+     <dl class="description">
+      <dt class="description">
+       Read
+      </dt>
+      <dd class="description">
+       <p class="noindent">
+        someone
+can
+see
+the
+contents
+of
+a
+file
+but
+not
+modify
+it,
+       </p>
+      </dd>
+      <dt class="description">
+       Write
+      </dt>
+      <dd class="description">
+       <p class="noindent">
+        someone
+can
+make
+a
+change
+to
+the
+file,
+but
+not
+read
+the
+contents,
+       </p>
+      </dd>
+      <dt class="description">
+       eXecute
+      </dt>
+      <dd class="description">
+       <p class="noindent">
+        someone
+can
+run
+the
+file,
+for
+example,
+a
+program
+or
+script,
+without
+loading
+it
+into
+another
+program
+first.
+       </p>
+      </dd>
+     </dl>
+     <p class="noindent">
+      There are a couple of other letters you may see and hear, but R, W, and X will take care of what we need to do for now.
+     </p>
+     <p class="noindent">
+      We can change the permissions of a file using the <span id="textcolor1446"><code class="verb">chmod</code></span>
+      command which changes the file mode bits on a file, and there are two <alert style="color: #821131;">(2)</alert>  ways to do it.
+     </p>
+     <dl class="enumerate-enumitem">
+      <dt class="enumerate-enumitem">
+       1.
+      </dt>
+      <dd class="enumerate-enumitem">
+       use
+       <alert style="color: #821131;">
+        octal
+notation
+       </alert>
+       ,
+which
+uses
+three
+                                                                                
+                                                                                
+     
+values
+to
+represent
+read,
+write,
+and
+execute.
+      </dd>
+      <dt class="enumerate-enumitem">
+       2.
+      </dt>
+      <dd class="enumerate-enumitem">
+       use
+       <alert style="color: #821131;">
+        symbolic
+notation
+       </alert>
+       ,
+which
+uses
+a
+shorthand
+for
+user,
+group,
+others,
+and
+all,
+an
+operator,
+and
+a
+list
+of
+permissions
+to
+change.
+      </dd>
+     </dl>
+     <p class="noindent">
+      We’ll take a look at both, starting with the octal notation.
+     </p>
+     <div class="informationblock" id="tcolobox-34">
+      <div class="title">
+       <p class="noindent">
+        <span id="bold" style="font-weight:bold;">
+         Information
+        </span>
+        : The <span id="textcolor1448"><code class="verb">chmod</code></span>
+        Command
+       </p>
+      </div>
+      <div class="box-content">
+       <p class="noindent">
+        A shell command for changing access permissions and special mode flags of files (including special files such as
+directories). The name is short for change mode where mode refers to the permissions and flags collectively
+       </p>
+      </div>
+     </div>
+     <a id="subsubsection*.41">
+     </a>
+     <h5 class="subsubsectionHead">
+      <a id="x8-129000">
+      </a>
+      Octal  Notation
+     </h5>
+     <p class="noindent">
+      If you ever have worked with Linux or macOS or any other UNIX based OS you may have seen
+commands like <span id="textcolor1449"><code class="verb">chmod 777</code></span>, or <span id="textcolor1450"><code class="verb">chmod 644</code></span>, and similar things. The way we arrive at those numbers is
+by assigning
+      <alert style="color: #821131;">
+       read
+      </alert>
+      ,
+      <alert style="color: #821131;">
+       write
+      </alert>
+      , and
+      <alert style="color: #821131;">
+       execute
+      </alert>
+      each a different value. Which can be seen in
+      <span id="bold" style="font-weight:bold;">
+       Table
+      </span>
+      <a href="#x8-129001r1">
+       6.1
+      </a>.
+     </p>
+     <p class="noindent">
+     </p>
+     <figure class="float">
+      <p class="noindent">
+      </p>
+      <table class="tabular" id="TBL-6">
+       <colgroup id="TBL-6-1g">
+        <col id="TBL-6-1"/>
+        <col id="TBL-6-2"/>
+        <col id="TBL-6-3"/>
+        <col id="TBL-6-4"/>
+        <col id="TBL-6-5"/>
+        <col id="TBL-6-6"/>
+       </colgroup>
+       <tr id="TBL-6-1-" style="vertical-align:baseline;">
+        <td class="td10" id="TBL-6-1-1" style="text-align:left; white-space:nowrap;">
+         Read
+        </td>
+        <td class="td00" id="TBL-6-1-2" style="text-align:left; white-space:nowrap;"> <span id="textcolor1451"><code class="verb">4</code></span>
+        </td>
+        <td class="td00" id="TBL-6-1-3" style="text-align:left; white-space:nowrap;">
+         Write
+        </td>
+        <td class="td00" id="TBL-6-1-4" style="text-align:left; white-space:nowrap;"> <span id="textcolor1452"><code class="verb">2</code></span>
+        </td>
+        <td class="td00" id="TBL-6-1-5" style="text-align:left; white-space:nowrap;">
+         Execute
+        </td>
+        <td class="td00" id="TBL-6-1-6" style="text-align:left; white-space:nowrap;"> <span id="textcolor1453"><code class="verb">1</code></span>
+        </td>
+       </tr>
+       <tr id="TBL-6-2-" style="vertical-align:baseline;">
+        <td class="td10" id="TBL-6-2-1" style="text-align:left; white-space:nowrap;">
+        </td>
+       </tr>
+       <tr id="TBL-6-3-" style="vertical-align:baseline;">
+        <td class="td10" id="TBL-6-3-1" style="text-align:left; white-space:nowrap;">
+        </td>
+       </tr>
+       <tr id="TBL-6-4-" style="vertical-align:baseline;">
+        <td class="td10" id="TBL-6-4-1" style="text-align:left; white-space:nowrap;">
+        </td>
+       </tr>
+      </table>
+      <a id="x8-129001r1">
+      </a>
+      <figcaption class="caption">
+       <span class="id">
+        Table 6.1:
+       </span>
+       <span class="content">
+        Octal Notation and their numerical meaning.
+       </span>
+      </figcaption>
+     </figure>
+     <p class="noindent">
+      This notation makes it easy to represent various states of these three <alert style="color: #821131;">(3)</alert>  values with just a single
+digit. So if a user can read, write and execute, that comes out to seven <span id="textcolor1454">(<code class="verb">7</code>)</span>, four plus two plus one <span id="textcolor1455">(<code class="verb">4+2+1</code>)</span>. If the group can only read and execute, that comes out to five <span id="textcolor1456">(<code class="verb">5</code>)</span>, four plus one <span id="textcolor1457">(<code class="verb">4+1</code>)</span>.
+     </p>
+     <div class="knowledge">
+      <p class="noindent">
+       With this system and a some basic maths, it’s impossible to be ambiguous about the permissions the user, group or others have.
+      </p>
+     </div>
+     <p class="noindent">
+      If you don’t feel like doing the maths, you can make up a table like you in
+      <span id="bold" style="font-weight:bold;">
+       Table
+      </span>
+      <a href="#x8-129002r2">
+       6.2
+      </a>.
+     </p>
+     <p class="noindent">
+     </p>
+     <figure class="float">
+      <p class="noindent">
+      </p>
+      <table class="tabular" id="TBL-7">
+       <colgroup id="TBL-7-1g">
+        <col id="TBL-7-1"/>
+        <col id="TBL-7-2"/>
+        <col id="TBL-7-3"/>
+        <col id="TBL-7-4"/>
+        <col id="TBL-7-5"/>
+        <col id="TBL-7-6"/>
+        <col id="TBL-7-7"/>
+        <col id="TBL-7-8"/>
+        <col id="TBL-7-9"/>
+       </colgroup>
+       <tr id="TBL-7-1-" style="vertical-align:baseline;">
+        <td class="td10" id="TBL-7-1-1" style="text-align:left; white-space:nowrap;">
+         <span id="bold" style="font-weight:bold;">
+          Octal
+         </span>
+        </td>
+        <td class="td00" id="TBL-7-1-2" style="text-align:left; white-space:nowrap;">
+         0
+        </td>
+        <td class="td00" id="TBL-7-1-3" style="text-align:left; white-space:nowrap;">
+         1
+        </td>
+        <td class="td00" id="TBL-7-1-4" style="text-align:left; white-space:nowrap;">
+         2
+        </td>
+        <td class="td00" id="TBL-7-1-5" style="text-align:left; white-space:nowrap;">
+         3
+        </td>
+        <td class="td00" id="TBL-7-1-6" style="text-align:left; white-space:nowrap;">
+         4
+        </td>
+        <td class="td00" id="TBL-7-1-7" style="text-align:left; white-space:nowrap;">
+         5
+        </td>
+        <td class="td00" id="TBL-7-1-8" style="text-align:left; white-space:nowrap;">
+         6
+        </td>
+        <td class="td00" id="TBL-7-1-9" style="text-align:left; white-space:nowrap;">
+         7
+        </td>
+       </tr>
+       <tr id="TBL-7-2-" style="vertical-align:baseline;">
+        <td class="td10" id="TBL-7-2-1" style="text-align:left; white-space:nowrap;">
+        </td>
+       </tr>
+       <tr id="TBL-7-3-" style="vertical-align:baseline;">
+        <td class="td10" id="TBL-7-3-1" style="text-align:left; white-space:nowrap;">
+        </td>
+       </tr>
+       <tr id="TBL-7-4-" style="vertical-align:baseline;">
+        <td class="td10" id="TBL-7-4-1" style="text-align:left; white-space:nowrap;">
+         <span id="bold" style="font-weight:bold;">
+          Binary
+         </span>
+        </td>
+        <td class="td00" id="TBL-7-4-2" style="text-align:left; white-space:nowrap;"> <span id="textcolor1458"><code class="verb">000</code></span>
+        </td>
+        <td class="td00" id="TBL-7-4-3" style="text-align:left; white-space:nowrap;"> <span id="textcolor1459"><code class="verb">001</code></span>
+        </td>
+        <td class="td00" id="TBL-7-4-4" style="text-align:left; white-space:nowrap;"> <span id="textcolor1460"><code class="verb">010</code></span>
+        </td>
+        <td class="td00" id="TBL-7-4-5" style="text-align:left; white-space:nowrap;"> <span id="textcolor1461"><code class="verb">011</code></span>
+        </td>
+        <td class="td00" id="TBL-7-4-6" style="text-align:left; white-space:nowrap;"> <span id="textcolor1462"><code class="verb">100</code></span>
+        </td>
+        <td class="td00" id="TBL-7-4-7" style="text-align:left; white-space:nowrap;"> <span id="textcolor1463"><code class="verb">101</code></span>
+        </td>
+        <td class="td00" id="TBL-7-4-8" style="text-align:left; white-space:nowrap;"> <span id="textcolor1464"><code class="verb">110</code></span>
+        </td>
+        <td class="td00" id="TBL-7-4-9" style="text-align:left; white-space:nowrap;"> <span id="textcolor1465"><code class="verb">111</code></span>
+        </td>
+       </tr>
+       <tr id="TBL-7-5-" style="vertical-align:baseline;">
+        <td class="td10" id="TBL-7-5-1" style="text-align:left; white-space:nowrap;">
+        </td>
+       </tr>
+       <tr id="TBL-7-6-" style="vertical-align:baseline;">
+        <td class="td10" id="TBL-7-6-1" style="text-align:left; white-space:nowrap;">
+        </td>
+       </tr>
+       <tr id="TBL-7-7-" style="vertical-align:baseline;">
+        <td class="td10" id="TBL-7-7-1" style="text-align:left; white-space:nowrap;">
+         <span id="bold" style="font-weight:bold;">
+          Mode
+         </span>
+        </td>
+        <td class="td00" id="TBL-7-7-2" style="text-align:left; white-space:nowrap;"> <span id="textcolor1466"><code class="verb">---</code></span>
+        </td>
+        <td class="td00" id="TBL-7-7-3" style="text-align:left; white-space:nowrap;"> <span id="textcolor1467"><code class="verb">--x</code></span>
+        </td>
+        <td class="td00" id="TBL-7-7-4" style="text-align:left; white-space:nowrap;"> <span id="textcolor1468"><code class="verb">-w-</code></span>
+        </td>
+        <td class="td00" id="TBL-7-7-5" style="text-align:left; white-space:nowrap;"> <span id="textcolor1469"><code class="verb">-wx</code></span>
+        </td>
+        <td class="td00" id="TBL-7-7-6" style="text-align:left; white-space:nowrap;"> <span id="textcolor1470"><code class="verb">r--</code></span>
+        </td>
+        <td class="td00" id="TBL-7-7-7" style="text-align:left; white-space:nowrap;"> <span id="textcolor1471"><code class="verb">r-x</code></span>
+        </td>
+        <td class="td00" id="TBL-7-7-8" style="text-align:left; white-space:nowrap;"> <span id="textcolor1472"><code class="verb">rw-</code></span>
+        </td>
+        <td class="td00" id="TBL-7-7-9" style="text-align:left; white-space:nowrap;"> <span id="textcolor1473"><code class="verb">rwx</code></span>
+        </td>
+       </tr>
+       <tr id="TBL-7-8-" style="vertical-align:baseline;">
+        <td class="td10" id="TBL-7-8-1" style="text-align:left; white-space:nowrap;">
+        </td>
+       </tr>
+       <tr id="TBL-7-9-" style="vertical-align:baseline;">
+        <td class="td10" id="TBL-7-9-1" style="text-align:left; white-space:nowrap;">
+        </td>
+       </tr>
+       <tr id="TBL-7-10-" style="vertical-align:baseline;">
+        <td class="td10" id="TBL-7-10-1" style="text-align:left; white-space:nowrap;">
+        </td>
+       </tr>
+      </table>
+      <a id="x8-129002r2">
+      </a>
+      <figcaption class="caption">
+       <span class="id">
+        Table 6.2:
+       </span>
+       <span class="content">
+        The value and their meaning using octal notation
+       </span>
+      </figcaption>
+     </figure>
+     <div class="knowledge">
+      <p class="noindent">
+       To view the privileges a file has one simply has to write
+      </p>
+     </div>
+     <a id="subsubsection*.42">
+     </a>
+     <h5 class="subsubsectionHead">
+      <a id="x8-130000">
+      </a>
+      Symbolic  Notation
+     </h5>
+     <p class="noindent">
+      The symbolic way of representing permissions is a more approachable method to a lot of people, because instead of setting numbers for each
+value, you can add or remove a permission by letter. User is represented by the letter <span id="textcolor1474"><code class="verb">u</code></span>, group by <span id="textcolor1475"><code class="verb">g</code></span>, others by <span id="textcolor1476"><code class="verb">o</code></span>, and changing all of the
+values is represented by <span id="textcolor1477"><code class="verb">a</code></span>. If you leave off a prefix, <span id="textcolor1478"><code class="verb">chmod</code></span>
+      applies your change to all values. There are three operators here you can use:
+     </p>
+     <p class="noindent">
+     </p>
+     <table class="tabular" id="TBL-8">
+      <colgroup id="TBL-8-1g">
+       <col id="TBL-8-1"/>
+       <col id="TBL-8-2"/>
+      </colgroup>
+      <tr id="TBL-8-1-" style="vertical-align:baseline;">
+       <td class="td11" id="TBL-8-1-1" style="text-align:right; white-space:nowrap;">
+        Plus <span id="textcolor1479">(<code class="verb">+</code>)</span>
+       </td>
+       <td class="td10" id="TBL-8-1-2" style="text-align:left; white-space:nowrap;">
+        adds whichever permission you specify to what’s already there
+       </td>
+      </tr>
+      <tr id="TBL-8-2-" style="vertical-align:baseline;">
+       <td class="td11" id="TBL-8-2-1" style="text-align:right; white-space:nowrap;">
+       </td>
+      </tr>
+      <tr id="TBL-8-3-" style="vertical-align:baseline;">
+       <td class="td11" id="TBL-8-3-1" style="text-align:right; white-space:nowrap;">
+       </td>
+      </tr>
+      <tr id="TBL-8-4-" style="vertical-align:baseline;">
+       <td class="td11" id="TBL-8-4-1" style="text-align:right; white-space:nowrap;">
+        Minus <span id="textcolor1480">(<code class="verb">-</code>)</span>
+       </td>
+       <td class="td10" id="TBL-8-4-2" style="text-align:left; white-space:nowrap;">
+        removes whatever is there
+       </td>
+      </tr>
+      <tr id="TBL-8-5-" style="vertical-align:baseline;">
+       <td class="td11" id="TBL-8-5-1" style="text-align:right; white-space:nowrap;">
+       </td>
+      </tr>
+      <tr id="TBL-8-6-" style="vertical-align:baseline;">
+       <td class="td11" id="TBL-8-6-1" style="text-align:right; white-space:nowrap;">
+       </td>
+      </tr>
+      <tr id="TBL-8-7-" style="vertical-align:baseline;">
+       <td class="td11" id="TBL-8-7-1" style="text-align:right; white-space:nowrap;">
+        Equals <span id="textcolor1481">(<code class="verb">=</code>)</span>
+       </td>
+       <td class="td10" id="TBL-8-7-2" style="text-align:left; white-space:nowrap;">
+        sign resets the permissions to only whatever value you specify
+       </td>
+      </tr>
+      <tr id="TBL-8-8-" style="vertical-align:baseline;">
+       <td class="td11" id="TBL-8-8-1" style="text-align:right; white-space:nowrap;">
+       </td>
+      </tr>
+      <tr id="TBL-8-9-" style="vertical-align:baseline;">
+       <td class="td11" id="TBL-8-9-1" style="text-align:right; white-space:nowrap;">
+       </td>
+      </tr>
+      <tr id="TBL-8-10-" style="vertical-align:baseline;">
+       <td class="td11" id="TBL-8-10-1" style="text-align:right; white-space:nowrap;">
+       </td>
+      </tr>
+     </table>
+     <p class="noindent">
+      For example, to set user permissions to read, write and execute, we need to use:
+     </p>
+     <p class="noindent">
+     </p>
+     <div class="code-block">
+      <div class="code-lang">
+       bash
+      </div>
+      <pre><div class="language-bash" id="fancyvrb58" style="padding:20px;border-radius: 3px;"><a id="x8-130002r478"></a>chmod<span id="textcolor1482"> </span>u+rwx</div></pre>
+     </div>
+     <p class="noindent">
+      If we wanted to set group <span id="textcolor1483">(<code class="verb">g</code>)</span> permissions to only read <span id="textcolor1484">(<code class="verb">r</code>)</span>, then we use:
+     </p>
+     <p class="noindent">
+     </p>
+     <div class="code-block">
+      <div class="code-lang">
+       bash
+      </div>
+      <pre><div class="language-bash" id="fancyvrb59" style="padding:20px;border-radius: 3px;"><a id="x8-130004r483"></a>chmod<span id="textcolor1485"> </span><span id="textcolor1486">g</span><span id="textcolor1487">=</span>r</div></pre>
+     </div>
+     <p class="noindent">
+     </p>
+     <div class="code-block">
+      <div class="code-lang">
+       bash
+      </div>
+      <pre><div class="language-bash" id="fancyvrb60" style="padding:20px;border-radius: 3px;"><a id="x8-130006r488"></a>chmod<span id="textcolor1488"> </span>u-rwx</div></pre>
+     </div>
+     <p class="noindent">
+      We can line up the octal and symbolic values and see what the results are. In octal, <span id="textcolor1489"><code class="verb">777</code></span>
+      is the same as saying <span id="textcolor1490"><code class="verb">a+rwx</code></span>. <span id="textcolor1491"><code class="verb">755</code></span>
+      is the
+same as saying <span id="textcolor1492"><code class="verb">u+rwx</code></span>, <span id="textcolor1493"><code class="verb">g=rx</code></span>, <span id="textcolor1494"><code class="verb">o=rx</code></span>. You can see the symbolic notation is a bit longer, but it contains more information and context,
+so it’s a little easier to work with. The nice thing about symbolic notation is that it’s a little easier to make changes, since you’re
+specifying what to change rather than what octal value to use. Using octal notation is kind of like using the = operator in
+symbolic notation all the time. Saying whatever was there before, now it’s this value, rather than add read or remove execute.
+     </p>
+     <p class="noindent">
+     </p>
+    </div>
+    <div class="section-head" id="section-7" sec="section-7">
+     <h2 class="sectionHead">
+      <a aria-label="Link to this section in PDF version" class="pdf-link" href="MobileRoboticsLectureBook.pdf#section.6.7" style="color: red;  position: absolute;  left: -30px;" target="_blank">
+       <svg class="bi bi-file-pdf" fill="currentColor" height="20" viewbox="0 0 16 16" width="20" xmlns="http://www.w3.org/2000/svg">
+        <path d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z">
+        </path>
+        <path d="M4.603 12.087a.81.81 0 0 1-.438-.42c-.195-.388-.13-.776.08-1.102.198-.307.526-.568.897-.787a7.68 7.68 0 0 1 1.482-.645 19.701 19.701 0 0 0 1.062-2.227 7.269 7.269 0 0 1-.43-1.295c-.086-.4-.119-.796-.046-1.136.075-.354.274-.672.65-.823.192-.077.4-.12.602-.077a.7.7 0 0 1 .477.365c.088.164.12.356.127.538.007.187-.012.395-.047.614-.084.51-.27 1.134-.52 1.794a10.954 10.954 0 0 0 .98 1.686 5.753 5.753 0 0 1 1.334.05c.364.065.734.195.96.465.12.144.193.32.2.518.007.192-.047.382-.138.563a1.04 1.04 0 0 1-.354.416.856.856 0 0 1-.51.138c-.331-.014-.654-.196-.933-.417a5.716 5.716 0 0 1-.911-.95 11.642 11.642 0 0 0-1.997.406 11.311 11.311 0 0 1-1.021 1.51c-.29.35-.608.655-.926.787a.793.793 0 0 1-.58.029zm1.379-1.901c-.166.076-.32.156-.459.238-.328.194-.541.383-.647.547-.094.145-.096.25-.04.361.01.022.02.036.026.044a.27.27 0 0 0 .035-.012c.137-.056.355-.235.635-.572a8.18 8.18 0 0 0 .45-.606zm1.64-1.33a12.647 12.647 0 0 1 1.01-.193 11.666 11.666 0 0 1-.51-.858 20.741 20.741 0 0 1-.5 1.05zm2.446.45c.15.162.296.3.435.41.24.19.407.253.498.256a.107.107 0 0 0 .07-.015.307.307 0 0 0 .094-.125.436.436 0 0 0 .059-.2.095.095 0 0 0-.026-.063c-.052-.062-.2-.152-.518-.209a3.881 3.881 0 0 0-.612-.053zM8.078 5.8a6.7 6.7 0 0 0 .2-.828c.031-.188.043-.343.038-.465a.613.613 0 0 0-.032-.198.517.517 0 0 0-.145.04c-.087.035-.158.106-.196.283-.04.192-.03.469.046.822.024.111.054.227.09.346z">
+        </path>
+       </svg>
+      </a>
+      <small class="titlemark">
+       6.7
+      </small>
+      <a id="x8-1310006.7">
+      </a>
+      Hard  and  Symbolic  Links
+     </h2>
+     <p class="noindent">
+      It
+is
+time
+to
+look
+at
+a
+special
+kind
+of
+file
+on
+the
+Linux
+system
+called
+      <alert style="color: #821131;">
+       link
+      </alert>
+      .
+These
+are
+basically
+files
+that
+are
+      <alert style="color: #821131;">
+       references
+      </alert>
+      to
+other
+files,
+and
+they’re
+used
+to
+avoid
+having
+multiple
+copies
+of
+the
+same
+file
+in
+different
+places.
+      <alert style="color: #821131;">
+       <span id="bold" style="font-weight:bold;">
+        <sup class="textsuperscript">
+         6
+        </sup>
+       </span>
+      </alert>
+      <span class="marginnote">
+       <alert style="color: #821131;">
+        <span id="bold" style="font-weight:bold;">
+         <sup class="textsuperscript">
+          6
+         </sup>
+        </span>
+       </alert>
+       <span id="textcolor1495">
+        It
+is
+always
+in
+your
+best
+interest
+to
+minimise
+the
+number
+of
+copies
+a
+file
+has
+                                                                                
+                                                                                
+as
+the
+maintenance
+of
+all
+these
+files
+would
+not
+be
+possible
+after
+some
+time.
+       </span>
+      </span>
+      You
+keep
+one
+file
+in
+a
+well-known
+location
+and
+then
+add
+a
+little
+      <alert style="color: #821131;">
+       pointer
+      </alert>
+      or
+a
+      <alert style="color: #821131;">
+       link
+      </alert>
+      to
+other
+places
+you
+want
+that
+file
+to
+appear
+to
+be.
+     </p>
+     <div class="knowledge">
+      <p class="noindent">
+       As you’re learning about the
+       <a class="glossary" href="MobileRoboticsLectureBookli2.html#glo:cli">
+        CLI
+       </a>
+       you may not have a need to create links, but it’s important to know what they are
+when you come across them, and can show their usefulness as you are developing more complex applications.
+      </p>
+     </div>
+     <p class="noindent">
+      To  put  it  simply,  there  are  two  <alert style="color: #821131;">(2)</alert>   kinds  of  links:
+     </p>
+     <dl class="description">
+      <dt class="description">
+       hard links
+      </dt>
+      <dd class="description">
+       <p class="noindent">
+        point
+to
+data
+on
+the
+disk
+       </p>
+      </dd>
+      <dt class="description">
+       Soft or symbolic links
+      </dt>
+      <dd class="description">
+       <p class="noindent">
+        point
+to
+a
+file
+                                                                                
+                                                                                
+     
+on
+the
+disk.
+       </p>
+      </dd>
+     </dl>
+     <p class="noindent">
+      It’s kind of a subtle difference but it changes how the resulting links work. Let’s take a look at soft links or symbolic links quickly.
+     </p>
+     <h3 class="subsectionHead">
+      <a aria-label="Link to this section in PDF version" class="pdf-link" href="MobileRoboticsLectureBook.pdf#subsection.6.7.1" style="color: red;  position: absolute;  left: -30px;" target="_blank">
+       <svg class="bi bi-file-pdf" fill="currentColor" height="20" viewbox="0 0 16 16" width="20" xmlns="http://www.w3.org/2000/svg">
+        <path d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z">
+        </path>
+        <path d="M4.603 12.087a.81.81 0 0 1-.438-.42c-.195-.388-.13-.776.08-1.102.198-.307.526-.568.897-.787a7.68 7.68 0 0 1 1.482-.645 19.701 19.701 0 0 0 1.062-2.227 7.269 7.269 0 0 1-.43-1.295c-.086-.4-.119-.796-.046-1.136.075-.354.274-.672.65-.823.192-.077.4-.12.602-.077a.7.7 0 0 1 .477.365c.088.164.12.356.127.538.007.187-.012.395-.047.614-.084.51-.27 1.134-.52 1.794a10.954 10.954 0 0 0 .98 1.686 5.753 5.753 0 0 1 1.334.05c.364.065.734.195.96.465.12.144.193.32.2.518.007.192-.047.382-.138.563a1.04 1.04 0 0 1-.354.416.856.856 0 0 1-.51.138c-.331-.014-.654-.196-.933-.417a5.716 5.716 0 0 1-.911-.95 11.642 11.642 0 0 0-1.997.406 11.311 11.311 0 0 1-1.021 1.51c-.29.35-.608.655-.926.787a.793.793 0 0 1-.58.029zm1.379-1.901c-.166.076-.32.156-.459.238-.328.194-.541.383-.647.547-.094.145-.096.25-.04.361.01.022.02.036.026.044a.27.27 0 0 0 .035-.012c.137-.056.355-.235.635-.572a8.18 8.18 0 0 0 .45-.606zm1.64-1.33a12.647 12.647 0 0 1 1.01-.193 11.666 11.666 0 0 1-.51-.858 20.741 20.741 0 0 1-.5 1.05zm2.446.45c.15.162.296.3.435.41.24.19.407.253.498.256a.107.107 0 0 0 .07-.015.307.307 0 0 0 .094-.125.436.436 0 0 0 .059-.2.095.095 0 0 0-.026-.063c-.052-.062-.2-.152-.518-.209a3.881 3.881 0 0 0-.612-.053zM8.078 5.8a6.7 6.7 0 0 0 .2-.828c.031-.188.043-.343.038-.465a.613.613 0 0 0-.032-.198.517.517 0 0 0-.145.04c-.087.035-.158.106-.196.283-.04.192-.03.469.046.822.024.111.054.227.09.346z">
+        </path>
+       </svg>
+      </a>
+      <small class="titlemark">
+       6.7.1
+      </small>
+      <a id="x8-1320006.7.1">
+      </a>
+      Symbolic  Links
+     </h3>
+     <p class="noindent">
+      We can create a symbolic link with the <span id="textcolor1496"><code class="verb">ln</code></span>
+      command and a <span id="textcolor1497"><code class="verb">-s</code></span>
+      option:
+     </p>
+     <div class="informationblock" id="tcolobox-35">
+      <div class="title">
+       <p class="noindent">
+        <span id="bold" style="font-weight:bold;">
+         Information
+        </span>
+        : The <span id="textcolor1499"><code class="verb">ln</code></span>
+        Command
+       </p>
+      </div>
+      <div class="box-content">
+       <p class="noindent">
+        Primarily used to create links for files in Linux, effectively allowing one file to reference another. Doing so allows
+you to manage files more efficiently without creating duplicates, making this command crucial for optimizing
+storage and managing files in Unix-like operating systems.
+       </p>
+      </div>
+     </div>
+     <p class="noindent">
+     </p>
+     <dl class="enumerate-enumitem">
+      <dt class="enumerate-enumitem">
+       1.
+      </dt>
+      <dd class="enumerate-enumitem">
+       the
+name
+of
+the
+source
+file,
+(i.e., <span id="textcolor1500"><code class="verb">novel.txt</code></span>
+       )
+      </dd>
+      <dt class="enumerate-enumitem">
+       2.
+      </dt>
+      <dd class="enumerate-enumitem">
+       the
+file
+we
+want
+to
+make
+a
+link
+to,
+(i.e., <span id="textcolor1501"><code class="verb">writing.txt</code></span>
+       )
+      </dd>
+      <dt class="enumerate-enumitem">
+       3.
+      </dt>
+      <dd class="enumerate-enumitem">
+       the
+name
+of
+the
+link
+I
+want
+to
+create.
+      </dd>
+     </dl>
+     <p class="noindent">
+      To
+create
+a
+link
+to <span id="textcolor1502"><code class="verb">novel.txt</code></span>
+      we
+create
+a
+                                                                                
+                                                                                
+                                                                              
+file
+called <span id="textcolor1503"><code class="verb">writing.txt</code></span>
+      and
+link
+it.
+Now
+the <span id="textcolor1504"><code class="verb">writing.txt</code></span>
+      file
+is
+a
+link
+to
+the <span id="textcolor1505"><code class="verb">novel.txt file</code></span>.
+If
+you
+were
+to
+Look
+at
+the
+contents
+of <span id="textcolor1506"><code class="verb">writing.txt</code></span>,
+you
+would
+see
+the
+contents
+of
+the
+original
+file,
+and
+editing
+the <span id="textcolor1507"><code class="verb">writing.txt</code></span>
+      file
+means
+editing
+the
+original
+as
+well.
+Think
+of <span id="textcolor1508"><code class="verb">writing.txt</code></span>
+      not
+as
+a
+file,
+but
+a
+pointer
+      <alert style="color: #821131;">
+       <span id="bold" style="font-weight:bold;">
+        <sup class="textsuperscript">
+         7
+        </sup>
+       </span>
+      </alert>
+      <span class="marginnote">
+       <alert style="color: #821131;">
+        <span id="bold" style="font-weight:bold;">
+         <sup class="textsuperscript">
+          7
+         </sup>
+        </span>
+       </alert>
+       <span id="textcolor1509">
+        In
+this
+case
+it
+is
+very
+similar
+to
+that
+of
+                                                                                
+                                                                                
+                                                                               
+a
+pointer
+in
+C
+as
+the
+main
+idea
+is
+the
+new
+symbolic
+link
+is
+        <span id="bold" style="font-weight:bold;">
+         pointing
+        </span>
+        to
+the
+original
+file.
+       </span>
+      </span>
+      to
+the
+original
+one.
+     </p>
+     <div class="warning">
+      <p class="noindent">
+       It’s
+important
+to
+know
+that
+this
+kind
+of
+link
+is
+       <span id="bold" style="font-weight:bold;">
+        relative
+       </span>
+       ,
+that
+is
+if
+you
+move
+the
+link
+somewhere
+else
+on
+the
+file
+system
+the
+system
+won’t
+be
+able
+to
+reference
+the
+original
+file
+any
+more
+and
+if
+you
+move
+the
+                                                                                
+                                                                                
+                                                                           
+original
+file,
+the
+link
+will
+break
+as
+well,
+because
+the
+system
+will
+be
+told
+to
+look
+at
+a
+particular
+path
+for
+the
+linked
+file
+and
+it
+won’t
+be
+there
+any
+more.
+      </p>
+     </div>
+     <a id="subsubsection*.43">
+     </a>
+     <h5 class="subsubsectionHead">
+      <a id="x8-133000">
+      </a>
+      Hard
+Links
+     </h5>
+     <p class="noindent">
+      You
+can
+create
+a
+hard
+link
+by
+leaving
+off
+the
+dash <span id="textcolor1510"><code class="verb">-s</code></span>
+      option.
+If
+we
+write <span id="textcolor1511"><code class="verb">ln text.txt</code></span>,
+this
+will
+create
+a
+hard
+link
+to <span id="textcolor1512"><code class="verb">text.txt</code></span>.
+A
+hard
+link
+                                                                                
+                                                                                
+                                                                           
+appears
+to
+be
+a
+regular
+file
+in
+a
+file
+listing
+but
+it’s
+also
+just
+a
+pointer
+to
+the
+original
+file
+or
+more
+specifically
+it’s
+a
+pointer
+to
+the
+data
+that
+the
+original
+file
+references.
+     </p>
+     <p class="noindent">
+      One
+of
+its
+major
+advantage
+is
+hard
+links
+      <alert style="color: #821131;">
+       can
+be
+moved
+around
+the
+file
+system
+and
+it
+doesn’t
+matter
+if
+the
+original
+file
+is
+moved
+      </alert>
+      ,
+as
+a
+hard
+link
+points
+to
+the
+underlying
+                                                                                
+                                                                                
+                                                                             
+data
+for
+a
+file
+instead
+of
+the
+file
+itself.
+In
+fact,
+every
+file
+on
+your
+system
+is
+a
+hard
+link
+to
+its
+underlying
+data.
+     </p>
+     <div class="knowledge">
+      <p class="noindent">
+       Hard
+links
+and
+soft
+links
+both
+have
+their
+uses
+depending
+on
+the
+applications
+you
+have
+in
+mind.
+      </p>
+     </div>
+     <p class="noindent">
+      Below
+is
+a
+quick
+guide
+to
+the
+options
+the
+ln
+command
+has.
+     </p>
+     <p class="noindent">
+     </p>
+     <table class="tabular" id="TBL-9">
+      <colgroup id="TBL-9-1g">
+       <col id="TBL-9-1"/>
+       <col id="TBL-9-2"/>
+      </colgroup>
+      <tr id="TBL-9-1-" style="vertical-align:baseline;">
+       <td class="td11" id="TBL-9-1-1" style="text-align:right; white-space:nowrap;">
+        <span id="bold" style="font-weight:bold;">
+         Command
+        </span>
+       </td>
+       <td class="td10" id="TBL-9-1-2" style="text-align:left; white-space:nowrap;">
+        <span id="bold" style="font-weight:bold;">
+         Description
+        </span>
+       </td>
+      </tr>
+      <tr id="TBL-9-2-" style="vertical-align:baseline;">
+       <td class="td11" id="TBL-9-2-1" style="text-align:right; white-space:nowrap;">
+       </td>
+      </tr>
+      <tr id="TBL-9-3-" style="vertical-align:baseline;">
+       <td class="td11" id="TBL-9-3-1" style="text-align:right; white-space:nowrap;">
+       </td>
+      </tr>
+      <tr id="TBL-9-4-" style="vertical-align:baseline;">
+       <td class="td11" id="TBL-9-4-1" style="text-align:right; white-space:nowrap;"> <span id="textcolor1513"><code class="verb">--backup</code></span>
+       </td>
+       <td class="td10" id="TBL-9-4-2" style="text-align:left; white-space:nowrap;">
+        make a backup of each existing destination file
+       </td>
+      </tr>
+      <tr id="TBL-9-5-" style="vertical-align:baseline;">
+       <td class="td11" id="TBL-9-5-1" style="text-align:right; white-space:nowrap;">
+       </td>
+      </tr>
+      <tr id="TBL-9-6-" style="vertical-align:baseline;">
+       <td class="td11" id="TBL-9-6-1" style="text-align:right; white-space:nowrap;">
+       </td>
+      </tr>
+      <tr id="TBL-9-7-" style="vertical-align:baseline;">
+       <td class="td11" id="TBL-9-7-1" style="text-align:right; white-space:nowrap;"> <span id="textcolor1514"><code class="verb">-b</code></span>
+       </td>
+       <td class="td10" id="TBL-9-7-2" style="text-align:left; white-space:nowrap;">
+        like <span id="textcolor1515"><code class="verb">--backup</code></span>
+        but does not accept an argument
+       </td>
+      </tr>
+      <tr id="TBL-9-8-" style="vertical-align:baseline;">
+       <td class="td11" id="TBL-9-8-1" style="text-align:right; white-space:nowrap;">
+       </td>
+      </tr>
+      <tr id="TBL-9-9-" style="vertical-align:baseline;">
+       <td class="td11" id="TBL-9-9-1" style="text-align:right; white-space:nowrap;">
+       </td>
+      </tr>
+      <tr id="TBL-9-10-" style="vertical-align:baseline;">
+       <td class="td11" id="TBL-9-10-1" style="text-align:right; white-space:nowrap;"> <span id="textcolor1516"><code class="verb">-d</code></span>
+       </td>
+       <td class="td10" id="TBL-9-10-2" style="text-align:left; white-space:nowrap;">
+        allow the superuser to attempt to hard link directories (
+        <span id="bold" style="font-weight:bold;">
+         note:
+        </span>
+        will probably fail due to system restrictions, even for the superuser)
+       </td>
+      </tr>
+      <tr id="TBL-9-11-" style="vertical-align:baseline;">
+       <td class="td11" id="TBL-9-11-1" style="text-align:right; white-space:nowrap;">
+       </td>
+      </tr>
+      <tr id="TBL-9-12-" style="vertical-align:baseline;">
+       <td class="td11" id="TBL-9-12-1" style="text-align:right; white-space:nowrap;">
+       </td>
+      </tr>
+      <tr id="TBL-9-13-" style="vertical-align:baseline;">
+       <td class="td11" id="TBL-9-13-1" style="text-align:right; white-space:nowrap;"> <span id="textcolor1517"><code class="verb">-f</code></span>
+       </td>
+       <td class="td10" id="TBL-9-13-2" style="text-align:left; white-space:nowrap;">
+        remove existing destination files
+       </td>
+      </tr>
+      <tr id="TBL-9-14-" style="vertical-align:baseline;">
+       <td class="td11" id="TBL-9-14-1" style="text-align:right; white-space:nowrap;">
+       </td>
+      </tr>
+      <tr id="TBL-9-15-" style="vertical-align:baseline;">
+       <td class="td11" id="TBL-9-15-1" style="text-align:right; white-space:nowrap;">
+       </td>
+      </tr>
+      <tr id="TBL-9-16-" style="vertical-align:baseline;">
+       <td class="td11" id="TBL-9-16-1" style="text-align:right; white-space:nowrap;"> <span id="textcolor1518"><code class="verb">-i</code></span>
+       </td>
+       <td class="td10" id="TBL-9-16-2" style="text-align:left; white-space:nowrap;">
+        prompt whether to remove destinations
+       </td>
+      </tr>
+      <tr id="TBL-9-17-" style="vertical-align:baseline;">
+       <td class="td11" id="TBL-9-17-1" style="text-align:right; white-space:nowrap;">
+       </td>
+      </tr>
+      <tr id="TBL-9-18-" style="vertical-align:baseline;">
+       <td class="td11" id="TBL-9-18-1" style="text-align:right; white-space:nowrap;">
+       </td>
+      </tr>
+      <tr id="TBL-9-19-" style="vertical-align:baseline;">
+       <td class="td11" id="TBL-9-19-1" style="text-align:right; white-space:nowrap;"> <span id="textcolor1519"><code class="verb">-L</code></span>
+       </td>
+       <td class="td10" id="TBL-9-19-2" style="text-align:left; white-space:nowrap;">
+        dereference <span id="textcolor1520"><code class="verb">TARGETs</code></span>
+        that are symbolic links
+       </td>
+      </tr>
+      <tr id="TBL-9-20-" style="vertical-align:baseline;">
+       <td class="td11" id="TBL-9-20-1" style="text-align:right; white-space:nowrap;">
+       </td>
+      </tr>
+      <tr id="TBL-9-21-" style="vertical-align:baseline;">
+       <td class="td11" id="TBL-9-21-1" style="text-align:right; white-space:nowrap;">
+       </td>
+      </tr>
+      <tr id="TBL-9-22-" style="vertical-align:baseline;">
+       <td class="td11" id="TBL-9-22-1" style="text-align:right; white-space:nowrap;"> <span id="textcolor1521"><code class="verb">-n</code></span>
+       </td>
+       <td class="td10" id="TBL-9-22-2" style="text-align:left; white-space:nowrap;">
+        treat <span id="textcolor1522"><code class="verb">LINK_NAME</code></span>
+        as a normal file if it is a symbolic link to a directory
+       </td>
+      </tr>
+      <tr id="TBL-9-23-" style="vertical-align:baseline;">
+       <td class="td11" id="TBL-9-23-1" style="text-align:right; white-space:nowrap;">
+       </td>
+      </tr>
+      <tr id="TBL-9-24-" style="vertical-align:baseline;">
+       <td class="td11" id="TBL-9-24-1" style="text-align:right; white-space:nowrap;">
+       </td>
+      </tr>
+      <tr id="TBL-9-25-" style="vertical-align:baseline;">
+       <td class="td11" id="TBL-9-25-1" style="text-align:right; white-space:nowrap;"> <span id="textcolor1523"><code class="verb">-P</code></span>
+       </td>
+       <td class="td10" id="TBL-9-25-2" style="text-align:left; white-space:nowrap;">
+        make hard links directly to symbolic links
+       </td>
+      </tr>
+      <tr id="TBL-9-26-" style="vertical-align:baseline;">
+       <td class="td11" id="TBL-9-26-1" style="text-align:right; white-space:nowrap;">
+       </td>
+      </tr>
+      <tr id="TBL-9-27-" style="vertical-align:baseline;">
+       <td class="td11" id="TBL-9-27-1" style="text-align:right; white-space:nowrap;">
+       </td>
+      </tr>
+      <tr id="TBL-9-28-" style="vertical-align:baseline;">
+       <td class="td11" id="TBL-9-28-1" style="text-align:right; white-space:nowrap;"> <span id="textcolor1524"><code class="verb">-r</code></span>
+       </td>
+       <td class="td10" id="TBL-9-28-2" style="text-align:left; white-space:nowrap;">
+        create symbolic links relative to link location
+       </td>
+      </tr>
+      <tr id="TBL-9-29-" style="vertical-align:baseline;">
+       <td class="td11" id="TBL-9-29-1" style="text-align:right; white-space:nowrap;">
+       </td>
+      </tr>
+      <tr id="TBL-9-30-" style="vertical-align:baseline;">
+       <td class="td11" id="TBL-9-30-1" style="text-align:right; white-space:nowrap;">
+       </td>
+      </tr>
+      <tr id="TBL-9-31-" style="vertical-align:baseline;">
+       <td class="td11" id="TBL-9-31-1" style="text-align:right; white-space:nowrap;"> <span id="textcolor1525"><code class="verb">-s</code></span>
+       </td>
+       <td class="td10" id="TBL-9-31-2" style="text-align:left; white-space:nowrap;">
+        make symbolic links instead of hard links
+       </td>
+      </tr>
+      <tr id="TBL-9-32-" style="vertical-align:baseline;">
+       <td class="td11" id="TBL-9-32-1" style="text-align:right; white-space:nowrap;">
+       </td>
+      </tr>
+      <tr id="TBL-9-33-" style="vertical-align:baseline;">
+       <td class="td11" id="TBL-9-33-1" style="text-align:right; white-space:nowrap;">
+       </td>
+      </tr>
+      <tr id="TBL-9-34-" style="vertical-align:baseline;">
+       <td class="td11" id="TBL-9-34-1" style="text-align:right; white-space:nowrap;"> <span id="textcolor1526"><code class="verb">-S</code></span>
+       </td>
+       <td class="td10" id="TBL-9-34-2" style="text-align:left; white-space:nowrap;">
+        override the usual backup suffix
+       </td>
+      </tr>
+      <tr id="TBL-9-35-" style="vertical-align:baseline;">
+       <td class="td11" id="TBL-9-35-1" style="text-align:right; white-space:nowrap;">
+       </td>
+      </tr>
+      <tr id="TBL-9-36-" style="vertical-align:baseline;">
+       <td class="td11" id="TBL-9-36-1" style="text-align:right; white-space:nowrap;">
+       </td>
+      </tr>
+      <tr id="TBL-9-37-" style="vertical-align:baseline;">
+       <td class="td11" id="TBL-9-37-1" style="text-align:right; white-space:nowrap;"> <span id="textcolor1527"><code class="verb">-t</code></span>
+       </td>
+       <td class="td10" id="TBL-9-37-2" style="text-align:left; white-space:nowrap;">
+        specify the <span id="textcolor1528"><code class="verb">DIRECTORY</code></span>
+        in which to create the links
+       </td>
+      </tr>
+      <tr id="TBL-9-38-" style="vertical-align:baseline;">
+       <td class="td11" id="TBL-9-38-1" style="text-align:right; white-space:nowrap;">
+       </td>
+      </tr>
+      <tr id="TBL-9-39-" style="vertical-align:baseline;">
+       <td class="td11" id="TBL-9-39-1" style="text-align:right; white-space:nowrap;">
+       </td>
+      </tr>
+      <tr id="TBL-9-40-" style="vertical-align:baseline;">
+       <td class="td11" id="TBL-9-40-1" style="text-align:right; white-space:nowrap;"> <span id="textcolor1529"><code class="verb">-T</code></span>
+       </td>
+       <td class="td10" id="TBL-9-40-2" style="text-align:left; white-space:nowrap;">
+        treat <span id="textcolor1530"><code class="verb">LINK_NAME</code></span>
+        as a normal file always
+       </td>
+      </tr>
+      <tr id="TBL-9-41-" style="vertical-align:baseline;">
+       <td class="td11" id="TBL-9-41-1" style="text-align:right; white-space:nowrap;">
+       </td>
+      </tr>
+      <tr id="TBL-9-42-" style="vertical-align:baseline;">
+       <td class="td11" id="TBL-9-42-1" style="text-align:right; white-space:nowrap;">
+       </td>
+      </tr>
+      <tr id="TBL-9-43-" style="vertical-align:baseline;">
+       <td class="td11" id="TBL-9-43-1" style="text-align:right; white-space:nowrap;"> <span id="textcolor1531"><code class="verb">-v</code></span>
+       </td>
+       <td class="td10" id="TBL-9-43-2" style="text-align:left; white-space:nowrap;">
+        print name of each linked file
+       </td>
+      </tr>
+      <tr id="TBL-9-44-" style="vertical-align:baseline;">
+       <td class="td11" id="TBL-9-44-1" style="text-align:right; white-space:nowrap;">
+       </td>
+      </tr>
+      <tr id="TBL-9-45-" style="vertical-align:baseline;">
+       <td class="td11" id="TBL-9-45-1" style="text-align:right; white-space:nowrap;">
+       </td>
+      </tr>
+      <tr id="TBL-9-46-" style="vertical-align:baseline;">
+       <td class="td11" id="TBL-9-46-1" style="text-align:right; white-space:nowrap;">
+       </td>
+      </tr>
+     </table>
+     <p class="noindent">
+     </p>
+    </div>
+    <div class="section-head" id="section-8" sec="section-8">
+     <h2 class="sectionHead">
+      <a aria-label="Link to this section in PDF version" class="pdf-link" href="MobileRoboticsLectureBook.pdf#section.6.8" style="color: red;  position: absolute;  left: -30px;" target="_blank">
+       <svg class="bi bi-file-pdf" fill="currentColor" height="20" viewbox="0 0 16 16" width="20" xmlns="http://www.w3.org/2000/svg">
+        <path d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z">
+        </path>
+        <path d="M4.603 12.087a.81.81 0 0 1-.438-.42c-.195-.388-.13-.776.08-1.102.198-.307.526-.568.897-.787a7.68 7.68 0 0 1 1.482-.645 19.701 19.701 0 0 0 1.062-2.227 7.269 7.269 0 0 1-.43-1.295c-.086-.4-.119-.796-.046-1.136.075-.354.274-.672.65-.823.192-.077.4-.12.602-.077a.7.7 0 0 1 .477.365c.088.164.12.356.127.538.007.187-.012.395-.047.614-.084.51-.27 1.134-.52 1.794a10.954 10.954 0 0 0 .98 1.686 5.753 5.753 0 0 1 1.334.05c.364.065.734.195.96.465.12.144.193.32.2.518.007.192-.047.382-.138.563a1.04 1.04 0 0 1-.354.416.856.856 0 0 1-.51.138c-.331-.014-.654-.196-.933-.417a5.716 5.716 0 0 1-.911-.95 11.642 11.642 0 0 0-1.997.406 11.311 11.311 0 0 1-1.021 1.51c-.29.35-.608.655-.926.787a.793.793 0 0 1-.58.029zm1.379-1.901c-.166.076-.32.156-.459.238-.328.194-.541.383-.647.547-.094.145-.096.25-.04.361.01.022.02.036.026.044a.27.27 0 0 0 .035-.012c.137-.056.355-.235.635-.572a8.18 8.18 0 0 0 .45-.606zm1.64-1.33a12.647 12.647 0 0 1 1.01-.193 11.666 11.666 0 0 1-.51-.858 20.741 20.741 0 0 1-.5 1.05zm2.446.45c.15.162.296.3.435.41.24.19.407.253.498.256a.107.107 0 0 0 .07-.015.307.307 0 0 0 .094-.125.436.436 0 0 0 .059-.2.095.095 0 0 0-.026-.063c-.052-.062-.2-.152-.518-.209a3.881 3.881 0 0 0-.612-.053zM8.078 5.8a6.7 6.7 0 0 0 .2-.828c.031-.188.043-.343.038-.465a.613.613 0 0 0-.032-.198.517.517 0 0 0-.145.04c-.087.035-.158.106-.196.283-.04.192-.03.469.046.822.024.111.054.227.09.346z">
+        </path>
+       </svg>
+      </a>
+      <small class="titlemark">
+       6.8
+      </small>
+      <a id="x8-1340006.8">
+      </a>
+      The
+Linux
+File
+System
+     </h2>
+     <p class="noindent">
+      It
+makes
+sense
+to
+explore
+the
+Linux
+file
+system
+from
+a
+terminal
+window
+(i.e.,
+CLI)
+as
+it
+has
+better
+tools
+to
+show
+the
+map
+of
+Linux’s
+directory
+tree.
+     </p>
+     <p class="noindent">
+      From
+top
+to
+bottom,
+the
+directories
+you
+are:
+      <alert style="color: #821131;">
+       <span id="bold" style="font-weight:bold;">
+        <sup class="textsuperscript">
+         8
+        </sup>
+       </span>
+      </alert>
+      <span class="marginnote">
+       <img alt="PIC" height="" src="figures/Working-with-Files-and-Folders/figures-1.svg" width="100%"/>
+       <alert style="color: #821131;">
+        <span id="bold" style="font-weight:bold;">
+         <sup class="textsuperscript">
+          8
+         </sup>
+        </span>
+       </alert>
+       <span id="textcolor1532">
+        A
+Visual
+description
+of
+the
+linux
+file
+system
+       </span>
+      </span>
+     </p>
+     <dl class="description">
+      <dt class="description">
+       /bin
+      </dt>
+      <dd class="description">
+       <p class="noindent">
+        contains
+binaries,
+that
+is,
+some
+                                                                                
+                                                                                
+     
+of
+the
+applications
+and
+programs,
+such
+as <span id="textcolor1533"><code class="verb">bash</code></span>, <span id="textcolor1534"><code class="verb">cat</code></span>, <span id="textcolor1535"><code class="verb">chmod</code></span>
+        ….
+(For
+more
+information
+on
+binary
+files,
+please
+have
+a
+look
+        <a href="https://en.wikipedia.org/wiki/Binary_file">
+         here
+        </a>.)
+You
+will
+find
+the <span id="textcolor1536"><code class="verb">ls</code></span>
+        program
+mentioned
+above
+in
+this
+directory,
+as
+well
+as
+other
+basic
+tools
+for
+making
+and
+removing
+files
+and
+directories,
+moving
+them
+around,
+etc..
+There
+are
+more
+bin
+directories
+in
+other
+parts
+of
+the
+file
+system
+tree,
+but
+we’ll
+be
+talking
+                                                                                
+                                                                                
+     
+about
+those
+in
+a
+minute.
+       </p>
+      </dd>
+      <dt class="description">
+       /boot
+      </dt>
+      <dd class="description">
+       <p class="noindent">
+        contains
+files
+required
+for
+starting
+the
+OS.
+Messing
+up
+one
+of
+the
+files
+here,
+may
+cause
+Linux
+to
+malfunction.
+Superuser
+privileges
+are
+needed
+to
+edit/change
+files
+here.
+       </p>
+      </dd>
+      <dt class="description">
+       /dev
+      </dt>
+      <dd class="description">
+       <p class="noindent">
+        contains
+device
+files.
+Many
+of
+these
+are
+generated
+at
+boot
+time
+or
+even
+on
+the
+fly.
+For
+example,
+plugging
+a
+new
+webcam
+or
+a
+USB
+                                                                                
+                                                                                
+     
+drive
+into
+the
+computer,
+will
+create
+a
+new
+device
+entry
+in
+this
+directory.
+       </p>
+      </dd>
+      <dt class="description">
+       /etc
+      </dt>
+      <dd class="description">
+       <p class="noindent">
+        comes
+from
+the
+UNIX
+operating
+system,
+meaning
+“
+        <italic>
+         et
+cetera
+        </italic>
+        ”
+(meaning
+"and
+other
+similar
+things")
+as
+it
+was
+a
+dumping
+ground
+for
+system
+files
+administrators
+were
+not
+sure
+where
+else
+to
+put.
+Nowadays,
+it
+would
+be
+more
+appropriate
+to
+say
+that
+etc
+stands
+for
+"Everything
+to
+configure",
+as
+it
+contains
+                                                                                
+                                                                                
+     
+most,
+if
+not
+all
+system-wide
+configuration
+files.
+For
+example,
+the
+files
+that
+contain
+the
+name
+of
+your
+system,
+the
+users
+and
+their
+passwords,
+the
+names
+of
+machines
+on
+your
+network
+and
+when
+and
+where
+the
+partitions
+on
+your
+hard
+disks
+should
+be
+mounted
+are
+all
+in
+here.
+       </p>
+      </dd>
+      <dt class="description">
+       /lib
+      </dt>
+      <dd class="description">
+       <p class="noindent">
+        stores
+libraries
+which
+are
+files
+containing
+code
+that
+applications
+use.
+They
+contain
+code
+snippets
+applications
+                                                                                
+                                                                                
+     
+use
+to
+control
+peripherals,
+or
+send
+files
+to
+the
+hard
+disk
+for
+example.
+There
+are
+more <span id="textcolor1537"><code class="verb">lib</code></span>
+        directories
+scattered
+around
+the
+file
+system,
+but
+this
+one,
+the
+one
+hanging
+directly
+off
+of <span id="textcolor1538"><code class="verb">/</code></span>
+        is
+special
+in
+that,
+among
+other
+things,
+contains
+the
+all-important
+kernel
+modules.
+The
+kernel
+modules
+are
+drivers
+that
+make
+things
+like
+the
+video
+card,
+sound
+card,
+Wi-Fi,
+printer,
+etc.
+       </p>
+      </dd>
+      <dt class="description">
+       /home
+      </dt>
+      <dd class="description">
+       <p class="noindent">
+        contains
+users’
+personal
+directories.
+       </p>
+      </dd>
+      <dt class="description">
+       /media
+      </dt>
+      <dd class="description">
+       <p class="noindent">
+        where
+external
+storage
+will
+be
+automatically
+mounted
+when
+it
+is
+plugged
+in
+and
+being
+accessed.
+As
+opposed
+to
+most
+of
+the
+other
+items
+on
+this
+list, <span id="textcolor1539"><code class="verb">/media</code></span>
+        did
+not
+originate
+in
+1970s,
+mainly
+because
+inserting
+and
+detecting
+storage
+(USB
+hard
+disks,
+SD
+cards,
+external
+SSDs,
+etc.)
+while
+a
+computer
+is
+running,
+is
+relatively
+new.
+       </p>
+      </dd>
+      <dt class="description">
+       /mnt
+      </dt>
+      <dd class="description">
+       <p class="noindent">
+        where
+mount
+storage
+devices
+or
+partitions
+are
+manually
+mounted
+which
+is
+not
+used
+often
+nowadays.
+       </p>
+      </dd>
+      <dt class="description">
+       /opt
+      </dt>
+      <dd class="description">
+       <p class="noindent">
+        here
+compiled
+programs
+(i.e.,
+non-system)
+are
+stored.
+Applications
+will
+end
+up
+in
+the <span id="textcolor1540"><code class="verb">/opt/bin</code></span>
+        directory
+and
+libraries
+in
+the <span id="textcolor1541"><code class="verb">/opt/lib</code></span>
+        directory.
+       </p>
+      </dd>
+      <dt class="description">
+       /proc
+      </dt>
+      <dd class="description">
+       <p class="noindent">
+        virtual
+like <span id="textcolor1542"><code class="verb">/dev</code></span>,
+contains
+information
+about
+the
+computer,
+such
+as
+information
+about
+the
+CPU
+and
+the
+kernel
+Linux
+is
+running
+                                                                                
+                                                                                
+     
+on.
+As
+with <span id="textcolor1543"><code class="verb">/dev</code></span>,
+the
+files
+and
+directories
+are
+generated
+when
+needed
+as
+the
+system
+is
+running
+and
+things
+change
+therefore
+don’t
+save
+your
+documents
+here.
+       </p>
+      </dd>
+      <dt class="description">
+       /root
+      </dt>
+      <dd class="description">
+       <p class="noindent">
+        the
+home
+directory
+of
+the
+superuser
+(also
+known
+as
+the
+"Administrator")
+of
+the
+system.
+It
+is
+separate
+from
+the
+rest
+of
+the
+users’
+home
+directories
+and
+it
+is
+not
+meant
+to
+be
+tampered.
+       </p>
+      </dd>
+      <dt class="description">
+       /run
+      </dt>
+      <dd class="description">
+       <p class="noindent">
+        System
+processes
+use
+it
+to
+store
+temporary
+data
+for
+their
+own
+reasons.
+Similar
+to <span id="textcolor1544"><code class="verb">/root</code></span>
+        and <span id="textcolor1545"><code class="verb">/boot</code></span>,
+it
+is
+best
+this
+folder
+is
+left
+alone.
+       </p>
+      </dd>
+      <dt class="description">
+       /sbin
+      </dt>
+      <dd class="description">
+       <p class="noindent">
+        similar
+to <span id="textcolor1546"><code class="verb">/bin</code></span>,
+but
+contains
+applications
+only
+the
+superuser
+(hence
+the
+initial
+s)
+needs.
+Application
+here
+can
+be
+used
+with
+the <span id="textcolor1547"><code class="verb">sudo</code></span>
+        command. <span id="textcolor1548"><code class="verb">/sbin</code></span>
+        contains
+tools
+that
+can
+install
+stuff,
+delete
+stuff
+and
+format
+stuff.
+       </p>
+      </dd>
+      <dt class="description">
+       /usr
+      </dt>
+      <dd class="description">
+       <p class="noindent">
+        Originally
+where
+users’
+home
+directories
+were
+kept.
+However,
+now
+/home
+is
+where
+users
+kept
+their
+stuff
+as
+we
+saw
+above.
+These
+days,
+/usr
+contains
+a
+mish-mash
+of
+directories
+which
+in
+turn
+contains:
+applications,
+libraries,
+documentation,
+wallpapers,
+icons,
+and
+a
+long
+list
+of
+other
+stuff
+that
+need
+to
+be
+shared
+by
+applications
+and
+services.
+You
+will
+also
+find
+/bin,
+/sbin
+and
+/lib
+directories
+                                                                                
+                                                                                
+     
+in
+/usr.
+       </p>
+      </dd>
+     </dl>
+     <div class="informationblock" id="tcolobox-36">
+      <div class="title">
+       <p class="noindent">
+        <span id="bold" style="font-weight:bold;">
+         Information
+        </span>
+        : <span id="textcolor1559"><code class="verb">/usr/bin</code></span>
+        v. <span id="textcolor1560"><code class="verb">/bin</code></span>
+       </p>
+      </div>
+      <div class="box-content">
+       <p class="noindent">
+        Not much nowadays. Originally, the <span id="textcolor1551"><code class="verb">/bin</code></span>
+        directory would contain basic commands, like <span id="textcolor1552"><code class="verb">ls</code></span>, <span id="textcolor1553"><code class="verb">mv</code></span>
+        and <span id="textcolor1554"><code class="verb">rm</code></span>
+        ; the bare
+minimum to run and maintain a system whereas <span id="textcolor1555"><code class="verb">/usr/bin</code></span>
+        would contain stuff the users would install and run
+to use the system as a work station, things like word processors, web browsers, and other apps. Many modern
+Linux distributions put everything into <span id="textcolor1556"><code class="verb">/usr/bin</code></span>
+        and have <span id="textcolor1557"><code class="verb">/bin</code></span>
+        point to <span id="textcolor1558"><code class="verb">/usr/bin</code></span>
+        just in case.
+       </p>
+      </div>
+     </div>
+     <dl class="description">
+      <dt class="description">
+       /srv
+      </dt>
+      <dd class="description">
+       <p class="noindent">
+        contains
+data
+for
+servers.
+When
+running
+a
+web
+server,
+HTML
+files
+for
+sites
+would
+go
+into <span id="textcolor1561"><code class="verb">/srv/http</code></span>
+        (or <span id="textcolor1562"><code class="verb">/srv/www</code></span>
+        ),
+or
+running
+an
+FTP
+(File
+Transfer
+Protocol)
+server,
+files
+would
+go
+into <span id="textcolor1563"><code class="verb">/srv/ftp</code></span>.
+       </p>
+      </dd>
+      <dt class="description">
+       /sys
+      </dt>
+      <dd class="description">
+       <p class="noindent">
+        virtual
+directory
+like <span id="textcolor1564"><code class="verb">/proc</code></span>
+        and <span id="textcolor1565"><code class="verb">/dev</code></span>,
+containing
+information
+from
+                                                                                
+                                                                                
+     
+connected
+devices.
+       </p>
+      </dd>
+      <dt class="description">
+       /tmp
+      </dt>
+      <dd class="description">
+       <p class="noindent">
+        contains
+temporary
+files,
+usually
+placed
+there
+by
+running
+applications.
+The
+files
+and
+directories
+often
+(not
+always)
+contain
+data
+that
+an
+application
+doesn’t
+need
+right
+now,
+but
+may
+need
+later
+on. <span id="textcolor1566"><code class="verb">/tmp</code></span>
+        also
+can
+store
+users’
+temporary
+files
+as
+it
+is
+one
+of
+the
+few
+directories
+hanging
+off <span id="textcolor1567"><code class="verb">/</code></span>
+        that
+can
+be
+used
+without
+superuser.
+       </p>
+      </dd>
+      <dt class="description">
+       /var
+      </dt>
+      <dd class="description">
+       <p class="noindent">
+        originally
+                                                                                
+                                                                                
+     
+named
+because
+its
+contents
+was
+deemed
+variable,
+in
+that
+it
+changed
+frequently.
+Today
+it
+is
+a
+bit
+of
+a
+misnomer
+because
+there
+are
+many
+other
+directories
+that
+also
+contain
+data
+that
+changes
+frequently,
+especially
+the
+virtual
+directories.
+Be
+that
+as
+it
+may, <span id="textcolor1568"><code class="verb">/var</code></span>
+        contains
+things
+like
+logs
+in
+the <span id="textcolor1569"><code class="verb">/var/log</code></span>
+        sub-directories.
+Logs
+are
+files
+that
+register
+events
+that
+happen
+on
+the
+system.
+If
+something
+fails
+in
+the
+                                                                                
+                                                                                
+     
+kernel,
+it
+will
+be
+logged
+in
+a
+file
+in <span id="textcolor1570"><code class="verb">/var/log</code></span>
+        ;
+If
+someone
+tries
+to
+break
+into
+the
+computer
+from
+outside,
+the
+firewall
+will
+also
+log
+the
+attempt
+here.
+       </p>
+      </dd>
+     </dl>
+     <p class="noindent">
+     </p>
+    </div>
+    <div class="section-head" id="section-9" sec="section-9">
+     <h2 class="sectionHead">
+      <a aria-label="Link to this section in PDF version" class="pdf-link" href="MobileRoboticsLectureBook.pdf#section.6.9" style="color: red;  position: absolute;  left: -30px;" target="_blank">
+       <svg class="bi bi-file-pdf" fill="currentColor" height="20" viewbox="0 0 16 16" width="20" xmlns="http://www.w3.org/2000/svg">
+        <path d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z">
+        </path>
+        <path d="M4.603 12.087a.81.81 0 0 1-.438-.42c-.195-.388-.13-.776.08-1.102.198-.307.526-.568.897-.787a7.68 7.68 0 0 1 1.482-.645 19.701 19.701 0 0 0 1.062-2.227 7.269 7.269 0 0 1-.43-1.295c-.086-.4-.119-.796-.046-1.136.075-.354.274-.672.65-.823.192-.077.4-.12.602-.077a.7.7 0 0 1 .477.365c.088.164.12.356.127.538.007.187-.012.395-.047.614-.084.51-.27 1.134-.52 1.794a10.954 10.954 0 0 0 .98 1.686 5.753 5.753 0 0 1 1.334.05c.364.065.734.195.96.465.12.144.193.32.2.518.007.192-.047.382-.138.563a1.04 1.04 0 0 1-.354.416.856.856 0 0 1-.51.138c-.331-.014-.654-.196-.933-.417a5.716 5.716 0 0 1-.911-.95 11.642 11.642 0 0 0-1.997.406 11.311 11.311 0 0 1-1.021 1.51c-.29.35-.608.655-.926.787a.793.793 0 0 1-.58.029zm1.379-1.901c-.166.076-.32.156-.459.238-.328.194-.541.383-.647.547-.094.145-.096.25-.04.361.01.022.02.036.026.044a.27.27 0 0 0 .035-.012c.137-.056.355-.235.635-.572a8.18 8.18 0 0 0 .45-.606zm1.64-1.33a12.647 12.647 0 0 1 1.01-.193 11.666 11.666 0 0 1-.51-.858 20.741 20.741 0 0 1-.5 1.05zm2.446.45c.15.162.296.3.435.41.24.19.407.253.498.256a.107.107 0 0 0 .07-.015.307.307 0 0 0 .094-.125.436.436 0 0 0 .059-.2.095.095 0 0 0-.026-.063c-.052-.062-.2-.152-.518-.209a3.881 3.881 0 0 0-.612-.053zM8.078 5.8a6.7 6.7 0 0 0 .2-.828c.031-.188.043-.343.038-.465a.613.613 0 0 0-.032-.198.517.517 0 0 0-.145.04c-.087.035-.158.106-.196.283-.04.192-.03.469.046.822.024.111.054.227.09.346z">
+        </path>
+       </svg>
+      </a>
+      <small class="titlemark">
+       6.9
+      </small>
+      <a id="x8-1350006.9">
+      </a>
+      Common
+Command-Line
+Tools
+and
+Tasks
+     </h2>
+     <h3 class="subsectionHead">
+      <a aria-label="Link to this section in PDF version" class="pdf-link" href="MobileRoboticsLectureBook.pdf#subsection.6.9.1" style="color: red;  position: absolute;  left: -30px;" target="_blank">
+       <svg class="bi bi-file-pdf" fill="currentColor" height="20" viewbox="0 0 16 16" width="20" xmlns="http://www.w3.org/2000/svg">
+        <path d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z">
+        </path>
+        <path d="M4.603 12.087a.81.81 0 0 1-.438-.42c-.195-.388-.13-.776.08-1.102.198-.307.526-.568.897-.787a7.68 7.68 0 0 1 1.482-.645 19.701 19.701 0 0 0 1.062-2.227 7.269 7.269 0 0 1-.43-1.295c-.086-.4-.119-.796-.046-1.136.075-.354.274-.672.65-.823.192-.077.4-.12.602-.077a.7.7 0 0 1 .477.365c.088.164.12.356.127.538.007.187-.012.395-.047.614-.084.51-.27 1.134-.52 1.794a10.954 10.954 0 0 0 .98 1.686 5.753 5.753 0 0 1 1.334.05c.364.065.734.195.96.465.12.144.193.32.2.518.007.192-.047.382-.138.563a1.04 1.04 0 0 1-.354.416.856.856 0 0 1-.51.138c-.331-.014-.654-.196-.933-.417a5.716 5.716 0 0 1-.911-.95 11.642 11.642 0 0 0-1.997.406 11.311 11.311 0 0 1-1.021 1.51c-.29.35-.608.655-.926.787a.793.793 0 0 1-.58.029zm1.379-1.901c-.166.076-.32.156-.459.238-.328.194-.541.383-.647.547-.094.145-.096.25-.04.361.01.022.02.036.026.044a.27.27 0 0 0 .035-.012c.137-.056.355-.235.635-.572a8.18 8.18 0 0 0 .45-.606zm1.64-1.33a12.647 12.647 0 0 1 1.01-.193 11.666 11.666 0 0 1-.51-.858 20.741 20.741 0 0 1-.5 1.05zm2.446.45c.15.162.296.3.435.41.24.19.407.253.498.256a.107.107 0 0 0 .07-.015.307.307 0 0 0 .094-.125.436.436 0 0 0 .059-.2.095.095 0 0 0-.026-.063c-.052-.062-.2-.152-.518-.209a3.881 3.881 0 0 0-.612-.053zM8.078 5.8a6.7 6.7 0 0 0 .2-.828c.031-.188.043-.343.038-.465a.613.613 0 0 0-.032-.198.517.517 0 0 0-.145.04c-.087.035-.158.106-.196.283-.04.192-.03.469.046.822.024.111.054.227.09.346z">
+        </path>
+       </svg>
+      </a>
+      <small class="titlemark">
+       6.9.1
+      </small>
+      <a id="x8-1360006.9.1">
+      </a>
+      The
+UNIX
+Philosophy
+     </h3>
+     <p class="noindent">
+      Starting
+exploring
+command
+line
+tools,
+it’s
+important
+to
+understand
+the
+principle
+behind
+many
+of
+the
+programs
+we’ll
+be
+looking
+at.
+That
+principle,
+often
+called
+the
+      <a href="https://en.wikipedia.org/wiki/Unix_philosophy">
+       UNIX
+philosophy
+      </a>,
+originated
+by
+Ken
+Thompson,
+is
+a
+set
+of
+cultural
+norms
+and
+philosophical
+approaches
+to
+minimalist,
+modular
+software
+development.
+     </p>
+     <aside class="wrapfig-r">
+      <img alt="PIC" height="" src="figures/Working-with-Files-and-Folders/raster/taolp.jpg" width="100%"/>
+      <a id="x8-136001r2">
+      </a>
+      <figcaption class="caption">
+       <span class="id">
+        Figure 6.2:
+       </span>
+       <span class="content">
+        For
+anyone  who  is  interested  in  the
+UNIX  philosopy,  I  would  suggest
+reading  this  book  as  it  has  parts
+written  by  numerous  people  who
+were the original developers of the
+UNIX.
+       </span>
+      </figcaption>
+     </aside>
+     <p class="noindent">
+      Generally,
+these
+are:
+     </p>
+     <ul class="itemize1">
+      <li class="itemize">
+       <p class="noindent">
+        Small
+is
+beautiful,
+       </p>
+      </li>
+      <li class="itemize">
+       <p class="noindent">
+        Make
+each
+program
+do
+one
+thing
+well,
+       </p>
+      </li>
+      <li class="itemize">
+       <p class="noindent">
+        Build
+a
+prototype
+as
+soon
+as
+possible,
+       </p>
+      </li>
+      <li class="itemize">
+       <p class="noindent">
+        Choose
+portability
+over
+efficiency,
+       </p>
+      </li>
+      <li class="itemize">
+       <p class="noindent">
+        Store
+data
+in
+flat
+text
+files,
+       </p>
+      </li>
+      <li class="itemize">
+       <p class="noindent">
+        Use
+software
+leverage
+to
+your
+advantage,
+       </p>
+      </li>
+      <li class="itemize">
+       <p class="noindent">
+        Use
+shell
+scripts
+to
+increase
+leverage
+and
+portability,
+       </p>
+      </li>
+      <li class="itemize">
+       <p class="noindent">
+        Avoid
+captive
+user
+interfaces,
+       </p>
+      </li>
+      <li class="itemize">
+       <p class="noindent">
+        Make
+every
+program
+a
+filter.
+       </p>
+      </li>
+     </ul>
+     <p class="noindent">
+      In
+a
+nutshell,
+this
+philosophy
+emphasizes
+tools
+      <alert style="color: #821131;">
+       shouldn’t
+try
+to
+do
+too
+much
+      </alert>
+      .
+We
+don’t
+want
+a
+tool
+which
+reads
+files
+and
+separates
+some
+of
+the
+text
+into
+another
+file
+and
+                                                                                
+                                                                                
+                                                                          
+renames
+that
+file
+and
+compresses
+it
+into
+an
+archive
+when
+it’s
+done,
+or
+tries
+to
+do
+everything
+that
+anyone
+can
+possibly
+want
+to
+do.
+While
+this
+may
+sound
+convenient,
+you
+have
+to
+consider
+there
+would
+be
+a
+lot
+of
+possible
+bugs
+and
+glitches
+of
+these
+sub-actions
+interacting
+with
+each
+other
+under
+this
+complex
+command.
+Therefore,
+we
+want
+one
+tool
+and
+one
+tool
+only
+to
+do
+each
+of
+                                                                                
+                                                                                
+                                                                            
+those
+tasks,
+so
+we
+can
+use
+those
+specialised
+tools
+in
+any
+way
+we
+want
+to.
+     </p>
+     <div class="knowledge">
+      <p class="noindent">
+       Of
+course,
+there
+are
+many
+applications
+that
+include
+many
+features
+and
+that’s
+fine.
+However,
+those
+applications
+are
+beyond
+the
+scope
+of
+this
+lecture.
+We’re
+talking
+about
+the
+standard
+set
+of
+command
+line
+tools
+that
+can
+be
+configured
+to
+work
+together
+in
+an
+incredible
+number
+of
+ways.
+      </p>
+     </div>
+     <div class="warning">
+      <p class="noindent">
+       Jack
+of
+all
+trades,
+master
+of
+none
+is
+not
+encouraged
+in
+programming.
+      </p>
+     </div>
+     <p class="noindent">
+      To
+get
+real
+work
+done,
+quality
+is
+needed;
+tools
+dedicated
+to
+a
+specific
+task
+working
+together
+easily.
+Think
+of
+an
+assembly
+line
+where
+one
+machine
+does
+one
+task
+and
+then
+passes
+the
+product
+onto
+the
+next
+specialized
+machine,
+rather
+than
+one
+complicated
+robot
+doing
+many
+different
+tasks
+on
+the
+same
+item.
+     </p>
+     <p class="noindent">
+      The
+point
+here
+                                                                                
+                                                                                
+                                                                               
+is
+not
+that
+we
+have
+one
+multifunction
+generalist
+program.
+We
+want
+to
+be
+able
+to
+incorporate
+the
+right
+tools
+into
+doing
+a
+task
+as
+flexibly
+as
+possible,
+and
+as
+we’ll
+see
+in
+a
+little
+bit,
+this
+philosophy
+underlies
+a
+lot
+of
+how
+you
+work
+at
+the
+command
+line.
+     </p>
+     <p class="noindent">
+      You
+will
+use
+one
+program
+to
+read
+text
+from
+a
+file,
+then
+send
+it
+to
+a
+program
+that
+filters
+                                                                                
+                                                                                
+                                                                           
+certain
+text.
+Then
+the
+output
+of
+that
+program
+gets
+processed,
+so
+that
+it
+doesn’t
+have
+duplicate
+lines
+and
+then
+the
+result
+of
+that
+will
+get
+written
+back
+to
+a
+file.
+     </p>
+     <p class="noindent">
+      Modularity
+and
+flexibility
+are
+features,
+not
+limitations,
+of
+working
+at
+the
+command
+line.
+However,
+just
+because
+programmers
+strive
+for
+simplicity
+in
+their
+programming,
+it
+doesn’t
+mean
+they
+can’t
+have
+Easter
+eggs
+in
+them.
+In
+the
+terminal
+just
+                                                                                
+                                                                                
+                                                                             
+type
+in:
+     </p>
+     <p class="noindent">
+     </p>
+     <div class="code-block">
+      <div class="code-lang">
+       bash
+      </div>
+      <pre><div class="language-bash" id="fancyvrb61" style="padding:20px;border-radius: 3px;"><a id="x8-136003r536"></a>apt<span id="textcolor1580"> </span><span id="textcolor1581">help</span></div></pre>
+     </div>
+     <p class="noindent">
+      APT
+(Advanced
+Packaging
+Tools)
+is
+used
+to
+install
+updates
+and
+utilities
+and
+has
+Super
+Cow
+Powers.
+     </p>
+     <div class="tcolorbox tcolorbox" id="tcolobox-37">
+      <div class="tcolorbox-content">
+       <div class="code-block">
+        <div class="code-lang">
+         text
+        </div>
+        <pre><div class="language-text" id="fancyvrb62" style="padding:20px;border-radius: 3px;"><a id="x8-136005r1"></a>apt 2.7.14 (arm64) 
+<a id="x8-136007r2"></a>Usage: apt [options] command 
+<a id="x8-136009r3"></a> 
+<a id="x8-136011r4"></a>apt is a commandline package manager and provides commands for 
+<a id="x8-136013r5"></a>searching and managing as well as querying information about packages. 
+<a id="x8-136015r6"></a>It provides the same functionality as the specialized APT tools, 
+<a id="x8-136017r7"></a>like apt-get and apt-cache, but enables options more suitable for 
+<a id="x8-136019r8"></a>interactive use by default. 
+<a id="x8-136021r9"></a> 
+<a id="x8-136023r10"></a>Most used commands: 
+<a id="x8-136025r11"></a>  list - list packages based on package names 
+<a id="x8-136027r12"></a>  search - search in package descriptions 
+<a id="x8-136029r13"></a>  show - show package details 
+<a id="x8-136031r14"></a>  install - install packages 
+<a id="x8-136033r15"></a>  reinstall - reinstall packages 
+<a id="x8-136035r16"></a>  remove - remove packages 
+<a id="x8-136037r17"></a>  autoremove - automatically remove all unused packages 
+<a id="x8-136039r18"></a>  update - update list of available packages 
+<a id="x8-136041r19"></a>  upgrade - upgrade the system by installing/upgrading packages 
+<a id="x8-136043r20"></a>  full-upgrade - upgrade the system by removing/installing/upgrading packages 
+<a id="x8-136045r21"></a>  edit-sources - edit the source information file 
+<a id="x8-136047r22"></a>  satisfy - satisfy dependency strings 
+<a id="x8-136049r23"></a> 
+<a id="x8-136051r24"></a>See apt(8) for more information about the available commands. 
+<a id="x8-136053r25"></a>Configuration options and syntax is detailed in apt.conf(5). 
+<a id="x8-136055r26"></a>Information about how to configure sources can be found in sources.list(5). 
+<a id="x8-136057r27"></a>Package and version choices can be expressed via apt_preferences(5). 
+<a id="x8-136059r28"></a>Security details are available in apt-secure(8). 
+<a id="x8-136061r29"></a>                                        This APT has Super Cow Powers.</div></pre>
+       </div>
+      </div>
+     </div>
+     <h3 class="subsectionHead">
+      <a aria-label="Link to this section in PDF version" class="pdf-link" href="MobileRoboticsLectureBook.pdf#subsection.6.9.2" style="color: red;  position: absolute;  left: -30px;" target="_blank">
+       <svg class="bi bi-file-pdf" fill="currentColor" height="20" viewbox="0 0 16 16" width="20" xmlns="http://www.w3.org/2000/svg">
+        <path d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z">
+        </path>
+        <path d="M4.603 12.087a.81.81 0 0 1-.438-.42c-.195-.388-.13-.776.08-1.102.198-.307.526-.568.897-.787a7.68 7.68 0 0 1 1.482-.645 19.701 19.701 0 0 0 1.062-2.227 7.269 7.269 0 0 1-.43-1.295c-.086-.4-.119-.796-.046-1.136.075-.354.274-.672.65-.823.192-.077.4-.12.602-.077a.7.7 0 0 1 .477.365c.088.164.12.356.127.538.007.187-.012.395-.047.614-.084.51-.27 1.134-.52 1.794a10.954 10.954 0 0 0 .98 1.686 5.753 5.753 0 0 1 1.334.05c.364.065.734.195.96.465.12.144.193.32.2.518.007.192-.047.382-.138.563a1.04 1.04 0 0 1-.354.416.856.856 0 0 1-.51.138c-.331-.014-.654-.196-.933-.417a5.716 5.716 0 0 1-.911-.95 11.642 11.642 0 0 0-1.997.406 11.311 11.311 0 0 1-1.021 1.51c-.29.35-.608.655-.926.787a.793.793 0 0 1-.58.029zm1.379-1.901c-.166.076-.32.156-.459.238-.328.194-.541.383-.647.547-.094.145-.096.25-.04.361.01.022.02.036.026.044a.27.27 0 0 0 .035-.012c.137-.056.355-.235.635-.572a8.18 8.18 0 0 0 .45-.606zm1.64-1.33a12.647 12.647 0 0 1 1.01-.193 11.666 11.666 0 0 1-.51-.858 20.741 20.741 0 0 1-.5 1.05zm2.446.45c.15.162.296.3.435.41.24.19.407.253.498.256a.107.107 0 0 0 .07-.015.307.307 0 0 0 .094-.125.436.436 0 0 0 .059-.2.095.095 0 0 0-.026-.063c-.052-.062-.2-.152-.518-.209a3.881 3.881 0 0 0-.612-.053zM8.078 5.8a6.7 6.7 0 0 0 .2-.828c.031-.188.043-.343.038-.465a.613.613 0 0 0-.032-.198.517.517 0 0 0-.145.04c-.087.035-.158.106-.196.283-.04.192-.03.469.046.822.024.111.054.227.09.346z">
+        </path>
+       </svg>
+      </a>
+      <small class="titlemark">
+       6.9.2
+      </small>
+      <a id="x8-1370006.9.2">
+      </a>
+      Connecting
+Commands
+with
+Pipes
+     </h3>
+     <p class="noindent">
+      At
+the
+command
+line,
+we
+use
+pipes <span id="textcolor1582">(<code class="verb">|</code>)</span>
+to
+take
+the
+output
+of
+one
+command
+and
+send
+it
+to
+another.
+Think
+of
+commands
+as
+little
+processing
+nodes
+which
+                                                                                
+                                                                                
+                                                                              
+do
+one
+particular
+thing
+and
+pipes
+as
+connections
+between
+those
+nodes.
+Searching
+on
+the
+internet
+should
+give
+you
+a
+good
+idea
+of
+where
+to
+find
+it
+on
+your
+keyboard
+depending
+on
+the
+type,
+if
+you
+need
+to.
+We
+type
+this
+character
+in
+between
+commands
+that
+we
+want
+to
+be
+      <italic>
+       piped
+      </italic>
+      together.
+Throughout
+the
+course,
+put
+a
+space
+on
+either
+side
+of
+it
+so
+it’s
+easier
+to
+see,
+                                                                                
+                                                                                
+                                                                             
+but
+it
+doesn’t
+need
+to
+have
+spaces.
+Take
+a
+look
+at
+using
+pipes
+at
+the
+command
+line.
+To
+do
+this,
+we
+need
+to
+know
+a
+few
+more
+commands.
+The
+first
+is <span id="textcolor1583"><code class="verb">echo</code></span>,
+which
+prints
+out
+whatever
+you
+give
+it.
+For
+example,
+write <span id="textcolor1584"><code class="verb">echo "hello"</code></span>,
+and
+that
+works
+as
+promised.
+     </p>
+     <p class="noindent">
+     </p>
+     <div class="code-block">
+      <div class="code-lang">
+       bash
+      </div>
+      <pre><div class="language-bash" id="fancyvrb63" style="padding:20px;border-radius: 3px;"><a id="x8-137002r576"></a><span id="textcolor1585">echo</span><span id="textcolor1586"> </span><span id="textcolor1587">"hello"</span></div></pre>
+     </div>
+     <div class="tcolorbox tcolorbox" id="tcolobox-38">
+      <div class="tcolorbox-content">
+       <div class="code-block">
+        <div class="code-lang">
+         text
+        </div>
+        <pre><div class="language-text" id="fancyvrb64" style="padding:20px;border-radius: 3px;"><a id="x8-137004r1"></a>hello</div></pre>
+       </div>
+      </div>
+     </div>
+     <p class="noindent">
+      Now,
+write
+that
+command
+again
+and
+this
+time
+                                                                                
+                                                                                
+                                                                             
+add
+a
+pipe
+character
+to
+send
+the
+output
+to
+the
+command <span id="textcolor1588"><code class="verb">wc</code></span>
+      for
+word
+count.
+And
+here,
+instead
+of
+the
+output
+from <span id="textcolor1589"><code class="verb">echo</code></span>,
+we
+see
+the
+output
+of
+the <span id="textcolor1590"><code class="verb">wc</code></span>
+      program
+responding
+to
+the
+input
+from
+the <span id="textcolor1591"><code class="verb">echo</code></span>
+      command.
+     </p>
+     <p class="noindent">
+     </p>
+     <div class="code-block">
+      <div class="code-lang">
+       bash
+      </div>
+      <pre><div class="language-bash" id="fancyvrb65" style="padding:20px;border-radius: 3px;"><a id="x8-137006r586"></a><span id="textcolor1592">echo</span><span id="textcolor1593"> </span><span id="textcolor1594">"hello"</span><span id="textcolor1595"> </span>|<span id="textcolor1596"> </span>wc</div></pre>
+     </div>
+     <div class="tcolorbox tcolorbox" id="tcolobox-39">
+      <div class="tcolorbox-content">
+       <div class="code-block">
+        <div class="code-lang">
+         text
+        </div>
+        <pre><div class="language-text" id="fancyvrb66" style="padding:20px;border-radius: 3px;"><a id="x8-137008r1"></a>     1       1       6</div></pre>
+       </div>
+      </div>
+     </div>
+     <p class="noindent">
+      What <span id="textcolor1597"><code class="verb">wc</code></span>
+      is
+telling
+here
+is
+that
+there
+is
+one
+line
+of
+text,
+one
+word,
+and
+six
+                                                                                
+                                                                                
+                                                                        
+characters.
+To
+change
+the
+output
+type <span id="textcolor1598"><code class="verb">echo "hello, world! from the command-line interface"</code></span>
+      and
+pipe
+that
+to <span id="textcolor1599"><code class="verb">wc</code></span>.
+That’s
+one
+line,
+six
+words,
+45
+characters.
+     </p>
+     <p class="noindent">
+     </p>
+     <div class="code-block">
+      <div class="code-lang">
+       bash
+      </div>
+      <pre><div class="language-bash" id="fancyvrb67" style="padding:20px;border-radius: 3px;"><a id="x8-137010r597"></a><span id="textcolor1600">echo</span><span id="textcolor1601"> </span><span id="textcolor1602">"hello, world! from the command-line interface"</span><span id="textcolor1603"> </span>|<span id="textcolor1604"> </span>wc</div></pre>
+     </div>
+     <div class="tcolorbox tcolorbox" id="tcolobox-40">
+      <div class="tcolorbox-content">
+       <div class="code-block">
+        <div class="code-lang">
+         text
+        </div>
+        <pre><div class="language-text" id="fancyvrb68" style="padding:20px;border-radius: 3px;"><a id="x8-137012r1"></a>     1       6      46</div></pre>
+       </div>
+      </div>
+     </div>
+     <p class="noindent">
+      As
+can
+be
+seen
+the
+sentence
+contain
+45
+characters
+but
+46
+is
+printed
+as <span id="textcolor1605"><code class="verb">wc</code></span>
+      counts
+an
+invisible
+character
+at
+the
+end
+of
+the
+string
+called
+a
+new
+line
+in
+addition
+to
+the
+characters
+we
+sent.
+A
+                                                                                
+                                                                                
+                                                                         
+command
+can
+be
+piped
+to
+any
+other
+command,
+and
+usually
+it’ll
+do
+something
+whether
+it
+is
+useful
+or
+not.
+     </p>
+     <h3 class="subsectionHead">
+      <a aria-label="Link to this section in PDF version" class="pdf-link" href="MobileRoboticsLectureBook.pdf#subsection.6.9.3" style="color: red;  position: absolute;  left: -30px;" target="_blank">
+       <svg class="bi bi-file-pdf" fill="currentColor" height="20" viewbox="0 0 16 16" width="20" xmlns="http://www.w3.org/2000/svg">
+        <path d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z">
+        </path>
+        <path d="M4.603 12.087a.81.81 0 0 1-.438-.42c-.195-.388-.13-.776.08-1.102.198-.307.526-.568.897-.787a7.68 7.68 0 0 1 1.482-.645 19.701 19.701 0 0 0 1.062-2.227 7.269 7.269 0 0 1-.43-1.295c-.086-.4-.119-.796-.046-1.136.075-.354.274-.672.65-.823.192-.077.4-.12.602-.077a.7.7 0 0 1 .477.365c.088.164.12.356.127.538.007.187-.012.395-.047.614-.084.51-.27 1.134-.52 1.794a10.954 10.954 0 0 0 .98 1.686 5.753 5.753 0 0 1 1.334.05c.364.065.734.195.96.465.12.144.193.32.2.518.007.192-.047.382-.138.563a1.04 1.04 0 0 1-.354.416.856.856 0 0 1-.51.138c-.331-.014-.654-.196-.933-.417a5.716 5.716 0 0 1-.911-.95 11.642 11.642 0 0 0-1.997.406 11.311 11.311 0 0 1-1.021 1.51c-.29.35-.608.655-.926.787a.793.793 0 0 1-.58.029zm1.379-1.901c-.166.076-.32.156-.459.238-.328.194-.541.383-.647.547-.094.145-.096.25-.04.361.01.022.02.036.026.044a.27.27 0 0 0 .035-.012c.137-.056.355-.235.635-.572a8.18 8.18 0 0 0 .45-.606zm1.64-1.33a12.647 12.647 0 0 1 1.01-.193 11.666 11.666 0 0 1-.51-.858 20.741 20.741 0 0 1-.5 1.05zm2.446.45c.15.162.296.3.435.41.24.19.407.253.498.256a.107.107 0 0 0 .07-.015.307.307 0 0 0 .094-.125.436.436 0 0 0 .059-.2.095.095 0 0 0-.026-.063c-.052-.062-.2-.152-.518-.209a3.881 3.881 0 0 0-.612-.053zM8.078 5.8a6.7 6.7 0 0 0 .2-.828c.031-.188.043-.343.038-.465a.613.613 0 0 0-.032-.198.517.517 0 0 0-.145.04c-.087.035-.158.106-.196.283-.04.192-.03.469.046.822.024.111.054.227.09.346z">
+        </path>
+       </svg>
+      </a>
+      <small class="titlemark">
+       6.9.3
+      </small>
+      <a id="x8-1380006.9.3">
+      </a>
+      Viewing
+Text
+Files
+with
+cat,
+head,
+tail,
+and
+less
+     </h3>
+     <p class="noindent">
+      The
+majority
+of
+tasks
+we
+will
+be
+working
+with
+at
+the
+command
+line
+will
+involve
+text
+files
+or
+text
+output.
+Therefore,
+it’s
+important
+to
+know
+the
+following
+commands
+to
+check
+out
+the
+contents
+                                                                                
+                                                                                
+                                                                              
+of
+text
+files.
+The
+first
+is
+called <span id="textcolor1606"><code class="verb">cat</code></span>,
+stands
+for
+      <span id="bold" style="font-weight:bold;">
+       concatenate
+      </span>
+      .
+     </p>
+     <div class="informationblock" id="tcolobox-41">
+      <div class="title">
+       <p class="noindent">
+        <span id="bold" style="font-weight:bold;">
+         Information
+        </span>
+        :
+The <span id="textcolor1608"><code class="verb">cat</code></span>
+        Command
+       </p>
+      </div>
+      <div class="box-content">
+       <p class="noindent">
+        A standard utility which reads files sequentially, writing them to standard output.
+       </p>
+      </div>
+     </div>
+     <p class="noindent">
+      Basically
+when
+programmers
+talk
+about
+concatenation,
+they
+mean
+sticking
+two
+or
+more
+things
+together,
+and <span id="textcolor1609"><code class="verb">cat</code></span>
+      can
+do
+exactly
+do
+just
+that.
+But
+more
+often
+than
+not,
+it
+is
+used
+to
+print
+the
+contents
+of
+a
+file
+to
+the
+screen.
+It’s
+also
+helpful
+to
+get
+the
+                                                                                
+                                                                                
+                                                                          
+contents
+of
+a
+text
+file
+into
+a
+series
+of
+piped
+commands.
+Depending
+on
+the
+operating
+system,
+there
+will
+be
+different
+files
+available
+to
+you.
+Normally,
+as
+an
+administrator
+we
+tend
+to
+use <span id="textcolor1610"><code class="verb">cat</code></span>
+      to
+look
+at
+a
+log
+file
+or
+something
+similar.
+But
+here,
+for
+the
+sake
+of
+simplicity,
+we
+will
+use
+a
+simple
+text
+file
+inside
+the
+Linux
+Tutorial
+Folder.
+The <span id="textcolor1611"><code class="verb">Poem.txt</code></span>
+      file.
+For
+the
+curious,
+                                                                                
+                                                                                
+                                                                              
+the
+poem
+is
+“
+      <italic>
+       Stopping
+by
+Woods
+on
+a
+Snowy
+Evening
+      </italic>
+      ”
+by
+Robert
+Frost
+(
+      <a href="https://www.poetryfoundation.org/poems/42891/stopping-by-woods-on-a-snowy-evening">
+       a
+      </a>
+      ).
+     </p>
+     <p class="noindent">
+     </p>
+    </div>
+    <div class="section-head" id="section-10" sec="section-10">
+     <h2 class="sectionHead">
+      <a aria-label="Link to this section in PDF version" class="pdf-link" href="MobileRoboticsLectureBook.pdf#section.6.10" style="color: red;  position: absolute;  left: -30px;" target="_blank">
+       <svg class="bi bi-file-pdf" fill="currentColor" height="20" viewbox="0 0 16 16" width="20" xmlns="http://www.w3.org/2000/svg">
+        <path d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z">
+        </path>
+        <path d="M4.603 12.087a.81.81 0 0 1-.438-.42c-.195-.388-.13-.776.08-1.102.198-.307.526-.568.897-.787a7.68 7.68 0 0 1 1.482-.645 19.701 19.701 0 0 0 1.062-2.227 7.269 7.269 0 0 1-.43-1.295c-.086-.4-.119-.796-.046-1.136.075-.354.274-.672.65-.823.192-.077.4-.12.602-.077a.7.7 0 0 1 .477.365c.088.164.12.356.127.538.007.187-.012.395-.047.614-.084.51-.27 1.134-.52 1.794a10.954 10.954 0 0 0 .98 1.686 5.753 5.753 0 0 1 1.334.05c.364.065.734.195.96.465.12.144.193.32.2.518.007.192-.047.382-.138.563a1.04 1.04 0 0 1-.354.416.856.856 0 0 1-.51.138c-.331-.014-.654-.196-.933-.417a5.716 5.716 0 0 1-.911-.95 11.642 11.642 0 0 0-1.997.406 11.311 11.311 0 0 1-1.021 1.51c-.29.35-.608.655-.926.787a.793.793 0 0 1-.58.029zm1.379-1.901c-.166.076-.32.156-.459.238-.328.194-.541.383-.647.547-.094.145-.096.25-.04.361.01.022.02.036.026.044a.27.27 0 0 0 .035-.012c.137-.056.355-.235.635-.572a8.18 8.18 0 0 0 .45-.606zm1.64-1.33a12.647 12.647 0 0 1 1.01-.193 11.666 11.666 0 0 1-.51-.858 20.741 20.741 0 0 1-.5 1.05zm2.446.45c.15.162.296.3.435.41.24.19.407.253.498.256a.107.107 0 0 0 .07-.015.307.307 0 0 0 .094-.125.436.436 0 0 0 .059-.2.095.095 0 0 0-.026-.063c-.052-.062-.2-.152-.518-.209a3.881 3.881 0 0 0-.612-.053zM8.078 5.8a6.7 6.7 0 0 0 .2-.828c.031-.188.043-.343.038-.465a.613.613 0 0 0-.032-.198.517.517 0 0 0-.145.04c-.087.035-.158.106-.196.283-.04.192-.03.469.046.822.024.111.054.227.09.346z">
+        </path>
+       </svg>
+      </a>
+      <small class="titlemark">
+       6.10
+      </small>
+      <a id="x8-1390006.10">
+      </a>
+      Advanced
+Topics
+     </h2>
+     <h3 class="subsectionHead">
+      <a aria-label="Link to this section in PDF version" class="pdf-link" href="MobileRoboticsLectureBook.pdf#subsection.6.10.1" style="color: red;  position: absolute;  left: -30px;" target="_blank">
+       <svg class="bi bi-file-pdf" fill="currentColor" height="20" viewbox="0 0 16 16" width="20" xmlns="http://www.w3.org/2000/svg">
+        <path d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z">
+        </path>
+        <path d="M4.603 12.087a.81.81 0 0 1-.438-.42c-.195-.388-.13-.776.08-1.102.198-.307.526-.568.897-.787a7.68 7.68 0 0 1 1.482-.645 19.701 19.701 0 0 0 1.062-2.227 7.269 7.269 0 0 1-.43-1.295c-.086-.4-.119-.796-.046-1.136.075-.354.274-.672.65-.823.192-.077.4-.12.602-.077a.7.7 0 0 1 .477.365c.088.164.12.356.127.538.007.187-.012.395-.047.614-.084.51-.27 1.134-.52 1.794a10.954 10.954 0 0 0 .98 1.686 5.753 5.753 0 0 1 1.334.05c.364.065.734.195.96.465.12.144.193.32.2.518.007.192-.047.382-.138.563a1.04 1.04 0 0 1-.354.416.856.856 0 0 1-.51.138c-.331-.014-.654-.196-.933-.417a5.716 5.716 0 0 1-.911-.95 11.642 11.642 0 0 0-1.997.406 11.311 11.311 0 0 1-1.021 1.51c-.29.35-.608.655-.926.787a.793.793 0 0 1-.58.029zm1.379-1.901c-.166.076-.32.156-.459.238-.328.194-.541.383-.647.547-.094.145-.096.25-.04.361.01.022.02.036.026.044a.27.27 0 0 0 .035-.012c.137-.056.355-.235.635-.572a8.18 8.18 0 0 0 .45-.606zm1.64-1.33a12.647 12.647 0 0 1 1.01-.193 11.666 11.666 0 0 1-.51-.858 20.741 20.741 0 0 1-.5 1.05zm2.446.45c.15.162.296.3.435.41.24.19.407.253.498.256a.107.107 0 0 0 .07-.015.307.307 0 0 0 .094-.125.436.436 0 0 0 .059-.2.095.095 0 0 0-.026-.063c-.052-.062-.2-.152-.518-.209a3.881 3.881 0 0 0-.612-.053zM8.078 5.8a6.7 6.7 0 0 0 .2-.828c.031-.188.043-.343.038-.465a.613.613 0 0 0-.032-.198.517.517 0 0 0-.145.04c-.087.035-.158.106-.196.283-.04.192-.03.469.046.822.024.111.054.227.09.346z">
+        </path>
+       </svg>
+      </a>
+      <small class="titlemark">
+       6.10.1
+      </small>
+      <a id="x8-1400006.10.1">
+      </a>
+      Find
+Linux
+Distribution
+and
+Kernel
+Information
+     </h3>
+     <p class="noindent">
+      Up
+until
+now,
+almost
+everything
+we’ve
+done
+has
+been
+distribution
+independent.
+     </p>
+     <p class="noindent">
+      That
+is,
+it
+hasn’t
+mattered
+if
+you’re
+running
+CentOS,
+Fedora,
+Ubuntu,
+or
+another
+distribution
+of
+Linux.
+But
+it’s
+good
+to
+know
+what
+environment
+you’re
+working
+with,
+in
+case
+you
+need
+to
+make
+some
+changes
+to
+the
+system
+or
+                                                                                
+                                                                                
+                                                                              
+to
+install
+software.
+If
+you
+find
+yourself
+in
+an
+environment
+that
+you
+don’t
+know
+about,
+it’s
+pretty
+easy
+to
+figure
+out
+what
+distribution
+you’re
+using.
+This
+information
+is
+kept
+in
+files
+inside
+the
+/etc
+folder.
+What
+it’s
+called
+specifically
+varies
+by
+distro,
+but
+we
+can
+use
+a
+wildcard
+to
+target
+the
+names
+of
+these
+files
+and
+see
+what’s
+inside
+them.
+First,
+let’s
+take
+a
+look
+at
+what
+                                                                                
+                                                                                
+                                                                            
+these
+files
+are.
+     </p>
+     <p class="noindent">
+      Let’s
+write
+the
+following
+     </p>
+     <p class="noindent">
+     </p>
+     <div class="code-block">
+      <div class="code-lang">
+       bash
+      </div>
+      <pre><div class="language-bash" id="fancyvrb69" style="padding:20px;border-radius: 3px;"><a id="x8-140002r611"></a>ls<span id="textcolor1612"> </span>-lah<span id="textcolor1613"> </span>/etc/*release</div></pre>
+     </div>
+     <div class="tcolorbox tcolorbox" id="tcolobox-42">
+      <div class="tcolorbox-content">
+       <div class="code-block">
+        <div class="code-lang">
+         text
+        </div>
+        <pre><div class="language-text" id="fancyvrb70" style="padding:20px;border-radius: 3px;"><a id="x8-140004r1"></a>-rw-r--r-- 1 root root 104 Feb  5 16:08 /etc/lsb-release 
+<a id="x8-140006r2"></a>lrwxrwxrwx 1 root root  21 Feb  5 16:08 /etc/os-release -&gt; ../usr/lib/os-release</div></pre>
+       </div>
+      </div>
+     </div>
+     <p class="noindent">
+      In
+my
+case,
+I
+have
+two
+<alert style="color: #821131;">(2)</alert>
+ files
+here,
+lsb-release
+and
+os-release,
+which
+is
+a
+link
+to
+another
+file
+in
+/usr/lib.
+     </p>
+     <p class="noindent">
+      Let’s
+see
+what
+information’s
+in
+there.
+     </p>
+     <p class="noindent">
+      To
+do
+that,
+we’ll
+type
+cat
+/etc/*release.
+     </p>
+     <p class="noindent">
+     </p>
+     <div class="code-block">
+      <div class="code-lang">
+       bash
+      </div>
+      <pre><div class="language-bash" id="fancyvrb71" style="padding:20px;border-radius: 3px;"><a id="x8-140008r622"></a>cat<span id="textcolor1614"> </span>/etc/*release</div></pre>
+     </div>
+     <div class="tcolorbox tcolorbox" id="tcolobox-43">
+      <div class="tcolorbox-content">
+       <div class="code-block">
+        <div class="code-lang">
+         text
+        </div>
+        <pre><div class="language-text" id="fancyvrb72" style="padding:20px;border-radius: 3px;"><a id="x8-140010r1"></a>DISTRIB_ID=Ubuntu 
+<a id="x8-140012r2"></a>DISTRIB_RELEASE=24.04 
+<a id="x8-140014r3"></a>DISTRIB_CODENAME=noble 
+<a id="x8-140016r4"></a>DISTRIB_DESCRIPTION="Ubuntu 24.04.2 LTS" 
+<a id="x8-140018r5"></a>PRETTY_NAME="Ubuntu 24.04.2 LTS" 
+<a id="x8-140020r6"></a>NAME="Ubuntu" 
+<a id="x8-140022r7"></a>VERSION_ID="24.04" 
+<a id="x8-140024r8"></a>VERSION="24.04.2 LTS (Noble Numbat)" 
+<a id="x8-140026r9"></a>VERSION_CODENAME=noble 
+<a id="x8-140028r10"></a>ID=ubuntu 
+<a id="x8-140030r11"></a>ID_LIKE=debian 
+<a id="x8-140032r12"></a>HOME_URL="https://www.ubuntu.com/" 
+<a id="x8-140034r13"></a>SUPPORT_URL="https://help.ubuntu.com/" 
+<a id="x8-140036r14"></a>BUG_REPORT_URL="https://bugs.launchpad.net/ubuntu/" 
+<a id="x8-140038r15"></a>PRIVACY_POLICY_URL="https://www.ubuntu.com/legal/terms-and-policies/privacy-policy" 
+<a id="x8-140040r16"></a>UBUNTU_CODENAME=noble 
+<a id="x8-140042r17"></a>LOGO=ubuntu-logo</div></pre>
+       </div>
+      </div>
+     </div>
+     <p class="noindent">
+      Which
+lists
+the
+                                                                                
+                                                                                
+                                                                          
+contents
+of
+all
+of
+the
+files
+in
+the
+/etc
+folder
+that
+end
+with
+the
+word
+release.
+     </p>
+     <div class="warning">
+      <p class="noindent">
+       On
+different
+distributions,
+there’ll
+be
+different
+numbers
+and
+names
+of
+files
+that
+match
+this
+wildcard,
+but
+they’ll
+contain
+the
+information
+we
+need.
+      </p>
+     </div>
+     <p class="noindent">
+      Here
+I
+can
+see
+that
+I’m
+using
+Ubuntu,
+version
+20.04
+LTS
+(Long
+Term
+Service),
+Focal
+Fossa.
+     </p>
+     <p class="noindent">
+      On
+other
+systems,
+we’d
+see
+slightly
+different
+information
+here.
+     </p>
+     <p class="noindent">
+      Another
+important
+piece
+of
+information
+to
+know
+about
+a
+system
+is
+what
+version
+of
+the
+kernel
+you’re
+using.
+     </p>
+     <p class="noindent">
+      You
+can
+find
+that
+information
+with
+the
+uname
+command,
+Using
+the
+dash
+a
+(-a)
+option
+to
+show
+all
+the
+information.
+     </p>
+     <p class="noindent">
+     </p>
+     <div class="code-block">
+      <div class="code-lang">
+       bash
+      </div>
+      <pre><div class="language-bash" id="fancyvrb73" style="padding:20px;border-radius: 3px;"><a id="x8-140044r648"></a>uname<span id="textcolor1615"> </span>-a</div></pre>
+     </div>
+     <div class="tcolorbox tcolorbox" id="tcolobox-44">
+      <div class="tcolorbox-content">
+       <div class="code-block">
+        <div class="code-lang">
+         text
+        </div>
+        <pre><div class="language-text" id="fancyvrb74" style="padding:20px;border-radius: 3px;"><a id="x8-140046r1"></a>Linux 807fe6353460 6.10.14-linuxkit #1 SMP Fri Nov 29 17:22:03 UTC 2024 aarch64 aarch64 aarch64 GNU/Linux</div></pre>
+       </div>
+      </div>
+     </div>
+     <p class="noindent">
+      This
+shows
+the
+type
+of
+system,
+the
+host
+name,
+the
+version
+of
+the
+kernel,
+when
+it
+was
+built,
+                                                                                
+                                                                                
+                                                                              
+the
+architecture
+of
+the
+system
+and
+so
+on.
+     </p>
+     <p class="noindent">
+      This
+kind
+of
+information
+can
+be
+helpful
+if
+you’re
+troubleshooting
+something.
+     </p>
+     <p class="noindent">
+      Again,
+if
+you’ve
+set
+up
+a
+system,
+chances
+are
+good
+you
+know
+what
+kind
+of
+software
+it’s
+running.
+     </p>
+     <p class="noindent">
+      But
+if
+for
+some
+reason
+you
+don’t,
+now
+we’ve
+seen
+how
+to
+figure
+it
+out.
+     </p>
+     <h3 class="subsectionHead">
+      <a aria-label="Link to this section in PDF version" class="pdf-link" href="MobileRoboticsLectureBook.pdf#subsection.6.10.2" style="color: red;  position: absolute;  left: -30px;" target="_blank">
+       <svg class="bi bi-file-pdf" fill="currentColor" height="20" viewbox="0 0 16 16" width="20" xmlns="http://www.w3.org/2000/svg">
+        <path d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z">
+        </path>
+        <path d="M4.603 12.087a.81.81 0 0 1-.438-.42c-.195-.388-.13-.776.08-1.102.198-.307.526-.568.897-.787a7.68 7.68 0 0 1 1.482-.645 19.701 19.701 0 0 0 1.062-2.227 7.269 7.269 0 0 1-.43-1.295c-.086-.4-.119-.796-.046-1.136.075-.354.274-.672.65-.823.192-.077.4-.12.602-.077a.7.7 0 0 1 .477.365c.088.164.12.356.127.538.007.187-.012.395-.047.614-.084.51-.27 1.134-.52 1.794a10.954 10.954 0 0 0 .98 1.686 5.753 5.753 0 0 1 1.334.05c.364.065.734.195.96.465.12.144.193.32.2.518.007.192-.047.382-.138.563a1.04 1.04 0 0 1-.354.416.856.856 0 0 1-.51.138c-.331-.014-.654-.196-.933-.417a5.716 5.716 0 0 1-.911-.95 11.642 11.642 0 0 0-1.997.406 11.311 11.311 0 0 1-1.021 1.51c-.29.35-.608.655-.926.787a.793.793 0 0 1-.58.029zm1.379-1.901c-.166.076-.32.156-.459.238-.328.194-.541.383-.647.547-.094.145-.096.25-.04.361.01.022.02.036.026.044a.27.27 0 0 0 .035-.012c.137-.056.355-.235.635-.572a8.18 8.18 0 0 0 .45-.606zm1.64-1.33a12.647 12.647 0 0 1 1.01-.193 11.666 11.666 0 0 1-.51-.858 20.741 20.741 0 0 1-.5 1.05zm2.446.45c.15.162.296.3.435.41.24.19.407.253.498.256a.107.107 0 0 0 .07-.015.307.307 0 0 0 .094-.125.436.436 0 0 0 .059-.2.095.095 0 0 0-.026-.063c-.052-.062-.2-.152-.518-.209a3.881 3.881 0 0 0-.612-.053zM8.078 5.8a6.7 6.7 0 0 0 .2-.828c.031-.188.043-.343.038-.465a.613.613 0 0 0-.032-.198.517.517 0 0 0-.145.04c-.087.035-.158.106-.196.283-.04.192-.03.469.046.822.024.111.054.227.09.346z">
+        </path>
+       </svg>
+      </a>
+      <small class="titlemark">
+       6.10.2
+      </small>
+      <a id="x8-1410006.10.2">
+      </a>
+      Find
+System
+Hardware
+and
+Disk
+Information
+     </h3>
+     <p class="noindent">
+      It
+is
+important
+                                                                                
+                                                                                
+                                                                              
+to
+finding
+out
+some
+information
+about
+the
+system
+you’re
+working
+with.
+If
+you’re
+using
+a
+physical
+computer,
+or
+a
+virtual
+machine
+you
+set
+up
+for
+yourself,
+you
+have
+some
+knowledge
+about
+the
+hardware
+it
+has,
+like
+how
+much
+RAM
+(Random
+Access
+Memory)
+it
+has,
+what
+kind
+of
+CPU
+(Central
+Processing
+Unit)
+it
+has,
+and
+how
+much
+hard
+drive
+space
+there
+is.
+But
+if
+you’re
+working
+on
+a
+                                                                                
+                                                                                
+                                                                           
+remote
+system
+or
+you
+are
+an
+administrator
+of
+a
+machine
+you
+have
+yet
+to
+have
+working
+knowledge
+of,
+it
+can
+be
+helpful
+to
+get
+a
+sense
+of
+what
+your
+resources
+are
+and
+what
+hardware
+system
+has.
+     </p>
+     <p class="noindent">
+      First,
+let’s
+find
+out
+how
+much
+RAM
+this
+machine
+has.
+To
+do
+this,
+use
+the <span id="textcolor1616"><code class="verb">free</code></span>
+      command
+with
+the <span id="textcolor1617"><code class="verb">-h</code></span>
+      option,
+which
+gives
+us
+values
+in
+human
+readable
+numbers.
+     </p>
+     <p class="noindent">
+     </p>
+     <div class="code-block">
+      <div class="code-lang">
+       bash
+      </div>
+      <pre><div class="language-bash" id="fancyvrb75" style="padding:20px;border-radius: 3px;"><a id="x8-141002r661"></a>free<span id="textcolor1618"> </span>-h</div></pre>
+     </div>
+     <div class="tcolorbox tcolorbox" id="tcolobox-45">
+      <div class="tcolorbox-content">
+       <div class="code-block">
+        <div class="code-lang">
+         text
+        </div>
+        <pre><div class="language-text" id="fancyvrb76" style="padding:20px;border-radius: 3px;"><a id="x8-141004r1"></a>            total        used        free      shared  buff/cache   available 
+<a id="x8-141006r2"></a>Mem:           7.7Gi       479Mi       7.1Gi       1.5Mi       294Mi       7.2Gi 
+<a id="x8-141008r3"></a>Swap:          1.0Gi          0B       1.0Gi</div></pre>
+       </div>
+      </div>
+     </div>
+     <p class="noindent">
+      Here,
+under
+total
+memory,
+we
+can
+see
+that
+this
+machine
+has
+two
+gigabytes
+of
+memory.
+Next,
+let’s
+take
+a
+look
+at
+what
+our
+processor
+resources
+are.
+There
+is
+a
+file
+in
+the
+/proc
+directory
+called
+cpuinfo,
+so
+let’s
+take
+a
+look
+at
+that.
+To
+access
+this
+information
+write <span id="textcolor1619"><code class="verb">cat /proc/cpuinfo</code></span>.
+     </p>
+     <p class="noindent">
+     </p>
+     <div class="code-block">
+      <div class="code-lang">
+       bash
+      </div>
+      <pre><div class="language-bash" id="fancyvrb77" style="padding:20px;border-radius: 3px;"><a id="x8-141010r673"></a>cat<span id="textcolor1620"> </span>/proc/cpuinfo<span id="textcolor1621"> </span>|<span id="textcolor1622"> </span>head<span id="textcolor1623"> </span>-8</div></pre>
+     </div>
+     <div class="tcolorbox tcolorbox" id="tcolobox-46">
+      <div class="tcolorbox-content">
+       <div class="code-block">
+        <div class="code-lang">
+         text
+        </div>
+        <pre><div class="language-text" id="fancyvrb78" style="padding:20px;border-radius: 3px;"><a id="x8-141012r1"></a>processor    : 0 
+<a id="x8-141014r2"></a>BogoMIPS    : 48.00 
+<a id="x8-141016r3"></a>Features    : fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma lrcpc dcpop sha3 asimddp sha512 asimdfhm dit uscat ilrcpc flagm ssbs sb paca pacg dcpodp flagm2 frint 
+<a id="x8-141018r4"></a>CPU implementer    : 0x61 
+<a id="x8-141020r5"></a>CPU architecture: 8 
+<a id="x8-141022r6"></a>CPU variant    : 0x0 
+<a id="x8-141024r7"></a>CPU part    : 0x000 
+<a id="x8-141026r8"></a>CPU revision    : 0</div></pre>
+       </div>
+      </div>
+     </div>
+     <p class="noindent">
+      There
+is
+a
+lot
+of
+information
+here.
+Scroll
+up
+a
+little
+bit
+and
+I
+can
+see
+that
+I’m
+using
+an
+Intel
+Xeon
+processor
+at
+3.5
+gigahertz
+(GHz).
+And
+under
+CPU
+cores,
+I
+can
+see
+that
+this
+machine
+has
+four
+(4)
+CPU
+core.
+I
+can
+also
+find
+out
+how
+much
+space
+is
+taken
+up
+and
+how
+much
+is
+available
+on
+the
+system’s
+hard
+drive.
+For
+                                                                                
+                                                                                
+                                                                            
+that,
+use
+the
+df
+command
+with
+the
+-h
+option,
+again,
+to
+show
+human
+readable
+sizes.
+     </p>
+     <p class="noindent">
+     </p>
+     <div class="code-block">
+      <div class="code-lang">
+       bash
+      </div>
+      <pre><div class="language-bash" id="fancyvrb79" style="padding:20px;border-radius: 3px;"><a id="x8-141028r690"></a>df<span id="textcolor1624"> </span>-h</div></pre>
+     </div>
+     <div class="tcolorbox tcolorbox" id="tcolobox-47">
+      <div class="tcolorbox-content">
+       <div class="code-block">
+        <div class="code-lang">
+         text
+        </div>
+        <pre><div class="language-text" id="fancyvrb80" style="padding:20px;border-radius: 3px;"><a id="x8-141030r1"></a>Filesystem            Size  Used Avail Use% Mounted on 
+<a id="x8-141032r2"></a>overlay                59G   32G   24G  58% / 
+<a id="x8-141034r3"></a>tmpfs                  64M     0   64M   0% /dev 
+<a id="x8-141036r4"></a>shm                   512M     0  512M   0% /dev/shm 
+<a id="x8-141038r5"></a>/dev/vda1              59G   32G   24G  58% /etc/hosts 
+<a id="x8-141040r6"></a>/run/host_mark/Users  461G  338G  124G  74% /home/ubuntu/Desktop/Host 
+<a id="x8-141042r7"></a>tmpfs                 3.9G     0  3.9G   0% /proc/scsi 
+<a id="x8-141044r8"></a>tmpfs                 3.9G     0  3.9G   0% /sys/firmware</div></pre>
+       </div>
+      </div>
+     </div>
+     <p class="noindent">
+      This shows space across a few different volumes, but the most interesting one to me is slash (/) or root, since that’s where my
+user data is, and it’s where you are likely to be taking up space if I installed software. The rest of these are managed by the
+system, so you don’t need to worry about those. You can also use the du command to see how much space files and folders take
+up on your system. Let’s have a look at how much space is taken up across my whole system. I’ll write sudo du / -hd1 I have to
+use sudo, because my user can’t see into all of the folders at the root of the drive. Then there is the du command for disk
+usage, and then slash (/), which is the level I want to start from, right at the root. The dash h (-h) option gives
+me sizes in human readable formats, kilobytes, megabytes, gigabytes, and so on, and the d option shows the du
+command what level of detail to show. In this case, I’m giving it the argument of one (1), meaning just show me one
+level d, the first level away from the root, adding everything up within each of those folders. Let’s take a look
+     </p>
+    </div>
+   </article>
+   <footer>
+    <div class="next">
+     <p class="noindent">
+      <a href="MobileRoboticsLectureBookch7.html" style="float: right;">
+       Next Chapter →
+      </a>
+      <a href="MobileRoboticsLectureBookch5.html" style="float: left;">
+       ← Previous Chapter
+      </a>
+     </p>
+    </div>
+   </footer>
+  </div>
+  <p class="noindent">
+   Robot Operating System
+  </p>
+  <div class="page">
+   <article class="chapter">
+    <p class="noindent">
+     <a id="tailMobileRoboticsLectureBookch6.html">
+     </a>
+    </p>
+   </article>
+  </div>
+  <div class="lowernav">
+   <a href="#home">
+    Main TOC
+   </a>
+   <a href="#news">
+    Glossary
+   </a>
+   <a href="#contact">
+    Bibliography
+   </a>
+   <a href="#about">
+    Home
+   </a>
+  </div>
+ </body>
+</html>

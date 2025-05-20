@@ -1,0 +1,1233 @@
+<!DOCTYPE html>
+<html lang="en-US" xml:lang="en-US">
+ <head>
+  <title>
+   7 Installation
+  </title>
+  <meta charset="utf-8"/>
+  <meta content="TeX4ht (https://tug.org/tex4ht/)" name="generator"/>
+  <meta content="width=device-width,initial-scale=1" name="viewport"/>
+  <link href="MobileRoboticsLectureBook.css" rel="stylesheet" type="text/css"/>
+  <meta content="MobileRoboticsLectureBook.tex" name="src"/>
+  <script async="async" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/mml-chtml.js" type="text/javascript">
+  </script>
+  <link href="flatweb.css" rel="stylesheet" type="text/css"/>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js">
+  </script>
+  <script src="flatjs.js">
+  </script>
+  <link href="https://unpkg.com/@highlightjs/cdn-assets@11.3.1/styles/atom-one-dark.min.css" rel="stylesheet"/>
+  <script src="https://unpkg.com/@highlightjs/cdn-assets@11.3.1/highlight.min.js">
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/dockerfile.min.js">
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/cpp.min.js">
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/makefile.min.js">
+  </script>
+  <script src="https://unpkg.com/highlightjs-copy/dist/highlightjs-copy.min.js">
+  </script>
+  <link href="https://unpkg.com/highlightjs-copy/dist/highlightjs-copy.min.css" rel="stylesheet"/>
+  <script src="flatjs.js">
+  </script>
+  <header>
+  </header>
+ </head>
+ <body id="top">
+  <nav class="wide">
+   <div class="contents">
+    <h3 style="font-weight:lighter; padding: 20px 0 20px 0;">
+     7
+   
+     
+   
+
+   Installation
+    </h3>
+    <h4 style="font-weight:lighter">
+     Chapter Table of Contents
+    </h4>
+    <ul>
+     <div class="chapterTOCS">
+      <li>
+       <span class="sectionToc">
+        <small>
+         7.1
+        </small>
+        <a href="#x9-1430007.1">
+         ROS 2 Humble Hawksbill
+        </a>
+       </span>
+      </li>
+      <li>
+       <span class="subsectionToc" style="font-size:12px;margin:0px;">
+        <small>
+         7.1.1
+        </small>
+        <a href="#x9-1440007.1.1">
+         Introduction
+        </a>
+       </span>
+      </li>
+      <li>
+       <span class="subsectionToc" style="font-size:12px;margin:0px;">
+        <small>
+         7.1.2
+        </small>
+        <a href="#x9-1450007.1.2">
+         Setting up the Local
+        </a>
+       </span>
+      </li>
+      <li>
+       <span class="subsectionToc" style="font-size:12px;margin:0px;">
+        <small>
+         7.1.3
+        </small>
+        <a href="#x9-1460007.1.3">
+         Setting Up the Source Files
+        </a>
+       </span>
+      </li>
+      <li>
+       <span class="subsectionToc" style="font-size:12px;margin:0px;">
+        <small>
+         7.1.4
+        </small>
+        <a href="#x9-1470007.1.4">
+         Install ROS 2 Packages
+        </a>
+       </span>
+      </li>
+      <li>
+       <span class="subsectionToc" style="font-size:12px;margin:0px;">
+        <small>
+         7.1.5
+        </small>
+        <a href="#x9-1480007.1.5">
+         Setting Up the Environment
+        </a>
+       </span>
+      </li>
+      <li>
+       <span class="sectionToc">
+        <small>
+         7.2
+        </small>
+        <a href="#x9-1490007.2">
+         Auto-Install Script
+        </a>
+       </span>
+      </li>
+     </div>
+    </ul>
+    <div class="prev-next" style="text-align: center">
+     <p class="noindent">
+      <a href="MobileRoboticsLectureBookch8.html" style="float:right; font-size:10px">
+       NEXT CHAPTER →
+      </a>
+      <a href="MobileRoboticsLectureBookch6.html" style="float:left; font-size:10px">
+       ← PREV CHAPTER
+      </a>
+     </p>
+    </div>
+    <div id="author-info" style="bottom: 0; padding-bottom: 10px;">
+     <div id="author-logo">
+      <img src="figures/logo.svg" style="margin: 10px 0;"/>
+      <div>
+       <div>
+        <h4 style="color:#7aa0b8; font-weight:lighter;">
+         WebBook | D. T. McGuiness, P.hD
+        </h4>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </nav>
+  <div class="page">
+   <article class="chapter">
+    <h1 class="chapterHead">
+     <div class="number">
+      7
+     </div>
+     <a id="x9-1420007">
+     </a>
+     Installation
+    </h1>
+    <div class="section-control" style="text-align: center">
+     <a id="prev-section" onclick="goPrev()" style="float:left;">
+      ← Previous Section
+     </a>
+     <a id="next-section" onclick="goNext()" style="float:right;">
+      Next Section →
+     </a>
+    </div>
+    <div class="section-head" id="section-1" sec="section-1">
+     <h2 class="sectionHead">
+      <a aria-label="Link to this section in PDF version" class="pdf-link" href="MobileRoboticsLectureBook.pdf#section.7.1" style="color: red;  position: absolute;  left: -30px;" target="_blank">
+       <svg class="bi bi-file-pdf" fill="currentColor" height="20" viewbox="0 0 16 16" width="20" xmlns="http://www.w3.org/2000/svg">
+        <path d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z">
+        </path>
+        <path d="M4.603 12.087a.81.81 0 0 1-.438-.42c-.195-.388-.13-.776.08-1.102.198-.307.526-.568.897-.787a7.68 7.68 0 0 1 1.482-.645 19.701 19.701 0 0 0 1.062-2.227 7.269 7.269 0 0 1-.43-1.295c-.086-.4-.119-.796-.046-1.136.075-.354.274-.672.65-.823.192-.077.4-.12.602-.077a.7.7 0 0 1 .477.365c.088.164.12.356.127.538.007.187-.012.395-.047.614-.084.51-.27 1.134-.52 1.794a10.954 10.954 0 0 0 .98 1.686 5.753 5.753 0 0 1 1.334.05c.364.065.734.195.96.465.12.144.193.32.2.518.007.192-.047.382-.138.563a1.04 1.04 0 0 1-.354.416.856.856 0 0 1-.51.138c-.331-.014-.654-.196-.933-.417a5.716 5.716 0 0 1-.911-.95 11.642 11.642 0 0 0-1.997.406 11.311 11.311 0 0 1-1.021 1.51c-.29.35-.608.655-.926.787a.793.793 0 0 1-.58.029zm1.379-1.901c-.166.076-.32.156-.459.238-.328.194-.541.383-.647.547-.094.145-.096.25-.04.361.01.022.02.036.026.044a.27.27 0 0 0 .035-.012c.137-.056.355-.235.635-.572a8.18 8.18 0 0 0 .45-.606zm1.64-1.33a12.647 12.647 0 0 1 1.01-.193 11.666 11.666 0 0 1-.51-.858 20.741 20.741 0 0 1-.5 1.05zm2.446.45c.15.162.296.3.435.41.24.19.407.253.498.256a.107.107 0 0 0 .07-.015.307.307 0 0 0 .094-.125.436.436 0 0 0 .059-.2.095.095 0 0 0-.026-.063c-.052-.062-.2-.152-.518-.209a3.881 3.881 0 0 0-.612-.053zM8.078 5.8a6.7 6.7 0 0 0 .2-.828c.031-.188.043-.343.038-.465a.613.613 0 0 0-.032-.198.517.517 0 0 0-.145.04c-.087.035-.158.106-.196.283-.04.192-.03.469.046.822.024.111.054.227.09.346z">
+        </path>
+       </svg>
+      </a>
+      <small class="titlemark">
+       7.1
+      </small>
+      <a id="x9-1430007.1">
+      </a>
+      ROS 2 Humble Hawksbill
+     </h2>
+     <h3 class="subsectionHead">
+      <a aria-label="Link to this section in PDF version" class="pdf-link" href="MobileRoboticsLectureBook.pdf#subsection.7.1.1" style="color: red;  position: absolute;  left: -30px;" target="_blank">
+       <svg class="bi bi-file-pdf" fill="currentColor" height="20" viewbox="0 0 16 16" width="20" xmlns="http://www.w3.org/2000/svg">
+        <path d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z">
+        </path>
+        <path d="M4.603 12.087a.81.81 0 0 1-.438-.42c-.195-.388-.13-.776.08-1.102.198-.307.526-.568.897-.787a7.68 7.68 0 0 1 1.482-.645 19.701 19.701 0 0 0 1.062-2.227 7.269 7.269 0 0 1-.43-1.295c-.086-.4-.119-.796-.046-1.136.075-.354.274-.672.65-.823.192-.077.4-.12.602-.077a.7.7 0 0 1 .477.365c.088.164.12.356.127.538.007.187-.012.395-.047.614-.084.51-.27 1.134-.52 1.794a10.954 10.954 0 0 0 .98 1.686 5.753 5.753 0 0 1 1.334.05c.364.065.734.195.96.465.12.144.193.32.2.518.007.192-.047.382-.138.563a1.04 1.04 0 0 1-.354.416.856.856 0 0 1-.51.138c-.331-.014-.654-.196-.933-.417a5.716 5.716 0 0 1-.911-.95 11.642 11.642 0 0 0-1.997.406 11.311 11.311 0 0 1-1.021 1.51c-.29.35-.608.655-.926.787a.793.793 0 0 1-.58.029zm1.379-1.901c-.166.076-.32.156-.459.238-.328.194-.541.383-.647.547-.094.145-.096.25-.04.361.01.022.02.036.026.044a.27.27 0 0 0 .035-.012c.137-.056.355-.235.635-.572a8.18 8.18 0 0 0 .45-.606zm1.64-1.33a12.647 12.647 0 0 1 1.01-.193 11.666 11.666 0 0 1-.51-.858 20.741 20.741 0 0 1-.5 1.05zm2.446.45c.15.162.296.3.435.41.24.19.407.253.498.256a.107.107 0 0 0 .07-.015.307.307 0 0 0 .094-.125.436.436 0 0 0 .059-.2.095.095 0 0 0-.026-.063c-.052-.062-.2-.152-.518-.209a3.881 3.881 0 0 0-.612-.053zM8.078 5.8a6.7 6.7 0 0 0 .2-.828c.031-.188.043-.343.038-.465a.613.613 0 0 0-.032-.198.517.517 0 0 0-.145.04c-.087.035-.158.106-.196.283-.04.192-.03.469.046.822.024.111.054.227.09.346z">
+        </path>
+       </svg>
+      </a>
+      <small class="titlemark">
+       7.1.1
+      </small>
+      <a id="x9-1440007.1.1">
+      </a>
+      Introduction
+     </h3>
+     <div class="warning">
+      <p class="noindent">
+       This section is written and edited for students who wish to install
+       <a class="glossary" href="MobileRoboticsLectureBookli2.html#glo:ros">
+        ROS
+       </a>
+       on their own computers which
+has Linux
+       <alert style="color: #821131;">
+        <span id="bold" style="font-weight:bold;">
+         <sup class="textsuperscript">
+          1
+         </sup>
+        </span>
+       </alert>
+       <span class="marginnote">
+        <alert style="color: #821131;">
+         <span id="bold" style="font-weight:bold;">
+          <sup class="textsuperscript">
+           1
+          </sup>
+         </span>
+        </alert>
+        <span id="textcolor1625">
+         Of course, it is assumed the student has Ubuntu 22.04 installed. If any other system is installed such as Arch, or
+NixOs, then I would like to use the following text printed out when a user uninstalls their boot-loader from their computer:
+“Bailing out, you are on your own. Good Luck.”
+        </span>
+       </span>
+       on it. For student who will use Docker containers, you can skip this chapter.
+      </p>
+     </div>
+     <p class="noindent">
+      Before we tackle the wonderful world of robot programming, we must first install all the
+essential tools we need to make sure it works. Below are the instructions on how to do
+it.
+     </p>
+     <div class="warning">
+      <p class="noindent">
+       Please read the instructions first and then apply the commands as required by the instructions. This is
+not just a one-time warning and should be carefully noted as Linux while powerful can be
+unforgiving if one does
+       <span id="bold" style="font-weight:bold;">
+        NOT
+       </span>
+       take good care and attention to what they type to the terminal.
+      </p>
+     </div>
+     <h3 class="subsectionHead">
+      <a aria-label="Link to this section in PDF version" class="pdf-link" href="MobileRoboticsLectureBook.pdf#subsection.7.1.2" style="color: red;  position: absolute;  left: -30px;" target="_blank">
+       <svg class="bi bi-file-pdf" fill="currentColor" height="20" viewbox="0 0 16 16" width="20" xmlns="http://www.w3.org/2000/svg">
+        <path d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z">
+        </path>
+        <path d="M4.603 12.087a.81.81 0 0 1-.438-.42c-.195-.388-.13-.776.08-1.102.198-.307.526-.568.897-.787a7.68 7.68 0 0 1 1.482-.645 19.701 19.701 0 0 0 1.062-2.227 7.269 7.269 0 0 1-.43-1.295c-.086-.4-.119-.796-.046-1.136.075-.354.274-.672.65-.823.192-.077.4-.12.602-.077a.7.7 0 0 1 .477.365c.088.164.12.356.127.538.007.187-.012.395-.047.614-.084.51-.27 1.134-.52 1.794a10.954 10.954 0 0 0 .98 1.686 5.753 5.753 0 0 1 1.334.05c.364.065.734.195.96.465.12.144.193.32.2.518.007.192-.047.382-.138.563a1.04 1.04 0 0 1-.354.416.856.856 0 0 1-.51.138c-.331-.014-.654-.196-.933-.417a5.716 5.716 0 0 1-.911-.95 11.642 11.642 0 0 0-1.997.406 11.311 11.311 0 0 1-1.021 1.51c-.29.35-.608.655-.926.787a.793.793 0 0 1-.58.029zm1.379-1.901c-.166.076-.32.156-.459.238-.328.194-.541.383-.647.547-.094.145-.096.25-.04.361.01.022.02.036.026.044a.27.27 0 0 0 .035-.012c.137-.056.355-.235.635-.572a8.18 8.18 0 0 0 .45-.606zm1.64-1.33a12.647 12.647 0 0 1 1.01-.193 11.666 11.666 0 0 1-.51-.858 20.741 20.741 0 0 1-.5 1.05zm2.446.45c.15.162.296.3.435.41.24.19.407.253.498.256a.107.107 0 0 0 .07-.015.307.307 0 0 0 .094-.125.436.436 0 0 0 .059-.2.095.095 0 0 0-.026-.063c-.052-.062-.2-.152-.518-.209a3.881 3.881 0 0 0-.612-.053zM8.078 5.8a6.7 6.7 0 0 0 .2-.828c.031-.188.043-.343.038-.465a.613.613 0 0 0-.032-.198.517.517 0 0 0-.145.04c-.087.035-.158.106-.196.283-.04.192-.03.469.046.822.024.111.054.227.09.346z">
+        </path>
+       </svg>
+      </a>
+      <small class="titlemark">
+       7.1.2
+      </small>
+      <a id="x9-1450007.1.2">
+      </a>
+      Setting up the Local
+     </h3>
+     <p class="noindent">
+      Make
+sure
+you
+have
+a
+                                                                                
+                                                                                
+                                                                           
+locale
+which
+supports
+UTF-8.
+      <alert style="color: #821131;">
+       <span id="bold" style="font-weight:bold;">
+        <sup class="textsuperscript">
+         2
+        </sup>
+       </span>
+      </alert>
+      <span class="marginnote">
+       <alert style="color: #821131;">
+        <span id="bold" style="font-weight:bold;">
+         <sup class="textsuperscript">
+          2
+         </sup>
+        </span>
+       </alert>
+       <span id="textcolor1626">
+        A
+character
+encoding
+standard
+used
+for
+electronic
+communication.
+Defined
+by
+the
+        <a href="https://www.unicode.org/standard/standard.html">
+         Unicode
+Standard
+        </a>,
+the
+name
+is
+derived
+from
+Unicode
+Transformation
+Format
+-
+8-bit.
+Almost
+every
+web
+page
+is
+stored
+in
+UTF-8.
+       </span>
+      </span>
+      If
+you
+are
+in
+a
+minimal
+environment
+(such
+as
+a
+docker
+container),
+the
+locale
+may
+be
+something
+minimal
+like
+      <a class="glossary" href="MobileRoboticsLectureBookli2.html#glo:posix">
+       Portable
+Operating
+System
+Interface
+(POSIX)
+      </a>.
+We
+test
+with
+the
+following
+settings.
+However,
+                                                                                
+                                                                                
+                                                                               
+it
+should
+be
+fine
+if
+you’re
+using
+a
+different
+UTF-8
+supported
+locale.
+     </p>
+     <p class="noindent">
+      To
+start
+with
+installation,
+if
+you
+are
+using
+a
+      <a class="glossary" href="MobileRoboticsLectureBookli2.html#glo:gui">
+       GUI
+      </a>
+      open
+up
+your
+terminal
+(
+      <kbd>
+       Ctrl
+      </kbd>
+      +
+      <kbd>
+       Alt
+      </kbd>
+      +
+      <kbd>
+       T
+      </kbd>
+      ).
+     </p>
+     <p class="noindent">
+     </p>
+     <div class="code-block">
+      <div class="code-lang">
+       bash
+      </div>
+      <pre><div class="language-bash" id="fancyvrb81" style="padding:20px;border-radius: 3px;"><a id="x9-145002r59"></a>locale<span id="textcolor1627">  </span><span id="textcolor1628"><italic># check for UTF-8</italic></span> 
+<a id="x9-145004r60"></a> 
+<a id="x9-145006r61"></a>sudo<span id="textcolor1629"> </span>apt<span id="textcolor1630"> </span>update<span id="textcolor1631"> </span><span id="textcolor1632">&amp;&amp;</span><span id="textcolor1633"> </span>sudo<span id="textcolor1634"> </span>apt<span id="textcolor1635"> </span>install<span id="textcolor1636"> </span>locales 
+<a id="x9-145008r62"></a>sudo<span id="textcolor1637"> </span>locale-gen<span id="textcolor1638"> </span>en_US<span id="textcolor1639"> </span>en_US.UTF-8 
+<a id="x9-145010r63"></a>sudo<span id="textcolor1640"> </span>update-locale<span id="textcolor1641"> </span><span id="textcolor1642">LC_ALL</span><span id="textcolor1643">=</span>en_US.UTF-8<span id="textcolor1644"> </span><span id="textcolor1645">LANG</span><span id="textcolor1646">=</span>en_US.UTF-8 
+<a id="x9-145012r64"></a><span id="textcolor1647">export</span><span id="textcolor1648"> </span><span id="textcolor1649">LANG</span><span id="textcolor1650">=</span>en_US.UTF-8 
+<a id="x9-145014r65"></a> 
+<a id="x9-145016r66"></a>locale<span id="textcolor1651">  </span><span id="textcolor1652"><italic># verify settings</italic></span></div></pre>
+     </div>
+     <div class="informationblock" id="tcolobox-48">
+      <div class="title">
+       <p class="noindent">
+        <span id="bold" style="font-weight:bold;">
+         Information
+        </span>
+        :
+The
+POSIX
+                                                                                
+                                                                                
+Standard
+       </p>
+      </div>
+      <div class="box-content">
+       <p class="noindent">
+        <a class="glossary" href="MobileRoboticsLectureBookli2.html#glo:posix">
+         POSIX
+        </a>
+        is 
+a 
+set 
+of 
+standard
+        <a class="glossary" href="MobileRoboticsLectureBookli2.html#glo:os">
+         OS
+        </a>
+        interfaces 
+based 
+on 
+the 
+Unix 
+operating 
+system. 
+The 
+most 
+recent 
+POSIX 
+specifications 
+IEEE 
+Std 
+1003.1-2024 
+defines 
+a 
+standard 
+interface 
+and 
+environment 
+that 
+can 
+be 
+used 
+by 
+an
+        <a class="glossary" href="MobileRoboticsLectureBookli2.html#glo:os">
+         OS
+        </a>
+        to 
+provide 
+access 
+to
+        <a class="glossary" href="MobileRoboticsLectureBookli2.html#glo:posix">
+         POSIX
+        </a>
+        -compliant 
+applications. 
+The 
+standard 
+also 
+defines 
+a 
+command 
+interpreter
+        <alert style="color: #821131;">
+         <span id="bold" style="font-weight:bold;">
+          <sup class="textsuperscript">
+           3
+          </sup>
+         </span>
+        </alert>
+        <span class="marginnote">
+         <alert style="color: #821131;">
+          <span id="bold" style="font-weight:bold;">
+           <sup class="textsuperscript">
+            3
+           </sup>
+          </span>
+         </alert>
+         <span id="textcolor1653">
+          such 
+as 
+the 
+shell.
+         </span>
+        </span>
+        and 
+common 
+utility 
+programs.
+        <a class="glossary" href="MobileRoboticsLectureBookli2.html#glo:posix">
+         POSIX
+        </a>
+        supports 
+application 
+portability 
+at 
+the 
+source 
+code 
+level 
+so 
+applications 
+can 
+be 
+built 
+to 
+run 
+on 
+any
+        <a class="glossary" href="MobileRoboticsLectureBookli2.html#glo:posix">
+         POSIX
+        </a>
+        -compliant
+        <a class="glossary" href="MobileRoboticsLectureBookli2.html#glo:os">
+         OS
+        </a>.
+       </p>
+      </div>
+     </div>
+     <h3 class="subsectionHead">
+      <a aria-label="Link to this section in PDF version" class="pdf-link" href="MobileRoboticsLectureBook.pdf#subsection.7.1.3" style="color: red;  position: absolute;  left: -30px;" target="_blank">
+       <svg class="bi bi-file-pdf" fill="currentColor" height="20" viewbox="0 0 16 16" width="20" xmlns="http://www.w3.org/2000/svg">
+        <path d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z">
+        </path>
+        <path d="M4.603 12.087a.81.81 0 0 1-.438-.42c-.195-.388-.13-.776.08-1.102.198-.307.526-.568.897-.787a7.68 7.68 0 0 1 1.482-.645 19.701 19.701 0 0 0 1.062-2.227 7.269 7.269 0 0 1-.43-1.295c-.086-.4-.119-.796-.046-1.136.075-.354.274-.672.65-.823.192-.077.4-.12.602-.077a.7.7 0 0 1 .477.365c.088.164.12.356.127.538.007.187-.012.395-.047.614-.084.51-.27 1.134-.52 1.794a10.954 10.954 0 0 0 .98 1.686 5.753 5.753 0 0 1 1.334.05c.364.065.734.195.96.465.12.144.193.32.2.518.007.192-.047.382-.138.563a1.04 1.04 0 0 1-.354.416.856.856 0 0 1-.51.138c-.331-.014-.654-.196-.933-.417a5.716 5.716 0 0 1-.911-.95 11.642 11.642 0 0 0-1.997.406 11.311 11.311 0 0 1-1.021 1.51c-.29.35-.608.655-.926.787a.793.793 0 0 1-.58.029zm1.379-1.901c-.166.076-.32.156-.459.238-.328.194-.541.383-.647.547-.094.145-.096.25-.04.361.01.022.02.036.026.044a.27.27 0 0 0 .035-.012c.137-.056.355-.235.635-.572a8.18 8.18 0 0 0 .45-.606zm1.64-1.33a12.647 12.647 0 0 1 1.01-.193 11.666 11.666 0 0 1-.51-.858 20.741 20.741 0 0 1-.5 1.05zm2.446.45c.15.162.296.3.435.41.24.19.407.253.498.256a.107.107 0 0 0 .07-.015.307.307 0 0 0 .094-.125.436.436 0 0 0 .059-.2.095.095 0 0 0-.026-.063c-.052-.062-.2-.152-.518-.209a3.881 3.881 0 0 0-.612-.053zM8.078 5.8a6.7 6.7 0 0 0 .2-.828c.031-.188.043-.343.038-.465a.613.613 0 0 0-.032-.198.517.517 0 0 0-.145.04c-.087.035-.158.106-.196.283-.04.192-.03.469.046.822.024.111.054.227.09.346z">
+        </path>
+       </svg>
+      </a>
+      <small class="titlemark">
+       7.1.3
+      </small>
+      <a id="x9-1460007.1.3">
+      </a>
+      Setting
+Up
+the
+Source
+Files
+     </h3>
+     <p class="noindent">
+      Before
+we
+can
+begin
+working
+with
+      <a class="glossary" href="MobileRoboticsLectureBookli2.html#glo:ros">
+       ROS
+      </a>,
+we
+must
+install
+all
+the
+necessary
+files
+and
+dependencies
+required.
+For
+these
+lectures
+we
+will
+install
+      <a class="glossary" href="MobileRoboticsLectureBookli2.html#glo:ros">
+       ROS
+      </a>
+      <a href="https://docs.ros.org/en/foxy/Releases/Release-Humble-Hawksbill.html">
+       Humble
+Hawksbill
+      </a>
+      which
+is
+currently
+available
+for
+      <a href="https://releases.ubuntu.com/jammy/">
+       Ubuntu
+Jammy
+      </a>
+      (22.04
+LTS).
+     </p>
+     <p class="noindent">
+      While
+currently
+there
+are
+more
+up-to-date
+version
+of
+      <a class="glossary" href="MobileRoboticsLectureBookli2.html#glo:ros">
+       ROS
+      </a>
+      available
+such
+as
+Jammy,
+due
+to
+its
+long
+term
+support
+and
+established
+compatibility,
+                                                                                
+                                                                                
+                                                                              
+we
+will
+be
+using
+      <a class="glossary" href="MobileRoboticsLectureBookli2.html#glo:ros">
+       ROS
+      </a>
+      Humble.
+     </p>
+     <div class="warning">
+      <p class="noindent">
+       It
+is
+       <span id="bold" style="font-weight:bold;">
+        heavily
+       </span>
+       recommended
+to
+be
+on
+Ubuntu
+22.04
+LTS
+as
+       <a class="glossary" href="MobileRoboticsLectureBookli2.html#glo:ros">
+        ROS
+       </a>
+       Humble
+is
+only
+officially
+supported
+on
+this
+version.
+It
+is
+possible
+to
+compile
+       <a class="glossary" href="MobileRoboticsLectureBookli2.html#glo:ros">
+        ROS
+       </a>
+       on
+other
+Ubuntu
+or
+Linux
+distributions,
+however,
+you
+need
+to
+compile
+the
+binaries
+yourself.
+      </p>
+     </div>
+     <p class="noindent">
+      We
+will
+need
+to
+add
+the
+      <a class="glossary" href="MobileRoboticsLectureBookli2.html#glo:ros">
+       ROS
+      </a> <span id="textcolor1654"><code class="verb">apt</code></span>
+      repository
+to
+your
+system.
+     </p>
+     <div class="informationblock" id="tcolobox-49">
+      <div class="title">
+       <p class="noindent">
+        <span id="bold" style="font-weight:bold;">
+         Information
+        </span>
+        :
+The
+Advanced
+Package
+Manager
+       </p>
+      </div>
+      <div class="box-content">
+       <p class="noindent">
+        A free-software user interface that works with core libraries to handle the installation and removal of software
+on Debian and Debian-based Linux distributions. It is just another package manager.
+       </p>
+      </div>
+     </div>
+     <p class="noindent">
+      First
+ensure
+that
+the
+Ubuntu
+Universe
+      <alert style="color: #821131;">
+       <span id="bold" style="font-weight:bold;">
+        <sup class="textsuperscript">
+         4
+        </sup>
+       </span>
+      </alert>
+      <span class="marginnote">
+       <alert style="color: #821131;">
+        <span id="bold" style="font-weight:bold;">
+         <sup class="textsuperscript">
+          4
+         </sup>
+        </span>
+       </alert>
+       <span id="textcolor1655">
+        A
+snapshot
+of
+the
+free,
+open-source,
+and
+Linux
+world.
+It
+houses
+almost
+every
+piece
+of
+open-source
+software,
+all
+built
+from
+a
+range
+of
+public
+sources
+       </span>
+      </span>
+      repository
+is
+enabled.
+     </p>
+     <p class="noindent">
+     </p>
+     <div class="code-block">
+      <div class="code-lang">
+       bash
+      </div>
+      <pre><div class="language-bash" id="fancyvrb82" style="padding:20px;border-radius: 3px;"><a id="x9-146002r76"></a>sudo<span id="textcolor1656"> </span>apt<span id="textcolor1657"> </span>install<span id="textcolor1658"> </span>software-properties-common 
+<a id="x9-146004r77"></a>sudo<span id="textcolor1659"> </span>add-apt-repository<span id="textcolor1660"> </span>universe</div></pre>
+     </div>
+     <p class="noindent">
+      Now
+add
+the
+      <a class="glossary" href="MobileRoboticsLectureBookli2.html#glo:ros">
+       ROS
+      </a>
+      GPG
+key
+with
+apt.
+     </p>
+     <div class="informationblock" id="tcolobox-50">
+      <div class="title">
+       <p class="noindent">
+        <span id="bold" style="font-weight:bold;">
+         Information
+        </span>
+        : GPG
+       </p>
+      </div>
+      <div class="box-content">
+       <p class="noindent">
+        A hybrid-encryption software which uses a combination of conventional symmetric-key cryptography for speed,
+and public-key cryptography for ease of secure key exchange, typically by using the recipient’s public key to
+encrypt a session key which is used only once.
+       </p>
+      </div>
+     </div>
+     <p class="noindent">
+     </p>
+     <div class="code-block">
+      <div class="code-lang">
+       bash
+      </div>
+      <pre><div class="language-bash" id="fancyvrb83" style="padding:20px;border-radius: 3px;"><a id="x9-146006r84"></a>sudo<span id="textcolor1661"> </span>apt<span id="textcolor1662"> </span>update<span id="textcolor1663"> </span><span id="textcolor1664">&amp;&amp;</span><span id="textcolor1665"> </span>sudo<span id="textcolor1666"> </span>apt<span id="textcolor1667"> </span>install<span id="textcolor1668"> </span>curl<span id="textcolor1669"> </span>-y 
+<a id="x9-146008r85"></a>sudo<span id="textcolor1670"> </span>curl<span id="textcolor1671"> </span>-sSL<span id="textcolor1672"> </span><span id="textcolor1673"><span id="bold" style="font-weight:bold;">\</span></span> 
+<a id="x9-146010r86"></a><span id="textcolor1674">    </span>https://raw.githubusercontent.com/ros/rosdistro/master/ros.key<span id="textcolor1675"> </span><span id="textcolor1676"><span id="bold" style="font-weight:bold;">\</span></span> 
+<a id="x9-146012r87"></a><span id="textcolor1677">    </span>-o<span id="textcolor1678"> </span>/usr/share/keyrings/ros-archive-keyring.gpg</div></pre>
+     </div>
+     <p class="noindent">
+      Then add the repository to your
+      <alert style="color: #821131;">
+       sources list
+      </alert>
+      . This list contains all the paths your system will scan when it is looking for a package or to look for updates.
+     </p>
+     <p class="noindent">
+     </p>
+     <div class="code-block">
+      <div class="code-lang">
+       bash
+      </div>
+      <pre><div class="language-bash" id="fancyvrb84" style="padding:20px;border-radius: 3px;"><a id="x9-146014r94"></a><span id="textcolor1679">echo</span><span id="textcolor1680"> </span><span id="textcolor1681">"</span><span id="textcolor1682">deb [arch=</span><span id="textcolor1683"><span id="bold" style="font-weight:bold;">$(</span></span>dpkg<span id="textcolor1684"> </span>--print-architecture<span id="textcolor1685"><span id="bold" style="font-weight:bold;">)</span></span><span id="textcolor1686"> \</span> 
+<a id="x9-146016r95"></a><span id="textcolor1687">   signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] \</span> 
+<a id="x9-146018r96"></a><span id="textcolor1688">   http://packages.ros.org/ros2/ubuntu \</span> 
+<a id="x9-146020r97"></a><span id="textcolor1689">   </span><span id="textcolor1690"><span id="bold" style="font-weight:bold;">$(</span></span>.<span id="textcolor1691"> </span>/etc/os-release<span id="textcolor1692"> </span><span id="textcolor1693">&amp;&amp;</span><span id="textcolor1694"> </span><span id="textcolor1695">echo</span><span id="textcolor1696"> </span><span id="textcolor1697">$UBUNTU_CODENAME</span><span id="textcolor1698"><span id="bold" style="font-weight:bold;">)</span></span><span id="textcolor1699"> main</span><span id="textcolor1700">"</span><span id="textcolor1701"> </span>|<span id="textcolor1702"> </span><span id="textcolor1703"><span id="bold" style="font-weight:bold;">\</span></span> 
+<a id="x9-146022r98"></a><span id="textcolor1704">   </span>sudo<span id="textcolor1705"> </span>tee<span id="textcolor1706"> </span>/etc/apt/sources.list.d/ros2.list<span id="textcolor1707"> </span>&gt;<span id="textcolor1708"> </span>/dev/null</div></pre>
+     </div>
+     <div class="informationblock" id="tcolobox-51">
+      <div class="title">
+       <p class="noindent">
+        <span id="bold" style="font-weight:bold;">
+         Information
+        </span>
+        : The <span id="textcolor1710"><code class="verb">echo</code></span>
+        Command
+       </p>
+      </div>
+      <div class="box-content">
+       <p class="noindent">
+        A command that outputs the strings that are passed to it as arguments. It is a useful command to let the user
+know what process is going on with the current running program or allows the insertion of text to other files.
+       </p>
+      </div>
+     </div>
+     <h3 class="subsectionHead">
+      <a aria-label="Link to this section in PDF version" class="pdf-link" href="MobileRoboticsLectureBook.pdf#subsection.7.1.4" style="color: red;  position: absolute;  left: -30px;" target="_blank">
+       <svg class="bi bi-file-pdf" fill="currentColor" height="20" viewbox="0 0 16 16" width="20" xmlns="http://www.w3.org/2000/svg">
+        <path d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z">
+        </path>
+        <path d="M4.603 12.087a.81.81 0 0 1-.438-.42c-.195-.388-.13-.776.08-1.102.198-.307.526-.568.897-.787a7.68 7.68 0 0 1 1.482-.645 19.701 19.701 0 0 0 1.062-2.227 7.269 7.269 0 0 1-.43-1.295c-.086-.4-.119-.796-.046-1.136.075-.354.274-.672.65-.823.192-.077.4-.12.602-.077a.7.7 0 0 1 .477.365c.088.164.12.356.127.538.007.187-.012.395-.047.614-.084.51-.27 1.134-.52 1.794a10.954 10.954 0 0 0 .98 1.686 5.753 5.753 0 0 1 1.334.05c.364.065.734.195.96.465.12.144.193.32.2.518.007.192-.047.382-.138.563a1.04 1.04 0 0 1-.354.416.856.856 0 0 1-.51.138c-.331-.014-.654-.196-.933-.417a5.716 5.716 0 0 1-.911-.95 11.642 11.642 0 0 0-1.997.406 11.311 11.311 0 0 1-1.021 1.51c-.29.35-.608.655-.926.787a.793.793 0 0 1-.58.029zm1.379-1.901c-.166.076-.32.156-.459.238-.328.194-.541.383-.647.547-.094.145-.096.25-.04.361.01.022.02.036.026.044a.27.27 0 0 0 .035-.012c.137-.056.355-.235.635-.572a8.18 8.18 0 0 0 .45-.606zm1.64-1.33a12.647 12.647 0 0 1 1.01-.193 11.666 11.666 0 0 1-.51-.858 20.741 20.741 0 0 1-.5 1.05zm2.446.45c.15.162.296.3.435.41.24.19.407.253.498.256a.107.107 0 0 0 .07-.015.307.307 0 0 0 .094-.125.436.436 0 0 0 .059-.2.095.095 0 0 0-.026-.063c-.052-.062-.2-.152-.518-.209a3.881 3.881 0 0 0-.612-.053zM8.078 5.8a6.7 6.7 0 0 0 .2-.828c.031-.188.043-.343.038-.465a.613.613 0 0 0-.032-.198.517.517 0 0 0-.145.04c-.087.035-.158.106-.196.283-.04.192-.03.469.046.822.024.111.054.227.09.346z">
+        </path>
+       </svg>
+      </a>
+      <small class="titlemark">
+       7.1.4
+      </small>
+      <a id="x9-1470007.1.4">
+      </a>
+      Install  ROS  2  Packages
+     </h3>
+     <p class="noindent">
+      Update your <span id="textcolor1711"><code class="verb">apt</code></span>
+      repository caches after setting up the repositories as it may
+      <span id="bold" style="font-weight:bold;">
+       NOT
+      </span>
+      have
+the latest version on it. The
+      <a class="glossary" href="MobileRoboticsLectureBookli2.html#glo:ros">
+       ROS
+      </a>
+      packages are built on frequently updated Ubuntu systems.
+     </p>
+     <div class="knowledge">
+      <p class="noindent">
+       It is always recommended that you ensure your system is up to date before installing new packages.
+      </p>
+     </div>
+     <p class="noindent">
+     </p>
+     <div class="code-block">
+      <div class="code-lang">
+       bash
+      </div>
+      <pre><div class="language-bash" id="fancyvrb85" style="padding:20px;border-radius: 3px;"><a id="x9-147002r111"></a>sudo<span id="textcolor1712"> </span>apt<span id="textcolor1713"> </span>update<span id="textcolor1714"> </span><span id="textcolor1715">&amp;&amp;</span><span id="textcolor1716"> </span>sudo<span id="textcolor1717"> </span>apt<span id="textcolor1718"> </span>upgrade</div></pre>
+     </div>
+     <p class="noindent">
+      Once updated you have a few options on which type to install
+(
+      <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML">
+       <msup>
+        <mrow>
+         <mstyle class="text">
+          <mtext>
+           1
+          </mtext>
+         </mstyle>
+        </mrow>
+        <mrow>
+         <mstyle class="text">
+          <mtext>
+           st
+          </mtext>
+         </mstyle>
+        </mrow>
+       </msup>
+      </math>
+      is recommended)
+     </p>
+     <dl class="description">
+      <dt class="description">
+       Desktop Install
+      </dt>
+      <dd class="description">
+       <p class="noindent">
+        It install all the necessary components and software packages such as
+        <a class="glossary" href="MobileRoboticsLectureBookli2.html#glo:ros">
+         ROS
+        </a>, RViz, demos, tutorials.
+       </p>
+       <div class="code-block">
+        <div class="code-lang">
+         bash
+        </div>
+        <pre><div class="language-bash" id="fancyvrb86" style="padding:20px;border-radius: 3px;"><a id="x9-147004r127"></a>sudo<span id="textcolor1719"> </span>apt<span id="textcolor1720"> </span>install<span id="textcolor1721"> </span>ros-humble-desktop</div></pre>
+       </div>
+      </dd>
+      <dt class="description">
+       Development tools
+      </dt>
+      <dd class="description">
+       <p class="noindent">
+        Compilers and other tools to build
+        <a class="glossary" href="MobileRoboticsLectureBookli2.html#glo:ros">
+         ROS
+        </a>
+        packages.
+       </p>
+       <div class="code-block">
+        <div class="code-lang">
+         bash
+        </div>
+        <pre><div class="language-bash" id="fancyvrb87" style="padding:20px;border-radius: 3px;"><a id="x9-147006r134"></a>sudo<span id="textcolor1722"> </span>apt<span id="textcolor1723"> </span>install<span id="textcolor1724"> </span>ros-dev-tools</div></pre>
+       </div>
+      </dd>
+     </dl>
+     <p class="noindent">
+      This setup may take some time as the file download size is around 2GB.
+     </p>
+     <h3 class="subsectionHead">
+      <a aria-label="Link to this section in PDF version" class="pdf-link" href="MobileRoboticsLectureBook.pdf#subsection.7.1.5" style="color: red;  position: absolute;  left: -30px;" target="_blank">
+       <svg class="bi bi-file-pdf" fill="currentColor" height="20" viewbox="0 0 16 16" width="20" xmlns="http://www.w3.org/2000/svg">
+        <path d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z">
+        </path>
+        <path d="M4.603 12.087a.81.81 0 0 1-.438-.42c-.195-.388-.13-.776.08-1.102.198-.307.526-.568.897-.787a7.68 7.68 0 0 1 1.482-.645 19.701 19.701 0 0 0 1.062-2.227 7.269 7.269 0 0 1-.43-1.295c-.086-.4-.119-.796-.046-1.136.075-.354.274-.672.65-.823.192-.077.4-.12.602-.077a.7.7 0 0 1 .477.365c.088.164.12.356.127.538.007.187-.012.395-.047.614-.084.51-.27 1.134-.52 1.794a10.954 10.954 0 0 0 .98 1.686 5.753 5.753 0 0 1 1.334.05c.364.065.734.195.96.465.12.144.193.32.2.518.007.192-.047.382-.138.563a1.04 1.04 0 0 1-.354.416.856.856 0 0 1-.51.138c-.331-.014-.654-.196-.933-.417a5.716 5.716 0 0 1-.911-.95 11.642 11.642 0 0 0-1.997.406 11.311 11.311 0 0 1-1.021 1.51c-.29.35-.608.655-.926.787a.793.793 0 0 1-.58.029zm1.379-1.901c-.166.076-.32.156-.459.238-.328.194-.541.383-.647.547-.094.145-.096.25-.04.361.01.022.02.036.026.044a.27.27 0 0 0 .035-.012c.137-.056.355-.235.635-.572a8.18 8.18 0 0 0 .45-.606zm1.64-1.33a12.647 12.647 0 0 1 1.01-.193 11.666 11.666 0 0 1-.51-.858 20.741 20.741 0 0 1-.5 1.05zm2.446.45c.15.162.296.3.435.41.24.19.407.253.498.256a.107.107 0 0 0 .07-.015.307.307 0 0 0 .094-.125.436.436 0 0 0 .059-.2.095.095 0 0 0-.026-.063c-.052-.062-.2-.152-.518-.209a3.881 3.881 0 0 0-.612-.053zM8.078 5.8a6.7 6.7 0 0 0 .2-.828c.031-.188.043-.343.038-.465a.613.613 0 0 0-.032-.198.517.517 0 0 0-.145.04c-.087.035-.158.106-.196.283-.04.192-.03.469.046.822.024.111.054.227.09.346z">
+        </path>
+       </svg>
+      </a>
+      <small class="titlemark">
+       7.1.5
+      </small>
+      <a id="x9-1480007.1.5">
+      </a>
+      Setting  Up  the  Environment
+     </h3>
+     <p class="noindent">
+      Once the software is installed we still need to tell our shell where the software is so we can call it in our session. For this we need
+to
+      <alert style="color: #821131;">
+       source
+      </alert>
+      a script. Set up your environment by sourcing the following file in your terminal (
+      <kbd>
+       Ctrl
+      </kbd>
+      +
+      <kbd>
+       Alt
+      </kbd>
+      +
+      <kbd>
+       T
+      </kbd>
+      ).
+     </p>
+     <p class="noindent">
+     </p>
+     <div class="code-block">
+      <div class="code-lang">
+       bash
+      </div>
+      <pre><div class="language-bash" id="fancyvrb88" style="padding:20px;border-radius: 3px;"><a id="x9-148002r166"></a><span id="textcolor1725">source</span><span id="textcolor1726"> </span>/opt/ros/humble/setup.bash</div></pre>
+     </div>
+     <p class="noindent">
+      Alternatively, if you prefer to automate this action, simply type the following code in your terminal:
+     </p>
+     <p class="noindent">
+     </p>
+     <div class="code-block">
+      <div class="code-lang">
+       bash
+      </div>
+      <pre><div class="language-bash" id="fancyvrb89" style="padding:20px;border-radius: 3px;"><a id="x9-148004r171"></a><span id="textcolor1727">echo</span><span id="textcolor1728"> </span><span id="textcolor1729">"source /opt/ros/humble/setup.bash"</span><span id="textcolor1730"> </span>»<span id="textcolor1731"> </span><span id="textcolor1732">"~/.bashrc"</span></div></pre>
+     </div>
+     <p class="noindent">
+      The aforementioned command simply writes the command to the last line of a document
+called <span id="textcolor1733"><code class="verb">.bashrc</code></span>
+      which is a script that runs whenever you open a new terminal window.
+     </p>
+     <div class="knowledge">
+      <p class="noindent">
+       The <span id="textcolor1734"><code class="verb">.bashrc</code></span>
+       file is a script file that’s executed when a user logs in. The file itself contains a series of configurations for the
+terminal session. This includes setting up or enabling: colouring, completion, shell history, command aliases, and more.
+      </p>
+     </div>
+     <div class="warning">
+      <p class="noindent">
+       It is a hidden file and simple <span id="textcolor1735"><code class="verb">ls</code></span>
+       command won’t show the file.
+      </p>
+     </div>
+     <p class="noindent">
+     </p>
+    </div>
+    <div class="section-head" id="section-2" sec="section-2">
+     <h2 class="sectionHead">
+      <a aria-label="Link to this section in PDF version" class="pdf-link" href="MobileRoboticsLectureBook.pdf#section.7.2" style="color: red;  position: absolute;  left: -30px;" target="_blank">
+       <svg class="bi bi-file-pdf" fill="currentColor" height="20" viewbox="0 0 16 16" width="20" xmlns="http://www.w3.org/2000/svg">
+        <path d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z">
+        </path>
+        <path d="M4.603 12.087a.81.81 0 0 1-.438-.42c-.195-.388-.13-.776.08-1.102.198-.307.526-.568.897-.787a7.68 7.68 0 0 1 1.482-.645 19.701 19.701 0 0 0 1.062-2.227 7.269 7.269 0 0 1-.43-1.295c-.086-.4-.119-.796-.046-1.136.075-.354.274-.672.65-.823.192-.077.4-.12.602-.077a.7.7 0 0 1 .477.365c.088.164.12.356.127.538.007.187-.012.395-.047.614-.084.51-.27 1.134-.52 1.794a10.954 10.954 0 0 0 .98 1.686 5.753 5.753 0 0 1 1.334.05c.364.065.734.195.96.465.12.144.193.32.2.518.007.192-.047.382-.138.563a1.04 1.04 0 0 1-.354.416.856.856 0 0 1-.51.138c-.331-.014-.654-.196-.933-.417a5.716 5.716 0 0 1-.911-.95 11.642 11.642 0 0 0-1.997.406 11.311 11.311 0 0 1-1.021 1.51c-.29.35-.608.655-.926.787a.793.793 0 0 1-.58.029zm1.379-1.901c-.166.076-.32.156-.459.238-.328.194-.541.383-.647.547-.094.145-.096.25-.04.361.01.022.02.036.026.044a.27.27 0 0 0 .035-.012c.137-.056.355-.235.635-.572a8.18 8.18 0 0 0 .45-.606zm1.64-1.33a12.647 12.647 0 0 1 1.01-.193 11.666 11.666 0 0 1-.51-.858 20.741 20.741 0 0 1-.5 1.05zm2.446.45c.15.162.296.3.435.41.24.19.407.253.498.256a.107.107 0 0 0 .07-.015.307.307 0 0 0 .094-.125.436.436 0 0 0 .059-.2.095.095 0 0 0-.026-.063c-.052-.062-.2-.152-.518-.209a3.881 3.881 0 0 0-.612-.053zM8.078 5.8a6.7 6.7 0 0 0 .2-.828c.031-.188.043-.343.038-.465a.613.613 0 0 0-.032-.198.517.517 0 0 0-.145.04c-.087.035-.158.106-.196.283-.04.192-.03.469.046.822.024.111.054.227.09.346z">
+        </path>
+       </svg>
+      </a>
+      <small class="titlemark">
+       7.2
+      </small>
+      <a id="x9-1490007.2">
+      </a>
+      Auto-Install  Script
+     </h2>
+     <p class="noindent">
+      As a bonus, if you have read the document before doing copy and pasting, you can use the <span id="textcolor1736"><code class="verb">rosinstall.sh</code></span>
+      provided to you to automatically install everything required for this course.
+     </p>
+     <p class="noindent">
+     </p>
+     <div class="code-block">
+      <div class="code-lang">
+       bash
+      </div>
+      <pre><div class="language-bash" id="fancyvrb90" style="padding:20px;border-radius: 3px;"><a id="x9-149002r183"></a><span id="textcolor1737"><italic>#!/bin/bash</italic></span> 
+<a id="x9-149004r184"></a> 
+<a id="x9-149006r185"></a><span id="textcolor1738"><italic># First check your Ubuntu Version</italic></span> 
+<a id="x9-149008r186"></a><span id="textcolor1739"><italic># For maximum compatability with ROS it needs to be 22.04 LTS</italic></span> 
+<a id="x9-149010r187"></a> 
+<a id="x9-149012r188"></a><span id="textcolor1740"><italic># Creating log for troubleshooting</italic></span> 
+<a id="x9-149014r189"></a><span id="textcolor1741">echo</span><span id="textcolor1742"> </span><span id="textcolor1743">"###### BEGIN ATTEMPT #######"</span><span id="textcolor1744"> </span>»install_log.txt 
+<a id="x9-149016r190"></a> 
+<a id="x9-149018r191"></a><span id="textcolor1745">echo</span><span id="textcolor1746"> </span><span id="textcolor1747">"Welcome to ROS 2 Automated Installation"</span> 
+<a id="x9-149020r192"></a><span id="textcolor1748">echo</span><span id="textcolor1749"> </span><span id="textcolor1750">""</span> 
+<a id="x9-149022r193"></a><span id="textcolor1751">echo</span><span id="textcolor1752"> </span><span id="textcolor1753">""</span> 
+<a id="x9-149024r194"></a> 
+<a id="x9-149026r195"></a><span id="textcolor1754"><italic># Accessing the Ubuntu version using AWK and piping it to grep for Regex</italic></span> 
+<a id="x9-149028r196"></a><span id="textcolor1755">version</span><span id="textcolor1756">=</span><span id="textcolor1757"><span id="bold" style="font-weight:bold;">$(</span></span> 
+<a id="x9-149030r197"></a><span id="textcolor1758">   </span>awk<span id="textcolor1759"> </span><span id="textcolor1760">"/VERSION_ID/"</span><span id="textcolor1761"> </span><span id="textcolor1762">IGNORECASE</span><span id="textcolor1763">=</span><span id="textcolor1764">1</span><span id="textcolor1765"> </span>/etc/*release<span id="textcolor1766"> </span>| 
+<a id="x9-149032r198"></a><span id="textcolor1767">      </span>grep<span id="textcolor1768"> </span>-Eo<span id="textcolor1769"> </span><span id="textcolor1770">"[[:digit:]]+([.][[:digit:]]+)?"</span> 
+<a id="x9-149034r199"></a><span id="textcolor1771">     </span><span id="textcolor1772"><span id="bold" style="font-weight:bold;">)</span></span> 
+<a id="x9-149036r200"></a> 
+<a id="x9-149038r201"></a><span id="textcolor1773"><italic># Checks version for ROS Compliance</italic></span> 
+<a id="x9-149040r202"></a><span id="textcolor1774"><span id="bold" style="font-weight:bold;">if</span></span><span id="textcolor1775"> </span><span id="textcolor1776">[</span><span id="textcolor1777">[</span><span id="textcolor1778"> </span><span id="textcolor1779">"</span><span id="textcolor1780"><span id="bold" style="font-weight:bold;">${</span></span><span id="textcolor1781">version</span><span id="textcolor1782"><span id="bold" style="font-weight:bold;">}</span></span><span id="textcolor1783">"</span><span id="textcolor1784"> </span><span id="textcolor1785">=</span><span id="textcolor1786">=</span><span id="textcolor1787"> </span>*<span id="textcolor1788">"22.04"</span>*<span id="textcolor1789"> </span><span id="textcolor1790">]</span><span id="textcolor1791">]</span>;<span id="textcolor1792"> </span><span id="textcolor1793"><span id="bold" style="font-weight:bold;">then</span></span> 
+<a id="x9-149042r203"></a><span id="textcolor1794">   </span><span id="textcolor1795">echo</span><span id="textcolor1796"> </span><span id="textcolor1797">"Version is supported."</span> 
+<a id="x9-149044r204"></a><span id="textcolor1798">   </span>sleep<span id="textcolor1799"> </span><span id="textcolor1800">1</span> 
+<a id="x9-149046r205"></a><span id="textcolor1801">   </span><span id="textcolor1802">echo</span><span id="textcolor1803"> </span><span id="textcolor1804">"Continuing installation..."</span> 
+<a id="x9-149048r206"></a><span id="textcolor1805">   </span>sleep<span id="textcolor1806"> </span><span id="textcolor1807">1</span> 
+<a id="x9-149050r207"></a><span id="textcolor1808"><span id="bold" style="font-weight:bold;">else</span></span> 
+<a id="x9-149052r208"></a><span id="textcolor1809">   </span><span id="textcolor1810">echo</span><span id="textcolor1811"> </span><span id="textcolor1812">"Your version: "</span><span id="textcolor1813">$version</span><span id="textcolor1814">", What is needed: 22.04"</span> 
+<a id="x9-149054r209"></a><span id="textcolor1815">   </span><span id="textcolor1816">echo</span><span id="textcolor1817"> </span><span id="textcolor1818">"I am sorry but your version is not supported."</span> 
+<a id="x9-149056r210"></a><span id="textcolor1819">   </span><span id="textcolor1820">echo</span><span id="textcolor1821"> </span><span id="textcolor1822">"This install script will terminate"</span> 
+<a id="x9-149058r211"></a><span id="textcolor1823">   </span><span id="textcolor1824">exit</span> 
+<a id="x9-149060r212"></a> 
+<a id="x9-149062r213"></a><span id="textcolor1825"><span id="bold" style="font-weight:bold;">fi</span></span> 
+<a id="x9-149064r214"></a> 
+<a id="x9-149066r215"></a><span id="textcolor1826">echo</span><span id="textcolor1827"> </span><span id="textcolor1828">""</span> 
+<a id="x9-149068r216"></a><span id="textcolor1829">echo</span><span id="textcolor1830"> </span><span id="textcolor1831">"Installing UTF-8 Compliance ..."</span> 
+<a id="x9-149070r217"></a> 
+<a id="x9-149072r218"></a><span id="textcolor1832">{</span> 
+<a id="x9-149074r219"></a><span id="textcolor1833">   </span>locale<span id="textcolor1834"> </span><span id="textcolor1835"><italic># check for UTF-8</italic></span> 
+<a id="x9-149076r220"></a> 
+<a id="x9-149078r221"></a><span id="textcolor1836">   </span>sudo<span id="textcolor1837"> </span>apt<span id="textcolor1838"> </span>update 
+<a id="x9-149080r222"></a><span id="textcolor1839">   </span>sudo<span id="textcolor1840"> </span>apt<span id="textcolor1841"> </span>install<span id="textcolor1842"> </span>locales 
+<a id="x9-149082r223"></a><span id="textcolor1843">   </span>sudo<span id="textcolor1844"> </span>locale-gen<span id="textcolor1845"> </span>en_US<span id="textcolor1846"> </span>en_US.UTF-8 
+<a id="x9-149084r224"></a><span id="textcolor1847">   </span>sudo<span id="textcolor1848"> </span>update-locale<span id="textcolor1849"> </span><span id="textcolor1850">LC_ALL</span><span id="textcolor1851">=</span>en_US.UTF-8<span id="textcolor1852"> </span><span id="textcolor1853">LANG</span><span id="textcolor1854">=</span>en_US.UTF-8 
+<a id="x9-149086r225"></a><span id="textcolor1855">   </span><span id="textcolor1856">export</span><span id="textcolor1857"> </span><span id="textcolor1858">LANG</span><span id="textcolor1859">=</span>en_US.UTF-8 
+<a id="x9-149088r226"></a> 
+<a id="x9-149090r227"></a><span id="textcolor1860">   </span>locale<span id="textcolor1861"> </span><span id="textcolor1862"><italic># verify settings</italic></span> 
+<a id="x9-149092r228"></a><span id="textcolor1863">}</span><span id="textcolor1864"> </span>&amp;»install_log.txt 
+<a id="x9-149094r229"></a> 
+<a id="x9-149096r230"></a><span id="textcolor1865">echo</span><span id="textcolor1866"> </span><span id="textcolor1867">""</span> 
+<a id="x9-149098r231"></a><span id="textcolor1868">echo</span><span id="textcolor1869"> </span><span id="textcolor1870">"Enabling Ubuntu Universe Repositories..."</span> 
+<a id="x9-149100r232"></a> 
+<a id="x9-149102r233"></a><span id="textcolor1871">{</span> 
+<a id="x9-149104r234"></a><span id="textcolor1872">   </span>sudo<span id="textcolor1873"> </span>apt<span id="textcolor1874"> </span>install<span id="textcolor1875"> </span>software-properties-common 
+<a id="x9-149106r235"></a><span id="textcolor1876">   </span><span id="textcolor1877">echo</span><span id="textcolor1878"> </span>|<span id="textcolor1879"> </span>sudo<span id="textcolor1880"> </span>add-apt-repository<span id="textcolor1881"> </span>universe 
+<a id="x9-149108r236"></a><span id="textcolor1882">}</span><span id="textcolor1883"> </span>&amp;»install_log.txt 
+<a id="x9-149110r237"></a> 
+<a id="x9-149112r238"></a><span id="textcolor1884">echo</span><span id="textcolor1885"> </span><span id="textcolor1886">""</span> 
+<a id="x9-149114r239"></a><span id="textcolor1887">echo</span><span id="textcolor1888"> </span><span id="textcolor1889">"Adding ROS 2 GPG Keys ..."</span> 
+<a id="x9-149116r240"></a> 
+<a id="x9-149118r241"></a><span id="textcolor1890">{</span> 
+<a id="x9-149120r242"></a><span id="textcolor1891">   </span>sudo<span id="textcolor1892"> </span>apt<span id="textcolor1893"> </span>update 
+<a id="x9-149122r243"></a><span id="textcolor1894">   </span>sudo<span id="textcolor1895"> </span>apt<span id="textcolor1896"> </span>install<span id="textcolor1897"> </span>curl<span id="textcolor1898"> </span>-y 
+<a id="x9-149124r244"></a><span id="textcolor1899">   </span>sudo<span id="textcolor1900"> </span>curl<span id="textcolor1901"> </span>-sSL<span id="textcolor1902"> </span><span id="textcolor1903"><span id="bold" style="font-weight:bold;">\</span></span> 
+<a id="x9-149126r245"></a><span id="textcolor1904">      </span>https://raw.githubusercontent.com/ros/rosdistro/master/ros.key<span id="textcolor1905"> </span><span id="textcolor1906"><span id="bold" style="font-weight:bold;">\</span></span> 
+<a id="x9-149128r246"></a><span id="textcolor1907">      </span>-o<span id="textcolor1908"> </span>/usr/share/keyrings/ros-archive-keyring.gpg 
+<a id="x9-149130r247"></a><span id="textcolor1909">}</span><span id="textcolor1910"> </span>&amp;»install_log.txt 
+<a id="x9-149132r248"></a> 
+<a id="x9-149134r249"></a><span id="textcolor1911">echo</span><span id="textcolor1912"> </span><span id="textcolor1913">""</span> 
+<a id="x9-149136r250"></a><span id="textcolor1914">echo</span><span id="textcolor1915"> </span><span id="textcolor1916">"Adding ROS 2 to repository ..."</span> 
+<a id="x9-149138r251"></a> 
+<a id="x9-149140r252"></a><span id="textcolor1917">{</span> 
+<a id="x9-149142r253"></a><span id="textcolor1918">   </span><span id="textcolor1919">echo</span><span id="textcolor1920"> </span><span id="textcolor1921">"</span><span id="textcolor1922">deb [arch=</span><span id="textcolor1923"><span id="bold" style="font-weight:bold;">$(</span></span>dpkg<span id="textcolor1924"> </span>--print-architecture<span id="textcolor1925"><span id="bold" style="font-weight:bold;">)</span></span><span id="textcolor1926"> \</span> 
+<a id="x9-149144r254"></a><span id="textcolor1927"> signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] \</span> 
+<a id="x9-149146r255"></a><span id="textcolor1928"> http://packages.ros.org/ros2/ubuntu \</span> 
+<a id="x9-149148r256"></a><span id="textcolor1929"> </span><span id="textcolor1930"><span id="bold" style="font-weight:bold;">$(</span></span>.<span id="textcolor1931"> </span>/etc/os-release<span id="textcolor1932"> </span><span id="textcolor1933">&amp;&amp;</span><span id="textcolor1934"> </span><span id="textcolor1935">echo</span><span id="textcolor1936"> </span><span id="textcolor1937">$UBUNTU_CODENAME</span><span id="textcolor1938"><span id="bold" style="font-weight:bold;">)</span></span><span id="textcolor1939"> main</span><span id="textcolor1940">"</span><span id="textcolor1941"> </span><span id="textcolor1942"><span id="bold" style="font-weight:bold;">\</span></span> 
+<a id="x9-149150r257"></a><span id="textcolor1943">      </span>|<span id="textcolor1944"> </span>sudo<span id="textcolor1945"> </span>tee<span id="textcolor1946"> </span>/etc/apt/sources.list.d/ros2.list<span id="textcolor1947"> </span>&gt;/dev/null 
+<a id="x9-149152r258"></a><span id="textcolor1948">}</span><span id="textcolor1949"> </span>&amp;»install_log.txt 
+<a id="x9-149154r259"></a> 
+<a id="x9-149156r260"></a><span id="textcolor1950">echo</span><span id="textcolor1951"> </span><span id="textcolor1952">""</span> 
+<a id="x9-149158r261"></a><span id="textcolor1953">echo</span><span id="textcolor1954"> </span><span id="textcolor1955">"Getting Updates ..."</span> 
+<a id="x9-149160r262"></a> 
+<a id="x9-149162r263"></a><span id="textcolor1956">{</span> 
+<a id="x9-149164r264"></a><span id="textcolor1957">   </span>sudo<span id="textcolor1958"> </span>apt<span id="textcolor1959"> </span>update 
+<a id="x9-149166r265"></a><span id="textcolor1960">   </span><span id="textcolor1961">echo</span><span id="textcolor1962"> </span>yes<span id="textcolor1963"> </span>|<span id="textcolor1964"> </span>sudo<span id="textcolor1965"> </span>apt<span id="textcolor1966"> </span>upgrade 
+<a id="x9-149168r266"></a><span id="textcolor1967">}</span><span id="textcolor1968"> </span>&amp;»install_log.txt 
+<a id="x9-149170r267"></a> 
+<a id="x9-149172r268"></a><span id="textcolor1969">echo</span><span id="textcolor1970"> </span><span id="textcolor1971">""</span> 
+<a id="x9-149174r269"></a><span id="textcolor1972">echo</span><span id="textcolor1973"> </span><span id="textcolor1974">"Installing ROS ..."</span> 
+<a id="x9-149176r270"></a> 
+<a id="x9-149178r271"></a><span id="textcolor1975">{</span> 
+<a id="x9-149180r272"></a><span id="textcolor1976">   </span><span id="textcolor1977">echo</span><span id="textcolor1978"> </span>yes<span id="textcolor1979"> </span>|<span id="textcolor1980"> </span>sudo<span id="textcolor1981"> </span>apt<span id="textcolor1982"> </span>install<span id="textcolor1983"> </span>ros-humble-desktop 
+<a id="x9-149182r273"></a><span id="textcolor1984">   </span>yes<span id="textcolor1985"> </span>|<span id="textcolor1986"> </span>sudo<span id="textcolor1987"> </span>apt<span id="textcolor1988"> </span>install<span id="textcolor1989"> </span>ros-dev-tools 
+<a id="x9-149184r274"></a><span id="textcolor1990">}</span><span id="textcolor1991"> </span>&amp;»install_log.txt 
+<a id="x9-149186r275"></a> 
+<a id="x9-149188r276"></a><span id="textcolor1992">{</span> 
+<a id="x9-149190r277"></a><span id="textcolor1993">   </span>sudo<span id="textcolor1994"> </span>apt<span id="textcolor1995"> </span>install<span id="textcolor1996"> </span>dbus-x11 
+<a id="x9-149192r278"></a><span id="textcolor1997">}</span><span id="textcolor1998"> </span>&amp;»install_log.txt 
+<a id="x9-149194r279"></a> 
+<a id="x9-149196r280"></a><span id="textcolor1999">echo</span><span id="textcolor2000"> </span><span id="textcolor2001">""</span> 
+<a id="x9-149198r281"></a><span id="textcolor2002">echo</span><span id="textcolor2003"> </span><span id="textcolor2004">"Sourcing ROS file ..."</span> 
+<a id="x9-149200r282"></a>sleep<span id="textcolor2005"> </span><span id="textcolor2006">1</span> 
+<a id="x9-149202r283"></a> 
+<a id="x9-149204r284"></a><span id="textcolor2007">echo</span><span id="textcolor2008"> </span><span id="textcolor2009">"source /opt/ros/humble/setup.bash"</span><span id="textcolor2010"> </span>»~/.bashrc 
+<a id="x9-149206r285"></a> 
+<a id="x9-149208r286"></a><span id="textcolor2011">echo</span><span id="textcolor2012"> </span><span id="textcolor2013">""</span> 
+<a id="x9-149210r287"></a><span id="textcolor2014">echo</span><span id="textcolor2015"> </span><span id="textcolor2016">"Removing unnecessary files ..."</span> 
+<a id="x9-149212r288"></a>sleep<span id="textcolor2017"> </span><span id="textcolor2018">1</span> 
+<a id="x9-149214r289"></a><span id="textcolor2019">{</span> 
+<a id="x9-149216r290"></a><span id="textcolor2020">   </span>yes<span id="textcolor2021"> </span>|<span id="textcolor2022"> </span>sudo<span id="textcolor2023"> </span>apt<span id="textcolor2024"> </span>autoremove 
+<a id="x9-149218r291"></a><span id="textcolor2025">}</span><span id="textcolor2026"> </span>&amp;»install_log.txt</div></pre>
+     </div>
+    </div>
+   </article>
+   <footer>
+    <div class="next">
+     <p class="noindent">
+      <a href="MobileRoboticsLectureBookch8.html" style="float: right;">
+       Next Chapter →
+      </a>
+      <a href="MobileRoboticsLectureBookch6.html" style="float: left;">
+       ← Previous Chapter
+      </a>
+     </p>
+    </div>
+   </footer>
+  </div>
+  <div class="page">
+   <article class="chapter">
+    <p class="noindent">
+     <a id="tailMobileRoboticsLectureBookch7.html">
+     </a>
+    </p>
+   </article>
+  </div>
+  <div class="lowernav">
+   <a href="#home">
+    Main TOC
+   </a>
+   <a href="#news">
+    Glossary
+   </a>
+   <a href="#contact">
+    Bibliography
+   </a>
+   <a href="#about">
+    Home
+   </a>
+  </div>
+ </body>
+</html>

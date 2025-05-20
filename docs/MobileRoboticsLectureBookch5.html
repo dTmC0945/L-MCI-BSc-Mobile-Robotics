@@ -1,0 +1,3834 @@
+<!DOCTYPE html>
+<html lang="en-US" xml:lang="en-US">
+ <head>
+  <title>
+   5 Command Line Fundamentals
+  </title>
+  <meta charset="utf-8"/>
+  <meta content="TeX4ht (https://tug.org/tex4ht/)" name="generator"/>
+  <meta content="width=device-width,initial-scale=1" name="viewport"/>
+  <link href="MobileRoboticsLectureBook.css" rel="stylesheet" type="text/css"/>
+  <meta content="MobileRoboticsLectureBook.tex" name="src"/>
+  <script async="async" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/mml-chtml.js" type="text/javascript">
+  </script>
+  <link href="flatweb.css" rel="stylesheet" type="text/css"/>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js">
+  </script>
+  <script src="flatjs.js">
+  </script>
+  <link href="https://unpkg.com/@highlightjs/cdn-assets@11.3.1/styles/atom-one-dark.min.css" rel="stylesheet"/>
+  <script src="https://unpkg.com/@highlightjs/cdn-assets@11.3.1/highlight.min.js">
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/cpp.min.js">
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/makefile.min.js">
+  </script>
+  <script src="https://unpkg.com/highlightjs-copy/dist/highlightjs-copy.min.js">
+  </script>
+  <link href="https://unpkg.com/highlightjs-copy/dist/highlightjs-copy.min.css" rel="stylesheet"/>
+  <script src="flatjs.js">
+  </script>
+  <header>
+  </header>
+ </head>
+ <body id="top">
+  <nav class="wide">
+   <div class="contents">
+    <h3 style="font-weight:lighter; padding: 20px 0 20px 0;">
+     5
+   
+     
+   
+
+   Command Line Fundamentals
+    </h3>
+    <h4 style="font-weight:lighter">
+     Chapter Table of Contents
+    </h4>
+    <ul>
+     <div class="chapterTOCS">
+      <li>
+       <span class="sectionToc">
+        <small>
+         5.1
+        </small>
+        <a href="#x7-1130005.1">
+         Introduction
+        </a>
+       </span>
+      </li>
+      <li>
+       <span class="sectionToc">
+        <small>
+         5.2
+        </small>
+        <a href="#x7-1140005.2">
+         The Structure of Commands
+        </a>
+       </span>
+      </li>
+      <li>
+       <span class="subsectionToc" style="font-size:12px;margin:0px;">
+        <small>
+         5.2.1
+        </small>
+        <a href="#x7-1150005.2.1">
+         Some Rules Regarding the Syntax
+        </a>
+       </span>
+      </li>
+      <li>
+       <span class="sectionToc">
+        <small>
+         5.3
+        </small>
+        <a href="#x7-1160005.3">
+         Helpful Keyboard Shortcuts for the Terminal
+        </a>
+       </span>
+      </li>
+      <li>
+       <span class="sectionToc">
+        <small>
+         5.4
+        </small>
+        <a href="#x7-1170005.4">
+         When you need help with Commands
+        </a>
+       </span>
+      </li>
+      <li>
+       <span class="sectionToc">
+        <small>
+         5.5
+        </small>
+        <a href="#x7-1180005.5">
+         Additional Information
+        </a>
+       </span>
+      </li>
+      <li>
+       <span class="subsectionToc" style="font-size:12px;margin:0px;">
+        <small>
+         5.5.1
+        </small>
+        <a href="#x7-1190005.5.1">
+         Use Tab completion on the Shell
+        </a>
+       </span>
+      </li>
+      <li>
+       <span class="subsectionToc" style="font-size:12px;margin:0px;">
+        <small>
+         5.5.2
+        </small>
+        <a href="#x7-1200005.5.2">
+         The info command
+        </a>
+       </span>
+      </li>
+      <li>
+       <span class="subsectionToc" style="font-size:12px;margin:0px;">
+        <small>
+         5.5.3
+        </small>
+        <a href="#x7-1210005.5.3">
+         The whatis command
+        </a>
+       </span>
+      </li>
+     </div>
+    </ul>
+    <div class="prev-next" style="text-align: center">
+     <p class="noindent">
+      <a href="MobileRoboticsLectureBookch6.html" style="float:right; font-size:10px">
+       NEXT CHAPTER →
+      </a>
+      <a href="MobileRoboticsLectureBookch4.html" style="float:left; font-size:10px">
+       ← PREV CHAPTER
+      </a>
+     </p>
+    </div>
+    <div id="author-info" style="bottom: 0; padding-bottom: 10px;">
+     <div id="author-logo">
+      <img src="figures/logo.svg" style="margin: 10px 0;"/>
+      <div>
+       <div>
+        <h4 style="color:#7aa0b8; font-weight:lighter;">
+         WebBook | D. T. McGuiness, P.hD
+        </h4>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </nav>
+  <div class="page">
+   <article class="chapter">
+    <h1 class="chapterHead">
+     <div class="number">
+      5
+     </div>
+     <a id="x7-1120005">
+     </a>
+     Command Line Fundamentals
+    </h1>
+    <div class="section-control" style="text-align: center">
+     <a id="prev-section" onclick="goPrev()" style="float:left;">
+      ← Previous Section
+     </a>
+     <a id="next-section" onclick="goNext()" style="float:right;">
+      Next Section →
+     </a>
+    </div>
+    <div class="section-head" id="section-1" sec="section-1">
+     <h2 class="sectionHead">
+      <a aria-label="Link to this section in PDF version" class="pdf-link" href="MobileRoboticsLectureBook.pdf#section.5.1" style="color: red;  position: absolute;  left: -30px;" target="_blank">
+       <svg class="bi bi-file-pdf" fill="currentColor" height="20" viewbox="0 0 16 16" width="20" xmlns="http://www.w3.org/2000/svg">
+        <path d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z">
+        </path>
+        <path d="M4.603 12.087a.81.81 0 0 1-.438-.42c-.195-.388-.13-.776.08-1.102.198-.307.526-.568.897-.787a7.68 7.68 0 0 1 1.482-.645 19.701 19.701 0 0 0 1.062-2.227 7.269 7.269 0 0 1-.43-1.295c-.086-.4-.119-.796-.046-1.136.075-.354.274-.672.65-.823.192-.077.4-.12.602-.077a.7.7 0 0 1 .477.365c.088.164.12.356.127.538.007.187-.012.395-.047.614-.084.51-.27 1.134-.52 1.794a10.954 10.954 0 0 0 .98 1.686 5.753 5.753 0 0 1 1.334.05c.364.065.734.195.96.465.12.144.193.32.2.518.007.192-.047.382-.138.563a1.04 1.04 0 0 1-.354.416.856.856 0 0 1-.51.138c-.331-.014-.654-.196-.933-.417a5.716 5.716 0 0 1-.911-.95 11.642 11.642 0 0 0-1.997.406 11.311 11.311 0 0 1-1.021 1.51c-.29.35-.608.655-.926.787a.793.793 0 0 1-.58.029zm1.379-1.901c-.166.076-.32.156-.459.238-.328.194-.541.383-.647.547-.094.145-.096.25-.04.361.01.022.02.036.026.044a.27.27 0 0 0 .035-.012c.137-.056.355-.235.635-.572a8.18 8.18 0 0 0 .45-.606zm1.64-1.33a12.647 12.647 0 0 1 1.01-.193 11.666 11.666 0 0 1-.51-.858 20.741 20.741 0 0 1-.5 1.05zm2.446.45c.15.162.296.3.435.41.24.19.407.253.498.256a.107.107 0 0 0 .07-.015.307.307 0 0 0 .094-.125.436.436 0 0 0 .059-.2.095.095 0 0 0-.026-.063c-.052-.062-.2-.152-.518-.209a3.881 3.881 0 0 0-.612-.053zM8.078 5.8a6.7 6.7 0 0 0 .2-.828c.031-.188.043-.343.038-.465a.613.613 0 0 0-.032-.198.517.517 0 0 0-.145.04c-.087.035-.158.106-.196.283-.04.192-.03.469.046.822.024.111.054.227.09.346z">
+        </path>
+       </svg>
+      </a>
+      <small class="titlemark">
+       5.1
+      </small>
+      <a id="x7-1130005.1">
+      </a>
+      Introduction
+     </h2>
+     <p class="noindent">
+      In this day and age, it takes a certain level of skill to be alien to technology and as everyone has
+computers in their pockets, the interactions with them is almost uncountable. However, these
+interactions are done through what is called a
+      <a class="glossary" href="MobileRoboticsLectureBookli2.html#glo:gui">
+       GUI
+      </a>. Devices running on Windows, MacOS, iOS, and
+Android all use this interface to interact with the user.
+     </p>
+     <p class="noindent">
+     </p>
+     <div class="quoteblock">
+      <p class="noindent">
+       i.e.,  when  clicked  on  an  icon,  the  close,  minimize  and  maximize  buttons  on  the
+windows etc..
+      </p>
+     </div>
+     <p class="noindent">
+      It
+must
+be
+stressed
+as
+these
+visual
+components
+are
+all
+for
+the
+benefit
+of
+the
+user.
+While
+these
+greatly
+simplify
+tasks
+                                                                                
+                                                                                
+                                                                             
+like
+photo
+editing
+or
+video
+creation,
+some
+applications
+just
+completely
+omit
+the
+use
+of
+GUI
+and
+instead
+use
+a
+simpler
+version
+of
+it
+called
+      <a class="glossary" href="MobileRoboticsLectureBookli2.html#glo:cli">
+       CLI
+      </a>.
+This
+is
+especially
+true
+for
+servers
+      <alert style="color: #821131;">
+       <span id="bold" style="font-weight:bold;">
+        <sup class="textsuperscript">
+         1
+        </sup>
+       </span>
+      </alert>
+      <span class="marginnote">
+       <alert style="color: #821131;">
+        <span id="bold" style="font-weight:bold;">
+         <sup class="textsuperscript">
+          1
+         </sup>
+        </span>
+       </alert>
+       <span id="textcolor1126">
+        A
+server
+is
+a
+software
+or
+hardware
+offering
+a
+service
+to
+a
+user,
+usually
+referred
+to
+as
+client.
+As
+an
+example,
+a
+hardware
+server
+is
+a
+shared
+computer
+on
+a
+network,
+usually
+powerful
+and
+housed
+                                                                                
+                                                                                
+                                                                              
+in
+a
+data
+centre.
+       </span>
+      </span>
+      ,
+embedded
+applications
+and
+in
+many
+other
+areas
+where
+either
+      <alert style="color: #821131;">
+       memory
+is
+limited
+      </alert>
+      or
+efficiency
+of
+the
+computer
+(e.g.,
+such
+as
+limiting
+the
+CPU
+load
+etc.)
+is
+highly
+desired.
+Server
+software,
+utilities,
+and
+other
+programs
+usually
+only
+need
+some
+text-based
+information
+to
+do
+what
+they
+do.
+Many
+of
+these
+programs
+run
+on
+a
+server
+in
+a
+data
+centre
+somewhere
+without
+a
+monitor
+so
+the
+                                                                                
+                                                                                
+                                                                          
+overhead
+of
+a
+      <a class="glossary" href="MobileRoboticsLectureBookli2.html#glo:gui">
+       GUI
+      </a>
+      is
+completely
+      <alert style="color: #821131;">
+       unnecessary
+      </alert>
+      .
+     </p>
+     <p class="noindent">
+      One
+way
+we
+interact
+with
+these
+programs
+that
+don’t
+have
+a
+      <a class="glossary" href="MobileRoboticsLectureBookli2.html#glo:gui">
+       GUI
+      </a>
+      is
+through
+the
+      <a class="glossary" href="MobileRoboticsLectureBookli2.html#glo:cli">
+       CLI
+      </a>.
+This
+is
+a
+text-based
+interface
+where
+the
+commands
+to
+execute
+are
+typed
+and
+all
+actions
+are
+shown
+as
+text
+on
+a
+terminal
+screen,
+whether
+it
+is
+updating
+a
+software
+or
+moving
+files
+around.
+The
+environment
+we
+use
+is
+called
+a
+shell,
+or
+command-line
+interpreter,
+                                                                                
+                                                                                
+                                                                             
+and
+there
+are
+many
+shells
+out
+there.
+     </p>
+     <p class="noindent">
+      A
+list
+of
+Shells
+that
+can
+be
+encountered
+in
+industry
+and
+academia
+can
+be
+seen
+in
+      <span id="bold" style="font-weight:bold;">
+       Table
+      </span>
+      <a href="#x7-113001r1">
+       5.1
+      </a>.
+     </p>
+     <p class="noindent">
+     </p>
+     <figure class="float">
+      <p class="noindent">
+      </p>
+      <table class="tabular" id="TBL-4">
+       <colgroup id="TBL-4-1g">
+        <col id="TBL-4-1"/>
+        <col id="TBL-4-2"/>
+       </colgroup>
+       <tr id="TBL-4-1-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-4-1-1" style="text-align:right; white-space:nowrap;">
+         <span id="bold" style="font-weight:bold;">
+          UNIX
+         </span>
+        </td>
+        <td class="td10" id="TBL-4-1-2" style="text-align:left; white-space:nowrap;">
+         <span id="bold" style="font-weight:bold;">
+          Windows
+         </span>
+        </td>
+       </tr>
+       <tr id="TBL-4-2-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-4-2-1" style="text-align:right; white-space:nowrap;">
+        </td>
+       </tr>
+       <tr id="TBL-4-3-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-4-3-1" style="text-align:right; white-space:nowrap;">
+        </td>
+       </tr>
+       <tr id="TBL-4-4-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-4-4-1" style="text-align:right; white-space:nowrap;">
+         Bourne shell <span id="textcolor1127">(<code class="verb">sh</code>)</span>
+        </td>
+        <td class="td10" id="TBL-4-4-2" style="text-align:left; white-space:nowrap;">
+         COMMAND.COM, default in Windows 9x and provided for DOS compatibility in 32-bit versions of NT-based Windows via NTVDM.
+        </td>
+       </tr>
+       <tr id="TBL-4-5-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-4-5-1" style="text-align:right; white-space:nowrap;">
+        </td>
+       </tr>
+       <tr id="TBL-4-6-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-4-6-1" style="text-align:right; white-space:nowrap;">
+        </td>
+       </tr>
+       <tr id="TBL-4-7-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-4-7-1" style="text-align:right; white-space:nowrap;">
+         Almquist shell <span id="textcolor1128">(<code class="verb">ash</code>)</span>
+        </td>
+        <td class="td10" id="TBL-4-7-2" style="text-align:left; white-space:nowrap;">
+        </td>
+       </tr>
+       <tr id="TBL-4-8-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-4-8-1" style="text-align:right; white-space:nowrap;">
+        </td>
+       </tr>
+       <tr id="TBL-4-9-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-4-9-1" style="text-align:right; white-space:nowrap;">
+        </td>
+       </tr>
+       <tr id="TBL-4-10-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-4-10-1" style="text-align:right; white-space:nowrap;">
+         Debian Almquist shell <span id="textcolor1129">(<code class="verb">dash</code>)</span>
+        </td>
+        <td class="td10" id="TBL-4-10-2" style="text-align:left; white-space:nowrap;">
+        </td>
+       </tr>
+       <tr id="TBL-4-11-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-4-11-1" style="text-align:right; white-space:nowrap;">
+        </td>
+       </tr>
+       <tr id="TBL-4-12-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-4-12-1" style="text-align:right; white-space:nowrap;">
+        </td>
+       </tr>
+       <tr id="TBL-4-13-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-4-13-1" style="text-align:right; white-space:nowrap;">
+         Bash (Unix shell) <span id="textcolor1130">(<code class="verb">bash</code>)</span>
+        </td>
+        <td class="td10" id="TBL-4-13-2" style="text-align:left; white-space:nowrap;">
+        </td>
+       </tr>
+       <tr id="TBL-4-14-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-4-14-1" style="text-align:right; white-space:nowrap;">
+        </td>
+       </tr>
+       <tr id="TBL-4-15-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-4-15-1" style="text-align:right; white-space:nowrap;">
+        </td>
+       </tr>
+       <tr id="TBL-4-16-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-4-16-1" style="text-align:right; white-space:nowrap;">
+         Korn shell <span id="textcolor1131">(<code class="verb">ksh</code>)</span>
+        </td>
+        <td class="td10" id="TBL-4-16-2" style="text-align:left; white-space:nowrap;"> <span id="textcolor1132"><code class="verb">cmd.exe</code></span>, the default command-line interpreter of the Windows NT-family
+        </td>
+       </tr>
+       <tr id="TBL-4-17-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-4-17-1" style="text-align:right; white-space:nowrap;">
+        </td>
+       </tr>
+       <tr id="TBL-4-18-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-4-18-1" style="text-align:right; white-space:nowrap;">
+        </td>
+       </tr>
+       <tr id="TBL-4-19-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-4-19-1" style="text-align:right; white-space:nowrap;">
+         Z Shell <span id="textcolor1133">(<code class="verb">zsh</code>)</span>
+        </td>
+        <td class="td10" id="TBL-4-19-2" style="text-align:left; white-space:nowrap;">
+        </td>
+       </tr>
+       <tr id="TBL-4-20-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-4-20-1" style="text-align:right; white-space:nowrap;">
+        </td>
+       </tr>
+       <tr id="TBL-4-21-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-4-21-1" style="text-align:right; white-space:nowrap;">
+        </td>
+       </tr>
+       <tr id="TBL-4-22-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-4-22-1" style="text-align:right; white-space:nowrap;">
+         C shell <span id="textcolor1134">(<code class="verb">csh</code>)</span>
+        </td>
+        <td class="td10" id="TBL-4-22-2" style="text-align:left; white-space:nowrap;">
+         Recovery Console
+        </td>
+       </tr>
+       <tr id="TBL-4-23-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-4-23-1" style="text-align:right; white-space:nowrap;">
+        </td>
+       </tr>
+       <tr id="TBL-4-24-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-4-24-1" style="text-align:right; white-space:nowrap;">
+        </td>
+       </tr>
+       <tr id="TBL-4-25-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-4-25-1" style="text-align:right; white-space:nowrap;">
+         TENEX C shell <span id="textcolor1135">(<code class="verb">tcsh</code>)</span>
+        </td>
+        <td class="td10" id="TBL-4-25-2" style="text-align:left; white-space:nowrap;">
+         Windows PowerShell, based on .NET Framework
+        </td>
+       </tr>
+       <tr id="TBL-4-26-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-4-26-1" style="text-align:right; white-space:nowrap;">
+        </td>
+       </tr>
+       <tr id="TBL-4-27-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-4-27-1" style="text-align:right; white-space:nowrap;">
+        </td>
+       </tr>
+       <tr id="TBL-4-28-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-4-28-1" style="text-align:right; white-space:nowrap;">
+         Ch shell <span id="textcolor1136">(<code class="verb">ch</code>)</span>
+        </td>
+        <td class="td10" id="TBL-4-28-2" style="text-align:left; white-space:nowrap;">
+         PowerShell, based on .NET Core
+        </td>
+       </tr>
+       <tr id="TBL-4-29-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-4-29-1" style="text-align:right; white-space:nowrap;">
+        </td>
+       </tr>
+       <tr id="TBL-4-30-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-4-30-1" style="text-align:right; white-space:nowrap;">
+        </td>
+       </tr>
+       <tr id="TBL-4-31-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-4-31-1" style="text-align:right; white-space:nowrap;">
+         Emacs shell <span id="textcolor1137">(<code class="verb">eshell</code>)</span>
+        </td>
+        <td class="td10" id="TBL-4-31-2" style="text-align:left; white-space:nowrap;">
+         Hamilton C shell, a clone of the Unix C shell
+        </td>
+       </tr>
+       <tr id="TBL-4-32-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-4-32-1" style="text-align:right; white-space:nowrap;">
+        </td>
+       </tr>
+       <tr id="TBL-4-33-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-4-33-1" style="text-align:right; white-space:nowrap;">
+        </td>
+       </tr>
+       <tr id="TBL-4-34-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-4-34-1" style="text-align:right; white-space:nowrap;">
+         Friendly interactive shell <span id="textcolor1138">(<code class="verb">fish</code>)</span>
+        </td>
+        <td class="td10" id="TBL-4-34-2" style="text-align:left; white-space:nowrap;">
+        </td>
+       </tr>
+       <tr id="TBL-4-35-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-4-35-1" style="text-align:right; white-space:nowrap;">
+        </td>
+       </tr>
+       <tr id="TBL-4-36-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-4-36-1" style="text-align:right; white-space:nowrap;">
+        </td>
+       </tr>
+       <tr id="TBL-4-37-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-4-37-1" style="text-align:right; white-space:nowrap;">
+         Powershell <span id="textcolor1139">(<code class="verb">pwsh</code>)</span>
+        </td>
+        <td class="td10" id="TBL-4-37-2" style="text-align:left; white-space:nowrap;">
+         4NT, a clone of CMD.EXE.
+        </td>
+       </tr>
+       <tr id="TBL-4-38-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-4-38-1" style="text-align:right; white-space:nowrap;">
+        </td>
+       </tr>
+       <tr id="TBL-4-39-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-4-39-1" style="text-align:right; white-space:nowrap;">
+        </td>
+       </tr>
+       <tr id="TBL-4-40-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-4-40-1" style="text-align:right; white-space:nowrap;">
+         rc shell <span id="textcolor1140">(<code class="verb">rc</code>)</span>
+        </td>
+        <td class="td10" id="TBL-4-40-2" style="text-align:left; white-space:nowrap;">
+         Take Command, a newer incarnation of 4NT
+        </td>
+       </tr>
+       <tr id="TBL-4-41-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-4-41-1" style="text-align:right; white-space:nowrap;">
+        </td>
+       </tr>
+       <tr id="TBL-4-42-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-4-42-1" style="text-align:right; white-space:nowrap;">
+        </td>
+       </tr>
+       <tr id="TBL-4-43-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-4-43-1" style="text-align:right; white-space:nowrap;">
+         Stand-alone shell <span id="textcolor1141">(<code class="verb">sash</code>)</span>
+        </td>
+        <td class="td10" id="TBL-4-43-2" style="text-align:left; white-space:nowrap;">
+        </td>
+       </tr>
+       <tr id="TBL-4-44-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-4-44-1" style="text-align:right; white-space:nowrap;">
+        </td>
+       </tr>
+       <tr id="TBL-4-45-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-4-45-1" style="text-align:right; white-space:nowrap;">
+        </td>
+       </tr>
+       <tr id="TBL-4-46-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-4-46-1" style="text-align:right; white-space:nowrap;">
+         Scheme Shell <span id="textcolor1142">(<code class="verb">scsh</code>)</span>
+        </td>
+        <td class="td10" id="TBL-4-46-2" style="text-align:left; white-space:nowrap;">
+        </td>
+       </tr>
+       <tr id="TBL-4-47-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-4-47-1" style="text-align:right; white-space:nowrap;">
+        </td>
+       </tr>
+       <tr id="TBL-4-48-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-4-48-1" style="text-align:right; white-space:nowrap;">
+        </td>
+       </tr>
+       <tr id="TBL-4-49-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-4-49-1" style="text-align:right; white-space:nowrap;">
+        </td>
+       </tr>
+      </table>
+      <a id="x7-113001r1">
+      </a>
+      <figcaption class="caption">
+       <span class="id">
+        Table 5.1:
+       </span>
+       <span class="content">
+        Types of shells used in industry and academia. For reference, the authors computer uses zsh.
+       </span>
+      </figcaption>
+     </figure>
+     <p class="noindent">
+      The
+command-line
+interpreter
+was
+one
+of
+the
+earliest
+ways
+of
+interacting
+with
+the
+general-purpose
+computer,
+starting
+in
+1971
+with
+the
+Thompson
+shell
+for
+UNIX
+      <alert style="color: #821131;">
+       <span id="bold" style="font-weight:bold;">
+        <sup class="textsuperscript">
+         2
+        </sup>
+       </span>
+      </alert>
+      <span class="marginnote">
+       <alert style="color: #821131;">
+        <span id="bold" style="font-weight:bold;">
+         <sup class="textsuperscript">
+          2
+         </sup>
+        </span>
+       </alert>
+       <span id="textcolor1143">
+        A
+family
+of
+multitasking,
+multi-user
+computer
+operating
+systems
+that
+derive
+from
+the
+original
+AT&amp;T
+Unix,
+whose
+development
+started
+in
+1969.
+It
+is
+considered
+one
+of
+the
+most
+groundbreaking
+software
+ever
+designed.
+       </span>
+      </span>
+      .
+As
+UNIX
+evolved
+and
+came
+to
+be
+replaced
+in
+many
+                                                                                
+                                                                                
+                                                                         
+capacities
+by
+Linux,
+the
+shell
+environments
+evolved
+and
+improved
+as
+well.
+     </p>
+     <p class="noindent">
+      Bash,
+or
+the
+Bourne-again
+shell
+is
+one
+of
+the
+most
+widely-used
+shells
+and
+odds
+are,
+it’s
+the
+one
+to
+be
+encountered
+in
+industry
+or
+in
+academic
+work.
+Bash
+is
+the
+shell
+that
+comes
+enabled
+by
+default
+with
+most
+of
+the
+popular
+Linux
+distributions.
+It’s
+also
+available
+on
+macOS
+      <alert style="color: #821131;">
+       <span id="bold" style="font-weight:bold;">
+        <sup class="textsuperscript">
+         3
+        </sup>
+       </span>
+      </alert>
+      <span class="marginnote">
+       <alert style="color: #821131;">
+        <span id="bold" style="font-weight:bold;">
+         <sup class="textsuperscript">
+          3
+         </sup>
+        </span>
+       </alert>
+       <span id="textcolor1144">
+        newer
+versions
+have <span id="textcolor1145"><code class="verb">zsh</code></span>
+        shell
+instead
+but
+                                                                                
+                                                                                
+they
+are
+designed
+to
+be
+compatible.
+The
+author
+of
+this
+work
+also
+uses <span id="textcolor1146"><code class="verb">zsh</code></span>
+        as
+his
+main
+driver.
+       </span>
+      </span>
+      and
+in
+Windows
+with
+the
+Windows
+subsystem
+for
+Linux.
+     </p>
+     <div class="knowledge">
+      <p class="noindent">
+       In this document, Bash will be used. However, the reader is encouraged to explore
+some of the other shells out there once a working foundation in Bash is achieved.
+      </p>
+     </div>
+     <p class="noindent">
+     </p>
+    </div>
+    <div class="section-head" id="section-2" sec="section-2">
+     <h2 class="sectionHead">
+      <a aria-label="Link to this section in PDF version" class="pdf-link" href="MobileRoboticsLectureBook.pdf#section.5.2" style="color: red;  position: absolute;  left: -30px;" target="_blank">
+       <svg class="bi bi-file-pdf" fill="currentColor" height="20" viewbox="0 0 16 16" width="20" xmlns="http://www.w3.org/2000/svg">
+        <path d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z">
+        </path>
+        <path d="M4.603 12.087a.81.81 0 0 1-.438-.42c-.195-.388-.13-.776.08-1.102.198-.307.526-.568.897-.787a7.68 7.68 0 0 1 1.482-.645 19.701 19.701 0 0 0 1.062-2.227 7.269 7.269 0 0 1-.43-1.295c-.086-.4-.119-.796-.046-1.136.075-.354.274-.672.65-.823.192-.077.4-.12.602-.077a.7.7 0 0 1 .477.365c.088.164.12.356.127.538.007.187-.012.395-.047.614-.084.51-.27 1.134-.52 1.794a10.954 10.954 0 0 0 .98 1.686 5.753 5.753 0 0 1 1.334.05c.364.065.734.195.96.465.12.144.193.32.2.518.007.192-.047.382-.138.563a1.04 1.04 0 0 1-.354.416.856.856 0 0 1-.51.138c-.331-.014-.654-.196-.933-.417a5.716 5.716 0 0 1-.911-.95 11.642 11.642 0 0 0-1.997.406 11.311 11.311 0 0 1-1.021 1.51c-.29.35-.608.655-.926.787a.793.793 0 0 1-.58.029zm1.379-1.901c-.166.076-.32.156-.459.238-.328.194-.541.383-.647.547-.094.145-.096.25-.04.361.01.022.02.036.026.044a.27.27 0 0 0 .035-.012c.137-.056.355-.235.635-.572a8.18 8.18 0 0 0 .45-.606zm1.64-1.33a12.647 12.647 0 0 1 1.01-.193 11.666 11.666 0 0 1-.51-.858 20.741 20.741 0 0 1-.5 1.05zm2.446.45c.15.162.296.3.435.41.24.19.407.253.498.256a.107.107 0 0 0 .07-.015.307.307 0 0 0 .094-.125.436.436 0 0 0 .059-.2.095.095 0 0 0-.026-.063c-.052-.062-.2-.152-.518-.209a3.881 3.881 0 0 0-.612-.053zM8.078 5.8a6.7 6.7 0 0 0 .2-.828c.031-.188.043-.343.038-.465a.613.613 0 0 0-.032-.198.517.517 0 0 0-.145.04c-.087.035-.158.106-.196.283-.04.192-.03.469.046.822.024.111.054.227.09.346z">
+        </path>
+       </svg>
+      </a>
+      <small class="titlemark">
+       5.2
+      </small>
+      <a id="x7-1140005.2">
+      </a>
+      The  Structure  of  Commands
+     </h2>
+     <div class="figure">
+      <p class="noindent">
+       <img alt="PIC" height="" src="figures/Command-Line-Fundamentals/raster/xwindow.jpg" width="150%"/>
+       <a id="x7-114001r1">
+       </a>
+      </p>
+      <figcaption class="caption">
+       <span class="id">
+        Figure 5.1:
+       </span>
+       <span class="content">
+        A graphical interface from the late 1980s, which features a TUI window for a man page, a shaped window
+         (oclock) as well as several iconified windows. In the lower right we can see a terminal emulator running a
+         Unix shell, in which the user can type commands as if they were sitting at a terminal. -
+        <italic>
+         From Wikipedia
+        </italic>
+       </span>
+      </figcaption>
+     </div>
+     <p class="noindent">
+      There are a few concepts and principles which needs to be understood to be a productive member of the
+      <a class="glossary" href="MobileRoboticsLectureBookli2.html#glo:cli">
+       CLI
+      </a>
+      family. Before
+jumping into using commands though, have a look at how command line statements are structured with the following:
+     </p>
+     <div class="code-block">
+      <div class="code-lang">
+       bash
+      </div>
+      <pre><div class="language-bash" id="fancyvrb6" style="padding:20px;border-radius: 3px;"><a id="x7-114003r16"></a><span id="textcolor1147">command</span><span id="textcolor1148"> </span><span id="textcolor1149">[</span>-flag<span id="textcolor1150">(</span>s<span id="textcolor1151">)</span><span id="textcolor1152">]</span><span id="textcolor1153"> </span><span id="textcolor1154">[</span>-option<span id="textcolor1155">(</span>s<span id="textcolor1156">)</span><span id="textcolor1157"> </span><span id="textcolor1158">[</span>value<span id="textcolor1159">]</span><span id="textcolor1160">]</span><span id="textcolor1161"> </span><span id="textcolor1162">[</span>argument<span id="textcolor1163">(</span>s<span id="textcolor1164">)</span><span id="textcolor1165">]</span></div></pre>
+     </div>
+     <p class="noindent">
+      This is the general form. The pattern is <span id="textcolor1166"><code class="verb">command</code></span>, <span id="textcolor1167"><code class="verb">options</code></span>, and then <span id="textcolor1168"><code class="verb">arguments</code></span>. Here’s a couple
+of common commands you’ll see with options and arguments that are used with them.
+     </p>
+     <div class="code-block">
+      <div class="code-lang">
+       bash
+      </div>
+      <pre><div class="language-bash" id="fancyvrb7" style="padding:20px;border-radius: 3px;"><a id="x7-114005r21"></a>ls<span id="textcolor1169"> </span>-l<span id="textcolor1170"> </span>/tmp 
+<a id="x7-114007r22"></a><span id="textcolor1171">cd</span><span id="textcolor1172"> </span>/usr/local 
+<a id="x7-114009r23"></a>cat<span id="textcolor1173"> </span>/etc/passwd</div></pre>
+     </div>
+     <p class="noindent">
+      The details of what the aforementioned commands do will be the focus in the future. I just want to show you the structure of
+what we’ll be working with before we get into what these actually do. Depending on the current action, you might
+just have a command or a command and one or more options or just a command with one or more arguments.
+     </p>
+     <div class="warning">
+      <p class="noindent">
+       But  there  will  always  be  a  command.
+      </p>
+     </div>
+     <p class="noindent">
+      Command is the
+      <alert style="color: #821131;">
+       minimum
+      </alert>
+      thing which can be done with a
+      <a class="glossary" href="MobileRoboticsLectureBookli2.html#glo:cli">
+       CLI
+      </a>. Think of it as the atom of any action you can take. The
+command is the program you’re running or the action you’re taking. To give command to a UNIX system, type the
+name of the command, along with any associated information, such as a filename, and press the <span id="textcolor1174"><code class="verb">\return</code></span>
+      key.
+     </p>
+     <p class="noindent">
+      The typed line is called the command line and UNIX uses a special program, called the shell or the command
+line interpreter, mentioned in the previous section, to interpret what you have typed into what you want to do.
+     </p>
+     <p class="noindent">
+      The  components  of  the  command  line  are:
+     </p>
+     <dl class="enumerate-enumitem">
+      <dt class="enumerate-enumitem">
+       1.
+      </dt>
+      <dd class="enumerate-enumitem">
+       the
+command,
+      </dd>
+      <dt class="enumerate-enumitem">
+       2.
+      </dt>
+      <dd class="enumerate-enumitem">
+       any
+options
+required
+by
+the
+command,
+      </dd>
+      <dt class="enumerate-enumitem">
+       3.
+      </dt>
+      <dd class="enumerate-enumitem">
+       the
+command’s
+arguments.
+       <alert style="color: #821131;">
+        <span id="bold" style="font-weight:bold;">
+         <sup class="textsuperscript">
+          4
+         </sup>
+        </span>
+       </alert>
+       <span class="marginnote">
+        <alert style="color: #821131;">
+         <span id="bold" style="font-weight:bold;">
+          <sup class="textsuperscript">
+           4
+          </sup>
+         </span>
+        </alert>
+        <span id="textcolor1175">
+         This
+is
+optional
+as
+some
+commands
+just
+don’t
+have
+any
+options.
+        </span>
+       </span>
+      </dd>
+     </dl>
+     <h3 class="subsectionHead">
+      <a aria-label="Link to this section in PDF version" class="pdf-link" href="MobileRoboticsLectureBook.pdf#subsection.5.2.1" style="color: red;  position: absolute;  left: -30px;" target="_blank">
+       <svg class="bi bi-file-pdf" fill="currentColor" height="20" viewbox="0 0 16 16" width="20" xmlns="http://www.w3.org/2000/svg">
+        <path d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z">
+        </path>
+        <path d="M4.603 12.087a.81.81 0 0 1-.438-.42c-.195-.388-.13-.776.08-1.102.198-.307.526-.568.897-.787a7.68 7.68 0 0 1 1.482-.645 19.701 19.701 0 0 0 1.062-2.227 7.269 7.269 0 0 1-.43-1.295c-.086-.4-.119-.796-.046-1.136.075-.354.274-.672.65-.823.192-.077.4-.12.602-.077a.7.7 0 0 1 .477.365c.088.164.12.356.127.538.007.187-.012.395-.047.614-.084.51-.27 1.134-.52 1.794a10.954 10.954 0 0 0 .98 1.686 5.753 5.753 0 0 1 1.334.05c.364.065.734.195.96.465.12.144.193.32.2.518.007.192-.047.382-.138.563a1.04 1.04 0 0 1-.354.416.856.856 0 0 1-.51.138c-.331-.014-.654-.196-.933-.417a5.716 5.716 0 0 1-.911-.95 11.642 11.642 0 0 0-1.997.406 11.311 11.311 0 0 1-1.021 1.51c-.29.35-.608.655-.926.787a.793.793 0 0 1-.58.029zm1.379-1.901c-.166.076-.32.156-.459.238-.328.194-.541.383-.647.547-.094.145-.096.25-.04.361.01.022.02.036.026.044a.27.27 0 0 0 .035-.012c.137-.056.355-.235.635-.572a8.18 8.18 0 0 0 .45-.606zm1.64-1.33a12.647 12.647 0 0 1 1.01-.193 11.666 11.666 0 0 1-.51-.858 20.741 20.741 0 0 1-.5 1.05zm2.446.45c.15.162.296.3.435.41.24.19.407.253.498.256a.107.107 0 0 0 .07-.015.307.307 0 0 0 .094-.125.436.436 0 0 0 .059-.2.095.095 0 0 0-.026-.063c-.052-.062-.2-.152-.518-.209a3.881 3.881 0 0 0-.612-.053zM8.078 5.8a6.7 6.7 0 0 0 .2-.828c.031-.188.043-.343.038-.465a.613.613 0 0 0-.032-.198.517.517 0 0 0-.145.04c-.087.035-.158.106-.196.283-.04.192-.03.469.046.822.024.111.054.227.09.346z">
+        </path>
+       </svg>
+      </a>
+      <small class="titlemark">
+       5.2.1
+      </small>
+      <a id="x7-1150005.2.1">
+      </a>
+      Some  Rules  Regarding  the  Syntax
+     </h3>
+     <p class="noindent">
+      Since the introduction of UNIX System V, Release 3 (released 1983), any new commands must obey a particular syntax governed by the following rules:
+     </p>
+     <ul class="itemize1">
+      <li class="itemize">
+       <p class="noindent">
+        Command
+names
+must
+be
+between
+2
+and
+9
+characters
+in
+length,
+       </p>
+      </li>
+      <li class="itemize">
+       <p class="noindent">
+        Command
+names
+must
+be
+comprised
+of
+lowercase
+characters
+and
+digits,
+       </p>
+      </li>
+      <li class="itemize">
+       <p class="noindent">
+        Option
+names
+must
+be
+one
+character
+in
+length,
+       </p>
+      </li>
+      <li class="itemize">
+       <p class="noindent">
+        All
+options
+are
+preceded
+by
+a
+hyphen <span id="textcolor1180">(<code class="verb">-</code>)</span>,
+       </p>
+      </li>
+      <li class="itemize">
+       <p class="noindent">
+        Options
+without
+arguments
+may
+be
+grouped
+                                                                                
+                                                                                
+     
+after
+the
+hyphen,
+       </p>
+      </li>
+      <li class="itemize">
+       <p class="noindent">
+        The first option argument, following an option, must be preceded by white space,
+       </p>
+       <ul class="itemize2">
+        <li class="itemize">
+         <p class="noindent">
+          i.e., <span id="textcolor1183"><code class="verb">-o sfile</code></span>
+          is
+valid
+but <span id="textcolor1184"><code class="verb">-osfile</code></span>
+          is
+          <span id="bold" style="font-weight:bold;">
+           illegal
+          </span>
+          .
+         </p>
+        </li>
+       </ul>
+      </li>
+      <li class="itemize">
+       <p class="noindent">
+        Option arguments are
+        <span id="bold" style="font-weight:bold;">
+         not optional
+        </span>
+        ,
+       </p>
+      </li>
+      <li class="itemize">
+       <p class="noindent">
+        If an option takes more than one argument then they must be separated by commas with no spaces, or if spaces are used
+the string must be included in double quotes <span id="textcolor1187">(<code class="verb">"</code>)</span>.,
+       </p>
+       <ul class="itemize2">
+        <li class="itemize">
+         <p class="noindent">
+          i.e.,
+both
+are
+acceptable: <span id="textcolor1188"><code class="verb">-f past,now,next</code></span>
+          and <span id="textcolor1189"><code class="verb">-f "past now next"</code></span>.
+         </p>
+        </li>
+       </ul>
+      </li>
+      <li class="itemize">
+       <p class="noindent">
+        All options must precede other arguments on the command line,
+       </p>
+      </li>
+      <li class="itemize">
+       <p class="noindent">
+        A double hyphen <span id="textcolor1192"><code class="verb">--</code></span>
+        may be used to indicate the end of the option list,
+       </p>
+      </li>
+      <li class="itemize">
+       <p class="noindent">
+        The order of the options are order independent,
+       </p>
+      </li>
+      <li class="itemize">
+       <p class="noindent">
+        The order of arguments may be important,
+       </p>
+      </li>
+      <li class="itemize">
+       <p class="noindent">
+        A single hyphen <span id="textcolor1196"><code class="verb">-</code></span>
+        is used to mean standard input.
+       </p>
+      </li>
+     </ul>
+     <div class="warning">
+      <p class="noindent">
+       Options
+       <span id="bold" style="font-weight:bold;">
+        must
+       </span>
+       come after the command and before arguments. Options
+       <span id="bold" style="font-weight:bold;">
+        should not
+       </span>
+       appear after
+the main argument(s). However, some options can have their own arguments! Historically, UNIX
+commands have been fairly standard in the way that they use options but there are variations.
+      </p>
+     </div>
+     <div class="warning">
+      <p class="noindent">
+       Bear in mind that commands established before System V, Release 3, do not conform to all of the above rules.
+      </p>
+     </div>
+     <p class="noindent">
+     </p>
+    </div>
+    <div class="section-head" id="section-3" sec="section-3">
+     <h2 class="sectionHead">
+      <a aria-label="Link to this section in PDF version" class="pdf-link" href="MobileRoboticsLectureBook.pdf#section.5.3" style="color: red;  position: absolute;  left: -30px;" target="_blank">
+       <svg class="bi bi-file-pdf" fill="currentColor" height="20" viewbox="0 0 16 16" width="20" xmlns="http://www.w3.org/2000/svg">
+        <path d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z">
+        </path>
+        <path d="M4.603 12.087a.81.81 0 0 1-.438-.42c-.195-.388-.13-.776.08-1.102.198-.307.526-.568.897-.787a7.68 7.68 0 0 1 1.482-.645 19.701 19.701 0 0 0 1.062-2.227 7.269 7.269 0 0 1-.43-1.295c-.086-.4-.119-.796-.046-1.136.075-.354.274-.672.65-.823.192-.077.4-.12.602-.077a.7.7 0 0 1 .477.365c.088.164.12.356.127.538.007.187-.012.395-.047.614-.084.51-.27 1.134-.52 1.794a10.954 10.954 0 0 0 .98 1.686 5.753 5.753 0 0 1 1.334.05c.364.065.734.195.96.465.12.144.193.32.2.518.007.192-.047.382-.138.563a1.04 1.04 0 0 1-.354.416.856.856 0 0 1-.51.138c-.331-.014-.654-.196-.933-.417a5.716 5.716 0 0 1-.911-.95 11.642 11.642 0 0 0-1.997.406 11.311 11.311 0 0 1-1.021 1.51c-.29.35-.608.655-.926.787a.793.793 0 0 1-.58.029zm1.379-1.901c-.166.076-.32.156-.459.238-.328.194-.541.383-.647.547-.094.145-.096.25-.04.361.01.022.02.036.026.044a.27.27 0 0 0 .035-.012c.137-.056.355-.235.635-.572a8.18 8.18 0 0 0 .45-.606zm1.64-1.33a12.647 12.647 0 0 1 1.01-.193 11.666 11.666 0 0 1-.51-.858 20.741 20.741 0 0 1-.5 1.05zm2.446.45c.15.162.296.3.435.41.24.19.407.253.498.256a.107.107 0 0 0 .07-.015.307.307 0 0 0 .094-.125.436.436 0 0 0 .059-.2.095.095 0 0 0-.026-.063c-.052-.062-.2-.152-.518-.209a3.881 3.881 0 0 0-.612-.053zM8.078 5.8a6.7 6.7 0 0 0 .2-.828c.031-.188.043-.343.038-.465a.613.613 0 0 0-.032-.198.517.517 0 0 0-.145.04c-.087.035-.158.106-.196.283-.04.192-.03.469.046.822.024.111.054.227.09.346z">
+        </path>
+       </svg>
+      </a>
+      <small class="titlemark">
+       5.3
+      </small>
+      <a id="x7-1160005.3">
+      </a>
+      Helpful  Keyboard  Shortcuts  for  the  Terminal
+     </h2>
+     <p class="noindent">
+      Before we moving on to more specific commands and get into
+      <a class="glossary" href="MobileRoboticsLectureBookli2.html#glo:cli">
+       CLI
+      </a>
+      programming, there’s a few other helpful things to know about
+working at the Command Line. The first is
+      <span id="bold" style="font-weight:bold;">
+       Tab completion
+      </span>
+      , a wonderful feature of the Bash shell, and is also included in many
+others. This feature let’s you skip typing out a whole file name or folder name when you’re working at the Command Line.
+     </p>
+     <p class="noindent">
+      When you’re working in the command line it looks at all the information it has so far and makes a guess about what you mean.
+For example, I can type <span id="textcolor1197"><code class="verb">ls -l De</code></span>
+      and press <span id="textcolor1198"><code class="verb">\tab</code></span>, and it completes the line with Desktop. Now type <span id="textcolor1199"><code class="verb">ls -l Do</code></span>
+      and nothing would
+happen when I press
+      <kbd>
+       Tab
+      </kbd>
+      . That’s because <span id="textcolor1200"><code class="verb">\tab</code></span>
+      doesn’t have one clear suggestion to return. As it can be either Documents
+of Downloads. However, pressing <span id="textcolor1201"><code class="verb">\tab</code></span>
+      again should give you a suggestion of which items can be completed to.
+     </p>
+     <p class="noindent">
+      For reference, in the following page, there is a table for most useful keyboard shortcut for Linux Bash.
+     </p>
+     <p class="noindent">
+     </p>
+     <figure class="float">
+      <p class="noindent">
+      </p>
+      <table class="tabular" id="TBL-5">
+       <colgroup id="TBL-5-1g">
+        <col id="TBL-5-1"/>
+        <col id="TBL-5-2"/>
+        <col id="TBL-5-3"/>
+       </colgroup>
+       <tr id="TBL-5-1-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-5-1-1" style="text-align:right; white-space:nowrap;">
+        </td>
+        <td class="td11" id="TBL-5-1-2" style="text-align:center; white-space:nowrap;">
+         <span id="bold" style="font-weight:bold;">
+          Shortcut
+         </span>
+        </td>
+        <td class="td10" id="TBL-5-1-3" style="text-align:left; white-space:nowrap;">
+         <span id="bold" style="font-weight:bold;">
+          Action
+         </span>
+        </td>
+       </tr>
+       <tr id="TBL-5-2-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-5-2-1" style="text-align:right; white-space:nowrap;">
+        </td>
+       </tr>
+       <tr id="TBL-5-3-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-5-3-1" style="text-align:right; white-space:nowrap;">
+        </td>
+       </tr>
+       <tr id="TBL-5-4-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-5-4-1" style="text-align:right; white-space:nowrap;">
+         <span id="bold" style="font-weight:bold;">
+          Navigation
+         </span>
+        </td>
+        <td class="td11" id="TBL-5-4-2" style="text-align:center; white-space:nowrap;">
+         <kbd>
+          Ctrl
+         </kbd>
+         +
+         <kbd>
+          A
+         </kbd>
+        </td>
+        <td class="td10" id="TBL-5-4-3" style="text-align:left; white-space:nowrap;">
+         Go to the beginning of the line.
+        </td>
+       </tr>
+       <tr id="TBL-5-5-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-5-5-1" style="text-align:right; white-space:nowrap;">
+        </td>
+       </tr>
+       <tr id="TBL-5-6-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-5-6-1" style="text-align:right; white-space:nowrap;">
+        </td>
+       </tr>
+       <tr id="TBL-5-7-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-5-7-1" style="text-align:right; white-space:nowrap;">
+        </td>
+        <td class="td11" id="TBL-5-7-2" style="text-align:center; white-space:nowrap;">
+         <kbd>
+          Ctrl
+         </kbd>
+         +
+         <kbd>
+          E
+         </kbd>
+        </td>
+        <td class="td10" id="TBL-5-7-3" style="text-align:left; white-space:nowrap;">
+         Go to the end of the line.
+        </td>
+       </tr>
+       <tr id="TBL-5-8-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-5-8-1" style="text-align:right; white-space:nowrap;">
+        </td>
+       </tr>
+       <tr id="TBL-5-9-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-5-9-1" style="text-align:right; white-space:nowrap;">
+        </td>
+       </tr>
+       <tr id="TBL-5-10-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-5-10-1" style="text-align:right; white-space:nowrap;">
+        </td>
+        <td class="td11" id="TBL-5-10-2" style="text-align:center; white-space:nowrap;">
+         <kbd>
+          Alt
+         </kbd>
+         +
+         <kbd>
+          F
+         </kbd>
+        </td>
+        <td class="td10" id="TBL-5-10-3" style="text-align:left; white-space:nowrap;">
+         Move the cursor forward one word.
+        </td>
+       </tr>
+       <tr id="TBL-5-11-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-5-11-1" style="text-align:right; white-space:nowrap;">
+        </td>
+       </tr>
+       <tr id="TBL-5-12-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-5-12-1" style="text-align:right; white-space:nowrap;">
+        </td>
+       </tr>
+       <tr id="TBL-5-13-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-5-13-1" style="text-align:right; white-space:nowrap;">
+        </td>
+        <td class="td11" id="TBL-5-13-2" style="text-align:center; white-space:nowrap;">
+         <kbd>
+          Alt
+         </kbd>
+         +
+         <kbd>
+          B
+         </kbd>
+        </td>
+        <td class="td10" id="TBL-5-13-3" style="text-align:left; white-space:nowrap;">
+         Move the cursor back one word.
+        </td>
+       </tr>
+       <tr id="TBL-5-14-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-5-14-1" style="text-align:right; white-space:nowrap;">
+        </td>
+       </tr>
+       <tr id="TBL-5-15-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-5-15-1" style="text-align:right; white-space:nowrap;">
+        </td>
+       </tr>
+       <tr id="TBL-5-16-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-5-16-1" style="text-align:right; white-space:nowrap;">
+        </td>
+        <td class="td11" id="TBL-5-16-2" style="text-align:center; white-space:nowrap;">
+         <kbd>
+          Ctrl
+         </kbd>
+         +
+         <kbd>
+          F
+         </kbd>
+        </td>
+        <td class="td10" id="TBL-5-16-3" style="text-align:left; white-space:nowrap;">
+         Move the cursor forward one character.
+        </td>
+       </tr>
+       <tr id="TBL-5-17-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-5-17-1" style="text-align:right; white-space:nowrap;">
+        </td>
+       </tr>
+       <tr id="TBL-5-18-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-5-18-1" style="text-align:right; white-space:nowrap;">
+        </td>
+       </tr>
+       <tr id="TBL-5-19-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-5-19-1" style="text-align:right; white-space:nowrap;">
+        </td>
+        <td class="td11" id="TBL-5-19-2" style="text-align:center; white-space:nowrap;">
+         <kbd>
+          Ctrl
+         </kbd>
+         +
+         <kbd>
+          B
+         </kbd>
+        </td>
+        <td class="td10" id="TBL-5-19-3" style="text-align:left; white-space:nowrap;">
+         Move the cursor back one character.
+        </td>
+       </tr>
+       <tr id="TBL-5-20-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-5-20-1" style="text-align:right; white-space:nowrap;">
+        </td>
+       </tr>
+       <tr id="TBL-5-21-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-5-21-1" style="text-align:right; white-space:nowrap;">
+        </td>
+       </tr>
+       <tr id="TBL-5-22-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-5-22-1" style="text-align:right; white-space:nowrap;">
+        </td>
+        <td class="td11" id="TBL-5-22-2" style="text-align:center; white-space:nowrap;">
+         <kbd>
+          Ctrl
+         </kbd>
+         +
+         <kbd>
+          X
+         </kbd>
+        </td>
+        <td class="td10" id="TBL-5-22-3" style="text-align:left; white-space:nowrap;">
+         Toggle between the current cursor position and the beginning of the line.
+        </td>
+       </tr>
+       <tr id="TBL-5-23-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-5-23-1" style="text-align:right; white-space:nowrap;">
+        </td>
+       </tr>
+       <tr id="TBL-5-24-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-5-24-1" style="text-align:right; white-space:nowrap;">
+        </td>
+       </tr>
+       <tr id="TBL-5-25-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-5-25-1" style="text-align:right; white-space:nowrap;">
+         <span id="bold" style="font-weight:bold;">
+          Editing
+         </span>
+        </td>
+        <td class="td11" id="TBL-5-25-2" style="text-align:center; white-space:nowrap;">
+         <kbd>
+          Ctrl
+         </kbd>
+         +
+         <kbd>
+          A
+         </kbd>
+        </td>
+        <td class="td10" id="TBL-5-25-3" style="text-align:left; white-space:nowrap;">
+         Undo! (That’s an underscore, so you’ll need to use
+         <kbd>
+          Shift
+         </kbd>
+         as well.).
+        </td>
+       </tr>
+       <tr id="TBL-5-26-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-5-26-1" style="text-align:right; white-space:nowrap;">
+        </td>
+       </tr>
+       <tr id="TBL-5-27-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-5-27-1" style="text-align:right; white-space:nowrap;">
+        </td>
+       </tr>
+       <tr id="TBL-5-28-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-5-28-1" style="text-align:right; white-space:nowrap;">
+        </td>
+        <td class="td11" id="TBL-5-28-2" style="text-align:center; white-space:nowrap;">
+         <kbd>
+          Ctrl
+         </kbd>
+         +
+         <kbd>
+          X
+         </kbd>
+        </td>
+        <td class="td10" id="TBL-5-28-3" style="text-align:left; white-space:nowrap;">
+         Edit the current command in your $EDITOR.
+        </td>
+       </tr>
+       <tr id="TBL-5-29-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-5-29-1" style="text-align:right; white-space:nowrap;">
+        </td>
+       </tr>
+       <tr id="TBL-5-30-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-5-30-1" style="text-align:right; white-space:nowrap;">
+        </td>
+       </tr>
+       <tr id="TBL-5-31-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-5-31-1" style="text-align:right; white-space:nowrap;">
+        </td>
+        <td class="td11" id="TBL-5-31-2" style="text-align:center; white-space:nowrap;">
+         <kbd>
+          Alt
+         </kbd>
+         +
+         <kbd>
+          D
+         </kbd>
+        </td>
+        <td class="td10" id="TBL-5-31-3" style="text-align:left; white-space:nowrap;">
+         Delete the word after the cursor.
+        </td>
+       </tr>
+       <tr id="TBL-5-32-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-5-32-1" style="text-align:right; white-space:nowrap;">
+        </td>
+       </tr>
+       <tr id="TBL-5-33-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-5-33-1" style="text-align:right; white-space:nowrap;">
+        </td>
+       </tr>
+       <tr id="TBL-5-34-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-5-34-1" style="text-align:right; white-space:nowrap;">
+        </td>
+        <td class="td11" id="TBL-5-34-2" style="text-align:center; white-space:nowrap;">
+         <kbd>
+          Alt
+         </kbd>
+        </td>
+        <td class="td10" id="TBL-5-34-3" style="text-align:left; white-space:nowrap;">
+         Delete the word before the cursor.
+        </td>
+       </tr>
+       <tr id="TBL-5-35-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-5-35-1" style="text-align:right; white-space:nowrap;">
+        </td>
+       </tr>
+       <tr id="TBL-5-36-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-5-36-1" style="text-align:right; white-space:nowrap;">
+        </td>
+       </tr>
+       <tr id="TBL-5-37-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-5-37-1" style="text-align:right; white-space:nowrap;">
+        </td>
+        <td class="td11" id="TBL-5-37-2" style="text-align:center; white-space:nowrap;">
+         <kbd>
+          Ctrl
+         </kbd>
+         +
+         <kbd>
+          D
+         </kbd>
+        </td>
+        <td class="td10" id="TBL-5-37-3" style="text-align:left; white-space:nowrap;">
+         Delete the character beneath the cursor.
+        </td>
+       </tr>
+       <tr id="TBL-5-38-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-5-38-1" style="text-align:right; white-space:nowrap;">
+        </td>
+       </tr>
+       <tr id="TBL-5-39-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-5-39-1" style="text-align:right; white-space:nowrap;">
+        </td>
+       </tr>
+       <tr id="TBL-5-40-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-5-40-1" style="text-align:right; white-space:nowrap;">
+        </td>
+        <td class="td11" id="TBL-5-40-2" style="text-align:center; white-space:nowrap;">
+         <kbd>
+          Ctrl
+         </kbd>
+         +
+         <kbd>
+          H
+         </kbd>
+        </td>
+        <td class="td10" id="TBL-5-40-3" style="text-align:left; white-space:nowrap;">
+         Delete the character before the cursor (like backspace).
+        </td>
+       </tr>
+       <tr id="TBL-5-41-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-5-41-1" style="text-align:right; white-space:nowrap;">
+        </td>
+       </tr>
+       <tr id="TBL-5-42-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-5-42-1" style="text-align:right; white-space:nowrap;">
+        </td>
+       </tr>
+       <tr id="TBL-5-43-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-5-43-1" style="text-align:right; white-space:nowrap;">
+        </td>
+        <td class="td11" id="TBL-5-43-2" style="text-align:center; white-space:nowrap;">
+         <kbd>
+          Ctrl
+         </kbd>
+         +
+         <kbd>
+          K
+         </kbd>
+        </td>
+        <td class="td10" id="TBL-5-43-3" style="text-align:left; white-space:nowrap;">
+         Cut the line after the cursor to the clipboard.
+        </td>
+       </tr>
+       <tr id="TBL-5-44-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-5-44-1" style="text-align:right; white-space:nowrap;">
+        </td>
+       </tr>
+       <tr id="TBL-5-45-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-5-45-1" style="text-align:right; white-space:nowrap;">
+        </td>
+       </tr>
+       <tr id="TBL-5-46-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-5-46-1" style="text-align:right; white-space:nowrap;">
+        </td>
+        <td class="td11" id="TBL-5-46-2" style="text-align:center; white-space:nowrap;">
+         <kbd>
+          Ctrl
+         </kbd>
+         +
+         <kbd>
+          U
+         </kbd>
+        </td>
+        <td class="td10" id="TBL-5-46-3" style="text-align:left; white-space:nowrap;">
+         Cut the line before the cursor to the clipboard.
+        </td>
+       </tr>
+       <tr id="TBL-5-47-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-5-47-1" style="text-align:right; white-space:nowrap;">
+        </td>
+       </tr>
+       <tr id="TBL-5-48-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-5-48-1" style="text-align:right; white-space:nowrap;">
+        </td>
+       </tr>
+       <tr id="TBL-5-49-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-5-49-1" style="text-align:right; white-space:nowrap;">
+        </td>
+        <td class="td11" id="TBL-5-49-2" style="text-align:center; white-space:nowrap;">
+         <kbd>
+          Ctrl
+         </kbd>
+         +
+         <kbd>
+          D
+         </kbd>
+        </td>
+        <td class="td10" id="TBL-5-49-3" style="text-align:left; white-space:nowrap;">
+         Cut the word after the cursor to the clipboard.
+        </td>
+       </tr>
+       <tr id="TBL-5-50-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-5-50-1" style="text-align:right; white-space:nowrap;">
+        </td>
+       </tr>
+       <tr id="TBL-5-51-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-5-51-1" style="text-align:right; white-space:nowrap;">
+        </td>
+       </tr>
+       <tr id="TBL-5-52-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-5-52-1" style="text-align:right; white-space:nowrap;">
+        </td>
+        <td class="td11" id="TBL-5-52-2" style="text-align:center; white-space:nowrap;">
+         <kbd>
+          Ctrl
+         </kbd>
+         +
+         <kbd>
+          W
+         </kbd>
+        </td>
+        <td class="td10" id="TBL-5-52-3" style="text-align:left; white-space:nowrap;">
+         Cut the word before the cursor to the clipboard.
+        </td>
+       </tr>
+       <tr id="TBL-5-53-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-5-53-1" style="text-align:right; white-space:nowrap;">
+        </td>
+       </tr>
+       <tr id="TBL-5-54-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-5-54-1" style="text-align:right; white-space:nowrap;">
+        </td>
+       </tr>
+       <tr id="TBL-5-55-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-5-55-1" style="text-align:right; white-space:nowrap;">
+        </td>
+        <td class="td11" id="TBL-5-55-2" style="text-align:center; white-space:nowrap;">
+         <kbd>
+          Ctrl
+         </kbd>
+         +
+         <kbd>
+          Y
+         </kbd>
+        </td>
+        <td class="td10" id="TBL-5-55-3" style="text-align:left; white-space:nowrap;">
+         Paste the last item to be cut.
+        </td>
+       </tr>
+       <tr id="TBL-5-56-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-5-56-1" style="text-align:right; white-space:nowrap;">
+        </td>
+       </tr>
+       <tr id="TBL-5-57-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-5-57-1" style="text-align:right; white-space:nowrap;">
+        </td>
+       </tr>
+       <tr id="TBL-5-58-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-5-58-1" style="text-align:right; white-space:nowrap;">
+         <span id="bold" style="font-weight:bold;">
+          Processes
+         </span>
+        </td>
+        <td class="td11" id="TBL-5-58-2" style="text-align:center; white-space:nowrap;">
+         <kbd>
+          Ctrl
+         </kbd>
+         +
+         <kbd>
+          L
+         </kbd>
+        </td>
+        <td class="td10" id="TBL-5-58-3" style="text-align:left; white-space:nowrap;">
+         Clear the entire screen (like the clear command).
+        </td>
+       </tr>
+       <tr id="TBL-5-59-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-5-59-1" style="text-align:right; white-space:nowrap;">
+        </td>
+       </tr>
+       <tr id="TBL-5-60-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-5-60-1" style="text-align:right; white-space:nowrap;">
+        </td>
+       </tr>
+       <tr id="TBL-5-61-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-5-61-1" style="text-align:right; white-space:nowrap;">
+        </td>
+        <td class="td11" id="TBL-5-61-2" style="text-align:center; white-space:nowrap;">
+         <kbd>
+          Ctrl
+         </kbd>
+         +
+         <kbd>
+          Z
+         </kbd>
+        </td>
+        <td class="td10" id="TBL-5-61-3" style="text-align:left; white-space:nowrap;">
+         Place the currently running process into a suspended background process.
+        </td>
+       </tr>
+       <tr id="TBL-5-62-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-5-62-1" style="text-align:right; white-space:nowrap;">
+        </td>
+       </tr>
+       <tr id="TBL-5-63-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-5-63-1" style="text-align:right; white-space:nowrap;">
+        </td>
+       </tr>
+       <tr id="TBL-5-64-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-5-64-1" style="text-align:right; white-space:nowrap;">
+        </td>
+        <td class="td11" id="TBL-5-64-2" style="text-align:center; white-space:nowrap;">
+         <kbd>
+          Ctrl
+         </kbd>
+         +
+         <kbd>
+          C
+         </kbd>
+        </td>
+        <td class="td10" id="TBL-5-64-3" style="text-align:left; white-space:nowrap;">
+         Kill the currently running process by sending the SIGINT signal.
+        </td>
+       </tr>
+       <tr id="TBL-5-65-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-5-65-1" style="text-align:right; white-space:nowrap;">
+        </td>
+       </tr>
+       <tr id="TBL-5-66-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-5-66-1" style="text-align:right; white-space:nowrap;">
+        </td>
+       </tr>
+       <tr id="TBL-5-67-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-5-67-1" style="text-align:right; white-space:nowrap;">
+        </td>
+        <td class="td11" id="TBL-5-67-2" style="text-align:center; white-space:nowrap;">
+         <kbd>
+          Ctrl
+         </kbd>
+         +
+         <kbd>
+          D
+         </kbd>
+        </td>
+        <td class="td10" id="TBL-5-67-3" style="text-align:left; white-space:nowrap;">
+         Exit the current shell.
+        </td>
+       </tr>
+       <tr id="TBL-5-68-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-5-68-1" style="text-align:right; white-space:nowrap;">
+        </td>
+       </tr>
+       <tr id="TBL-5-69-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-5-69-1" style="text-align:right; white-space:nowrap;">
+        </td>
+       </tr>
+       <tr id="TBL-5-70-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-5-70-1" style="text-align:right; white-space:nowrap;">
+        </td>
+        <td class="td11" id="TBL-5-70-2" style="text-align:center; white-space:nowrap;">
+         <kbd>
+          Return
+         </kbd>
+        </td>
+        <td class="td10" id="TBL-5-70-3" style="text-align:left; white-space:nowrap;">
+         Exit a stalled SSH session.
+        </td>
+       </tr>
+       <tr id="TBL-5-71-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-5-71-1" style="text-align:right; white-space:nowrap;">
+        </td>
+       </tr>
+       <tr id="TBL-5-72-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-5-72-1" style="text-align:right; white-space:nowrap;">
+        </td>
+       </tr>
+       <tr id="TBL-5-73-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-5-73-1" style="text-align:right; white-space:nowrap;">
+         <span id="bold" style="font-weight:bold;">
+          History
+         </span>
+        </td>
+        <td class="td11" id="TBL-5-73-2" style="text-align:center; white-space:nowrap;">
+         <kbd>
+          Ctrl
+         </kbd>
+         +
+         <kbd>
+          R
+         </kbd>
+        </td>
+        <td class="td10" id="TBL-5-73-3" style="text-align:left; white-space:nowrap;">
+         Bring up the history search..
+        </td>
+       </tr>
+       <tr id="TBL-5-74-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-5-74-1" style="text-align:right; white-space:nowrap;">
+        </td>
+       </tr>
+       <tr id="TBL-5-75-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-5-75-1" style="text-align:right; white-space:nowrap;">
+        </td>
+       </tr>
+       <tr id="TBL-5-76-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-5-76-1" style="text-align:right; white-space:nowrap;">
+        </td>
+        <td class="td11" id="TBL-5-76-2" style="text-align:center; white-space:nowrap;">
+         <kbd>
+          Ctrl
+         </kbd>
+         +
+         <kbd>
+          G
+         </kbd>
+        </td>
+        <td class="td10" id="TBL-5-76-3" style="text-align:left; white-space:nowrap;">
+         Exit the history search.
+        </td>
+       </tr>
+       <tr id="TBL-5-77-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-5-77-1" style="text-align:right; white-space:nowrap;">
+        </td>
+       </tr>
+       <tr id="TBL-5-78-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-5-78-1" style="text-align:right; white-space:nowrap;">
+        </td>
+       </tr>
+       <tr id="TBL-5-79-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-5-79-1" style="text-align:right; white-space:nowrap;">
+        </td>
+        <td class="td11" id="TBL-5-79-2" style="text-align:center; white-space:nowrap;">
+         <kbd>
+          Ctrl
+         </kbd>
+         +
+         <kbd>
+          P
+         </kbd>
+        </td>
+        <td class="td10" id="TBL-5-79-3" style="text-align:left; white-space:nowrap;">
+         See the previous command in the history.
+        </td>
+       </tr>
+       <tr id="TBL-5-80-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-5-80-1" style="text-align:right; white-space:nowrap;">
+        </td>
+       </tr>
+       <tr id="TBL-5-81-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-5-81-1" style="text-align:right; white-space:nowrap;">
+        </td>
+       </tr>
+       <tr id="TBL-5-82-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-5-82-1" style="text-align:right; white-space:nowrap;">
+        </td>
+        <td class="td11" id="TBL-5-82-2" style="text-align:center; white-space:nowrap;">
+         <kbd>
+          Ctrl
+         </kbd>
+         +
+         <kbd>
+          N
+         </kbd>
+        </td>
+        <td class="td10" id="TBL-5-82-3" style="text-align:left; white-space:nowrap;">
+         See the next command in the history.
+        </td>
+       </tr>
+       <tr id="TBL-5-83-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-5-83-1" style="text-align:right; white-space:nowrap;">
+        </td>
+       </tr>
+       <tr id="TBL-5-84-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-5-84-1" style="text-align:right; white-space:nowrap;">
+        </td>
+       </tr>
+       <tr id="TBL-5-85-" style="vertical-align:baseline;">
+        <td class="td11" id="TBL-5-85-1" style="text-align:right; white-space:nowrap;">
+        </td>
+       </tr>
+      </table>
+     </figure>
+     <p class="noindent">
+     </p>
+    </div>
+    <div class="section-head" id="section-4" sec="section-4">
+     <h2 class="sectionHead">
+      <a aria-label="Link to this section in PDF version" class="pdf-link" href="MobileRoboticsLectureBook.pdf#section.5.4" style="color: red;  position: absolute;  left: -30px;" target="_blank">
+       <svg class="bi bi-file-pdf" fill="currentColor" height="20" viewbox="0 0 16 16" width="20" xmlns="http://www.w3.org/2000/svg">
+        <path d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z">
+        </path>
+        <path d="M4.603 12.087a.81.81 0 0 1-.438-.42c-.195-.388-.13-.776.08-1.102.198-.307.526-.568.897-.787a7.68 7.68 0 0 1 1.482-.645 19.701 19.701 0 0 0 1.062-2.227 7.269 7.269 0 0 1-.43-1.295c-.086-.4-.119-.796-.046-1.136.075-.354.274-.672.65-.823.192-.077.4-.12.602-.077a.7.7 0 0 1 .477.365c.088.164.12.356.127.538.007.187-.012.395-.047.614-.084.51-.27 1.134-.52 1.794a10.954 10.954 0 0 0 .98 1.686 5.753 5.753 0 0 1 1.334.05c.364.065.734.195.96.465.12.144.193.32.2.518.007.192-.047.382-.138.563a1.04 1.04 0 0 1-.354.416.856.856 0 0 1-.51.138c-.331-.014-.654-.196-.933-.417a5.716 5.716 0 0 1-.911-.95 11.642 11.642 0 0 0-1.997.406 11.311 11.311 0 0 1-1.021 1.51c-.29.35-.608.655-.926.787a.793.793 0 0 1-.58.029zm1.379-1.901c-.166.076-.32.156-.459.238-.328.194-.541.383-.647.547-.094.145-.096.25-.04.361.01.022.02.036.026.044a.27.27 0 0 0 .035-.012c.137-.056.355-.235.635-.572a8.18 8.18 0 0 0 .45-.606zm1.64-1.33a12.647 12.647 0 0 1 1.01-.193 11.666 11.666 0 0 1-.51-.858 20.741 20.741 0 0 1-.5 1.05zm2.446.45c.15.162.296.3.435.41.24.19.407.253.498.256a.107.107 0 0 0 .07-.015.307.307 0 0 0 .094-.125.436.436 0 0 0 .059-.2.095.095 0 0 0-.026-.063c-.052-.062-.2-.152-.518-.209a3.881 3.881 0 0 0-.612-.053zM8.078 5.8a6.7 6.7 0 0 0 .2-.828c.031-.188.043-.343.038-.465a.613.613 0 0 0-.032-.198.517.517 0 0 0-.145.04c-.087.035-.158.106-.196.283-.04.192-.03.469.046.822.024.111.054.227.09.346z">
+        </path>
+       </svg>
+      </a>
+      <small class="titlemark">
+       5.4
+      </small>
+      <a id="x7-1170005.4">
+      </a>
+      When  you  need  help  with  Commands
+     </h2>
+     <p class="noindent">
+      If you ever see an experienced Linux user typing away at the command line in blazing speeds it can seem like
+memorising the ins and outs of commands and options is the only way to be productive and understand what’s
+going on. But everybody starts somewhere, and even experienced command-line users don’t memorize everything.
+     </p>
+     <p class="noindent">
+      In the world of programming, it’s not practical to try to memorise all of the syntax and options of
+command-line tools. Of course, it’s important to remember the basics, but while you’re getting started,
+you only need to remember a few commands. The first one is <span id="textcolor1202"><code class="verb">man</code></span>, which stands for the
+      <span id="bold" style="font-weight:bold;">
+       manual pages
+      </span>
+      .
+     </p>
+     <div class="tcolorbox tcolorbox" id="tcolobox-8">
+      <div class="tcolorbox-content">
+       <div class="code-block">
+        <div class="code-lang">
+         text
+        </div>
+        <pre><div class="language-text" id="fancyvrb8" style="padding:20px;border-radius: 3px;"><a id="x7-117002r1"></a>MAN(1)                        Manual pager utils                        MAN(1) 
+<a id="x7-117004r2"></a> 
+<a id="x7-117006r3"></a>NAME 
+<a id="x7-117008r4"></a>       man - an interface to the system reference manuals 
+<a id="x7-117010r5"></a> 
+<a id="x7-117012r6"></a>SYNOPSIS 
+<a id="x7-117014r7"></a>       man [man options] [[section] page ...] ... 
+<a id="x7-117016r8"></a>       man -k [apropos options] regexp ... 
+<a id="x7-117018r9"></a>       man -K [man options] [section] term ... 
+<a id="x7-117020r10"></a>       man -f [whatis options] page ...</div></pre>
+       </div>
+      </div>
+     </div>
+     <p class="noindent">
+      A <span id="textcolor1203"><code class="verb">man</code></span>
+      page
+      <alert style="color: #821131;">
+       <span id="bold" style="font-weight:bold;">
+        <sup class="textsuperscript">
+         5
+        </sup>
+       </span>
+      </alert>
+      <span class="marginnote">
+       <alert style="color: #821131;">
+        <span id="bold" style="font-weight:bold;">
+         <sup class="textsuperscript">
+          5
+         </sup>
+        </span>
+       </alert>
+       <span id="textcolor1204">
+        Stands
+for
+short
+for
+manual
+page.
+       </span>
+      </span>
+      is
+a
+form
+of
+software
+documentation
+found
+on
+UNIX
+and
+Unix-like
+operating
+systems.
+Topics
+covered
+include
+programs,
+system
+libraries,
+system
+calls,
+and
+sometimes
+local
+system
+details.
+     </p>
+     <p class="noindent">
+      Think
+of
+the
+man
+pages
+as
+a
+technical
+reference
+book
+for
+your
+Linux
+distribution
+      <alert style="color: #821131;">
+       <span id="bold" style="font-weight:bold;">
+        <sup class="textsuperscript">
+         6
+        </sup>
+       </span>
+      </alert>
+      <span class="marginnote">
+       <alert style="color: #821131;">
+        <span id="bold" style="font-weight:bold;">
+         <sup class="textsuperscript">
+          6
+         </sup>
+        </span>
+       </alert>
+       <span id="textcolor1205">
+        i.e.,
+Ubuntu,
+Mint
+       </span>
+      </span>
+      .
+If
+you
+know
+the
+name
+of
+a
+command,
+you
+can
+find
+out
+a
+wealth
+of
+information
+about
+what
+it
+does,
+what
+options
+it
+provides
+or
+what
+arguments
+it
+takes.
+To
+look
+up
+something
+in
+the
+manual
+pages,
+type <span id="textcolor1206"><code class="verb">man</code></span>,
+followed
+by
+a
+command
+you
+want
+to
+learn.
+Open
+up
+the
+Terminal
+by <span id="textcolor1207"><code class="verb">Ctrl + Alt + T</code></span>.
+Earlier,
+you
+saw
+the
+command <span id="textcolor1208"><code class="verb">ls</code></span>,
+so
+let’s
+look
+that
+up.
+                                                                                
+                                                                                
+Type <span id="textcolor1209"><code class="verb">man ls</code></span>
+      and
+press <span id="textcolor1210"><code class="verb">\return</code></span>.
+     </p>
+     <div class="knowledge">
+      <p class="noindent">
+       Some distributions or application specific installation of Linux remove the <span id="textcolor1211"><code class="verb">man</code></span>
+       pages to
+save up on space. In these system one must first do <span id="textcolor1212"><code class="verb">unminimize</code></span>
+       to install <span id="textcolor1213"><code class="verb">man</code></span>
+       pages.
+      </p>
+     </div>
+     <p class="noindent">
+     </p>
+     <div class="code-block">
+      <div class="code-lang">
+       bash
+      </div>
+      <pre><div class="language-bash" id="fancyvrb9" style="padding:20px;border-radius: 3px;"><a id="x7-117022r106"></a>man<span id="textcolor1214"> </span>ls<span id="textcolor1215"> </span>|<span id="textcolor1216"> </span>head<span id="textcolor1217"> </span>-10</div></pre>
+     </div>
+     <div class="tcolorbox tcolorbox" id="tcolobox-9">
+      <div class="tcolorbox-content">
+       <div class="code-block">
+        <div class="code-lang">
+         text
+        </div>
+        <pre><div class="language-text" id="fancyvrb10" style="padding:20px;border-radius: 3px;"><a id="x7-117024r1"></a>LS(1)                            User Commands                           LS(1) 
+<a id="x7-117026r2"></a> 
+<a id="x7-117028r3"></a>NAME 
+<a id="x7-117030r4"></a>       ls - list directory contents 
+<a id="x7-117032r5"></a> 
+<a id="x7-117034r6"></a>SYNOPSIS 
+<a id="x7-117036r7"></a>       ls [OPTION]... [FILE]... 
+<a id="x7-117038r8"></a> 
+<a id="x7-117040r9"></a>DESCRIPTION 
+<a id="x7-117042r10"></a>       List  information  about  the FILEs (the current directory by default).</div></pre>
+       </div>
+      </div>
+     </div>
+     <p class="noindent">
+      Here,
+you
+can
+see
+some
+information
+about
+the <span id="textcolor1218"><code class="verb">ls</code></span>
+      command
+      <alert style="color: #821131;">
+       <span id="bold" style="font-weight:bold;">
+        <sup class="textsuperscript">
+         7
+        </sup>
+       </span>
+      </alert>
+      <span class="marginnote">
+       <alert style="color: #821131;">
+        <span id="bold" style="font-weight:bold;">
+         <sup class="textsuperscript">
+          7
+         </sup>
+        </span>
+       </alert>
+       <span id="textcolor1219">
+        Please
+ignore
+the <span id="textcolor1220"><code class="verb">head - 10</code></span>,
+we
+will
+have
+a
+look
+at
+it
+later.
+       </span>
+      </span>
+      .
+You
+can
+see
+that
+it’s
+for
+listing
+directory
+contents
+and
+in
+the
+synopsis
+section
+you
+get
+a
+quick
+overview
+of
+how
+to
+use
+the
+command.
+In
+this
+case
+                                                                                
+                                                                                
+it
+is <span id="textcolor1221"><code class="verb">ls [OPTION]... [FILE]...</code></span>.
+We
+write <span id="textcolor1222"><code class="verb">ls</code></span>
+      followed
+by
+any
+of
+the
+options
+we
+need,
+and
+the
+file
+or
+folder
+path
+we
+want
+to
+use.
+     </p>
+     <p class="noindent">
+      The
+terms
+in
+square
+brackets
+      <alert style="color: #821131;">
+       <span id="bold" style="font-weight:bold;">
+        <sup class="textsuperscript">
+         8
+        </sup>
+       </span>
+      </alert>
+      <span class="marginnote">
+       <alert style="color: #821131;">
+        <span id="bold" style="font-weight:bold;">
+         <sup class="textsuperscript">
+          8
+         </sup>
+        </span>
+       </alert>
+       <span id="textcolor1223">
+        for
+example <span id="textcolor1224"><code class="verb">[OPTION]</code></span>
+        and <span id="textcolor1225"><code class="verb">[FILE]</code></span>
+       </span>
+      </span>
+      are
+optional.
+This
+basically
+means
+      <span id="bold" style="font-weight:bold;">
+       you
+don’t
+have
+to
+use
+these
+      </span>
+      for
+the
+command
+to
+work.
+You
+can
+just
+use
+the <span id="textcolor1226"><code class="verb">ls</code></span>
+      command
+by
+itself
+to
+see
+the
+default
+output
+of
+listing
+                                                                                
+                                                                                
+                                                                              
+the
+directory.
+Here,
+below
+the
+description
+header,
+there
+is
+a
+bit
+more
+detailed
+information
+about
+the
+command,
+including
+its
+default
+behaviour
+and
+usage
+notes,
+and
+below,
+is
+a
+listing
+of
+the
+options
+that
+the
+command
+takes.
+     </p>
+     <div class="tcolorbox tcolorbox" id="tcolobox-10">
+      <div class="tcolorbox-content">
+       <div class="code-block">
+        <div class="code-lang">
+         text
+        </div>
+        <pre><div class="language-text" id="fancyvrb11" style="padding:20px;border-radius: 3px;"><a id="x7-117044r1"></a>Usage: ls [OPTION]... [FILE]... 
+<a id="x7-117046r2"></a>List information about the FILEs (the current directory by default). 
+<a id="x7-117048r3"></a>Sort entries alphabetically if none of -cftuvSUX nor --sort is specified. 
+<a id="x7-117050r4"></a> 
+<a id="x7-117052r5"></a>Mandatory arguments to long options are mandatory for short options too. 
+<a id="x7-117054r6"></a>  -a, --all                  do not ignore entries starting with . 
+<a id="x7-117056r7"></a>  -A, --almost-all           do not list implied . and .. 
+<a id="x7-117058r8"></a>      --author               with -l, print the author of each file 
+<a id="x7-117060r9"></a>  -b, --escape               print C-style escapes for nongraphic characters 
+<a id="x7-117062r10"></a>      --block-size=SIZE      with -l, scale sizes by SIZE when printing them;</div></pre>
+       </div>
+      </div>
+     </div>
+     <p class="noindent">
+      There
+are
+a
+lot
+of
+ways
+to
+use
+the <span id="textcolor1227"><code class="verb">man</code></span>
+      pages
+efficiently
+and
+is
+a
+powerful
+tool
+when
+you
+need
+to
+find
+what
+                                                                                
+                                                                                
+                                                                             
+can
+a
+command
+do.
+There
+are
+other
+ways
+to
+learn
+about
+a
+command.
+Most
+of
+commands
+also
+have
+an
+option
+called <span id="textcolor1228"><code class="verb">help</code></span>,
+which
+provides
+a
+brief
+amount
+of
+information
+about
+them.
+However,
+they
+usually
+refer
+you
+to
+the
+manual
+pages
+for
+more
+detailed
+documentation.
+Therefore, <span id="textcolor1229"><code class="verb">help</code></span>
+      will
+give
+you
+a
+brief
+information
+compared
+to
+the <span id="textcolor1230"><code class="verb">man</code></span>
+      command.
+     </p>
+     <p class="noindent">
+      You
+can
+see
+if
+a
+command
+you’re
+using
+has
+this
+                                                                                
+                                                                                
+                                                                           
+feature
+available
+by
+typing <span id="textcolor1231"><code class="verb">--help</code></span>
+      after
+the
+command.
+     </p>
+     <p class="noindent">
+     </p>
+     <div class="code-block">
+      <div class="code-lang">
+       bash
+      </div>
+      <pre><div class="language-bash" id="fancyvrb12" style="padding:20px;border-radius: 3px;"><a id="x7-117064r125"></a>ls<span id="textcolor1232"> </span>--help<span id="textcolor1233"> </span>|<span id="textcolor1234"> </span>head<span id="textcolor1235"> </span>-10</div></pre>
+     </div>
+     <div class="tcolorbox tcolorbox" id="tcolobox-11">
+      <div class="tcolorbox-content">
+       <div class="code-block">
+        <div class="code-lang">
+         text
+        </div>
+        <pre><div class="language-text" id="fancyvrb13" style="padding:20px;border-radius: 3px;"><a id="x7-117066r1"></a>Usage: ls [OPTION]... [FILE]... 
+<a id="x7-117068r2"></a>List information about the FILEs (the current directory by default). 
+<a id="x7-117070r3"></a>Sort entries alphabetically if none of -cftuvSUX nor --sort is specified. 
+<a id="x7-117072r4"></a> 
+<a id="x7-117074r5"></a>Mandatory arguments to long options are mandatory for short options too. 
+<a id="x7-117076r6"></a>  -a, --all                  do not ignore entries starting with . 
+<a id="x7-117078r7"></a>  -A, --almost-all           do not list implied . and .. 
+<a id="x7-117080r8"></a>     --author               with -l, print the author of each file 
+<a id="x7-117082r9"></a>  -b, --escape               print C-style escapes for nongraphic characters 
+<a id="x7-117084r10"></a>     --block-size=SIZE      with -l, scale sizes by SIZE when printing them;</div></pre>
+       </div>
+      </div>
+     </div>
+     <p class="noindent">
+      Here
+you
+can
+scroll
+up
+and
+down
+to
+have
+a
+look
+at
+some
+of
+the
+information.
+There
+is
+another
+command
+that’s
+useful
+when
+you’re
+working
+in
+Bash,
+and
+that’s
+just <span id="textcolor1236"><code class="verb">help</code></span>
+      by
+itself.
+     </p>
+     <div class="knowledge">
+      <p class="noindent">
+       Displays
+information
+about
+shell
+built-in
+commands.
+      </p>
+     </div>
+     <p class="noindent">
+     </p>
+     <div class="code-block">
+      <div class="code-lang">
+       bash
+      </div>
+      <pre><div class="language-bash" id="fancyvrb14" style="padding:20px;border-radius: 3px;"><a id="x7-117086r144"></a><span id="textcolor1237">help</span><span id="textcolor1238"> </span>|<span id="textcolor1239"> </span>head<span id="textcolor1240"> </span>-10</div></pre>
+     </div>
+     <div class="tcolorbox tcolorbox" id="tcolobox-12">
+      <div class="tcolorbox-content">
+       <div class="code-block">
+        <div class="code-lang">
+         text
+        </div>
+        <pre><div class="language-text" id="fancyvrb15" style="padding:20px;border-radius: 3px;"><a id="x7-117088r1"></a>GNU bash, version 5.2.21(1)-release (aarch64-unknown-linux-gnu) 
+<a id="x7-117090r2"></a>These shell commands are defined internally.  Type `help' to see this list. 
+<a id="x7-117092r3"></a>Type `help name' to find out more about the function `name'. 
+<a id="x7-117094r4"></a>Use `info bash' to find out more about the shell in general. 
+<a id="x7-117096r5"></a>Use `man -k' or `info' to find out more about commands not in this list. 
+<a id="x7-117098r6"></a> 
+<a id="x7-117100r7"></a>A star (*) next to a name means that the command is disabled. 
+<a id="x7-117102r8"></a> 
+<a id="x7-117104r9"></a> job_spec [&amp;]                            history [-c] [-d offset] [n] or hist&gt; 
+<a id="x7-117106r10"></a> (( expression ))                        if COMMANDS; then COMMANDS; [ elif C&gt;</div></pre>
+       </div>
+      </div>
+     </div>
+     <p class="noindent">
+      As
+we
+get
+into
+working
+with
+the
+Bash
+shell,
+the <span id="textcolor1241"><code class="verb">help</code></span>
+      tool
+can
+act
+as
+a
+handy
+reminder
+for
+the
+syntax
+of
+some
+Bash
+specific
+commands.
+     </p>
+     <p class="noindent">
+     </p>
+     <div class="quoteblock">
+      <p class="noindent">
+       But
+what
+if
+you
+don’t
+know
+the
+name
+of
+a
+command
+you
+are
+looking
+for?
+      </p>
+     </div>
+     <p class="noindent">
+      In
+that
+case,
+you
+can
+use
+another
+program
+called <span id="textcolor1242"><code class="verb">apropos</code></span>
+      which
+searches
+                                                                                
+                                                                                
+                                                                               
+a
+list
+of
+commands
+and
+their
+descriptions
+for
+text
+you
+provide
+as
+an
+argument.
+     </p>
+     <div class="knowledge">
+      <p class="noindent">
+       helps
+users
+find
+any
+command
+using
+its <span id="textcolor1243"><code class="verb">man</code></span>
+       pages.
+      </p>
+     </div>
+     <p class="noindent">
+      So
+if
+you
+wanted
+to
+find
+out
+what
+can
+list
+things,
+I
+could
+type
+apropos
+list
+and
+see
+a
+number
+of
+results
+that
+match
+that
+word.
+     </p>
+     <p class="noindent">
+     </p>
+     <div class="code-block">
+      <div class="code-lang">
+       bash
+      </div>
+      <pre><div class="language-bash" id="fancyvrb16" style="padding:20px;border-radius: 3px;"><a id="x7-117108r163"></a>apropos<span id="textcolor1244"> </span>list<span id="textcolor1245"> </span>|<span id="textcolor1246"> </span>head<span id="textcolor1247"> </span>-10</div></pre>
+     </div>
+     <div class="tcolorbox tcolorbox" id="tcolobox-13">
+      <div class="tcolorbox-content">
+       <div class="code-block">
+        <div class="code-lang">
+         text
+        </div>
+        <pre><div class="language-text" id="fancyvrb17" style="padding:20px;border-radius: 3px;"><a id="x7-117110r1"></a>port-contents(1)         - List the files installed by a given port 
+<a id="x7-117112r2"></a>port-dependents(1), port-rdependents(1) - List ports that depend on a given (installed) port 
+<a id="x7-117114r3"></a>port-deps(1), port-rdeps(1) - Display a dependency listing for the given port(s) 
+<a id="x7-117116r4"></a>port-distfiles(1)        - Print a list of distribution files for a port 
+<a id="x7-117118r5"></a>port-echo(1)             - Print the list of ports the argument expands to 
+<a id="x7-117120r6"></a>port-installed(1)        - List installed versions of a given port, or all installed ports 
+<a id="x7-117122r7"></a>port-list(1)             - List available ports 
+<a id="x7-117124r8"></a>port-outdated(1)         - List outdated ports 
+<a id="x7-117126r9"></a>port-variants(1)         - Print a list of variants with descriptions provided by a port 
+<a id="x7-117128r10"></a>AllPlanes(3), BlackPixel(3), WhitePixel(3), ConnectionNumber(3), DefaultColormap(3), DefaultDepth(3), XListDepths(3), DefaultGC(3), DefaultRootWindow(3), DefaultScreenOfDisplay(3), DefaultScreen(3), DefaultVisual(3), DisplayCells(3), DisplayPlanes(3), DisplayString(3), XMaxRequestSize(3), XExtendedMaxRequestSize(3), LastKnownRequestProcessed(3), NextRequest(3), ProtocolVersion(3), ProtocolRevision(3), QLength(3), RootWindow(3), ScreenCount(3), ScreenOfDisplay(3), ServerVendor(3), VendorRelease(3) - Display macros and functions</div></pre>
+       </div>
+      </div>
+     </div>
+     <p class="noindent">
+      Here’s
+the
+command
+                                                                                
+                                                                                
+                                                                             
+that
+can
+list
+directory
+contents
+we
+were
+looking
+for.
+     </p>
+     <div class="tcolorbox tcolorbox" id="tcolobox-14">
+      <div class="tcolorbox-content">
+       <div class="code-block">
+        <div class="code-lang">
+         text
+        </div>
+        <pre><div class="language-text" id="fancyvrb18" style="padding:20px;border-radius: 3px;"><a id="x7-117130r1"></a>ls(1)                    - list directory contents</div></pre>
+       </div>
+      </div>
+     </div>
+     <p class="noindent">
+      Searching
+for
+commands
+this
+way
+can
+be
+time-consuming,
+but
+if
+you
+know
+what
+you
+need
+to
+do
+but
+not
+the
+command
+to
+do
+it, <span id="textcolor1248"><code class="verb">apropos</code></span>
+      is
+very
+helpful
+and
+powerful.
+     </p>
+     <p class="noindent">
+     </p>
+    </div>
+    <div class="section-head" id="section-5" sec="section-5">
+     <h2 class="sectionHead">
+      <a aria-label="Link to this section in PDF version" class="pdf-link" href="MobileRoboticsLectureBook.pdf#section.5.5" style="color: red;  position: absolute;  left: -30px;" target="_blank">
+       <svg class="bi bi-file-pdf" fill="currentColor" height="20" viewbox="0 0 16 16" width="20" xmlns="http://www.w3.org/2000/svg">
+        <path d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z">
+        </path>
+        <path d="M4.603 12.087a.81.81 0 0 1-.438-.42c-.195-.388-.13-.776.08-1.102.198-.307.526-.568.897-.787a7.68 7.68 0 0 1 1.482-.645 19.701 19.701 0 0 0 1.062-2.227 7.269 7.269 0 0 1-.43-1.295c-.086-.4-.119-.796-.046-1.136.075-.354.274-.672.65-.823.192-.077.4-.12.602-.077a.7.7 0 0 1 .477.365c.088.164.12.356.127.538.007.187-.012.395-.047.614-.084.51-.27 1.134-.52 1.794a10.954 10.954 0 0 0 .98 1.686 5.753 5.753 0 0 1 1.334.05c.364.065.734.195.96.465.12.144.193.32.2.518.007.192-.047.382-.138.563a1.04 1.04 0 0 1-.354.416.856.856 0 0 1-.51.138c-.331-.014-.654-.196-.933-.417a5.716 5.716 0 0 1-.911-.95 11.642 11.642 0 0 0-1.997.406 11.311 11.311 0 0 1-1.021 1.51c-.29.35-.608.655-.926.787a.793.793 0 0 1-.58.029zm1.379-1.901c-.166.076-.32.156-.459.238-.328.194-.541.383-.647.547-.094.145-.096.25-.04.361.01.022.02.036.026.044a.27.27 0 0 0 .035-.012c.137-.056.355-.235.635-.572a8.18 8.18 0 0 0 .45-.606zm1.64-1.33a12.647 12.647 0 0 1 1.01-.193 11.666 11.666 0 0 1-.51-.858 20.741 20.741 0 0 1-.5 1.05zm2.446.45c.15.162.296.3.435.41.24.19.407.253.498.256a.107.107 0 0 0 .07-.015.307.307 0 0 0 .094-.125.436.436 0 0 0 .059-.2.095.095 0 0 0-.026-.063c-.052-.062-.2-.152-.518-.209a3.881 3.881 0 0 0-.612-.053zM8.078 5.8a6.7 6.7 0 0 0 .2-.828c.031-.188.043-.343.038-.465a.613.613 0 0 0-.032-.198.517.517 0 0 0-.145.04c-.087.035-.158.106-.196.283-.04.192-.03.469.046.822.024.111.054.227.09.346z">
+        </path>
+       </svg>
+      </a>
+      <small class="titlemark">
+       5.5
+      </small>
+      <a id="x7-1180005.5">
+      </a>
+      Additional
+Information
+     </h2>
+     <h3 class="subsectionHead">
+      <a aria-label="Link to this section in PDF version" class="pdf-link" href="MobileRoboticsLectureBook.pdf#subsection.5.5.1" style="color: red;  position: absolute;  left: -30px;" target="_blank">
+       <svg class="bi bi-file-pdf" fill="currentColor" height="20" viewbox="0 0 16 16" width="20" xmlns="http://www.w3.org/2000/svg">
+        <path d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z">
+        </path>
+        <path d="M4.603 12.087a.81.81 0 0 1-.438-.42c-.195-.388-.13-.776.08-1.102.198-.307.526-.568.897-.787a7.68 7.68 0 0 1 1.482-.645 19.701 19.701 0 0 0 1.062-2.227 7.269 7.269 0 0 1-.43-1.295c-.086-.4-.119-.796-.046-1.136.075-.354.274-.672.65-.823.192-.077.4-.12.602-.077a.7.7 0 0 1 .477.365c.088.164.12.356.127.538.007.187-.012.395-.047.614-.084.51-.27 1.134-.52 1.794a10.954 10.954 0 0 0 .98 1.686 5.753 5.753 0 0 1 1.334.05c.364.065.734.195.96.465.12.144.193.32.2.518.007.192-.047.382-.138.563a1.04 1.04 0 0 1-.354.416.856.856 0 0 1-.51.138c-.331-.014-.654-.196-.933-.417a5.716 5.716 0 0 1-.911-.95 11.642 11.642 0 0 0-1.997.406 11.311 11.311 0 0 1-1.021 1.51c-.29.35-.608.655-.926.787a.793.793 0 0 1-.58.029zm1.379-1.901c-.166.076-.32.156-.459.238-.328.194-.541.383-.647.547-.094.145-.096.25-.04.361.01.022.02.036.026.044a.27.27 0 0 0 .035-.012c.137-.056.355-.235.635-.572a8.18 8.18 0 0 0 .45-.606zm1.64-1.33a12.647 12.647 0 0 1 1.01-.193 11.666 11.666 0 0 1-.51-.858 20.741 20.741 0 0 1-.5 1.05zm2.446.45c.15.162.296.3.435.41.24.19.407.253.498.256a.107.107 0 0 0 .07-.015.307.307 0 0 0 .094-.125.436.436 0 0 0 .059-.2.095.095 0 0 0-.026-.063c-.052-.062-.2-.152-.518-.209a3.881 3.881 0 0 0-.612-.053zM8.078 5.8a6.7 6.7 0 0 0 .2-.828c.031-.188.043-.343.038-.465a.613.613 0 0 0-.032-.198.517.517 0 0 0-.145.04c-.087.035-.158.106-.196.283-.04.192-.03.469.046.822.024.111.054.227.09.346z">
+        </path>
+       </svg>
+      </a>
+      <small class="titlemark">
+       5.5.1
+      </small>
+      <a id="x7-1190005.5.1">
+      </a>
+      Use
+Tab
+completion
+on
+the
+Shell
+     </h3>
+     <p class="noindent">
+      If
+you
+do
+not
+know
+the
+exact
+name
+of
+a
+command,
+then
+you
+can
+make
+use
+of
+tab
+completion.
+To
+use
+this
+action,
+launch
+the
+terminal
+by
+pressing <span id="textcolor1249"><code class="verb">Ctrl + Alt + T</code></span>
+      or
+just
+click
+on
+the
+terminal
+icon
+in
+the
+task
+bar.
+Just
+type
+the
+command
+name
+that
+you
+know
+in
+                                                                                
+                                                                                
+                                                                              
+the
+terminal
+and
+then
+press <span id="textcolor1250"><code class="verb">\tab</code></span>
+      twice.
+For
+example,
+if
+we
+can’t
+remember <span id="textcolor1251"><code class="verb">man</code></span>,
+we
+can
+write <span id="textcolor1252"><code class="verb">ma</code></span>
+      and
+can
+choose
+one
+of
+the
+option
+the
+Bash
+shell
+presents
+us.
+     </p>
+     <p class="noindent">
+     </p>
+     <div class="code-block">
+      <div class="code-lang">
+       bash
+      </div>
+      <pre><div class="language-bash" id="fancyvrb19" style="padding:20px;border-radius: 3px;"><a id="x7-119002r193"></a>~$<span id="textcolor1253"> </span>ls<span id="textcolor1254"> </span></div></pre>
+     </div>
+     <div class="tcolorbox tcolorbox" id="tcolobox-15">
+      <div class="tcolorbox-content">
+       <div class="code-block">
+        <div class="code-lang">
+         text
+        </div>
+        <pre><div class="language-text" id="fancyvrb20" style="padding:20px;border-radius: 3px;"><a id="x7-119004r1"></a>macptopbm                   make-ssl-cert 
+<a id="x7-119006r2"></a>mag                         mako-render 
+<a id="x7-119008r3"></a>mailmail3                   man 
+<a id="x7-119010r4"></a>make                        mandb 
+<a id="x7-119012r5"></a>make4ht                     manpath 
+<a id="x7-119014r6"></a>makeconv                    man-recode 
+<a id="x7-119016r7"></a>makedtx                     mapfile 
+<a id="x7-119018r8"></a>make-first-existing-target  mapscrn 
+<a id="x7-119020r9"></a>makeglossaries              match_parens 
+<a id="x7-119022r10"></a>makeglossaries-lite         mathspic 
+<a id="x7-119024r11"></a>makeindex                   mattrib 
+<a id="x7-119026r12"></a>makejvf                     mawk</div></pre>
+       </div>
+      </div>
+     </div>
+     <h3 class="subsectionHead">
+      <a aria-label="Link to this section in PDF version" class="pdf-link" href="MobileRoboticsLectureBook.pdf#subsection.5.5.2" style="color: red;  position: absolute;  left: -30px;" target="_blank">
+       <svg class="bi bi-file-pdf" fill="currentColor" height="20" viewbox="0 0 16 16" width="20" xmlns="http://www.w3.org/2000/svg">
+        <path d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z">
+        </path>
+        <path d="M4.603 12.087a.81.81 0 0 1-.438-.42c-.195-.388-.13-.776.08-1.102.198-.307.526-.568.897-.787a7.68 7.68 0 0 1 1.482-.645 19.701 19.701 0 0 0 1.062-2.227 7.269 7.269 0 0 1-.43-1.295c-.086-.4-.119-.796-.046-1.136.075-.354.274-.672.65-.823.192-.077.4-.12.602-.077a.7.7 0 0 1 .477.365c.088.164.12.356.127.538.007.187-.012.395-.047.614-.084.51-.27 1.134-.52 1.794a10.954 10.954 0 0 0 .98 1.686 5.753 5.753 0 0 1 1.334.05c.364.065.734.195.96.465.12.144.193.32.2.518.007.192-.047.382-.138.563a1.04 1.04 0 0 1-.354.416.856.856 0 0 1-.51.138c-.331-.014-.654-.196-.933-.417a5.716 5.716 0 0 1-.911-.95 11.642 11.642 0 0 0-1.997.406 11.311 11.311 0 0 1-1.021 1.51c-.29.35-.608.655-.926.787a.793.793 0 0 1-.58.029zm1.379-1.901c-.166.076-.32.156-.459.238-.328.194-.541.383-.647.547-.094.145-.096.25-.04.361.01.022.02.036.026.044a.27.27 0 0 0 .035-.012c.137-.056.355-.235.635-.572a8.18 8.18 0 0 0 .45-.606zm1.64-1.33a12.647 12.647 0 0 1 1.01-.193 11.666 11.666 0 0 1-.51-.858 20.741 20.741 0 0 1-.5 1.05zm2.446.45c.15.162.296.3.435.41.24.19.407.253.498.256a.107.107 0 0 0 .07-.015.307.307 0 0 0 .094-.125.436.436 0 0 0 .059-.2.095.095 0 0 0-.026-.063c-.052-.062-.2-.152-.518-.209a3.881 3.881 0 0 0-.612-.053zM8.078 5.8a6.7 6.7 0 0 0 .2-.828c.031-.188.043-.343.038-.465a.613.613 0 0 0-.032-.198.517.517 0 0 0-.145.04c-.087.035-.158.106-.196.283-.04.192-.03.469.046.822.024.111.054.227.09.346z">
+        </path>
+       </svg>
+      </a>
+      <small class="titlemark">
+       5.5.2
+      </small>
+      <a id="x7-1200005.5.2">
+      </a>
+      The
+info
+command
+     </h3>
+     <p class="noindent">
+      Some
+commands
+do
+not
+have
+their
+manuals
+written
+or
+they
+are
+either
+      <alert style="color: #821131;">
+       incomplete
+      </alert>
+      .
+To
+get
+help
+with
+those
+                                                                                
+                                                                                
+                                                                        
+commands,
+we
+use <span id="textcolor1255"><code class="verb">info</code></span>.
+To
+use
+this
+command,
+launch
+the
+terminal
+by
+pressing <span id="textcolor1256"><code class="verb">Ctrl + Alt + T</code></span>
+      or
+just
+click
+on
+the
+terminal
+icon
+in
+the
+task
+bar.
+Just
+type <span id="textcolor1257"><code class="verb">info</code></span>
+      in
+the
+terminal
+and
+with
+a
+space,
+type
+the
+name
+of
+the
+command
+whose
+manual
+does
+not
+exist
+and
+press <span id="textcolor1258"><code class="verb">\return</code></span>.
+     </p>
+     <p class="noindent">
+     </p>
+     <div class="code-block">
+      <div class="code-lang">
+       bash
+      </div>
+      <pre><div class="language-bash" id="fancyvrb21" style="padding:20px;border-radius: 3px;"><a id="x7-120002r49"></a>info<span id="textcolor1259"> </span>ls<span id="textcolor1260"> </span>|<span id="textcolor1261"> </span>head<span id="textcolor1262"> </span>-10</div></pre>
+     </div>
+     <div class="tcolorbox tcolorbox" id="tcolobox-16">
+      <div class="tcolorbox-content">
+       <div class="code-block">
+        <div class="code-lang">
+         text
+        </div>
+        <pre><div class="language-text" id="fancyvrb22" style="padding:20px;border-radius: 3px;"><a id="x7-120004r1"></a>File: coreutils.info,  Node: ls invocation,  Next: dir invocation,  Up: Directory listing 
+<a id="x7-120006r2"></a> 
+<a id="x7-120008r3"></a>10.1 ls: List directory contents 
+<a id="x7-120010r4"></a>================================== 
+<a id="x7-120012r5"></a> 
+<a id="x7-120014r6"></a>The ls program lists information about files (of any type, including 
+<a id="x7-120016r7"></a>directories).  Options and file arguments can be intermixed arbitrarily, 
+<a id="x7-120018r8"></a>as usual.  Later options override earlier options that are incompatible. 
+<a id="x7-120020r9"></a> 
+<a id="x7-120022r10"></a>  For non-option command-line arguments that are directories, by</div></pre>
+       </div>
+      </div>
+     </div>
+     <p class="noindent">
+      The <span id="textcolor1263"><code class="verb">info</code></span>
+      command
+reads
+documentation
+in
+the
+                                                                                
+                                                                                
+                                                                             
+info
+format
+      <alert style="color: #821131;">
+       <span id="bold" style="font-weight:bold;">
+        <sup class="textsuperscript">
+         9
+        </sup>
+       </span>
+      </alert>
+      <span class="marginnote">
+       <alert style="color: #821131;">
+        <span id="bold" style="font-weight:bold;">
+         <sup class="textsuperscript">
+          9
+         </sup>
+        </span>
+       </alert>
+       <span id="textcolor1264">
+        A
+mostly
+a
+plain
+text
+transliteration
+of
+the
+Texinfo
+source,
+with
+the
+addition
+of
+a
+few
+control
+characters
+to
+separate
+nodes
+and
+provide
+navigational
+information,
+designed
+by
+the
+NU
+project.
+       </span>
+      </span>
+      .
+It
+will
+give
+detailed
+information
+for
+a
+command
+when
+compared
+with
+the
+man
+page.
+The
+pages
+are
+made
+using
+the
+Texinfo
+tools
+which
+can
+link
+with
+other
+pages,
+create
+menus,
+and
+easy
+navigation.
+     </p>
+     <div class="informationblock" id="tcolobox-17">
+      <div class="title">
+       <p class="noindent">
+        <span id="bold" style="font-weight:bold;">
+         Information
+        </span>
+        :
+Man
+v.
+                                                                                
+                                                                                
+   
+Info
+       </p>
+      </div>
+      <div class="box-content">
+       <p class="noindent">
+        Man 
+pages 
+are 
+the 
+UNIX 
+traditional 
+way 
+of 
+distributing 
+documentation 
+about 
+programs. 
+The 
+term 
+“man 
+page” 
+itself 
+is 
+short 
+for 
+“manual 
+page”, 
+as 
+they 
+correspond 
+to 
+the 
+pages 
+of 
+the 
+printed 
+manual; 
+the 
+man 
+pages 
+“sections”
+        <alert style="color: #821131;">
+         <span id="bold" style="font-weight:bold;">
+          <sup class="textsuperscript">
+           10
+          </sup>
+         </span>
+        </alert>
+        <span class="marginnote">
+         <alert style="color: #821131;">
+          <span id="bold" style="font-weight:bold;">
+           <sup class="textsuperscript">
+            10
+           </sup>
+          </span>
+         </alert>
+         <span id="textcolor1265">
+          1 
+for 
+commands, 
+2 
+for 
+system 
+calls, 
+etc...
+         </span>
+        </span>
+        correspond 
+to 
+sections 
+in 
+the 
+full 
+UNIX 
+manual. 
+Support 
+is 
+still 
+there 
+if 
+you 
+want 
+to 
+print 
+a 
+man 
+page 
+to 
+paper, 
+although 
+this 
+is 
+rarely 
+done 
+these 
+days, 
+and 
+the 
+sheer 
+number 
+of 
+man 
+pages 
+make 
+it 
+just 
+impossible 
+to 
+bind 
+them 
+all 
+into 
+a 
+single 
+book.
+       In 
+the 
+early 
+’90s, 
+the 
+GNU 
+project 
+decided 
+that 
+“man” 
+documentation 
+system 
+was 
+outdated, 
+and 
+wrote 
+the 
+info 
+command 
+to 
+replace 
+it: 
+info 
+has 
+basic 
+hyperlinking 
+features 
+and 
+a 
+simpler 
+markup 
+language 
+to 
+use 
+(compared 
+to 
+the 
+troff
+        <alert style="color: #821131;">
+         <span id="bold" style="font-weight:bold;">
+          <sup class="textsuperscript">
+           11
+          </sup>
+         </span>
+        </alert>
+        <span class="marginnote">
+         <alert style="color: #821131;">
+          <span id="bold" style="font-weight:bold;">
+           <sup class="textsuperscript">
+            11
+           </sup>
+          </span>
+         </alert>
+         <span id="textcolor1266">
+          A 
+major 
+component 
+of 
+a 
+document 
+processing 
+system 
+developed 
+by 
+Bell 
+Labs 
+for 
+the 
+Unix 
+operating 
+system. 
+It 
+is 
+mostly 
+outdated.
+         </span>
+        </span>
+        system 
+used 
+for 
+man 
+pages). 
+In 
+addition, 
+GNU 
+advocates 
+against 
+the 
+use 
+of 
+man 
+pages 
+at 
+all 
+and 
+contends 
+that 
+complex 
+software 
+systems 
+should 
+have 
+complete 
+and 
+comprehensive 
+documentation 
+rather 
+than 
+just 
+a 
+set 
+of 
+short 
+man 
+pages.
+       There 
+are 
+actually 
+other 
+documentation 
+systems 
+in 
+use, 
+besides 
+man 
+and 
+info: 
+GNOME 
+and 
+KDE 
+have 
+their 
+own, 
+HTML-based 
+system, 
+etc.
+       In 
+the 
+end, 
+the 
+form 
+in 
+which 
+you 
+get 
+documentation 
+depends 
+on 
+the 
+internal 
+policies 
+of 
+the 
+project 
+that 
+provided 
+the 
+software 
+in 
+the 
+first 
+place 
+– 
+there 
+is 
+no 
+globally 
+accepted 
+standard.
+       </p>
+      </div>
+     </div>
+     <h3 class="subsectionHead">
+      <a aria-label="Link to this section in PDF version" class="pdf-link" href="MobileRoboticsLectureBook.pdf#subsection.5.5.3" style="color: red;  position: absolute;  left: -30px;" target="_blank">
+       <svg class="bi bi-file-pdf" fill="currentColor" height="20" viewbox="0 0 16 16" width="20" xmlns="http://www.w3.org/2000/svg">
+        <path d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z">
+        </path>
+        <path d="M4.603 12.087a.81.81 0 0 1-.438-.42c-.195-.388-.13-.776.08-1.102.198-.307.526-.568.897-.787a7.68 7.68 0 0 1 1.482-.645 19.701 19.701 0 0 0 1.062-2.227 7.269 7.269 0 0 1-.43-1.295c-.086-.4-.119-.796-.046-1.136.075-.354.274-.672.65-.823.192-.077.4-.12.602-.077a.7.7 0 0 1 .477.365c.088.164.12.356.127.538.007.187-.012.395-.047.614-.084.51-.27 1.134-.52 1.794a10.954 10.954 0 0 0 .98 1.686 5.753 5.753 0 0 1 1.334.05c.364.065.734.195.96.465.12.144.193.32.2.518.007.192-.047.382-.138.563a1.04 1.04 0 0 1-.354.416.856.856 0 0 1-.51.138c-.331-.014-.654-.196-.933-.417a5.716 5.716 0 0 1-.911-.95 11.642 11.642 0 0 0-1.997.406 11.311 11.311 0 0 1-1.021 1.51c-.29.35-.608.655-.926.787a.793.793 0 0 1-.58.029zm1.379-1.901c-.166.076-.32.156-.459.238-.328.194-.541.383-.647.547-.094.145-.096.25-.04.361.01.022.02.036.026.044a.27.27 0 0 0 .035-.012c.137-.056.355-.235.635-.572a8.18 8.18 0 0 0 .45-.606zm1.64-1.33a12.647 12.647 0 0 1 1.01-.193 11.666 11.666 0 0 1-.51-.858 20.741 20.741 0 0 1-.5 1.05zm2.446.45c.15.162.296.3.435.41.24.19.407.253.498.256a.107.107 0 0 0 .07-.015.307.307 0 0 0 .094-.125.436.436 0 0 0 .059-.2.095.095 0 0 0-.026-.063c-.052-.062-.2-.152-.518-.209a3.881 3.881 0 0 0-.612-.053zM8.078 5.8a6.7 6.7 0 0 0 .2-.828c.031-.188.043-.343.038-.465a.613.613 0 0 0-.032-.198.517.517 0 0 0-.145.04c-.087.035-.158.106-.196.283-.04.192-.03.469.046.822.024.111.054.227.09.346z">
+        </path>
+       </svg>
+      </a>
+      <small class="titlemark">
+       5.5.3
+      </small>
+      <a id="x7-1210005.5.3">
+      </a>
+      The
+whatis
+command
+     </h3>
+     <p class="noindent">
+      This
+command
+is
+used
+with
+another
+command
+just
+to
+show
+a
+one
+liner
+usage
+of
+the
+latter
+command
+from
+its
+manual.
+It’s
+a
+quick
+way
+of
+knowing
+the
+usage
+of
+a
+command
+without
+going
+through
+the
+whole
+manual.
+     </p>
+     <p class="noindent">
+      whatis
+command
+in
+Linux
+is
+used
+to
+get
+a
+one-line
+manual
+page
+description.
+In
+Linux,
+each
+manual
+page
+has
+some
+sort
+                                                                                
+                                                                                
+                                                                              
+of
+description
+within
+it.
+So,
+this
+command
+search
+for
+the
+manual
+pages
+names
+and
+show
+the
+manual
+page
+description
+of
+the
+specified
+filename
+or
+argument.
+     </p>
+     <p class="noindent">
+      To
+use
+this
+command,
+launch
+the
+terminal
+by
+pressing <span id="textcolor1267"><code class="verb">Ctrl + Alt + T</code></span>
+      or
+just
+click
+on
+the
+terminal
+icon
+in
+the
+task
+bar.
+Just
+type <span id="textcolor1268"><code class="verb">whatis</code></span>
+      in
+the
+terminal
+and
+after
+a
+space,
+type
+the
+name
+of
+the
+command
+whose
+one
+liner
+description
+you
+                                                                                
+                                                                                
+                                                                            
+want
+(for
+example <span id="textcolor1269"><code class="verb">ls</code></span>
+      )
+and
+then
+press <span id="textcolor1270"><code class="verb">\return</code></span>.
+     </p>
+     <p class="noindent">
+     </p>
+     <div class="code-block">
+      <div class="code-lang">
+       bash
+      </div>
+      <pre><div class="language-bash" id="fancyvrb23" style="padding:20px;border-radius: 3px;"><a id="x7-121002r68"></a>whatis<span id="textcolor1271"> </span>ls<span id="textcolor1272"> </span>|<span id="textcolor1273"> </span>head<span id="textcolor1274"> </span>-10</div></pre>
+     </div>
+     <div class="tcolorbox tcolorbox" id="tcolobox-18">
+      <div class="tcolorbox-content">
+       <div class="code-block">
+        <div class="code-lang">
+         text
+        </div>
+        <pre><div class="language-text" id="fancyvrb24" style="padding:20px;border-radius: 3px;"><a id="x7-121004r1"></a>dcmcjpls(1)              - Encode DICOM file to JPEG-LS transfer syntax 
+<a id="x7-121006r2"></a>dcmdjpls(1)              - Decode JPEG-LS compressed DICOM file 
+<a id="x7-121008r3"></a>gdircolors(1), dircolors(1) - color setup for ls 
+<a id="x7-121010r4"></a>gls(1), ls(1)            - list directory contents 
+<a id="x7-121012r5"></a>gdircolors(1), dircolors(1) - color setup for ls 
+<a id="x7-121014r6"></a>git-ls-files(1)          - Show information about files in the index and the working tree 
+<a id="x7-121016r7"></a>git-ls-remote(1)         - List references in a remote repository 
+<a id="x7-121018r8"></a>git-ls-tree(1)           - List the contents of a tree object 
+<a id="x7-121020r9"></a>git-mktree(1)            - Build a tree-object from ls-tree formatted text 
+<a id="x7-121022r10"></a>gls(1), ls(1)            - list directory contents</div></pre>
+       </div>
+      </div>
+     </div>
+    </div>
+   </article>
+   <footer>
+    <div class="next">
+     <p class="noindent">
+      <a href="MobileRoboticsLectureBookch6.html" style="float: right;">
+       Next Chapter →
+      </a>
+      <a href="MobileRoboticsLectureBookch4.html" style="float: left;">
+       ← Previous Chapter
+      </a>
+     </p>
+    </div>
+   </footer>
+  </div>
+  <div class="page">
+   <article class="chapter">
+    <p class="noindent">
+     <a id="tailMobileRoboticsLectureBookch5.html">
+     </a>
+    </p>
+   </article>
+  </div>
+  <div class="lowernav">
+   <a href="#home">
+    Main TOC
+   </a>
+   <a href="#news">
+    Glossary
+   </a>
+   <a href="#contact">
+    Bibliography
+   </a>
+   <a href="#about">
+    Home
+   </a>
+  </div>
+ </body>
+</html>
