@@ -1777,6 +1777,7 @@ kbd {
   transition:
     visibility 0s,
     opacity 0.5s linear;
+  z-index: 10000;
 }
 
 .thebibliography {
@@ -1823,7 +1824,7 @@ tbody {
   position: fixed; /* Set the navbar to fixed position */
   bottom: 0; /* Position the navbar at the top of the page */
   width: 100%; /* Full width */
-  z-index: 10;
+  z-index: 1;
 }
 
 /* Style the links inside the navigation bar */
@@ -1852,4 +1853,8 @@ tbody {
 .lowernav a.active {
   background-color: #7f7f7f;
   color: white;
+}
+
+.section-control {
+    visibility: hidden;
 }

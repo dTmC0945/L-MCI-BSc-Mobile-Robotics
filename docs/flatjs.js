@@ -25,6 +25,12 @@ $(document).ready(function () {
 
         hljs.highlightAll(e);
     });
+
+    $('p').each(function() {
+    const $this = $(this);
+    if($this.html().replace(/\s|&nbsp;/g, '').length === 0)
+        $this.remove();
+});
 });
 
 /* 
@@ -85,10 +91,10 @@ function CreatePerSectionButton() {
 
 }
 
-window.onload = function () {
-    CreatePerSectionButton();
-    CreateNavDots();
-}
+// window.onload = function () {
+//     //CreatePerSectionButton();
+//     //CreateNavDots();
+// }
 
 
 function showAllSections() {
@@ -148,130 +154,130 @@ function showAllSections() {
 
 }
 
-function hideSections() {
+// function hideSections() {
 
-    $(".section-head").each(function () {
-        let section = "section";
-        secHeader = section.concat("-", secCount);
-        secHeaderToHide = ":not(#" + secHeader + ")";
+//     $(".section-head").each(function () {
+//         let section = "section";
+//         secHeader = section.concat("-", secCount);
+//         secHeaderToHide = ":not(#" + secHeader + ")";
 
-        if ($(this).attr("id") == secHeader) {
-            $(this).fadeIn("slow");
-        } else {
-            $(this).fadeOut("slow");
-        }
+//         if ($(this).attr("id") == secHeader) {
+//             $(this).fadeIn("slow");
+//         } else {
+//             $(this).fadeOut("slow");
+//         }
 
-        $("h1").show();
-    });
-
-
-
-}
+//         $("h1").show();
+//     });
 
 
-function updateTOC() {
 
-    $(".subsectionToc").each(function () {
-
-        toc_header = $(this).children('small').text().match(/\d.(\d).\d/)[1];
-        if (Number(toc_header) === secCount) {
-            $(this).fadeIn("slow");
-        } else {
-            $(this).fadeOut("slow");
-        }
+// }
 
 
-    });
+// function updateTOC() {
 
-}
+//     $(".subsectionToc").each(function () {
+
+//         toc_header = $(this).children('small').text().match(/\d.(\d).\d/)[1];
+//         if (Number(toc_header) === secCount) {
+//             $(this).fadeIn("slow");
+//         } else {
+//             $(this).fadeOut("slow");
+//         }
+
+
+//     });
+
+// }
 
 /**
  * Creates a go Next action which shows the next section to view.
  */
-function goNext() {
+// function goNext() {
 
-    hideSections();
+//     hideSections();
 
-    updateNavDots();
+//     updateNavDots();
 
-    if (secCount < $(".section-head").length) {
-        secCount++;
-    }
+//     if (secCount < $(".section-head").length) {
+//         secCount++;
+//     }
 
-    $(".ch-toc").each(function () {
-        let toc_section = "toc-section";
+//     $(".ch-toc").each(function () {
+//         let toc_section = "toc-section";
 
-        tocHeader = toc_section.concat("-", tocCount);
+//         tocHeader = toc_section.concat("-", tocCount);
 
-        tocHeaderToHide = ":not(#" + tocHeader + ")";
+//         tocHeaderToHide = ":not(#" + tocHeader + ")";
 
-        if ($(this).attr("id") == tocHeader) {
-            $(this).fadeIn("slow");
-        } else {
-            $(this).fadeOut("slow");
-        }
-    });
+//         if ($(this).attr("id") == tocHeader) {
+//             $(this).fadeIn("slow");
+//         } else {
+//             $(this).fadeOut("slow");
+//         }
+//     });
 
-    if (tocCount < $(".ch-toc").length) {
-        tocCount++;
-    }
-}
-
-
-
-function updateNavDots() {
-
-    $("[class^=dot-]").each(function () {
-
-        let dot = "dot";
-        dotHeader = dot.concat("-", secCount);
-        dotHeaderToHide = ":not(#" + dotHeader + ")";
-
-        if ($(this).attr("class") == dotHeader) {
-            $(this).css('background-color', '#29313d')
-                .css('border', '0.1rem solid #29313d');
-        } else {
-            $(this).css('background-color', 'white')
-                .css('border', '0.1rem solid #29313d');
-        }
-
-        $("h1").show();
-
-    });
-}
+//     if (tocCount < $(".ch-toc").length) {
+//         tocCount++;
+//     }
+// }
 
 
-function goPrev() {
-    if (secCount == 1) {
-        return 0;
-    } else if (secCount > 1) {
-        secCount--;
-    }
 
-    hideSections();
-    updateNavDots();
+// function updateNavDots() {
+
+//     $("[class^=dot-]").each(function () {
+
+//         let dot = "dot";
+//         dotHeader = dot.concat("-", secCount);
+//         dotHeaderToHide = ":not(#" + dotHeader + ")";
+
+//         if ($(this).attr("class") == dotHeader) {
+//             $(this).css('background-color', '#29313d')
+//                 .css('border', '0.1rem solid #29313d');
+//         } else {
+//             $(this).css('background-color', 'white')
+//                 .css('border', '0.1rem solid #29313d');
+//         }
+
+//         $("h1").show();
+
+//     });
+// }
 
 
-    $(".ch-toc").each(function () {
-        if (tocCount == 1) {
-            return 0;
-        } else if (tocCount > 1) {
-            tocCount--;
-        }
+// function goPrev() {
+//     if (secCount == 1) {
+//         return 0;
+//     } else if (secCount > 1) {
+//         secCount--;
+//     }
 
-        let toc_section = "toc-section";
+//     hideSections();
+//     updateNavDots();
 
-        tocHeader = toc_section.concat("-", tocCount);
 
-        tocHeaderToHide = ":not(#" + tocHeader + ")";
+//     $(".ch-toc").each(function () {
+//         if (tocCount == 1) {
+//             return 0;
+//         } else if (tocCount > 1) {
+//             tocCount--;
+//         }
 
-        if ($(this).attr("id") == tocHeader) {
-            $(this).fadeIn("slow");
-        } else {
-            $(this).fadeOut("slow");
-        }
-    });
-}
+//         let toc_section = "toc-section";
+
+//         tocHeader = toc_section.concat("-", tocCount);
+
+//         tocHeaderToHide = ":not(#" + tocHeader + ")";
+
+//         if ($(this).attr("id") == tocHeader) {
+//             $(this).fadeIn("slow");
+//         } else {
+//             $(this).fadeOut("slow");
+//         }
+//     });
+// }
 
 $(document).ready(function () {
     //goPrev();
@@ -336,8 +342,8 @@ $(document).ready(function () {
             console.log();
         })
     }
-    goPrev();
-    goNext();
+    // goPrev();
+    //goNext();
 
     for (var i = 0; i < allHTMLTags.length - 1; i++) {
         if (overlaps(allHTMLTags[i], allHTMLTags[i + 1])) {

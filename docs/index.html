@@ -10,7 +10,7 @@
  <script type="text/javascript" id="MathJax-script" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/mml-chtml.js"></script>  
  <link rel="stylesheet" type="text/css" href="flatweb.css"> 
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script> 
- <script src="flatjs.js"></script> <link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@11.3.1/styles/atom-one-dark.min.css" /> 
+ <script src="flatjs.js"></script> <link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@11.3.1/styles/stackoverflow-light.min.css" /> 
  <script src="https://unpkg.com/@highlightjs/cdn-assets@11.3.1/highlight.min.js"></script> 
  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/cpp.min.js"></script> 
  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/makefile.min.js"></script> 
@@ -23,138 +23,129 @@
                                                                                 
                                                                                 
                                                                                 
-<!--l. 39--><p class="noindent" ><a 
+<!--l. 43--><p class="noindent" ><a 
  id="chapter*.1"></a>
 </p>
 <div class="tableofcontents">
 <span class="chapterToc" >1 <a 
-href="MobileRoboticsLectureBookch1.html#x3-20001" id="QQ2-3-2">Locomotion</a></span>
+href="MobileRoboticsLectureBookch1.html#x3-20001" id="QQ2-3-2">Mobile Robot Localisation</a></span>
 <br /><span class="sectionToc" >1.1  <a 
 href="MobileRoboticsLectureBookch1.html#x3-30001.1" id="QQ2-3-3">Introduction</a></span>
 <br /><span class="sectionToc" >1.2  <a 
-href="MobileRoboticsLectureBookch1.html#x3-50001.2" id="QQ2-3-9">Legged Mobile Robots</a></span>
+href="MobileRoboticsLectureBookch1.html#x3-40001.2" id="QQ2-3-6">The problems of Noise and Aliasing</a></span>
 <br /><span class="sectionToc" >1.3  <a 
-href="MobileRoboticsLectureBookch1.html#x3-120001.3" id="QQ2-3-26">Wheeled Mobile Robots</a></span>
+href="MobileRoboticsLectureBookch1.html#x3-80001.3" id="QQ2-3-10">Localisation v. Hard-Coded Navigation</a></span>
+<br /><span class="sectionToc" >1.4  <a 
+href="MobileRoboticsLectureBookch1.html#x3-90001.4" id="QQ2-3-15">Representing Belief</a></span>
+<br /><span class="sectionToc" >1.5  <a 
+href="MobileRoboticsLectureBookch1.html#x3-120001.5" id="QQ2-3-19">Representing Maps</a></span>
+<br /><span class="sectionToc" >1.6  <a 
+href="MobileRoboticsLectureBookch1.html#x3-160001.6" id="QQ2-3-26">Probabilistic Map-Based Localisation</a></span>
+<br /><span class="sectionToc" >1.7  <a 
+href="MobileRoboticsLectureBookch1.html#x3-240001.7" id="QQ2-3-36">Other Examples of Localisation Methods</a></span>
+<br /><span class="sectionToc" >1.8  <a 
+href="MobileRoboticsLectureBookch1.html#x3-290001.8" id="QQ2-3-43">Building Maps</a></span>
 <br /><span class="chapterToc" >2 <a 
-href="MobileRoboticsLectureBookch2.html#x4-270002" id="QQ2-4-45">Perception</a></span>
+href="MobileRoboticsLectureBookch2.html#x4-340002" id="QQ2-4-52">Welcome to Linux</a></span>
 <br /><span class="sectionToc" >2.1  <a 
-href="MobileRoboticsLectureBookch2.html#x4-280002.1" id="QQ2-4-46">Introduction</a></span>
+href="MobileRoboticsLectureBookch2.html#x4-350002.1" id="QQ2-4-53">Learning the Linux Command Line</a></span>
 <br /><span class="sectionToc" >2.2  <a 
-href="MobileRoboticsLectureBookch2.html#x4-460002.2" id="QQ2-4-68">Active Ranging</a></span>
+href="MobileRoboticsLectureBookch2.html#x4-420002.2" id="QQ2-4-65">Installation</a></span>
 <br /><span class="sectionToc" >2.3  <a 
-href="MobileRoboticsLectureBookch2.html#x4-570002.3" id="QQ2-4-88">Vision Based Sensors</a></span>
-<br /><span class="sectionToc" >2.4  <a 
-href="MobileRoboticsLectureBookch2.html#x4-620002.4" id="QQ2-4-101">Feature Extraction</a></span>
+href="MobileRoboticsLectureBookch2.html#x4-430002.3" id="QQ2-4-66">Docker</a></span>
 <br /><span class="chapterToc" >3 <a 
-href="MobileRoboticsLectureBookch3.html#x5-670003" id="QQ2-5-106">Mobile Robot Localisation</a></span>
+href="MobileRoboticsLectureBookch3.html#x5-460003" id="QQ2-5-70">Command Line Fundamentals</a></span>
 <br /><span class="sectionToc" >3.1  <a 
-href="MobileRoboticsLectureBookch3.html#x5-680003.1" id="QQ2-5-107">Introduction</a></span>
+href="MobileRoboticsLectureBookch3.html#x5-470003.1" id="QQ2-5-71">Introduction</a></span>
 <br /><span class="sectionToc" >3.2  <a 
-href="MobileRoboticsLectureBookch3.html#x5-690003.2" id="QQ2-5-110">The problems of Noise and Aliasing</a></span>
+href="MobileRoboticsLectureBookch3.html#x5-480003.2" id="QQ2-5-73">The Structure of Commands</a></span>
 <br /><span class="sectionToc" >3.3  <a 
-href="MobileRoboticsLectureBookch3.html#x5-730003.3" id="QQ2-5-114">Localisation v. Hard-Coded Navigation</a></span>
+href="MobileRoboticsLectureBookch3.html#x5-500003.3" id="QQ2-5-76">Helpful Keyboard Shortcuts for the Terminal</a></span>
 <br /><span class="sectionToc" >3.4  <a 
-href="MobileRoboticsLectureBookch3.html#x5-740003.4" id="QQ2-5-118">Representing Belief</a></span>
+href="MobileRoboticsLectureBookch3.html#x5-510003.4" id="QQ2-5-77">When you need help with Commands</a></span>
 <br /><span class="sectionToc" >3.5  <a 
-href="MobileRoboticsLectureBookch3.html#x5-770003.5" id="QQ2-5-122">Representing Maps</a></span>
-<br /><span class="sectionToc" >3.6  <a 
-href="MobileRoboticsLectureBookch3.html#x5-810003.6" id="QQ2-5-129">Probabilistic Map-Based Localisation</a></span>
-<br /><span class="sectionToc" >3.7  <a 
-href="MobileRoboticsLectureBookch3.html#x5-890003.7" id="QQ2-5-139">Other Examples of Localisation Methods</a></span>
-<br /><span class="sectionToc" >3.8  <a 
-href="MobileRoboticsLectureBookch3.html#x5-940003.8" id="QQ2-5-146">Building Maps</a></span>
+href="MobileRoboticsLectureBookch3.html#x5-520003.5" id="QQ2-5-78">Additional Information</a></span>
 <br /><span class="chapterToc" >4 <a 
-href="MobileRoboticsLectureBookch4.html#x6-990004" id="QQ2-6-155">Welcome to Linux</a></span>
+href="MobileRoboticsLectureBookch4.html#x6-560004" id="QQ2-6-82">Working with Files and Folders</a></span>
 <br /><span class="sectionToc" >4.1  <a 
-href="MobileRoboticsLectureBookch4.html#x6-1000004.1" id="QQ2-6-156">Learning the Linux Command Line</a></span>
+href="MobileRoboticsLectureBookch4.html#x6-570004.1" id="QQ2-6-83">Introduction</a></span>
 <br /><span class="sectionToc" >4.2  <a 
-href="MobileRoboticsLectureBookch4.html#x6-1070004.2" id="QQ2-6-168">Installation</a></span>
+href="MobileRoboticsLectureBookch4.html#x6-580004.2" id="QQ2-6-84">A Detailed Look in ls Command</a></span>
+<br /><span class="sectionToc" >4.3  <a 
+href="MobileRoboticsLectureBookch4.html#x6-590004.3" id="QQ2-6-85">Creating and Removing Folders</a></span>
+<br /><span class="sectionToc" >4.4  <a 
+href="MobileRoboticsLectureBookch4.html#x6-600004.4" id="QQ2-6-86">Move, Copy and Delete Files and Folders</a></span>
+<br /><span class="sectionToc" >4.5  <a 
+href="MobileRoboticsLectureBookch4.html#x6-610004.5" id="QQ2-6-87">Role to Users and sudo</a></span>
+<br /><span class="sectionToc" >4.6  <a 
+href="MobileRoboticsLectureBookch4.html#x6-620004.6" id="QQ2-6-89">File Permissions</a></span>
+<br /><span class="sectionToc" >4.7  <a 
+href="MobileRoboticsLectureBookch4.html#x6-650004.7" id="QQ2-6-94">Hard and Symbolic Links</a></span>
+<br /><span class="sectionToc" >4.8  <a 
+href="MobileRoboticsLectureBookch4.html#x6-680004.8" id="QQ2-6-97">The Linux File System</a></span>
+<br /><span class="sectionToc" >4.9  <a 
+href="MobileRoboticsLectureBookch4.html#x6-690004.9" id="QQ2-6-98">Common Command-Line Tools and Tasks</a></span>
+<br /><span class="sectionToc" >4.10  <a 
+href="MobileRoboticsLectureBookch4.html#x6-730004.10" id="QQ2-6-103">Advanced Topics</a></span>
 <br /><span class="chapterToc" >5 <a 
-href="MobileRoboticsLectureBookch5.html#x7-1120005" id="QQ2-7-174">Command Line Fundamentals</a></span>
+href="MobileRoboticsLectureBookch5.html#x7-760005" id="QQ2-7-106">Installation</a></span>
 <br /><span class="sectionToc" >5.1  <a 
-href="MobileRoboticsLectureBookch5.html#x7-1130005.1" id="QQ2-7-175">Introduction</a></span>
+href="MobileRoboticsLectureBookch5.html#x7-770005.1" id="QQ2-7-107">ROS 2 Humble Hawksbill</a></span>
 <br /><span class="sectionToc" >5.2  <a 
-href="MobileRoboticsLectureBookch5.html#x7-1140005.2" id="QQ2-7-177">The Structure of Commands</a></span>
-<br /><span class="sectionToc" >5.3  <a 
-href="MobileRoboticsLectureBookch5.html#x7-1160005.3" id="QQ2-7-180">Helpful Keyboard Shortcuts for the Terminal</a></span>
-<br /><span class="sectionToc" >5.4  <a 
-href="MobileRoboticsLectureBookch5.html#x7-1170005.4" id="QQ2-7-181">When you need help with Commands</a></span>
-<br /><span class="sectionToc" >5.5  <a 
-href="MobileRoboticsLectureBookch5.html#x7-1180005.5" id="QQ2-7-182">Additional Information</a></span>
+href="MobileRoboticsLectureBookch5.html#x7-830005.2" id="QQ2-7-113">Auto-Install Script</a></span>
 <br /><span class="chapterToc" >6 <a 
-href="MobileRoboticsLectureBookch6.html#x8-1220006" id="QQ2-8-186">Working with Files and Folders</a></span>
+href="MobileRoboticsLectureBookch6.html#x8-840006" id="QQ2-8-114">ROS Concepts</a></span>
 <br /><span class="sectionToc" >6.1  <a 
-href="MobileRoboticsLectureBookch6.html#x8-1230006.1" id="QQ2-8-187">Introduction</a></span>
+href="MobileRoboticsLectureBookch6.html#x8-850006.1" id="QQ2-8-115">Introduction</a></span>
 <br /><span class="sectionToc" >6.2  <a 
-href="MobileRoboticsLectureBookch6.html#x8-1240006.2" id="QQ2-8-188">A Detailed Look in ls Command</a></span>
+href="MobileRoboticsLectureBookch6.html#x8-860006.2" id="QQ2-8-116">Publisher and Subscriber Architecture</a></span>
 <br /><span class="sectionToc" >6.3  <a 
-href="MobileRoboticsLectureBookch6.html#x8-1250006.3" id="QQ2-8-189">Creating and Removing Folders</a></span>
+href="MobileRoboticsLectureBookch6.html#x8-870006.3" id="QQ2-8-117">Nodes - The Building Blocks</a></span>
 <br /><span class="sectionToc" >6.4  <a 
-href="MobileRoboticsLectureBookch6.html#x8-1260006.4" id="QQ2-8-190">Move, Copy and Delete Files and Folders</a></span>
+href="MobileRoboticsLectureBookch6.html#x8-880006.4" id="QQ2-8-118">The Discovery Process</a></span>
+                                                                                
+                                                                                
 <br /><span class="sectionToc" >6.5  <a 
-href="MobileRoboticsLectureBookch6.html#x8-1270006.5" id="QQ2-8-191">Role to Users and sudo</a></span>
+href="MobileRoboticsLectureBookch6.html#x8-890006.5" id="QQ2-8-119">Communication Between Nodes</a></span>
 <br /><span class="sectionToc" >6.6  <a 
-href="MobileRoboticsLectureBookch6.html#x8-1280006.6" id="QQ2-8-193">File Permissions</a></span>
+href="MobileRoboticsLectureBookch6.html#x8-990006.6" id="QQ2-8-129">Topics</a></span>
 <br /><span class="sectionToc" >6.7  <a 
-href="MobileRoboticsLectureBookch6.html#x8-1310006.7" id="QQ2-8-198">Hard and Symbolic Links</a></span>
+href="MobileRoboticsLectureBookch6.html#x8-1030006.7" id="QQ2-8-133">Services</a></span>
 <br /><span class="sectionToc" >6.8  <a 
-href="MobileRoboticsLectureBookch6.html#x8-1340006.8" id="QQ2-8-201">The Linux File System</a></span>
+href="MobileRoboticsLectureBookch6.html#x8-1060006.8" id="QQ2-8-136">Actions</a></span>
 <br /><span class="sectionToc" >6.9  <a 
-href="MobileRoboticsLectureBookch6.html#x8-1350006.9" id="QQ2-8-202">Common Command-Line Tools and Tasks</a></span>
+href="MobileRoboticsLectureBookch6.html#x8-1090006.9" id="QQ2-8-139">Parameters</a></span>
 <br /><span class="sectionToc" >6.10  <a 
-href="MobileRoboticsLectureBookch6.html#x8-1390006.10" id="QQ2-8-207">Advanced Topics</a></span>
-                                                                                
-                                                                                
+href="MobileRoboticsLectureBookch6.html#x8-1180006.10" id="QQ2-8-148">Working with Command Line</a></span>
+<br /><span class="sectionToc" >6.11  <a 
+href="MobileRoboticsLectureBookch6.html#x8-1190006.11" id="QQ2-8-149">Launch File</a></span>
 <br /><span class="chapterToc" >7 <a 
-href="MobileRoboticsLectureBookch7.html#x9-1420007" id="QQ2-9-210">Installation</a></span>
+href="MobileRoboticsLectureBookch7.html#x9-1200007" id="QQ2-9-150">Command Line Tools</a></span>
 <br /><span class="sectionToc" >7.1  <a 
-href="MobileRoboticsLectureBookch7.html#x9-1430007.1" id="QQ2-9-211">ROS 2 Humble Hawksbill</a></span>
+href="MobileRoboticsLectureBookch7.html#x9-1210007.1" id="QQ2-9-151">Setting the Environment</a></span>
 <br /><span class="sectionToc" >7.2  <a 
-href="MobileRoboticsLectureBookch7.html#x9-1490007.2" id="QQ2-9-217">Auto-Install Script</a></span>
-<br /><span class="chapterToc" >8 <a 
-href="MobileRoboticsLectureBookch8.html#x10-1500008" id="QQ2-10-218">ROS Concepts</a></span>
-<br /><span class="sectionToc" >8.1  <a 
-href="MobileRoboticsLectureBookch8.html#x10-1510008.1" id="QQ2-10-219">Introduction</a></span>
-<br /><span class="sectionToc" >8.2  <a 
-href="MobileRoboticsLectureBookch8.html#x10-1520008.2" id="QQ2-10-220">Nodes - The Building Blocks</a></span>
-<br /><span class="sectionToc" >8.3  <a 
-href="MobileRoboticsLectureBookch8.html#x10-1530008.3" id="QQ2-10-221">The Discovery Process</a></span>
-<br /><span class="sectionToc" >8.4  <a 
-href="MobileRoboticsLectureBookch8.html#x10-1540008.4" id="QQ2-10-222">Communication Between Nodes</a></span>
-<br /><span class="sectionToc" >8.5  <a 
-href="MobileRoboticsLectureBookch8.html#x10-1640008.5" id="QQ2-10-232">Topics</a></span>
-<br /><span class="sectionToc" >8.6  <a 
-href="MobileRoboticsLectureBookch8.html#x10-1680008.6" id="QQ2-10-236">Services</a></span>
-<br /><span class="sectionToc" >8.7  <a 
-href="MobileRoboticsLectureBookch8.html#x10-1710008.7" id="QQ2-10-239">Actions</a></span>
-<br /><span class="sectionToc" >8.8  <a 
-href="MobileRoboticsLectureBookch8.html#x10-1740008.8" id="QQ2-10-242">Parameters</a></span>
-<br /><span class="sectionToc" >8.9  <a 
-href="MobileRoboticsLectureBookch8.html#x10-1830008.9" id="QQ2-10-251">Working with Command Line</a></span>
-<br /><span class="sectionToc" >8.10  <a 
-href="MobileRoboticsLectureBookch8.html#x10-1840008.10" id="QQ2-10-252">Launch File</a></span>
+href="MobileRoboticsLectureBookch7.html#x9-1260007.2" id="QQ2-9-156">Turtles and Graphs</a></span>
+<br /><span class="sectionToc" >7.3  <a 
+href="MobileRoboticsLectureBookch7.html#x9-1340007.3" id="QQ2-9-165">A Deeper Look into Nodes</a></span>
+<br /><span class="sectionToc" >7.4  <a 
+href="MobileRoboticsLectureBookch7.html#x9-1390007.4" id="QQ2-9-170">Working with Topics</a></span>
+<br /><span class="sectionToc" >7.5  <a 
+href="MobileRoboticsLectureBookch7.html#x9-1450007.5" id="QQ2-9-179">Working with Services</a></span>
+<br /><span class="sectionToc" >7.6  <a 
+href="MobileRoboticsLectureBookch7.html#x9-1520007.6" id="QQ2-9-186">Working with Parameters</a></span>
+<br /><span class="sectionToc" >7.7  <a 
+href="MobileRoboticsLectureBookch7.html#x9-1590007.7" id="QQ2-9-193">A Practical Look into Actions</a></span>
+<br /><span class="sectionToc" >7.8  <a 
+href="MobileRoboticsLectureBookch7.html#x9-1630007.8" id="QQ2-9-197">Launching Nodes</a></span>
 </div>
                                                                                 
                                                                                 
                                                                                 
                                                                                 
-<!--l. 8--><p class="noindent" >
+<!--l. 10--><p class="noindent" >
                                                                                 
                                                                                 
 </p>
-                                                                                
-                                                                                
-                                                                                
-                                                                                
-<!--l. 8--><p class="noindent" >
-                                                                                
-                                                                                
-</p>
-                                                                                
-                                                                                
-                                                                                
-                                                                                
-
                                                                                 
                                                                                 
                                                                                 
@@ -167,10 +158,7 @@ href="MobileRoboticsLectureBookch8.html#x10-1840008.10" id="QQ2-10-252">Launch F
                                                                                 
                                                                                 
                                                                                 
-<!--l. 8--><p class="noindent" >
-                                                                                
-                                                                                
-</p>
+
                                                                                 
                                                                                 
                                                                                 
@@ -183,11 +171,6 @@ href="MobileRoboticsLectureBookch8.html#x10-1840008.10" id="QQ2-10-252">Launch F
                                                                                 
                                                                                 
                                                                                 
-
-                                                                                
-                                                                                
-                                                                                
-                                                                                
 <!--l. 16--><p class="noindent" >
                                                                                 
                                                                                 
@@ -196,15 +179,24 @@ href="MobileRoboticsLectureBookch8.html#x10-1840008.10" id="QQ2-10-252">Launch F
                                                                                 
                                                                                 
                                                                                 
-<!--l. 1--><p class="noindent" ><a 
- id="likesection.57"></a><a 
- id="x1-184001x8.10"></a>
+<!--l. 10--><p class="noindent" >
                                                                                 
                                                                                 
+</p>
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+<!--l. 1--><p class="noindent" >
                                                                                 
                                                                                 
 </p><!--l. 1--><p class="noindent" ><a 
- id="chapter*.58"></a>
+ id="chapter*.61"></a>
 </p> 
 </body> 
 </html>
