@@ -1,12 +1,12 @@
 html {
-  scroll-behavior: smooth;
+  scroll-behavior: smooth !important;   
 }
 
 body,
 h1,
 h2,
 h3,
-h4,
+h4, 
 p,
 blockquote,
 code,
@@ -36,14 +36,14 @@ img.dot {
 body {
   color: #222;
   font:
-    normal 16px/24px "Garamond",
+    normal 16px/24px 'Roboto', sans-serif;
     Georgia,
     serif;
 }
 
 article.chapter h2 {
   font:
-    600 30px/24px "Garamond",
+    600 30px/24px "Roboto",
     Georgia,
     serif;
   margin: 69px 0 0 0;
@@ -51,14 +51,14 @@ article.chapter h2 {
 }
 article.chapter h2 small {
   font:
-    800 22px/24px "Garamond",
+    800 22px/24px "Roboto",
     Georgia,
     serif;
   float: right;
 }
 article.chapter h3 {
   font:
-    italic 24px/24px "Garamond",
+    italic 24px/24px "Roboto",
     Georgia,
     serif;
   margin: 71px 0 0 0;
@@ -66,7 +66,7 @@ article.chapter h3 {
 }
 article.chapter h3 small {
   font:
-    600 16px/24px "Garamond",
+    600 16px/24px "Roboto",
     Georgia,
     serif;
   float: right;
@@ -188,7 +188,7 @@ article.chapter table {
 }
 article.chapter table thead {
   font:
-    700 15px "Garamond",
+    700 15px "Roboto",
     Georgia,
     serif;
 }
@@ -227,6 +227,31 @@ article.chapter table td + td {
   }
 }
 @media only screen and (max-width: 580px) {
+
+    /* Control the view of PDF file link as mobile users won't need it */
+    h2,
+    h3,
+    h4 {
+        a {
+            svg {
+                visibility: hidden;
+            }
+        }
+    }
+
+    /* Control the view of code-type information as the screen is too small
+       to fit it */
+    .code-lang {
+        visibility: hidden;
+    }
+
+    .marginnote {
+        position: inherit;
+        right: inherit;
+        width: inherit;
+        border-bottom: 1px solid rgb(222, 233, 237);
+    }
+    
   article.chapter h2 {
     margin-top: 64px;
     padding-bottom: 2px;
@@ -324,6 +349,7 @@ article.contents footer {
 }
 
 @media only screen and (max-width: 1344px) {
+    
   article.contents .chapters,
   article.contents .row,
   article.contents .first,
@@ -422,27 +448,27 @@ article.contents footer {
 }
 
 @font-face {
-  font-family: "Garamond";
+  font-family: "Roboto";
 }
 @font-face {
-  font-family: "Garamond";
+  font-family: "Roboto";
   font-style: italic;
 }
 @font-face {
-  font-family: "Garamond";
+  font-family: "Roboto";
   font-weight: 600;
 }
 @font-face {
-  font-family: "Garamond";
+  font-family: "Roboto";
   font-style: italic;
   font-weight: 600;
 }
 @font-face {
-  font-family: "Garamond";
+  font-family: "Roboto";
   font-weight: bold;
 }
 @font-face {
-  font-family: "Garamond";
+  font-family: "Roboto";
   font-style: italic;
   font-weight: bold;
 }
@@ -480,7 +506,7 @@ img.dot {
 body {
   color: #222;
   font:
-    normal 16px/24px "Garamond",
+    normal 16px/24px "Roboto",
     Georgia,
     serif;
 }
@@ -836,7 +862,7 @@ article {
 article h1 {
   position: relative;
   font:
-    48px/48px "Garamond",
+    48px/48px "Roboto",
     Georgia,
     serif;
   padding: 109px 0 19px 0;
@@ -882,7 +908,7 @@ aside {
   right: -336px;
   width: 288px;
   font:
-    normal 14px/20px "Garamond",
+    normal 14px/20px "Roboto",
     Georgia,
     serif;
   border-top: solid 1px #dee9ed;
@@ -924,7 +950,7 @@ aside blockquote::after {
 aside blockquote p {
   margin: 0 12px;
   font:
-    italic 15px/20px "Garamond",
+    italic 15px/20px "Roboto",
     Georgia,
     serif;
   color: inherit;
@@ -944,7 +970,7 @@ blockquote::after {
   position: absolute;
   top: -20px;
   font:
-    italic 72px "Garamond",
+    italic 72px "Roboto",
     Georgia,
     serif;
   color: #dee9ed;
@@ -960,7 +986,7 @@ blockquote::after {
 blockquote p {
   margin: 0 48px;
   font:
-    italic 24px/36px "Garamond",
+    italic 24px/36px "Roboto",
     Georgia,
     serif;
   color: #5985a6;
@@ -993,7 +1019,7 @@ footer {
   text-align: center;
   margin: 48px 0;
   padding-top: 48px;
-  width: 700px;
+  padding: 30px 0 30px;
 }
 footer a,
 footer a:hover {
@@ -1126,6 +1152,10 @@ footer .next:hover {
 @media only screen and (max-width: 1344px) {
   nav.wide {
     display: none;
+  }
+
+  .code-lang {
+      display: none;
   }
 
   nav.floating {
@@ -1266,9 +1296,11 @@ footer .next:hover {
     font-size: 30px;
     padding: 97px 0 17px 0;
   }
+
+  /* Control the way chapter number looks on mobile */
   article .number {
-    top: 61px;
-    font-size: 72px;
+    top: 30px;
+    font-size: 70px;
   }
   article p {
     margin: 22px 0;
@@ -1490,16 +1522,6 @@ span#textcolor {
   }
 }
 
-.marginnote {
-  position: absolute;
-  right: -330px;
-  width: 300px;
-  font:
-    normal 14px/20px "Garamond",
-    Georgia,
-    serif;
-  border-top: solid 1px #dee9ed;
-}
 
 dl.thebibliography {
   width: 700px;
@@ -1512,7 +1534,7 @@ dt.thebibliography {
 .addchapHead {
   position: relative;
   font:
-    48px/48px "Garamond",
+    48px/48px "Roboto",
     Georgia,
     serif;
   padding: 109px 0 19px 0;
@@ -1538,13 +1560,13 @@ dt.thebibliography {
 .chapterHead {
   position: relative;
   font:
-    48px/48px "Garamond",
+    48px/48px "Roboto", 
     Georgia,
     serif;
   padding: 109px 0 50px 0;
   z-index: 2;
 }
-
+ 
 .paragraphHead {
   font-weight: bold;
   margin: 0 20px 0 0;
@@ -1619,14 +1641,24 @@ dt.thebibliography {
 }
 
 .code-block {
-  width: 100%;
+    display: inline-block;
+    position: relative;
+    width: 100%;
 
   .code-lang {
-    text-align: right;
+text-align: right;
     font-size: 12px;
     padding: 10px 0 5px 0;
     font-family: Verdana, sans-serif;
     color: #1481b8;
+    transform: rotate(90deg);
+    transform-origin: top left;
+    position: absolute;
+    top: 5px;
+    left: 735px;
+
+        @include transform(rotate(270deg));
+    @include transform-origin(0 0);
   }
 }
 
@@ -1673,9 +1705,20 @@ figure {
   width: 100%;
 }
 
+.wrapfig-r {
+    .caption{
+        font: normal 12px/20px "Roboto", Georgia, serif;
+    }
+}
+
+/* Control the way the margins look in the description environment */
+dd.description {
+    margin: 30px;
+    margin-top: -20px;
+}
+
 .caption {
   font-size: 14px;
-  text-align: center;
 
   span.id {
     font-weight: bold;
@@ -1823,7 +1866,7 @@ tbody {
   overflow: hidden;
   position: fixed; /* Set the navbar to fixed position */
   bottom: 0; /* Position the navbar at the top of the page */
-  width: 100%; /* Full width */
+  width: 100vw; /* Full width */
   z-index: 1;
 }
 
@@ -1857,4 +1900,27 @@ tbody {
 
 .section-control {
     visibility: hidden;
+}
+
+// <weight>: Use a value from 300 to 800
+// <uniquifier>: Use a unique and descriptive class name
+
+.open-sans-thin {
+  font-family: "Open Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 100;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100;
+}
+
+
+.marginnote {
+  position: absolute;
+  right: -330px;
+  width: 300px;
+  font: normal 12px/20px "Roboto",
+        Georgia,
+        serif;
+  border-top: solid 1px #dee9ed;
 }

@@ -1,0 +1,3943 @@
+<!DOCTYPE html> 
+<html lang="en-US" xml:lang="en-US" > 
+<head><title>10 Client Libraries</title> 
+<meta  charset="utf-8" /> 
+<meta name="generator" content="TeX4ht (https://tug.org/tex4ht/)" /> 
+<meta name="viewport" content="width=device-width,initial-scale=1" /> 
+<link rel="stylesheet" type="text/css" href="MobileRoboticsLectureBook.css" /> 
+<meta name="src" content="MobileRoboticsLectureBook.tex" /> 
+ <script type="text/javascript" id="MathJax-script" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/mml-chtml.js"></script>  
+ <link rel="stylesheet" type="text/css" href="flatweb.css"> 
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script> 
+ <script src="flatjs.js"></script> <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>  
+<link href="https://unpkg.com/nord-highlightjs@0.1.0/dist/nord.css" rel="stylesheet" type="text/css" /> 
+ <script src="https://unpkg.com/@highlightjs/cdn-assets@11.3.1/highlight.min.js"></script> 
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/dockerfile.min.js"> </script>  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/cmake.min.js"> </script>  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/cpp.min.js"> </script>  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/makefile.min.js"> </script>  
+<script src="https://unpkg.com/highlightjs-copy/dist/highlightjs-copy.min.js"> </script>  
+<link rel="stylesheet" href="https://unpkg.com/highlightjs-copy/dist/highlightjs-copy.min.css"/>  
+<script src="flatjs.js"> </script>  <header>  
+</header> 
+</head><body 
+>
+<!--l. 2--><div class="crosslinks"><p class="noindent"><a 
+href="MobileRoboticsLectureBookli2.html" >NEXT</a><a 
+href="MobileRoboticsLectureBookch9.html" >PREV</a><a 
+href="index.html" >TOP</a></p></div>
+<h2 class="chapterHead"><span class="titlemark">10</span>  <a 
+ id="x12-23000010"></a>Client Libraries</h2>
+<div class="chapterTOCS">
+<span class="sectionToc" >10.1  <a 
+href="#x12-23100010.1">Getting Started with Colcon</a></span>
+<br /><span class="sectionToc" >10.2  <a 
+href="#x12-23600010.2">Creating a Workspace</a></span>
+<br /><span class="sectionToc" >10.3  <a 
+href="#x12-24200010.3">Creating a Package</a></span>
+<br /><span class="sectionToc" >10.4  <a 
+href="#x12-24400010.4">Writing a Simple Publisher &#x0026; Subscriber</a></span>
+<br /><span class="subsectionToc" >10.4.1  <a 
+href="#x12-24600010.4.1">Writing the Publisher Node</a></span>
+<br /><span class="subsectionToc" >10.4.2  <a 
+href="#x12-25100010.4.2">Writing the Subscriber Node</a></span>
+<br /><span class="subsectionToc" >10.4.3  <a 
+href="#x12-25400010.4.3">Building and Running</a></span>
+<br /><span class="sectionToc" >10.5  <a 
+href="#x12-25500010.5">Creating Custom msg and srv Files</a></span>
+<br /><span class="subsectionToc" >10.5.1  <a 
+href="#x12-25700010.5.1">Creating Custom Definitions</a></span>
+<br /><span class="sectionToc" >10.6  <a 
+href="#x12-26000010.6">CMakeList</a></span>
+<br /><span class="sectionToc" >10.7  <a 
+href="#x12-26400010.7">Using Parameters in a Class</a></span>
+<br /><span class="sectionToc" >10.8  <a 
+href="#x12-27400010.8">Managing Dependencies</a></span>
+<br /><span class="subsectionToc" >10.8.1  <a 
+href="#x12-27500010.8.1">Explaining Rosdep</a></span>
+<br /><span class="subsectionToc" >10.8.2  <a 
+href="#x12-27600010.8.2">Explaining Pacakge Manifesto</a></span>
+<br /><span class="sectionToc" >10.9  <a 
+href="#x12-27700010.9">Creating an Action</a></span>
+<br /><span class="sectionToc" >10.10  <a 
+href="#x12-28000010.10">Writing an Action Server and Client</a></span>
+</div>
+<div class="page"><article class="chapter">
+
+<h3 class="sectionHead"><span class="titlemark">10.1</span>  <a 
+ id="x12-23100010.1"></a>Getting Started with Colcon</h3>
+<!--l. 10--><p class="noindent" >Now we have learned previously all the essential concepts required for us to get a good introduction to
+<a 
+href="MobileRoboticsLectureBookli2.html#glo:ros" class="glossary" >ROS</a> and now we can begin to go deeper into understanding how packages are written and how all
+previously defined concepts and ideas can be implemented in code. In this light, let us start with
+looking at the compiler for <a 
+href="MobileRoboticsLectureBookli2.html#glo:ros" class="glossary" >ROS</a>: <span id="textcolor3018"><code class="verb">colcon</code></span>
+</p><!--l. 15--><p class="noindent" >The first thing to define is <span id="textcolor3019"><code class="verb">colcon</code></span> is an iteration on the <a 
+href="MobileRoboticsLectureBookli2.html#glo:ros" class="glossary" >ROS</a> build tools:
+</p>     
+<blockquote class="quote">
+<!--l. 18--><p class="noindent" ><span id="textcolor3020"><code class="verb">catkin_make</code></span>, <span id="textcolor3021"><code class="verb">catkin_make_isolated</code></span>, <span id="textcolor3022"><code class="verb">catkin_tools</code></span> and <span id="textcolor3023"><code class="verb">ament_tools</code></span>.</p></blockquote>
+<!--l. 22--><p class="noindent" >We
+begin
+by
+installing
+colcon:<alert style="color: #821131;"><span id="bold" style="font-weight:bold;"><sup class="textsuperscript">1 </sup></span></alert>
+<span class="marginnote">
+<alert style="color: #821131;"><span id="bold" style="font-weight:bold;"><sup class="textsuperscript">1</sup></span></alert><span id="textcolor3024">Of
+course,
+if
+you
+have
+installed
+                                                                                
+                                                                                
+<a 
+href="MobileRoboticsLectureBookli2.html#glo:ros" class="glossary" >ROS</a>
+with
+a
+Dockerfile
+and
+followed
+the
+lecture
+material,
+you
+don’t
+have
+to
+do
+this
+step.</span></span>
+</p><!--l. 1--><p class="noindent" >
+
+</p>
+<pre><div id="fancyvrb232" style='padding:20px;border-radius: 3px;'><a 
+ id="x12-231002r52"></a>sudo<span id="textcolor3025"> </span>apt<span id="textcolor3026"> </span>install<span id="textcolor3027"> </span>python3-colcon-common-extensions</div></pre>
+<div class="tcolorbox tcolorbox" id="tcolobox-96">
+
+
+
+ 
+<div class="tcolorbox-content"><pre><div id="fancyvrb233" style='padding:20px;border-radius: 3px;'><a 
+ id="x12-231004r1"></a>Reading package lists... 0% 
+<a 
+ id="x12-231006r2"></a>Reading package lists... 0% 
+<a 
+ id="x12-231008r3"></a>Reading package lists... 7% 
+<a 
+ id="x12-231010r4"></a>Reading package lists... Done 
+<a 
+ id="x12-231012r5"></a>Building dependency tree... 0% 
+<a 
+ id="x12-231014r6"></a>Building dependency tree... 0% 
+<a 
+ id="x12-231016r7"></a>Building dependency tree... 50% 
+<a 
+ id="x12-231018r8"></a>Building dependency tree... 50% 
+<a 
+ id="x12-231020r9"></a>Building dependency tree... Done 
+<a 
+ id="x12-231022r10"></a>Reading state information... 0% 
+<a 
+ id="x12-231024r11"></a>Reading state information... 0% 
+<a 
+ id="x12-231026r12"></a>Reading state information... Done 
+<a 
+ id="x12-231028r13"></a>python3-colcon-common-extensions is already the newest version (0.3.0-100). 
+<a 
+ id="x12-231030r14"></a>0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.</div></pre>
+ 
+</div> 
+</div>
+
+<a 
+ id="paragraph*.91"></a>
+<!--l. 29--><p class="noindent" ><span class="paragraphHead"><a 
+ id="x12-232000"></a>The Structure of a Package</span>                                                            
+A
+<a 
+href="MobileRoboticsLectureBookli2.html#glo:ros" class="glossary" >ROS</a>
+workspace
+is
+a
+directory
+with
+a
+<alert style="color: #821131;">particular
+structure</alert>.
+Commonly
+there
+is
+a
+<span id="textcolor3028"><code class="verb">src</code></span>
+subdirectory.<alert style="color: #821131;"><span id="bold" style="font-weight:bold;"><sup class="textsuperscript">2 </sup></span></alert>
+<span class="marginnote">                                                                            
+<alert style="color: #821131;"><span id="bold" style="font-weight:bold;"><sup class="textsuperscript">2</sup></span></alert><span id="textcolor3029">This
+kind
+of
+directory
+usually
+exists
+for
+development
+of
+applications
+such
+as
+C
+or
+C++.</span></span>
+Within
+this
+subdirectory
+is
+                                                                                
+                                                                                
+                                                                            
+where
+the
+source
+code
+(<span id="textcolor3030"><code class="verb">src</code></span>)
+of
+<a 
+href="MobileRoboticsLectureBookli2.html#glo:ros" class="glossary" >ROS</a>
+packages
+will
+be
+located.
+</p>                                                                                
+<div class="knowledge">
+<!--l. 38--><p class="noindent" >When
+this
+directory
+is
+created,
+it
+will
+be
+empty.
+</p>                                                                                
+</div>
+<!--l. 40--><p class="noindent" >The
+primary
+job
+of
+<span id="textcolor3031"><code class="verb">colcon</code></span>
+is
+to
+create
+the
+structure
+for,
+compile
+and
+build
+these
+source
+files.
+By
+default
+it
+will
+create
+the
+following
+directories
+as
+same
+hierarchy
+of
+the
+<span id="textcolor3032"><code class="verb">src</code></span>
+directory:
+</p>     
+<dl class="description"><dt class="description">
+build 
+</dt><dd 
+class="description">                                                                            
+<!--l. 45--><p class="noindent" >
+Where
+intermediate
+files
+are
+stored.
+For
+                                                                                
+                                                                                
+                                                                             
+each
+package
+a
+subfolder
+will
+be
+created
+in
+which
+e.g.,
+CMake<alert style="color: #821131;"><span id="bold" style="font-weight:bold;"><sup class="textsuperscript">3 </sup></span></alert>
+<span class="marginnote">                                                                              
+<alert style="color: #821131;"><span id="bold" style="font-weight:bold;"><sup class="textsuperscript">3</sup></span></alert><span id="textcolor3033">a
+free,
+cross-platform,
+software
+development
+tool
+for
+building
+applications
+via
+compiler-independent
+instructions.
+It
+also
+can
+automate
+testing,
+packaging
+and
+installation.
+It
+runs
+on
+a
+variety
+of
+platforms
+and
+supports
+many
+programming
+languages.</span></span>
+is
+being
+invoked.
+</p>                                                                                
+</dd>
+<dt class="description">
+install 
+</dt><dd 
+class="description">
+<!--l. 50--><p class="noindent" >                                                                           
+Where
+each
+package
+will
+be
+installed
+to.
+By
+default
+each
+package
+will
+be
+installed
+into
+                                                                                
+                                                                                
+                                                                               
+a
+separate
+subdirectory.
+</p>                                                                                
+</dd>
+<dt class="description">
+log 
+</dt><dd 
+class="description">
+<!--l. 52--><p class="noindent" >                                                                          
+Contains
+various
+logging
+information
+about
+each
+<span id="textcolor3034"><code class="verb">colcon</code></span>
+invocation,
+for
+use
+in
+error-checking
+and
+debugging
+purposes.</p></dd></dl>
+<div class="warning">                                                                             
+<!--l. 59--><p class="noindent" >For
+any
+student
+who
+had
+prior
+experience
+with
+ROS
+1
+and
+<span id="textcolor3035"><code class="verb">catkin</code></span>,
+there
+is
+no
+devel
+directory.
+</p>                                                                                
+</div>
+<!--l. 61--><p class="noindent" >To
+get
+started
+we
+first
+create
+a
+directory
+(<span id="textcolor3036"><code class="verb">ros2_ws</code></span>)
+to
+contain
+our
+workspace:<alert style="color: #821131;"><span id="bold" style="font-weight:bold;"><sup class="textsuperscript">4 </sup></span></alert>
+<span class="marginnote">
+<alert style="color: #821131;"><span id="bold" style="font-weight:bold;"><sup class="textsuperscript">4</sup></span></alert><span id="textcolor3037">The
+name
+of
+the
+directory
+is
+up
+to
+the
+                                                                                
+                                                                                
+user.</span></span>
+</p><!--l. 1--><p class="noindent" >
+
+</p>
+<pre><div id="fancyvrb234" style='padding:20px;border-radius: 3px;'><a 
+ id="x12-232002r75"></a>mkdir<span id="textcolor3038"> </span>-p<span id="textcolor3039"> </span>~/ros2_ws/src 
+<a 
+ id="x12-232004r76"></a><span id="textcolor3040">cd</span><span id="textcolor3041"> </span>~/ros2_ws</div></pre>
+<!--l. 66--><p class="noindent" >At
+this
+moment
+if
+we
+were
+to
+<span id="textcolor3042"><code class="verb">ls</code></span>
+into
+our
+directory
+we
+will
+only
+see
+one
+(<alert style="color: #821131;">1</alert>) folder
+which
+is
+<span id="textcolor3043"><code class="verb">src</code></span>,
+which
+is
+to
+be
+expected
+as
+it
+is
+created
+just
+a
+second
+ago.
+</p><!--l. 1--><p class="noindent" >
+
+</p>
+<pre><div id="fancyvrb235" style='padding:20px;border-radius: 3px;'><a 
+ id="x12-232006r82"></a>ls</div></pre>
+<div class="tcolorbox tcolorbox" id="tcolobox-97">
+
+
+
+ 
+<div class="tcolorbox-content"><pre><div id="fancyvrb236" style='padding:20px;border-radius: 3px;'><a 
+ id="x12-232008r1"></a>src</div></pre>
+ 
+</div> 
+</div>
+<!--l. 73--><p class="noindent" >Now
+let’s
+populate
+our
+newly
+created
+environment
+with
+some
+tutorial
+files
+from
+the
+official
+<a 
+href="MobileRoboticsLectureBookli2.html#glo:ros" class="glossary" >ROS</a>
+repo:
+</p><!--l. 1--><p class="noindent" >
+                                                                                
+                                                                                
+
+</p>
+<pre><div id="fancyvrb237" style='padding:20px;border-radius: 3px;'><a 
+ id="x12-232010r92"></a>git<span id="textcolor3044"> </span>clone<span id="textcolor3045"> </span>https://github.com/ros2/examples<span id="textcolor3046"> </span>src/examples<span id="textcolor3047"> </span>-b<span id="textcolor3048"> </span>humble</div></pre>
+<div class="tcolorbox tcolorbox" id="tcolobox-98">
+
+
+
+ 
+<div class="tcolorbox-content"><pre><div id="fancyvrb238" style='padding:20px;border-radius: 3px;'><a 
+ id="x12-232012r1"></a>Cloning into &#x0027;src/examples&#x0027;... 
+<a 
+ id="x12-232014r2"></a>remote: Enumerating objects: 9987, done. 
+<a 
+ id="x12-232016r3"></a>remote: Counting objects: 100% (2546/2546), done. 
+<a 
+ id="x12-232018r4"></a>remote: Compressing objects: 100% (358/358), done. 
+<a 
+ id="x12-232020r5"></a>remote: Total 9987 (delta 2376), reused 2195 (delta 2188), pack-reused 7441 (from 3) 
+<a 
+ id="x12-232022r6"></a>Receiving objects: 100% (9987/9987), 1.56 MiB | 4.28 MiB/s, done. 
+<a 
+ id="x12-232024r7"></a>Resolving deltas: 100% (7250/7250), done.</div></pre>
+ 
+</div> 
+</div>
+
+<a 
+ id="paragraph*.92"></a>
+<!--l. 80--><p class="noindent" ><span class="paragraphHead"><a 
+ id="x12-233000"></a>Sourcing  an  Underlay</span>
+It is important that we have sourced the environment for an existing <a 
+href="MobileRoboticsLectureBookli2.html#glo:ros" class="glossary" >ROS</a> installation which will provide our
+workspace with the necessary build dependencies for the example packages. This is achieved by sourcing
+the setup script provided by a binary installation or a source installation, i.e. another, colcon workspace.
+</p>     
+<blockquote class="quote">
+<!--l. 88--><p class="noindent" >We
+call
+this
+environment
+an
+underlay.</p></blockquote>
+<!--l. 91--><p class="noindent" >Our workspace, <span id="textcolor3049"><code class="verb">ros2_ws</code></span>, will be an overlay on top of the existing <a 
+href="MobileRoboticsLectureBookli2.html#glo:ros" class="glossary" >ROS</a> installation.
+</p>
+<div class="knowledge">
+<!--l. 97--><p class="noindent" >In general, it is recommended to use an overlay when you plan to iterate on a small
+number of packages, rather than putting all of your packages into the same workspace. </p></div>
+
+<a 
+ id="paragraph*.93"></a>
+<!--l. 99--><p class="noindent" ><span class="paragraphHead"><a 
+ id="x12-234000"></a>Building  the  Workspace</span>                                                              
+In
+the
+root
+of
+the
+workspace,
+run
+<span id="textcolor3050"><code class="verb">colcon build</code></span>.
+Since
+build
+types
+such
+as
+<span id="textcolor3051"><code class="verb">ament_cmake</code></span>
+do
+<span id="bold" style="font-weight:bold;">NOT</span>
+ support
+the
+concept
+of
+the
+devel
+space
+and
+require
+the
+package
+to
+be
+                                                                                
+                                                                                
+                                                                          
+installed,
+colcon
+supports
+the
+option
+<span id="textcolor3052"><code class="verb">--symlink-install</code></span>.
+This
+allows
+the
+installed
+files
+to
+be
+changed
+by
+changing
+the
+files
+in
+the
+source
+space<alert style="color: #821131;"><span id="bold" style="font-weight:bold;"><sup class="textsuperscript">5 </sup></span></alert>
+<span class="marginnote">                                                                            
+<alert style="color: #821131;"><span id="bold" style="font-weight:bold;"><sup class="textsuperscript">5</sup></span></alert><span id="textcolor3053">e.g.,
+Python
+files
+or
+other
+non-compiled
+resources</span></span>
+for
+faster
+iteration.
+</p>                                                                                
+<!--l. 1--><p class="noindent" >
+
+</p>                                          
+<pre><div id="fancyvrb239" style='padding:20px;border-radius: 3px;'><a 
+ id="x12-234002r108"></a>colcon<span id="textcolor3054"> </span>build<span id="textcolor3055"> </span>--symlink-install<span id="textcolor3056"> </span>--executor<span id="textcolor3057"> </span>sequential</div></pre>
+<div class="warning">                                                                             
+<!--l. 115--><p class="noindent" >The
+way
+we
+are
+currently
+building
+is
+<span id="bold" style="font-weight:bold;">NOT</span>
+ the
+official
+way
+as
+we
+had
+to
+add
+<span id="textcolor3058"><code class="verb">--executor sequential</code></span>
+option.
+We
+are
+adding
+this
+as
+by
+default,
+the
+colcon
+processes/compiles
+                                                                                
+                                                                                
+                                                                          
+packages
+parallel
+to
+speed
+up
+the
+compilation
+time.
+If
+we
+were
+to
+have
+<a 
+href="MobileRoboticsLectureBookli2.html#glo:ros" class="glossary" >ROS</a>
+installed
+on
+native
+hardware
+rather
+than
+a
+docker
+container
+we
+may
+not
+have
+needed
+this
+additional
+option.
+</p>                                                                                
+</div>
+<!--l. 117--><p class="noindent" >After
+the
+build
+is
+finished,
+we
+should
+see
+the
+build,
+install,
+and
+log
+directories:
+</p>                                                                                
+<!--l. 1--><p class="noindent" >
+
+</p>                                                                            
+<pre><div id="fancyvrb240" style='padding:20px;border-radius: 3px;'><a 
+ id="x12-234004r113"></a>ls<span id="textcolor3059"> </span>-l</div></pre>
+<div class="tcolorbox tcolorbox" id="tcolobox-99">                                                                                
+
+                                                                                
+
+ 
+<div class="tcolorbox-content"><pre><div id="fancyvrb241" style='padding:20px;border-radius: 3px;'><a 
+ id="x12-234006r1"></a>drwxr-xr-x 24 ubuntu ubuntu 4096 Jun  6 13:58 build 
+<a 
+ id="x12-234008r2"></a>drwxr-xr-x 24 ubuntu ubuntu 4096 Jun  6 13:58 install 
+<a 
+ id="x12-234010r3"></a>drwxr-xr-x  4 ubuntu ubuntu 4096 Jun  6 13:57 log 
+<a 
+ id="x12-234012r4"></a>drwxr-xr-x  3 ubuntu ubuntu 4096 Jun  6 13:54 src</div></pre>
+ 
+</div> 
+</div>                                                                          
+<div class="knowledge">
+<!--l. 124--><p class="noindent" >To
+run
+test
+on
+built
+packages
+we
+can
+                                                                                
+                                                                                
+                                                                             
+run
+<span id="textcolor3060"><code class="verb">colcon test</code></span>
+</p>                                                                                
+</div>
+                                                                                
+<a 
+ id="paragraph*.94"></a>
+<!--l. 126--><p class="noindent" ><span class="paragraphHead"><a 
+ id="x12-235000"></a>Sourcing
+the
+New
+Package</span>
+When
+<span id="textcolor3061"><code class="verb">colcon</code></span>
+has
+completed
+building
+successfully,
+the
+output
+will
+be
+in
+the
+install
+directory.
+Before
+you
+can
+use
+any
+of
+the
+installed
+executables
+or
+libraries,
+we
+will
+have
+to
+add
+them
+to
+our
+path
+and
+library
+paths.
+<span id="textcolor3062"><code class="verb">colcon</code></span>
+will
+have
+generated
+bash
+files
+in
+the
+install
+directory
+to
+help
+set
+up
+the
+environment.
+These
+files
+will
+                                                                                
+                                                                                
+                                                                             
+add
+all
+of
+the
+required
+elements
+to
+your
+path
+and
+library
+paths
+as
+well
+as
+provide
+any
+bash
+or
+shell
+commands
+exported
+by
+packages.
+</p>                                                                                
+<!--l. 1--><p class="noindent" >
+
+</p>                                                              
+<pre><div id="fancyvrb242" style='padding:20px;border-radius: 3px;'><a 
+ id="x12-235002r126"></a><span id="textcolor3063">source</span><span id="textcolor3064"> </span>install/setup.bash</div></pre>
+<!--l. 137--><p class="noindent" >It
+is
+time
+to
+test
+out
+what
+we
+have
+built.
+Let’s
+open
+up
+a
+new
+terminal
+window
+side
+by
+side
+and
+run
+the
+following
+two
+(<alert style="color: #821131;">2</alert>) commands:
+</p>                                                                                
+<!--l. 1--><p class="noindent" >
+
+</p>                             
+<pre><div id="fancyvrb243" style='padding:20px;border-radius: 3px;'><a 
+ id="x12-235004r131"></a>ros2<span id="textcolor3065"> </span>run<span id="textcolor3066"> </span>examples_rclcpp_minimal_subscriber<span id="textcolor3067"> </span>subscriber_member_function</div></pre>
+<!--l. 1--><p class="noindent" >
+
+</p>                               
+<pre><div id="fancyvrb244" style='padding:20px;border-radius: 3px;'><a 
+ id="x12-235006r136"></a>ros2<span id="textcolor3068"> </span>run<span id="textcolor3069"> </span>examples_rclcpp_minimal_publisher<span id="textcolor3070"> </span>publisher_member_function</div></pre>
+<!--l. 143--><p class="noindent" >If
+everything
+has
+                                                                                
+                                                                                
+                                                                           
+worked
+well,
+we
+should
+see
+messages
+from
+the
+publisher
+and
+subscriber
+with
+numbers
+incrementing.
+                                                                                
+                                                                                
+                                                                                
+</p>
+<!--l. 146--><p class="noindent" >
+</p>                                                                      
+<h3 class="sectionHead"><span class="titlemark">10.2</span>  <a 
+ id="x12-23600010.2"></a>Creating
+a
+Workspace</h3>
+<!--l. 148--><p class="noindent" >A
+workspace
+is
+a
+directory
+containing
+ROS
+2
+packages.
+Before
+using
+ROS
+2,
+its
+necessary
+to
+source
+your
+ROS
+2
+installation
+workspace
+in
+the
+terminal
+you
+plan
+to
+work
+in.
+This
+makes
+ROS
+2s
+packages
+available
+for
+you
+to
+use
+in
+that
+terminal.
+</p>                                                                             
+<!--l. 152--><p class="noindent" >You
+also
+have
+the
+option
+of
+sourcing
+an
+overlay
+-
+a
+secondary
+workspace
+where
+                                                                                
+                                                                                
+                                                                             
+you
+can
+add
+new
+packages
+without
+interfering
+with
+the
+existing
+ROS
+2
+workspace
+that
+youre
+extending,
+or
+underlay.
+Your
+underlay
+must
+contain
+the
+dependencies
+of
+all
+the
+packages
+in
+your
+overlay.
+Packages
+in
+your
+overlay
+will
+override
+packages
+in
+the
+underlay.
+Its
+also
+possible
+to
+have
+several
+layers
+of
+underlays
+and
+overlays,
+with
+each
+successive
+overlay
+using
+the
+packages
+of
+its
+parent
+underlays.
+                                                                                
+<a 
+ id="paragraph*.95"></a></p>
+                                                                                
+                                                                                
+                                                                          
+<!--l. 159--><p class="noindent" ><span class="paragraphHead"><a 
+ id="x12-237000"></a>Sourcing
+the
+Environment</span>
+Your
+main
+ROS
+2
+installation
+will
+be
+your
+underlay
+for
+this
+tutorial.
+(Keep
+in
+mind
+that
+an
+underlay
+does
+not
+necessarily
+have
+to
+be
+the
+main
+ROS
+2
+installation.)
+</p>                                                                         
+<!--l. 164--><p class="noindent" >Depending
+on
+how
+you
+installed
+ROS
+2
+(from
+source
+or
+binaries),
+and
+which
+platform
+youre
+on,
+your
+exact
+source
+command
+will
+vary:
+</p>                                                                                
+<!--l. 1--><p class="noindent" >
+
+</p>                                                        
+<pre><div id="fancyvrb245" style='padding:20px;border-radius: 3px;'><a 
+ id="x12-237002r962"></a><span id="textcolor3071">source</span><span id="textcolor3072"> </span>/opt/ros/humble/setup.bash</div></pre>
+                                                                                
+<a 
+ id="paragraph*.96"></a>
+<!--l. 169--><p class="noindent" ><span class="paragraphHead"><a 
+ id="x12-238000"></a>Creating
+a
+New
+Directory</span>
+                                                                                
+                                                                                
+                                                                             
+Best
+practice
+is
+to
+create
+a
+new
+directory
+for
+every
+new
+workspace.
+The
+name
+doesnt
+matter,
+but
+it
+is
+helpful
+to
+have
+it
+indicate
+the
+purpose
+of
+the
+workspace.
+Lets
+choose
+the
+directory
+name
+<span id="textcolor3073"><code class="verb">ros2_ws</code></span>,
+for
+development
+workspace:
+</p>                                                                                
+<!--l. 1--><p class="noindent" >
+
+</p>                                                    
+<pre><div id="fancyvrb246" style='padding:20px;border-radius: 3px;'><a 
+ id="x12-238002r967"></a>mkdir<span id="textcolor3074"> </span>-p<span id="textcolor3075"> </span>~/ros2_ws/src 
+<a 
+ id="x12-238004r968"></a><span id="textcolor3076">cd</span><span id="textcolor3077"> </span>~/ros2_ws/src</div></pre>
+<!--l. 177--><p class="noindent" >Another
+best
+practice
+is
+to
+put
+any
+packages
+in
+your
+workspace
+into
+the
+src
+directory.
+The
+above
+code
+creates
+a
+src
+directory
+inside
+<span id="textcolor3078"><code class="verb">ros2_ws</code></span>
+and
+                                                                                
+                                                                                
+                                                                             
+then
+navigates
+into
+it.
+                                                                                
+<a 
+ id="paragraph*.97"></a></p>
+<!--l. 180--><p class="noindent" ><span class="paragraphHead"><a 
+ id="x12-239000"></a>Cloning
+a
+Sample
+Repo</span>
+Ensure
+youre
+still
+in
+the
+<span id="textcolor3079"><code class="verb">ros2_ws/src</code></span>
+directory
+before
+you
+clone.
+</p>                                                                              
+<!--l. 184--><p class="noindent" >In
+the
+rest
+of
+the
+beginner
+developer
+tutorials,
+we
+will
+create
+your
+own
+packages,
+but
+for
+now
+you
+will
+practice
+putting
+a
+workspace
+together
+using
+existing
+packages.
+A
+repo
+can
+have
+multiple
+branches.
+We
+need
+to
+check
+out
+the
+one
+that
+targets
+your
+installed
+ROS
+                                                                                
+                                                                                
+                                                                               
+2
+distro.
+When
+you
+clone
+this
+repo,
+add
+the
+-b
+argument
+followed
+by
+that
+branch.
+</p>                                                                              
+<!--l. 189--><p class="noindent" >In
+the
+<span id="textcolor3080"><code class="verb">ros2_ws/src</code></span>
+directory,
+run
+the
+following
+command:
+</p>                                                                                
+<!--l. 1--><p class="noindent" >
+
+</p>                                    
+<pre><div id="fancyvrb247" style='padding:20px;border-radius: 3px;'><a 
+ id="x12-239002r973"></a>git<span id="textcolor3081"> </span>clone<span id="textcolor3082"> </span>https://github.com/ros/ros_tutorials.git<span id="textcolor3083"> </span>-b<span id="textcolor3084"> </span>humble</div></pre>
+<!--l. 193--><p class="noindent" >Now
+<span id="textcolor3085"><code class="verb">ros_tutorials</code></span>
+is
+cloned
+in
+your
+workspace.
+The
+<span id="textcolor3086"><code class="verb">ros_tutorials</code></span>
+repository
+contains
+the
+turtlesim
+package,
+which
+well
+use
+in
+the
+rest
+of
+this
+tutorial.
+The
+other
+packages
+in
+this
+repository
+are
+not
+built
+because
+they
+contain
+a
+<span id="textcolor3087"><code class="verb">COLCON_IGNORE</code></span>
+file.
+</p>                                                                              
+<!--l. 197--><p class="noindent" >So
+far
+                                                                                
+                                                                                
+                                                                             
+you
+have
+populated
+your
+workspace
+with
+a
+sample
+package,
+but
+it
+isnt
+a
+fully-functional
+workspace
+yet.
+You
+need
+to
+resolve
+the
+dependencies
+first
+and
+then
+build
+the
+workspace.
+                                                                                
+<a 
+ id="paragraph*.98"></a></p>
+<!--l. 200--><p class="noindent" ><span class="paragraphHead"><a 
+ id="x12-240000"></a>Resolving
+Dependencies</span>
+Before
+building
+the
+workspace,
+you
+need
+to
+resolve
+the
+package
+dependencies.
+You
+may
+have
+all
+the
+dependencies
+already,
+but
+best
+practice
+is
+to
+check
+for
+dependencies
+every
+time
+you
+clone.
+You
+wouldnt
+want
+                                                                                
+                                                                                
+                                                                               
+a
+build
+to
+fail
+after
+a
+long
+wait
+only
+to
+realize
+that
+you
+have
+missing
+dependencies.
+</p>                                                                            
+<!--l. 207--><p class="noindent" >From
+the
+root
+of
+your
+workspace
+(<span id="textcolor3088"><code class="verb">ros2_ws</code></span>),
+run
+the
+following
+command:
+</p>                                                                                
+<div class="warning">
+<!--l. 212--><p class="noindent" >If
+youre
+still
+in
+the
+src
+directory
+with
+the
+<span id="textcolor3089"><code class="verb">ros_tutorials</code></span>
+clone,
+make
+sure
+to
+run
+<span id="textcolor3090"><code class="verb">cd ..</code></span>
+to
+move
+back
+up
+to
+the
+workspace
+(<span id="textcolor3091"><code class="verb">ros2_ws</code></span>).
+</p>                                                                                
+</div>
+<!--l. 1--><p class="noindent" >
+
+</p>                                    
+<pre><div id="fancyvrb248" style='padding:20px;border-radius: 3px;'><a 
+ id="x12-240002r978"></a><span id="textcolor3092">cd</span><span id="textcolor3093"> </span>.. 
+<a 
+ id="x12-240004r979"></a>rosdep<span id="textcolor3094"> </span>install<span id="textcolor3095"> </span>-i<span id="textcolor3096"> </span>--from-path<span id="textcolor3097"> </span>src<span id="textcolor3098"> </span>--rosdistro<span id="textcolor3099"> </span>humble<span id="textcolor3100"> </span>-y</div></pre>
+<!--l. 216--><p class="noindent" >If
+you
+already
+have
+all
+your
+dependencies,
+the
+                                                                                
+                                                                                
+                                                                           
+console
+will
+return:
+</p>                                                                                
+<div class="tcolorbox tcolorbox" id="tcolobox-100">
+                                                                                
+
+     
+ 
+<div class="tcolorbox-content">
+<pre><div id="fancyvrb249" style='padding:20px;border-radius: 3px;'><a 
+ id="x12-240006r1"></a>#All required rosdeps installed successfully</div></pre>
+ 
+</div> 
+</div>                                                                    
+<!--l. 220--><p class="noindent" >Packages
+declare
+their
+dependencies
+in
+the
+package.xml
+file
+(you
+will
+learn
+more
+about
+packages
+in
+the
+next
+tutorial).
+This
+command
+walks
+through
+those
+declarations
+and
+installs
+the
+ones
+that
+are
+missing.
+You
+can
+learn
+more
+about
+rosdep
+in
+another
+tutorial
+(coming
+soon).
+                                                                                
+<a 
+ id="paragraph*.99"></a></p>
+<!--l. 224--><p class="noindent" ><span class="paragraphHead"><a 
+ id="x12-241000"></a>Building
+the
+Workspace</span>
+From
+the
+root
+of
+your
+workspace
+(<span id="textcolor3101"><code class="verb">ros2_ws</code></span>),
+                                                                                
+                                                                                
+                                                                             
+you
+can
+now
+build
+your
+packages
+using
+the
+command:
+</p>                                                                                
+<!--l. 1--><p class="noindent" >
+
+</p>                                                                       
+<pre><div id="fancyvrb250" style='padding:20px;border-radius: 3px;'><a 
+ id="x12-241002r989"></a>colcon<span id="textcolor3102"> </span>build</div></pre>
+<div class="tcolorbox tcolorbox" id="tcolobox-101">                                                                                
+
+                                                                                
+
+ 
+<div class="tcolorbox-content"><pre><div id="fancyvrb251" style='padding:20px;border-radius: 3px;'><a 
+ id="x12-241004r1"></a>Starting »&gt; turtlesim 
+<a 
+ id="x12-241006r2"></a>Finished «&lt; turtlesim [5.49s] 
+<a 
+ id="x12-241008r3"></a> 
+<a 
+ id="x12-241010r4"></a>Summary: 1 package finished [5.58s]</div></pre>
+ 
+</div> 
+</div>                                                                      
+<!--l. 231--><p class="noindent" >There
+are
+some
+useful
+arguments
+for
+<span id="textcolor3103"><code class="verb">colcon build</code></span>
+which
+are
+as
+follows:
+</p>     
+<dl class="description"><dt class="description">
+<span id="textcolor3104"><code class="verb">--packages-up-to</code></span> 
+</dt><dd 
+class="description">
+<!--l. 234--><p class="noindent" >     
+builds
+the
+package
+you
+want,
+plus
+all
+its
+dependencies,
+but
+not
+the
+whole
+workspace
+(saves
+time)
+</p>     
+</dd>
+<dt class="description">
+<span id="textcolor3105"><code class="verb">--symlink-install</code></span> 
+</dt><dd 
+class="description">
+<!--l. 236--><p class="noindent" >     
+saves
+you
+from
+having
+to
+rebuild
+every
+time
+you
+                                                                                
+                                                                                
+     
+tweak
+python
+scripts
+</p>     
+</dd>
+<dt class="description">
+<span id="textcolor3106"><code class="verb">--event-handlers console_direct+</code></span> 
+</dt><dd 
+class="description">
+<!--l. 237--><p class="noindent" >     
+shows
+console
+output
+while
+building
+(can
+otherwise
+be
+found
+in
+the
+log
+directory)
+</p>     
+</dd>
+<dt class="description">
+<span id="textcolor3107"><code class="verb">--executor sequential</code></span> 
+</dt><dd 
+class="description">
+<!--l. 239--><p class="noindent" >     
+processes
+the
+packages
+one
+by
+one
+instead
+of
+using
+parallelism</p></dd></dl>                                                                
+<!--l. 243--><p class="noindent" >Once
+the
+build
+is
+finished,
+enter
+the
+command
+in
+the
+workspace
+root
+(<span id="textcolor3108"><code class="verb">~/ros2_ws</code></span>).
+You
+will
+see
+that
+colcon
+has
+created
+new
+directories:
+                                                                                
+                                                                                
+                                                                                
+</p>
+<!--l. 246--><p class="noindent" >
+</p>                                                                      
+<h3 class="sectionHead"><span class="titlemark">10.3</span>  <a 
+ id="x12-24200010.3"></a>Creating
+a
+Package</h3>
+<!--l. 248--><p class="noindent" >A
+package
+is
+an
+organizational
+unit
+for
+your
+ROS
+2
+code.
+If
+you
+want
+to
+be
+able
+to
+install
+your
+code
+or
+share
+it
+with
+others,
+then
+youll
+need
+it
+organized
+in
+a
+package.
+With
+packages,
+you
+can
+release
+your
+ROS
+2
+work
+and
+allow
+others
+to
+build
+and
+use
+it
+easily.
+</p>                                                                          
+<!--l. 252--><p class="noindent" >Package
+creation
+in
+ROS
+2
+                                                                                
+                                                                                
+                                                                             
+uses
+ament
+as
+its
+build
+system
+and
+colcon
+as
+its
+build
+tool.
+You
+can
+create
+a
+package
+using
+either
+CMake
+or
+Python,
+which
+are
+officially
+supported,
+though
+other
+build
+types
+do
+exist.
+                                                                                
+<a 
+ id="paragraph*.100"></a></p>
+<!--l. 256--><p class="noindent" ><span class="paragraphHead"><a 
+ id="x12-243000"></a>The
+Anatomy
+of
+a
+Package</span>
+ROS
+2
+Python
+and
+CMake
+packages
+each
+have
+their
+own
+minimum
+required
+contents:
+</p>     
+<dl class="description"><dt class="description">
+<span id="textcolor3109"><code class="verb">package.xml</code></span> 
+</dt><dd 
+class="description">
+<!--l. 261--><p class="noindent" >     
+file
+containing
+meta
+information
+about
+the
+package
+                                                                                
+                                                                                
+     
+</p>
+</dd>     
+<dt class="description">
+<span id="textcolor3110"><code class="verb">resource/<package_name></code></span> 
+</dt><dd 
+class="description">
+<!--l. 262--><p class="noindent" >     
+marker
+file
+for
+the
+package
+</p>     
+</dd>
+<dt class="description">
+<span id="textcolor3111"><code class="verb">setup.cfg</code></span> 
+</dt><dd 
+class="description">
+<!--l. 263--><p class="noindent" >     
+is
+required
+when
+a
+package
+has
+executables,
+so
+ros2
+run
+can
+find
+them
+</p>     
+</dd>
+<dt class="description">
+<span id="textcolor3112"><code class="verb">setup.py</code></span> 
+</dt><dd 
+class="description">
+<!--l. 264--><p class="noindent" >     
+containing
+instructions
+for
+how
+to
+install
+the
+package
+</p>     
+</dd>
+<dt class="description">
+<span id="textcolor3113"><code class="verb"><package_name></code></span> 
+</dt><dd 
+class="description">
+<!--l. 265--><p class="noindent" >     
+-
+a
+directory
+with
+the
+same
+name
+as
+your
+package,
+used
+by
+ROS
+2
+tools
+to
+find
+your
+package,
+contains
+<span id="textcolor3114"><code class="verb">__init__.py</code></span></p></dd></dl>
+                                                                                
+                                                                                
+                                                                             
+<!--l. 269--><p class="noindent" >The
+simplest
+possible
+package
+may
+have
+a
+file
+structure
+that
+looks
+like:
+                                                                                
+                                                                                
+                                                                                
+</p>
+<!--l. 271--><p class="noindent" >
+</p>                                                                      
+<h3 class="sectionHead"><span class="titlemark">10.4</span>  <a 
+ id="x12-24400010.4"></a>Writing
+a
+Simple
+Publisher
+&#x0026;
+Subscriber</h3>
+<!--l. 273--><p class="noindent" >In
+this
+exercise,
+we
+will
+create
+<alert style="color: #821131;">nodes</alert>
+which
+passes
+information
+in
+the
+form
+of
+string
+messages
+to
+each
+other
+over
+a
+<alert style="color: #821131;">topic</alert>.
+The
+example
+we
+will
+use
+here
+is
+a
+simple
+“talker”
+and
+“listener”
+system
+where
+</p>     
+<blockquote class="quote">
+<!--l. 278--><p class="noindent" >one
+publishes
+data
+and
+the
+other
+subscribes
+to
+the
+topic
+so
+it
+can
+                                                                                
+                                                                                
+     
+receive
+that
+data.</p></blockquote>                                                                        
+
+<a 
+ id="paragraph*.101"></a>                                                                          
+<!--l. 281--><p class="noindent" ><span class="paragraphHead"><a 
+ id="x12-245000"></a>Creating
+a
+ROS
+Packages</span>
+To
+begin,
+we
+open
+a
+new
+terminal
+window
+and
+navigate
+to
+our
+previously
+created
+<span id="textcolor3115"><code class="verb">ros2_ws</code></span>.
+</p>                                                                                
+<div class="warning">
+<!--l. 288--><p class="noindent" >Recall
+that
+packages
+should
+be
+created
+in
+the
+<span id="textcolor3116"><code class="verb">src</code></span>
+directory,
+not
+the
+root
+<span id="textcolor3117"><code class="verb">/</code></span>
+of
+the
+workspace.
+</p>                                                                                
+</div>
+<!--l. 290--><p class="noindent" >So
+naturally,
+navigate
+into
+the
+<span id="textcolor3118"><code class="verb">ros2_ws/src</code></span>
+directory,
+and
+run
+the
+package
+creation
+command:
+</p>                                                                                
+<!--l. 1--><p class="noindent" >
+
+</p>                            
+<pre><div id="fancyvrb252" style='padding:20px;border-radius: 3px;'><a 
+ id="x12-245002r196"></a>ros2<span id="textcolor3119"> </span>pkg<span id="textcolor3120"> </span>create<span id="textcolor3121"> </span>--build-type<span id="textcolor3122"> </span>ament_python<span id="textcolor3123"> </span>--license<span id="textcolor3124"> </span>Apache-2.0<span id="textcolor3125"> </span>py_pubsub</div></pre>
+<!--l. 295--><p class="noindent" >If
+everything
+                                                                                
+                                                                                
+                                                                            
+works
+well,
+our
+terminal
+will
+return
+a
+message
+verifying
+the
+creation
+of
+our
+package
+<span id="textcolor3126"><code class="verb">py_pubsub</code></span>
+and
+all
+its
+necessary
+files
+and
+folders.
+
+</p>                                                                     
+<h4 class="subsectionHead"><span class="titlemark">10.4.1</span>  <a 
+ id="x12-24600010.4.1"></a>Writing
+the
+Publisher
+Node</h4>
+<!--l. 300--><p class="noindent" >Now
+that
+we
+have
+a
+package
+template,
+please
+navigate
+into
+<span id="textcolor3127"><code class="verb">ros2_ws/src/py_pubsub/py_pubsub</code></span>.
+To
+get
+started,
+download
+the
+example
+<alert style="color: #821131;">talker
+code</alert>
+by
+entering
+the
+following
+command:
+</p>                                                                                
+<!--l. 1--><p class="noindent" >
+
+</p>
+<pre><div id="fancyvrb253" style='padding:20px;border-radius: 3px;'><a 
+ id="x12-246002r201"></a>wget<span id="textcolor3128"> </span>https://raw.githubusercontent.com/ros2/examples/humble/rclpy/topics/minimal_publisher/examples_rclpy_minimal_publisher/publisher_member_function.py</div></pre>
+<!--l. 306--><p class="noindent" >Here
+the
+<span id="textcolor3129"><code class="verb">wget</code></span>
+command
+basically
+access
+the
+                                                                                
+                                                                                
+                                                                              
+file
+in
+a
+web-server
+and
+then
+downloads
+it
+to
+the
+current
+working
+directory.
+If
+the
+code
+works
+successfully,
+there
+will
+be
+a
+new
+file
+named
+<span id="textcolor3130"><code class="verb">publisher_member_function.py</code></span>
+adjacent
+to
+<span id="textcolor3131"><code class="verb">__init__.py</code></span>.
+</p>                                                                             
+<!--l. 310--><p class="noindent" >Now
+let’s
+open
+the
+code
+and
+see
+what
+is
+going
+on
+under
+the
+hood.
+The
+following
+is
+the
+code
+in
+full
+with
+snippets
+and
+detailed
+explanation
+to
+follow:
+</p>                                                                                
+<!--l. 1--><p class="noindent" >
+
+</p>
+<pre><div id="fancyvrb254" style='padding:20px;border-radius: 3px;'><a 
+ id="x12-246004r207"></a><span id="textcolor3132">import</span><span id="textcolor3133"> </span><span id="textcolor3134">rclpy</span> 
+<a 
+ id="x12-246006r208"></a><span id="textcolor3135">from</span><span id="textcolor3136"> </span><span id="textcolor3137">rclpy</span><span id="textcolor3138">.</span><span id="textcolor3139">node</span><span id="textcolor3140"> </span><span id="textcolor3141">import</span> <span id="textcolor3142">Node</span> 
+<a 
+ id="x12-246008r209"></a> 
+<a 
+ id="x12-246010r210"></a><span id="textcolor3143">from</span><span id="textcolor3144"> </span><span id="textcolor3145">std_msgs</span><span id="textcolor3146">.</span><span id="textcolor3147">msg</span><span id="textcolor3148"> </span><span id="textcolor3149">import</span> <span id="textcolor3150">String</span> 
+<a 
+ id="x12-246012r211"></a> 
+<a 
+ id="x12-246014r212"></a> 
+<a 
+ id="x12-246016r213"></a><span id="textcolor3151">class</span><span id="textcolor3152"> </span><span id="textcolor3153">MinimalPublisher</span><span id="textcolor3154">(</span><span id="textcolor3155">Node</span><span id="textcolor3156">)</span><span id="textcolor3157">:</span> 
+<a 
+ id="x12-246018r214"></a> 
+<a 
+ id="x12-246020r215"></a>   <span id="textcolor3158">def</span><span id="textcolor3159"> </span><span id="textcolor3160">__init__</span><span id="textcolor3161">(</span><span id="textcolor3162">self</span><span id="textcolor3163">)</span><span id="textcolor3164">:</span> 
+<a 
+ id="x12-246022r216"></a>      <span id="textcolor3165">super</span><span id="textcolor3166">(</span><span id="textcolor3167">)</span><span id="textcolor3168">.</span><span id="textcolor3169">__init__</span><span id="textcolor3170">(</span><span id="textcolor3171">&#x0027;</span><span id="textcolor3172">minimal_publisher</span><span id="textcolor3173">&#x0027;</span><span id="textcolor3174">)</span> 
+<a 
+ id="x12-246024r217"></a>      <span id="textcolor3175">self</span><span id="textcolor3176">.</span><span id="textcolor3177">publisher_</span> <span id="textcolor3178">=</span> <span id="textcolor3179">self</span><span id="textcolor3180">.</span><span id="textcolor3181">create_publisher</span><span id="textcolor3182">(</span><span id="textcolor3183">String</span><span id="textcolor3184">,</span> <span id="textcolor3185">&#x0027;</span><span id="textcolor3186">topic</span><span id="textcolor3187">&#x0027;</span><span id="textcolor3188">,</span> <span id="textcolor3189">10</span><span id="textcolor3190">)</span> 
+<a 
+ id="x12-246026r218"></a>      <span id="textcolor3191">timer_period</span> <span id="textcolor3192">=</span> <span id="textcolor3193">0.5</span>  <span id="textcolor3194"># seconds</span> 
+<a 
+ id="x12-246028r219"></a>      <span id="textcolor3195">self</span><span id="textcolor3196">.</span><span id="textcolor3197">timer</span> <span id="textcolor3198">=</span> <span id="textcolor3199">self</span><span id="textcolor3200">.</span><span id="textcolor3201">create_timer</span><span id="textcolor3202">(</span><span id="textcolor3203">timer_period</span><span id="textcolor3204">,</span> <span id="textcolor3205">self</span><span id="textcolor3206">.</span><span id="textcolor3207">timer_callback</span><span id="textcolor3208">)</span> 
+<a 
+ id="x12-246030r220"></a>      <span id="textcolor3209">self</span><span id="textcolor3210">.</span><span id="textcolor3211">i</span> <span id="textcolor3212">=</span> <span id="textcolor3213">0</span> 
+<a 
+ id="x12-246032r221"></a> 
+<a 
+ id="x12-246034r222"></a>   <span id="textcolor3214">def</span><span id="textcolor3215"> </span><span id="textcolor3216">timer_callback</span><span id="textcolor3217">(</span><span id="textcolor3218">self</span><span id="textcolor3219">)</span><span id="textcolor3220">:</span> 
+<a 
+ id="x12-246036r223"></a>      <span id="textcolor3221">msg</span> <span id="textcolor3222">=</span> <span id="textcolor3223">String</span><span id="textcolor3224">(</span><span id="textcolor3225">)</span> 
+<a 
+ id="x12-246038r224"></a>      <span id="textcolor3226">msg</span><span id="textcolor3227">.</span><span id="textcolor3228">data</span> <span id="textcolor3229">=</span> <span id="textcolor3230">&#x0027;</span><span id="textcolor3231">Hello World: </span><span id="textcolor3232">%d</span><span id="textcolor3233">&#x0027;</span> <span id="textcolor3234">%</span> <span id="textcolor3235">self</span><span id="textcolor3236">.</span><span id="textcolor3237">i</span> 
+<a 
+ id="x12-246040r225"></a>      <span id="textcolor3238">self</span><span id="textcolor3239">.</span><span id="textcolor3240">publisher_</span><span id="textcolor3241">.</span><span id="textcolor3242">publish</span><span id="textcolor3243">(</span><span id="textcolor3244">msg</span><span id="textcolor3245">)</span> 
+<a 
+ id="x12-246042r226"></a>      <span id="textcolor3246">self</span><span id="textcolor3247">.</span><span id="textcolor3248">get_logger</span><span id="textcolor3249">(</span><span id="textcolor3250">)</span><span id="textcolor3251">.</span><span id="textcolor3252">info</span><span id="textcolor3253">(</span><span id="textcolor3254">&#x0027;</span><span id="textcolor3255">Publishing: </span><span id="textcolor3256">"</span><span id="textcolor3257">%s</span><span id="textcolor3258">"</span><span id="textcolor3259">&#x0027;</span> <span id="textcolor3260">%</span> <span id="textcolor3261">msg</span><span id="textcolor3262">.</span><span id="textcolor3263">data</span><span id="textcolor3264">)</span> 
+<a 
+ id="x12-246044r227"></a>      <span id="textcolor3265">self</span><span id="textcolor3266">.</span><span id="textcolor3267">i</span> <span id="textcolor3268">+</span><span id="textcolor3269">=</span> <span id="textcolor3270">1</span> 
+<a 
+ id="x12-246046r228"></a> 
+<a 
+ id="x12-246048r229"></a> 
+<a 
+ id="x12-246050r230"></a><span id="textcolor3271">def</span><span id="textcolor3272"> </span><span id="textcolor3273">main</span><span id="textcolor3274">(</span><span id="textcolor3275">args</span><span id="textcolor3276">=</span><span id="textcolor3277">None</span><span id="textcolor3278">)</span><span id="textcolor3279">:</span> 
+<a 
+ id="x12-246052r231"></a>   <span id="textcolor3280">rclpy</span><span id="textcolor3281">.</span><span id="textcolor3282">init</span><span id="textcolor3283">(</span><span id="textcolor3284">args</span><span id="textcolor3285">=</span><span id="textcolor3286">args</span><span id="textcolor3287">)</span> 
+<a 
+ id="x12-246054r232"></a> 
+<a 
+ id="x12-246056r233"></a>   <span id="textcolor3288">minimal_publisher</span> <span id="textcolor3289">=</span> <span id="textcolor3290">MinimalPublisher</span><span id="textcolor3291">(</span><span id="textcolor3292">)</span> 
+<a 
+ id="x12-246058r234"></a> 
+<a 
+ id="x12-246060r235"></a>   <span id="textcolor3293">rclpy</span><span id="textcolor3294">.</span><span id="textcolor3295">spin</span><span id="textcolor3296">(</span><span id="textcolor3297">minimal_publisher</span><span id="textcolor3298">)</span> 
+<a 
+ id="x12-246062r236"></a> 
+<a 
+ id="x12-246064r237"></a>   <span id="textcolor3299"># Destroy the node explicitly</span> 
+<a 
+ id="x12-246066r238"></a>   <span id="textcolor3300"># (optional - otherwise it will be done automatically</span> 
+<a 
+ id="x12-246068r239"></a>   <span id="textcolor3301"># when the garbage collector destroys the node object)</span> 
+<a 
+ id="x12-246070r240"></a>   <span id="textcolor3302">minimal_publisher</span><span id="textcolor3303">.</span><span id="textcolor3304">destroy_node</span><span id="textcolor3305">(</span><span id="textcolor3306">)</span> 
+<a 
+ id="x12-246072r241"></a>   <span id="textcolor3307">rclpy</span><span id="textcolor3308">.</span><span id="textcolor3309">shutdown</span><span id="textcolor3310">(</span><span id="textcolor3311">)</span> 
+<a 
+ id="x12-246074r242"></a> 
+<a 
+ id="x12-246076r243"></a> 
+<a 
+ id="x12-246078r244"></a><span id="textcolor3312">if</span> <span id="textcolor3313">__name__</span> <span id="textcolor3314">==</span> <span id="textcolor3315">&#x0027;</span><span id="textcolor3316">__main__</span><span id="textcolor3317">&#x0027;</span><span id="textcolor3318">:</span> 
+<a 
+ id="x12-246080r245"></a>   <span id="textcolor3319">main</span><span id="textcolor3320">(</span><span id="textcolor3321">)</span></div></pre>
+                                                                                
+<a 
+ id="paragraph*.102"></a>
+<!--l. 315--><p class="noindent" ><span class="paragraphHead"><a 
+ id="x12-247000"></a>Deconstructing
+                                                                                
+                                                                                
+                                                                              
+the
+Code</span>
+The
+first
+lines
+of
+code
+after
+the
+comments
+import
+<span id="textcolor3322"><code class="verb">rclpy</code></span>
+so
+its
+<alert style="color: #821131;">Node
+class</alert>
+can
+be
+used.<alert style="color: #821131;"><span id="bold" style="font-weight:bold;"><sup class="textsuperscript">6 </sup></span></alert>
+<span class="marginnote">                                                                             
+<alert style="color: #821131;"><span id="bold" style="font-weight:bold;"><sup class="textsuperscript">6</sup></span></alert><span id="textcolor3323">As
+a
+reminder,
+the
+<span id="textcolor3324"><code class="verb">rclpy</code></span>
+is
+the
+<a 
+href="MobileRoboticsLectureBookli2.html#glo:ros" class="glossary" >ROS</a>
+library
+written
+for
+Python.</span></span>
+</p>                                                                                
+<!--l. 1--><p class="noindent" >
+
+</p>                                                   
+<pre><div id="fancyvrb255" style='padding:20px;border-radius: 3px;'><a 
+ id="x12-247002r252"></a><span id="textcolor3325">import</span><span id="textcolor3326"> </span><span id="textcolor3327">rclpy</span> 
+<a 
+ id="x12-247004r253"></a><span id="textcolor3328">from</span><span id="textcolor3329"> </span><span id="textcolor3330">rclpy</span><span id="textcolor3331">.</span><span id="textcolor3332">node</span><span id="textcolor3333"> </span><span id="textcolor3334">import</span> <span id="textcolor3335">Node</span></div></pre>
+<!--l. 323--><p class="noindent" >The
+next
+statement
+imports
+the
+built-in
+string
+message
+type
+which
+the
+node
+uses
+to
+structure
+the
+data
+it
+passes
+on
+the
+topic.
+</p>                                                                                
+<!--l. 1--><p class="noindent" >
+
+</p>                                                         
+<pre><div id="fancyvrb256" style='padding:20px;border-radius: 3px;'><a 
+ id="x12-247006r258"></a><span id="textcolor3336">from</span><span id="textcolor3337"> </span><span id="textcolor3338">std_msgs</span><span id="textcolor3339">.</span><span id="textcolor3340">msg</span><span id="textcolor3341"> </span><span id="textcolor3342">import</span> <span id="textcolor3343">String</span></div></pre>
+<!--l. 328--><p class="noindent" >These
+aforementioned
+lines
+represent
+                                                                                
+                                                                                
+the
+node’s
+<alert style="color: #821131;">dependencies</alert>.
+Recall
+that
+dependencies
+have
+to
+be
+added
+to
+<span id="textcolor3344"><code class="verb">package.xml</code></span>,
+which
+we
+will
+have
+a
+look
+at
+in
+just
+a
+little
+bit.
+Next,
+the
+<span id="textcolor3345"><code class="verb">MinimalPublisher</code></span>
+class
+is
+created,
+which
+inherits<alert style="color: #821131;"><span id="bold" style="font-weight:bold;"><sup class="textsuperscript">7 </sup></span></alert>
+<span class="marginnote">
+<alert style="color: #821131;"><span id="bold" style="font-weight:bold;"><sup class="textsuperscript">7</sup></span></alert><span id="textcolor3346">or
+is
+a
+subclass
+of</span></span>
+from
+Node.
+</p><!--l. 1--><p class="noindent" >
+
+</p>
+<pre><div id="fancyvrb257" style='padding:20px;border-radius: 3px;'><a 
+ id="x12-247008r263"></a><span id="textcolor3347">class</span><span id="textcolor3348"> </span><span id="textcolor3349">MinimalPublisher</span><span id="textcolor3350">(</span><span id="textcolor3351">Node</span><span id="textcolor3352">)</span><span id="textcolor3353">:</span></div></pre>
+<!--l. 335--><p class="noindent" >Following
+is
+the
+definition
+of
+the
+class’s
+constructor. <span id="textcolor3354"><code class="verb">super().__init__</code></span>
+calls
+the
+Node
+class’s
+constructor
+and
+gives
+it
+your
+node
+name,
+in
+this
+case
+<span id="textcolor3355"><code class="verb">minimal_publisher</code></span>.
+                                                                                
+                                                                                
+                                                                    
+</p>
+<!--l. 338--><p class="noindent" ><span id="textcolor3356"><code class="verb">create_publisher</code></span>
+declares
+the
+node
+publishes
+messages
+of
+type
+String,<alert style="color: #821131;"><span id="bold" style="font-weight:bold;"><sup class="textsuperscript">8 </sup></span></alert>
+<span class="marginnote">                                                                           
+<alert style="color: #821131;"><span id="bold" style="font-weight:bold;"><sup class="textsuperscript">8</sup></span></alert><span id="textcolor3357">which
+is
+imported
+from
+the
+<span id="textcolor3358"><code class="verb">std_msgs.msg</code></span>
+module</span></span>
+over
+a
+topic
+named
+topic,
+and
+that
+the
+“queue
+size”
+is
+<span id="textcolor3359"><code class="verb">10</code></span>.
+</p>                                                                                
+<div class="knowledge">
+<!--l. 345--><p class="noindent" >Queue
+size
+is
+a
+required
+QoS
+(quality
+of
+service)
+setting
+which
+limits
+the
+amount
+of
+queued
+messages
+if
+a
+subscriber
+is
+<span id="bold" style="font-weight:bold;">NOT</span>
+ receiving
+them
+fast
+enough.
+</p>                                                                                
+</div>
+<!--l. 347--><p class="noindent" >Next,
+a
+timer
+is
+created
+with
+a
+callback
+                                                                                
+                                                                                
+                                                                              
+to
+execute
+every
+<span id="textcolor3360"><code class="verb">0.5</code></span>
+seconds. <span id="textcolor3361"><code class="verb">self.i</code></span>
+is
+a
+counter
+used
+in
+the
+callback.
+</p>                                                                                
+<!--l. 1--><p class="noindent" >
+
+</p>
+<pre><div id="fancyvrb258" style='padding:20px;border-radius: 3px;'><a 
+ id="x12-247010r268"></a><span id="textcolor3362">def</span><span id="textcolor3363"> </span><span id="textcolor3364">__init__</span><span id="textcolor3365">(</span><span id="textcolor3366">self</span><span id="textcolor3367">)</span><span id="textcolor3368">:</span> 
+<a 
+ id="x12-247012r269"></a>   <span id="textcolor3369">super</span><span id="textcolor3370">(</span><span id="textcolor3371">)</span><span id="textcolor3372">.</span><span id="textcolor3373">__init__</span><span id="textcolor3374">(</span><span id="textcolor3375">&#x0027;</span><span id="textcolor3376">minimal_publisher</span><span id="textcolor3377">&#x0027;</span><span id="textcolor3378">)</span> 
+<a 
+ id="x12-247014r270"></a>   <span id="textcolor3379">self</span><span id="textcolor3380">.</span><span id="textcolor3381">publisher_</span> <span id="textcolor3382">=</span> <span id="textcolor3383">self</span><span id="textcolor3384">.</span><span id="textcolor3385">create_publisher</span><span id="textcolor3386">(</span><span id="textcolor3387">String</span><span id="textcolor3388">,</span> <span id="textcolor3389">&#x0027;</span><span id="textcolor3390">topic</span><span id="textcolor3391">&#x0027;</span><span id="textcolor3392">,</span> <span id="textcolor3393">10</span><span id="textcolor3394">)</span> 
+<a 
+ id="x12-247016r271"></a>   <span id="textcolor3395">timer_period</span> <span id="textcolor3396">=</span> <span id="textcolor3397">0.5</span>  <span id="textcolor3398"># seconds</span> 
+<a 
+ id="x12-247018r272"></a>   <span id="textcolor3399">self</span><span id="textcolor3400">.</span><span id="textcolor3401">timer</span> <span id="textcolor3402">=</span> <span id="textcolor3403">self</span><span id="textcolor3404">.</span><span id="textcolor3405">create_timer</span><span id="textcolor3406">(</span><span id="textcolor3407">timer_period</span><span id="textcolor3408">,</span> <span id="textcolor3409">self</span><span id="textcolor3410">.</span><span id="textcolor3411">timer_callback</span><span id="textcolor3412">)</span> 
+<a 
+ id="x12-247020r273"></a>   <span id="textcolor3413">self</span><span id="textcolor3414">.</span><span id="textcolor3415">i</span> <span id="textcolor3416">=</span> <span id="textcolor3417">0</span></div></pre>
+<!--l. 352--><p class="noindent" ><span id="textcolor3418"><code class="verb">timer_callback</code></span>
+creates
+a
+message
+with
+the
+counter
+value
+appended,
+and
+publishes
+it
+to
+the
+console
+with
+<span id="textcolor3419"><code class="verb">get_logger().info</code></span>.
+</p>                                                                                
+<!--l. 1--><p class="noindent" >
+
+</p>
+<pre><div id="fancyvrb259" style='padding:20px;border-radius: 3px;'><a 
+ id="x12-247022r278"></a><span id="textcolor3420">def</span><span id="textcolor3421"> </span><span id="textcolor3422">timer_callback</span><span id="textcolor3423">(</span><span id="textcolor3424">self</span><span id="textcolor3425">)</span><span id="textcolor3426">:</span> 
+<a 
+ id="x12-247024r279"></a>   <span id="textcolor3427">msg</span> <span id="textcolor3428">=</span> <span id="textcolor3429">String</span><span id="textcolor3430">(</span><span id="textcolor3431">)</span> 
+<a 
+ id="x12-247026r280"></a>   <span id="textcolor3432">msg</span><span id="textcolor3433">.</span><span id="textcolor3434">data</span> <span id="textcolor3435">=</span> <span id="textcolor3436">&#x0027;</span><span id="textcolor3437">Hello World: </span><span id="textcolor3438">%d</span><span id="textcolor3439">&#x0027;</span> <span id="textcolor3440">%</span> <span id="textcolor3441">self</span><span id="textcolor3442">.</span><span id="textcolor3443">i</span> 
+<a 
+ id="x12-247028r281"></a>   <span id="textcolor3444">self</span><span id="textcolor3445">.</span><span id="textcolor3446">publisher_</span><span id="textcolor3447">.</span><span id="textcolor3448">publish</span><span id="textcolor3449">(</span><span id="textcolor3450">msg</span><span id="textcolor3451">)</span> 
+<a 
+ id="x12-247030r282"></a>   <span id="textcolor3452">self</span><span id="textcolor3453">.</span><span id="textcolor3454">get_logger</span><span id="textcolor3455">(</span><span id="textcolor3456">)</span><span id="textcolor3457">.</span><span id="textcolor3458">info</span><span id="textcolor3459">(</span><span id="textcolor3460">&#x0027;</span><span id="textcolor3461">Publishing: </span><span id="textcolor3462">"</span><span id="textcolor3463">%s</span><span id="textcolor3464">"</span><span id="textcolor3465">&#x0027;</span> <span id="textcolor3466">%</span> <span id="textcolor3467">msg</span><span id="textcolor3468">.</span><span id="textcolor3469">data</span><span id="textcolor3470">)</span> 
+<a 
+ id="x12-247032r283"></a>   <span id="textcolor3471">self</span><span id="textcolor3472">.</span><span id="textcolor3473">i</span> <span id="textcolor3474">+</span><span id="textcolor3475">=</span> <span id="textcolor3476">1</span></div></pre>
+<!--l. 357--><p class="noindent" >Lastly,
+the
+main
+function
+is
+defined.
+</p>                                                                                
+<!--l. 1--><p class="noindent" >
+
+</p>
+<pre><div id="fancyvrb260" style='padding:20px;border-radius: 3px;'><a 
+ id="x12-247034r288"></a><span id="textcolor3477">def</span><span id="textcolor3478"> </span><span id="textcolor3479">main</span><span id="textcolor3480">(</span><span id="textcolor3481">args</span><span id="textcolor3482">=</span><span id="textcolor3483">None</span><span id="textcolor3484">)</span><span id="textcolor3485">:</span> 
+<a 
+ id="x12-247036r289"></a>   <span id="textcolor3486">rclpy</span><span id="textcolor3487">.</span><span id="textcolor3488">init</span><span id="textcolor3489">(</span><span id="textcolor3490">args</span><span id="textcolor3491">=</span><span id="textcolor3492">args</span><span id="textcolor3493">)</span> 
+<a 
+ id="x12-247038r290"></a> 
+<a 
+ id="x12-247040r291"></a>   <span id="textcolor3494">minimal_publisher</span> <span id="textcolor3495">=</span> <span id="textcolor3496">MinimalPublisher</span><span id="textcolor3497">(</span><span id="textcolor3498">)</span> 
+<a 
+ id="x12-247042r292"></a> 
+<a 
+ id="x12-247044r293"></a>   <span id="textcolor3499">rclpy</span><span id="textcolor3500">.</span><span id="textcolor3501">spin</span><span id="textcolor3502">(</span><span id="textcolor3503">minimal_publisher</span><span id="textcolor3504">)</span> 
+<a 
+ id="x12-247046r294"></a> 
+<a 
+ id="x12-247048r295"></a>   <span id="textcolor3505"># Destroy the node explicitly</span> 
+<a 
+ id="x12-247050r296"></a>   <span id="textcolor3506"># (optional - otherwise it will be done automatically</span> 
+<a 
+ id="x12-247052r297"></a>   <span id="textcolor3507"># when the garbage collector destroys the node object)</span> 
+<a 
+ id="x12-247054r298"></a>   <span id="textcolor3508">minimal_publisher</span><span id="textcolor3509">.</span><span id="textcolor3510">destroy_node</span><span id="textcolor3511">(</span><span id="textcolor3512">)</span> 
+<a 
+ id="x12-247056r299"></a>   <span id="textcolor3513">rclpy</span><span id="textcolor3514">.</span><span id="textcolor3515">shutdown</span><span id="textcolor3516">(</span><span id="textcolor3517">)</span></div></pre>
+<!--l. 361--><p class="noindent" >First
+the
+rclpy
+library
+is
+initialized,
+then
+the
+node
+is
+created,
+and
+then
+it
+“spins”
+the
+node
+so
+                                                                                
+                                                                                
+                                                                              
+its
+callbacks
+are
+called.
+                                                                                
+<a 
+ id="paragraph*.103"></a></p>
+<!--l. 364--><p class="noindent" ><span class="paragraphHead"><a 
+ id="x12-248000"></a>Adding
+Dependencies</span>
+Navigate
+one
+level
+back
+to
+the
+<span id="textcolor3518"><code class="verb">ros2_ws/src/py_pubsub</code></span>
+directory,
+where
+the
+<span id="textcolor3519"><code class="verb">setup.py</code></span>,
+<span id="textcolor3520"><code class="verb">setup.cfg,</code></span>
+and
+<span id="textcolor3521"><code class="verb">package.xml</code></span>
+files
+have
+been
+created
+for
+us.
+Open
+<span id="textcolor3522"><code class="verb">package.xml</code></span>
+with
+our
+favourite
+text
+editor.<alert style="color: #821131;"><span id="bold" style="font-weight:bold;"><sup class="textsuperscript">9 </sup></span></alert>
+<span class="marginnote">                                                                            
+<alert style="color: #821131;"><span id="bold" style="font-weight:bold;"><sup class="textsuperscript">9</sup></span></alert><span id="textcolor3523">This
+could
+of
+course
+be
+emacs,
+or
+something
+which
+is
+not
+emacs
+so
+you
+can
+see
+why
+emacs
+is
+better.</span></span>
+</p>                                                                              
+<!--l. 371--><p class="noindent" >As
+mentioned
+previously,
+make
+sure
+to
+fill
+in
+the
+                                                                                
+                                                                                
+                                                                      
+<span id="textcolor3524"><code class="verb">&lt;description&gt;</code></span>,
+<span id="textcolor3525"><code class="verb">&lt;maintainer&gt;</code></span>
+and
+<span id="textcolor3526"><code class="verb">&lt;license&gt;</code></span>
+tags:
+</p>                                                                                
+<!--l. 1--><p class="noindent" >
+
+</p>
+<pre><div id="fancyvrb261" style='padding:20px;border-radius: 3px;'><a 
+ id="x12-248002r143"></a><span id="textcolor3527">&lt;description</span><span id="textcolor3528">&gt;</span>Examples<span id="textcolor3529"> </span>of<span id="textcolor3530"> </span>minimal<span id="textcolor3531"> </span>publisher/subscriber<span id="textcolor3532"> </span>using<span id="textcolor3533"> </span>rclpy<span id="textcolor3534">&lt;/description&gt;</span> 
+<a 
+ id="x12-248004r144"></a><span id="textcolor3535">&lt;maintainer</span><span id="textcolor3536"> </span><span id="textcolor3537">email=</span><span id="textcolor3538">"you@email.com"</span><span id="textcolor3539">&gt;</span>Your<span id="textcolor3540"> </span>Name<span id="textcolor3541">&lt;/maintainer&gt;</span> 
+<a 
+ id="x12-248006r145"></a><span id="textcolor3542">&lt;license</span><span id="textcolor3543">&gt;</span>Apache<span id="textcolor3544"> </span>License<span id="textcolor3545"> </span>2.0<span id="textcolor3546">&lt;/license&gt;</span></div></pre>
+<!--l. 376--><p class="noindent" >After
+the
+lines
+above,
+add
+the
+following
+dependencies
+corresponding
+to
+your
+node’s
+import
+statements:<alert style="color: #821131;"><span id="bold" style="font-weight:bold;"><sup class="textsuperscript">10 </sup></span></alert>
+<span class="marginnote">
+<alert style="color: #821131;"><span id="bold" style="font-weight:bold;"><sup class="textsuperscript">10</sup></span></alert><span id="textcolor3547">Remember,
+we
+need
+to
+let
+<a 
+href="MobileRoboticsLectureBookli2.html#glo:ros" class="glossary" >ROS</a>
+know
+the
+dependencies
+required
+by
+the
+python
+script.</span></span>
+</p><!--l. 1--><p class="noindent" >
+
+</p>
+<pre><div id="fancyvrb262" style='padding:20px;border-radius: 3px;'><a 
+ id="x12-248008r150"></a><span id="textcolor3548">&lt;exec_depend</span><span id="textcolor3549">&gt;</span>rclpy<span id="textcolor3550">&lt;/exec_depend&gt;</span> 
+<a 
+ id="x12-248010r151"></a><span id="textcolor3551">&lt;exec_depend</span><span id="textcolor3552">&gt;</span>std_msgs<span id="textcolor3553">&lt;/exec_depend&gt;</span></div></pre>
+<!--l. 382--><p class="noindent" >This
+declares
+the
+package
+needs
+<span id="textcolor3554"><code class="verb">rclpy</code></span>
+and
+<span id="textcolor3555"><code class="verb">std_msgs</code></span>
+when
+its
+code
+is
+executed.
+
+<a 
+ id="paragraph*.104"></a></p>
+<!--l. 384--><p class="noindent" ><span class="paragraphHead"><a 
+ id="x12-249000"></a>Adding  An  Entry  Point</span>
+Given we have sorted our package manifesto, we need to configure our python code. Open the <span id="textcolor3556"><code class="verb">setup.py</code></span>
+file. Again, match the <span id="textcolor3557"><code class="verb">maintainer</code></span>, <span id="textcolor3558"><code class="verb">maintainer_email</code></span>, <span id="textcolor3559"><code class="verb">description</code></span> and <span id="textcolor3560"><code class="verb">license</code></span> fields to your <span id="textcolor3561"><code class="verb">package.xml</code></span>:
+</p><!--l. 1--><p class="noindent" >
+
+</p>
+<pre><div id="fancyvrb263" style='padding:20px;border-radius: 3px;'><a 
+ id="x12-249002r158"></a><span id="textcolor3562">maintainer</span><span id="textcolor3563">=</span><span id="textcolor3564">&#x0027;</span><span id="textcolor3565">YourName</span><span id="textcolor3566">&#x0027;</span><span id="textcolor3567">,</span> 
+<a 
+ id="x12-249004r159"></a><span id="textcolor3568">maintainer_email</span><span id="textcolor3569">=</span><span id="textcolor3570">&#x0027;</span><span id="textcolor3571">you@email.com</span><span id="textcolor3572">&#x0027;</span><span id="textcolor3573">,</span> 
+<a 
+ id="x12-249006r160"></a><span id="textcolor3574">description</span><span id="textcolor3575">=</span><span id="textcolor3576">&#x0027;</span><span id="textcolor3577">Examples of minimal publisher/subscriber using rclpy</span><span id="textcolor3578">&#x0027;</span><span id="textcolor3579">,</span> 
+<a 
+ id="x12-249008r161"></a><span id="textcolor3580">license</span><span id="textcolor3581">=</span><span id="textcolor3582">&#x0027;</span><span id="textcolor3583">Apache License 2.0</span><span id="textcolor3584">&#x0027;</span><span id="textcolor3585">,</span></div></pre>
+                                                                                
+                                                                                
+<!--l. 392--><p class="noindent" >Add the following line within the <span id="textcolor3586"><code class="verb">console_scripts</code></span> brackets of the <span id="textcolor3587"><code class="verb">entry_points</code></span> field:
+</p><!--l. 1--><p class="noindent" >
+
+</p>
+<pre><div id="fancyvrb264" style='padding:20px;border-radius: 3px;'><a 
+ id="x12-249010r166"></a><span id="textcolor3588">entry_points</span><span id="textcolor3589">=</span><span id="textcolor3590">{</span> 
+<a 
+ id="x12-249012r167"></a>      <span id="textcolor3591">&#x0027;</span><span id="textcolor3592">console_scripts</span><span id="textcolor3593">&#x0027;</span><span id="textcolor3594">:</span> <span id="textcolor3595">[</span> 
+<a 
+ id="x12-249014r168"></a>            <span id="textcolor3596">&#x0027;</span><span id="textcolor3597">talker = py_pubsub.publisher_member_function:main</span><span id="textcolor3598">&#x0027;</span><span id="textcolor3599">,</span> 
+<a 
+ id="x12-249016r169"></a>      <span id="textcolor3600">]</span><span id="textcolor3601">,</span> 
+<a 
+ id="x12-249018r170"></a><span id="textcolor3602">}</span><span id="textcolor3603">,</span></div></pre>
+
+<a 
+ id="paragraph*.105"></a>
+<!--l. 396--><p class="noindent" ><span class="paragraphHead"><a 
+ id="x12-250000"></a>Checking  the  Configuration  File</span>
+The contents of the <span id="textcolor3604"><code class="verb">setup.cfg</code></span> file should be correctly populated automatically, like so:
+</p><!--l. 1--><p class="noindent" >
+
+</p>
+<pre><div id="fancyvrb265" style='padding:20px;border-radius: 3px;'><a 
+ id="x12-250002r177"></a><span id="textcolor3605">[develop]</span> 
+<a 
+ id="x12-250004r178"></a><span id="textcolor3606">script_dir</span><span id="textcolor3607">=</span><span id="textcolor3608">$base/lib/py_pubsub</span> 
+<a 
+ id="x12-250006r179"></a><span id="textcolor3609">[install]</span> 
+<a 
+ id="x12-250008r180"></a><span id="textcolor3610">install_scripts</span><span id="textcolor3611">=</span><span id="textcolor3612">$base/lib/py_pubsub</span></div></pre>
+<!--l. 403--><p class="noindent" >This code is simply telling setuptools to put your executables in lib, because ros2 run will look for them there. We could build your
+package now, source the local setup files, and run it, but lets create the subscriber node first so you can see the full system at work.
+
+</p>
+<h4 class="subsectionHead"><span class="titlemark">10.4.2</span>  <a 
+ id="x12-25100010.4.2"></a>Writing  the  Subscriber  Node</h4>
+<!--l. 409--><p class="noindent" >Return to <span id="textcolor3613"><code class="verb">ros2_ws/src/py_pubsub/py_pubsub</code></span> to create the next node. Enter the following code in your terminal:
+</p><!--l. 1--><p class="noindent" >
+
+</p>
+<pre><div id="fancyvrb266" style='padding:20px;border-radius: 3px;'><a 
+ id="x12-251002r307"></a>wget<span id="textcolor3614"> </span>https://raw.githubusercontent.com/ros2/examples/humble/rclpy/topics/minimal_subscriber/examples_rclpy_minimal_subscriber/subscriber_member_function.py</div></pre>
+<!--l. 414--><p class="noindent" >Now  the  directory  should  have  these  files:
+</p><!--l. 416--><p class="noindent" >     
+</p>
+<blockquote class="quote">     
+<!--l. 417--><p class="noindent" ><span id="textcolor3615"><code class="verb">__init__.py</code></span>,
+<span id="textcolor3616"><code class="verb">publisher_member_function.py</code></span>
+and
+<span id="textcolor3617"><code class="verb">subscriber_member_function.py</code></span></p></blockquote>
+
+<a 
+ id="paragraph*.106"></a>
+<!--l. 421--><p class="noindent" ><span class="paragraphHead"><a 
+ id="x12-252000"></a>Examining  the  Code</span>
+Open the <span id="textcolor3618"><code class="verb">subscriber_member_function.py</code></span> with your preferred text editor.
+</p><!--l. 1--><p class="noindent" >
+
+</p>
+<pre><div id="fancyvrb267" style='padding:20px;border-radius: 3px;'><a 
+ id="x12-252002r314"></a><span id="textcolor3619">import</span><span id="textcolor3620"> </span><span id="textcolor3621">rclpy</span> 
+<a 
+ id="x12-252004r315"></a><span id="textcolor3622">from</span><span id="textcolor3623"> </span><span id="textcolor3624">rclpy</span><span id="textcolor3625">.</span><span id="textcolor3626">node</span><span id="textcolor3627"> </span><span id="textcolor3628">import</span> <span id="textcolor3629">Node</span> 
+<a 
+ id="x12-252006r316"></a> 
+<a 
+ id="x12-252008r317"></a><span id="textcolor3630">from</span><span id="textcolor3631"> </span><span id="textcolor3632">std_msgs</span><span id="textcolor3633">.</span><span id="textcolor3634">msg</span><span id="textcolor3635"> </span><span id="textcolor3636">import</span> <span id="textcolor3637">String</span> 
+<a 
+ id="x12-252010r318"></a> 
+<a 
+ id="x12-252012r319"></a> 
+<a 
+ id="x12-252014r320"></a><span id="textcolor3638">class</span><span id="textcolor3639"> </span><span id="textcolor3640">MinimalSubscriber</span><span id="textcolor3641">(</span><span id="textcolor3642">Node</span><span id="textcolor3643">)</span><span id="textcolor3644">:</span> 
+<a 
+ id="x12-252016r321"></a> 
+<a 
+ id="x12-252018r322"></a>   <span id="textcolor3645">def</span><span id="textcolor3646"> </span><span id="textcolor3647">__init__</span><span id="textcolor3648">(</span><span id="textcolor3649">self</span><span id="textcolor3650">)</span><span id="textcolor3651">:</span> 
+<a 
+ id="x12-252020r323"></a>      <span id="textcolor3652">super</span><span id="textcolor3653">(</span><span id="textcolor3654">)</span><span id="textcolor3655">.</span><span id="textcolor3656">__init__</span><span id="textcolor3657">(</span><span id="textcolor3658">&#x0027;</span><span id="textcolor3659">minimal_subscriber</span><span id="textcolor3660">&#x0027;</span><span id="textcolor3661">)</span> 
+<a 
+ id="x12-252022r324"></a>      <span id="textcolor3662">self</span><span id="textcolor3663">.</span><span id="textcolor3664">subscription</span> <span id="textcolor3665">=</span> <span id="textcolor3666">self</span><span id="textcolor3667">.</span><span id="textcolor3668">create_subscription</span><span id="textcolor3669">(</span> 
+<a 
+ id="x12-252024r325"></a>         <span id="textcolor3670">String</span><span id="textcolor3671">,</span> 
+<a 
+ id="x12-252026r326"></a>         <span id="textcolor3672">&#x0027;</span><span id="textcolor3673">topic</span><span id="textcolor3674">&#x0027;</span><span id="textcolor3675">,</span> 
+<a 
+ id="x12-252028r327"></a>         <span id="textcolor3676">self</span><span id="textcolor3677">.</span><span id="textcolor3678">listener_callback</span><span id="textcolor3679">,</span> 
+<a 
+ id="x12-252030r328"></a>         <span id="textcolor3680">10</span><span id="textcolor3681">)</span> 
+<a 
+ id="x12-252032r329"></a>      <span id="textcolor3682">self</span><span id="textcolor3683">.</span><span id="textcolor3684">subscription</span>  <span id="textcolor3685"># prevent unused variable warning</span> 
+<a 
+ id="x12-252034r330"></a> 
+<a 
+ id="x12-252036r331"></a>   <span id="textcolor3686">def</span><span id="textcolor3687"> </span><span id="textcolor3688">listener_callback</span><span id="textcolor3689">(</span><span id="textcolor3690">self</span><span id="textcolor3691">,</span> <span id="textcolor3692">msg</span><span id="textcolor3693">)</span><span id="textcolor3694">:</span> 
+<a 
+ id="x12-252038r332"></a>      <span id="textcolor3695">self</span><span id="textcolor3696">.</span><span id="textcolor3697">get_logger</span><span id="textcolor3698">(</span><span id="textcolor3699">)</span><span id="textcolor3700">.</span><span id="textcolor3701">info</span><span id="textcolor3702">(</span><span id="textcolor3703">&#x0027;</span><span id="textcolor3704">I heard: </span><span id="textcolor3705">"</span><span id="textcolor3706">%s</span><span id="textcolor3707">"</span><span id="textcolor3708">&#x0027;</span> <span id="textcolor3709">%</span> <span id="textcolor3710">msg</span><span id="textcolor3711">.</span><span id="textcolor3712">data</span><span id="textcolor3713">)</span> 
+<a 
+ id="x12-252040r333"></a> 
+<a 
+ id="x12-252042r334"></a> 
+<a 
+ id="x12-252044r335"></a><span id="textcolor3714">def</span><span id="textcolor3715"> </span><span id="textcolor3716">main</span><span id="textcolor3717">(</span><span id="textcolor3718">args</span><span id="textcolor3719">=</span><span id="textcolor3720">None</span><span id="textcolor3721">)</span><span id="textcolor3722">:</span> 
+<a 
+ id="x12-252046r336"></a>   <span id="textcolor3723">rclpy</span><span id="textcolor3724">.</span><span id="textcolor3725">init</span><span id="textcolor3726">(</span><span id="textcolor3727">args</span><span id="textcolor3728">=</span><span id="textcolor3729">args</span><span id="textcolor3730">)</span> 
+<a 
+ id="x12-252048r337"></a> 
+<a 
+ id="x12-252050r338"></a>   <span id="textcolor3731">minimal_subscriber</span> <span id="textcolor3732">=</span> <span id="textcolor3733">MinimalSubscriber</span><span id="textcolor3734">(</span><span id="textcolor3735">)</span> 
+<a 
+ id="x12-252052r339"></a> 
+<a 
+ id="x12-252054r340"></a>   <span id="textcolor3736">rclpy</span><span id="textcolor3737">.</span><span id="textcolor3738">spin</span><span id="textcolor3739">(</span><span id="textcolor3740">minimal_subscriber</span><span id="textcolor3741">)</span> 
+<a 
+ id="x12-252056r341"></a> 
+<a 
+ id="x12-252058r342"></a>   <span id="textcolor3742"># Destroy the node explicitly</span> 
+<a 
+ id="x12-252060r343"></a>   <span id="textcolor3743"># (optional - otherwise it will be done automatically</span> 
+<a 
+ id="x12-252062r344"></a>   <span id="textcolor3744"># when the garbage collector destroys the node object)</span> 
+<a 
+ id="x12-252064r345"></a>   <span id="textcolor3745">minimal_subscriber</span><span id="textcolor3746">.</span><span id="textcolor3747">destroy_node</span><span id="textcolor3748">(</span><span id="textcolor3749">)</span> 
+<a 
+ id="x12-252066r346"></a>   <span id="textcolor3750">rclpy</span><span id="textcolor3751">.</span><span id="textcolor3752">shutdown</span><span id="textcolor3753">(</span><span id="textcolor3754">)</span> 
+<a 
+ id="x12-252068r347"></a> 
+<a 
+ id="x12-252070r348"></a> 
+<a 
+ id="x12-252072r349"></a><span id="textcolor3755">if</span> <span id="textcolor3756">__name__</span> <span id="textcolor3757">==</span> <span id="textcolor3758">&#x0027;</span><span id="textcolor3759">__main__</span><span id="textcolor3760">&#x0027;</span><span id="textcolor3761">:</span> 
+<a 
+ id="x12-252074r350"></a>   <span id="textcolor3762">main</span><span id="textcolor3763">(</span><span id="textcolor3764">)</span></div></pre>
+<!--l. 427--><p class="noindent" >The subscriber nodes code is nearly identical to the publishers. The constructor creates a subscriber with the same arguments as the publisher.
+</p>
+<div class="warning">
+<!--l. 433--><p class="noindent" >the topic name and message type used by the publisher and subscriber must match to allow them to communicate. </p></div>
+<!--l. 1--><p class="noindent" >
+
+</p>
+<pre><div id="fancyvrb268" style='padding:20px;border-radius: 3px;'><a 
+ id="x12-252076r355"></a><span id="textcolor3765">self</span><span id="textcolor3766">.</span><span id="textcolor3767">subscription</span> <span id="textcolor3768">=</span> <span id="textcolor3769">self</span><span id="textcolor3770">.</span><span id="textcolor3771">create_subscription</span><span id="textcolor3772">(</span> 
+<a 
+ id="x12-252078r356"></a>   <span id="textcolor3773">String</span><span id="textcolor3774">,</span> 
+<a 
+ id="x12-252080r357"></a>   <span id="textcolor3775">&#x0027;</span><span id="textcolor3776">topic</span><span id="textcolor3777">&#x0027;</span><span id="textcolor3778">,</span> 
+<a 
+ id="x12-252082r358"></a>   <span id="textcolor3779">self</span><span id="textcolor3780">.</span><span id="textcolor3781">listener_callback</span><span id="textcolor3782">,</span> 
+<a 
+ id="x12-252084r359"></a>   <span id="textcolor3783">10</span><span id="textcolor3784">)</span></div></pre>
+<!--l. 437--><p class="noindent" >The subscribers constructor and callback dont include any timer definition, because it doesnt need one. Its callback gets called as soon as it receives a message.
+</p><!--l. 439--><p class="noindent" >The callback definition simply prints an info message to the console, along with the data it received. Recall that the publisher defines
+</p><!--l. 1--><p class="noindent" >
+
+</p>
+<pre><div id="fancyvrb269" style='padding:20px;border-radius: 3px;'><a 
+ id="x12-252086r364"></a><span id="textcolor3785">def</span><span id="textcolor3786"> </span><span id="textcolor3787">listener_callback</span><span id="textcolor3788">(</span><span id="textcolor3789">self</span><span id="textcolor3790">,</span> <span id="textcolor3791">msg</span><span id="textcolor3792">)</span><span id="textcolor3793">:</span> 
+<a 
+ id="x12-252088r365"></a>   <span id="textcolor3794">self</span><span id="textcolor3795">.</span><span id="textcolor3796">get_logger</span><span id="textcolor3797">(</span><span id="textcolor3798">)</span><span id="textcolor3799">.</span><span id="textcolor3800">info</span><span id="textcolor3801">(</span><span id="textcolor3802">&#x0027;</span><span id="textcolor3803">I heard: </span><span id="textcolor3804">"</span><span id="textcolor3805">%s</span><span id="textcolor3806">"</span><span id="textcolor3807">&#x0027;</span> <span id="textcolor3808">%</span> <span id="textcolor3809">msg</span><span id="textcolor3810">.</span><span id="textcolor3811">data</span><span id="textcolor3812">)</span></div></pre>
+<!--l. 444--><p class="noindent" >The main definition is almost exactly the same, replacing the creation and spinning of the publisher with the subscriber.
+</p><!--l. 1--><p class="noindent" >
+
+</p>
+<pre><div id="fancyvrb270" style='padding:20px;border-radius: 3px;'><a 
+ id="x12-252090r370"></a><span id="textcolor3813">minimal_subscriber</span> <span id="textcolor3814">=</span> <span id="textcolor3815">MinimalSubscriber</span><span id="textcolor3816">(</span><span id="textcolor3817">)</span> 
+<a 
+ id="x12-252092r371"></a> 
+<a 
+ id="x12-252094r372"></a><span id="textcolor3818">rclpy</span><span id="textcolor3819">.</span><span id="textcolor3820">spin</span><span id="textcolor3821">(</span><span id="textcolor3822">minimal_subscriber</span><span id="textcolor3823">)</span></div></pre>
+<!--l. 449--><p class="noindent" >Since this node has the same dependencies as the publisher, theres nothing new to add to package.xml. The setup.cfg file can also remain untouched.
+
+                                                                                
+                                                                                
+<a 
+ id="paragraph*.107"></a></p>
+<!--l. 452--><p class="noindent" ><span class="paragraphHead"><a 
+ id="x12-253000"></a>Adding  an  Entry  Point</span>
+Reopen setup.py and add the entry point for the subscriber node below the publishers entry point. The <span id="textcolor3824"><code class="verb">entry_points</code></span> field should now look like this:
+</p><!--l. 1--><p class="noindent" >
+
+</p>
+<pre><div id="fancyvrb271" style='padding:20px;border-radius: 3px;'><a 
+ id="x12-253002r379"></a><span id="textcolor3825">entry_points</span><span id="textcolor3826">=</span><span id="textcolor3827">{</span> 
+<a 
+ id="x12-253004r380"></a>      <span id="textcolor3828">&#x0027;</span><span id="textcolor3829">console_scripts</span><span id="textcolor3830">&#x0027;</span><span id="textcolor3831">:</span> <span id="textcolor3832">[</span> 
+<a 
+ id="x12-253006r381"></a>            <span id="textcolor3833">&#x0027;</span><span id="textcolor3834">talker = py_pubsub.publisher_member_function:main</span><span id="textcolor3835">&#x0027;</span><span id="textcolor3836">,</span> 
+<a 
+ id="x12-253008r382"></a>            <span id="textcolor3837">&#x0027;</span><span id="textcolor3838">listener = py_pubsub.subscriber_member_function:main</span><span id="textcolor3839">&#x0027;</span><span id="textcolor3840">,</span> 
+<a 
+ id="x12-253010r383"></a>      <span id="textcolor3841">]</span><span id="textcolor3842">,</span> 
+<a 
+ id="x12-253012r384"></a><span id="textcolor3843">}</span><span id="textcolor3844">,</span></div></pre>
+
+<h4 class="subsectionHead"><span class="titlemark">10.4.3</span>  <a 
+ id="x12-25400010.4.3"></a>Building  and  Running</h4>
+<!--l. 461--><p class="noindent" >You likely already have the rclpy and <span id="textcolor3845"><code class="verb">std_msgs</code></span> packages installed as part of your ROS 2 system. Its good practice
+to run rosdep in the root of your workspace (<span id="textcolor3846"><code class="verb">ros2_ws</code></span>) to check for missing dependencies before building:
+                                                                                
+                                                                                
+</p><!--l. 465--><p class="noindent" >
+</p>
+<h3 class="sectionHead"><span class="titlemark">10.5</span>  <a 
+ id="x12-25500010.5"></a>Creating  Custom  msg  and  srv  Files</h3>
+<!--l. 467--><p class="noindent" >Previously, you utilized message and service interfaces to learn about topics, services, and simple
+publisher/subscriber and service/client nodes. The interfaces you used were predefined in those cases.
+</p><!--l. 471--><p class="noindent" >While its good practice to use predefined interface definitions, you will probably need to define your own messages and services
+sometimes as well. This tutorial will introduce you to the simplest method of creating custom interface definitions.
+
+<a 
+ id="paragraph*.108"></a></p>
+<!--l. 475--><p class="noindent" ><span class="paragraphHead"><a 
+ id="x12-256000"></a>Creating  a  New  Package</span>
+For this tutorial you will be creating custom <span id="textcolor3847"><code class="verb">.msg</code></span> and <span id="textcolor3848"><code class="verb">.srv</code></span> files in their own package, and
+then utilizing them in a separate package. Both packages should be in the same workspace.
+</p><!--l. 481--><p class="noindent" >Since we will use the pub/sub and service/client packages created in earlier tutorials, make sure you are in the
+same workspace as those packages (<span id="textcolor3849"><code class="verb">ros2_ws/src</code></span>), and then run the following command to create a new package:
+</p><!--l. 1--><p class="noindent" >
+
+</p>
+<pre><div id="fancyvrb272" style='padding:20px;border-radius: 3px;'><a 
+ id="x12-256002r411"></a>ros2<span id="textcolor3850"> </span>pkg<span id="textcolor3851"> </span>create<span id="textcolor3852"> </span>--build-type<span id="textcolor3853"> </span>ament_cmake<span id="textcolor3854"> </span>--license<span id="textcolor3855"> </span>Apache-2.0<span id="textcolor3856"> </span>tutorial_interfaces</div></pre>
+<!--l. 487--><p class="noindent" ><span id="textcolor3857"><code class="verb">tutorial_interfaces</code></span> is the name of the new package. Note that it is, and can only be, an <span id="textcolor3858"><code class="verb">ament_cmake</code></span> package, but this doesnt
+restrict in which type of packages you can use your messages and services. You can create your own custom interfaces in
+an <span id="textcolor3859"><code class="verb">ament_cmake</code></span> package, and then use it in a C++ or Python node, which will be covered in the last section.
+</p><!--l. 492--><p class="noindent" >The <span id="textcolor3860"><code class="verb">.msg</code></span> and <span id="textcolor3861"><code class="verb">.srv</code></span> files are required to be placed in directories called msg and srv respectively. Create the directories in <span id="textcolor3862"><code class="verb">ros2_ws/src/tutorial_interfaces</code></span>:
+</p><!--l. 1--><p class="noindent" >
+
+</p>
+<pre><div id="fancyvrb273" style='padding:20px;border-radius: 3px;'><a 
+ id="x12-256004r416"></a>mkdir<span id="textcolor3863"> </span>msg<span id="textcolor3864"> </span>srv</div></pre>
+
+<h4 class="subsectionHead"><span class="titlemark">10.5.1</span>  <a 
+ id="x12-25700010.5.1"></a>Creating  Custom  Definitions</h4>
+
+<a 
+ id="paragraph*.109"></a>
+<!--l. 499--><p class="noindent" ><span class="paragraphHead"><a 
+ id="x12-258000"></a>msg  Definition</span>
+In the <span id="textcolor3865"><code class="verb">tutorial_interfaces/msg</code></span> directory you just created, make a new file called Num.msg with one line of code declaring its data structure:
+</p><!--l. 1--><p class="noindent" >
+
+</p>
+<pre><div id="fancyvrb274" style='padding:20px;border-radius: 3px;'><a 
+ id="x12-258002r421"></a>int64 num</div></pre>
+<!--l. 506--><p class="noindent" >This is a custom message that transfers a single 64-bit integer called num.
+</p><!--l. 508--><p class="noindent" >Also in the <span id="textcolor3866"><code class="verb">tutorial_interfaces/msg</code></span> directory you just created, make a new file called Sphere.msg with the following content:
+</p><!--l. 1--><p class="noindent" >
+
+</p>
+<pre><div id="fancyvrb275" style='padding:20px;border-radius: 3px;'><a 
+ id="x12-258004r426"></a>geometry_msgs/Point<span id="textcolor3867"> </span>center 
+<a 
+ id="x12-258006r427"></a>float64<span id="textcolor3868"> </span>radius</div></pre>
+<!--l. 513--><p class="noindent" >This custom message uses a message from another message package (<span id="textcolor3869"><code class="verb">geometry_msgs/Point</code></span> in this case).
+
+<a 
+ id="paragraph*.110"></a></p>
+<!--l. 516--><p class="noindent" ><span class="paragraphHead"><a 
+ id="x12-259000"></a>srv  Definition</span>
+Back in the <span id="textcolor3870"><code class="verb">tutorial_interfaces/srv</code></span> directory you just created, make a new file called AddThreeInts.srv with the following request and response structure:
+</p><!--l. 1--><p class="noindent" >
+
+</p>
+<pre><div id="fancyvrb276" style='padding:20px;border-radius: 3px;'><a 
+ id="x12-259002r433"></a>int64<span id="textcolor3871"> </span>a 
+<a 
+ id="x12-259004r434"></a>int64<span id="textcolor3872"> </span>b 
+<a 
+ id="x12-259006r435"></a>int64<span id="textcolor3873"> </span>c 
+<a 
+ id="x12-259008r436"></a>--- 
+<a 
+ id="x12-259010r437"></a>int64<span id="textcolor3874"> </span>sum</div></pre>
+<!--l. 523--><p class="noindent" >This is your custom service that requests three integers named a, b, and c, and responds with an integer called sum.
+                                                                                
+                                                                                
+</p><!--l. 526--><p class="noindent" >
+</p>
+<h3 class="sectionHead"><span class="titlemark">10.6</span>  <a 
+ id="x12-26000010.6"></a>CMakeList</h3>
+<!--l. 528--><p class="noindent" >To convert the interfaces you defined into language-specific code (like C++ and Python)
+so that they can be used in those languages, add the following lines to CMakeLists.txt:
+</p><!--l. 1--><p class="noindent" >
+
+</p>
+<pre><div id="fancyvrb277" style='padding:20px;border-radius: 3px;'><a 
+ id="x12-260002r442"></a><span id="textcolor3875">find_package</span><span id="textcolor3876">(</span><span id="textcolor3877">geometry_msgs</span><span id="textcolor3878"> </span><span id="textcolor3879">REQUIRED</span><span id="textcolor3880">)</span> 
+<a 
+ id="x12-260004r443"></a><span id="textcolor3881">find_package</span><span id="textcolor3882">(</span><span id="textcolor3883">rosidl_default_generators</span><span id="textcolor3884"> </span><span id="textcolor3885">REQUIRED</span><span id="textcolor3886">)</span> 
+<a 
+ id="x12-260006r444"></a> 
+<a 
+ id="x12-260008r445"></a><span id="textcolor3887">rosidl_generate_interfaces</span><span id="textcolor3888">(</span><span id="textcolor3889">${</span><span id="textcolor3890">PROJECT_NAME</span><span id="textcolor3891">}</span> 
+<a 
+ id="x12-260010r446"></a><span id="textcolor3892"> </span><span id="textcolor3893">"msg/Num.msg"</span> 
+<a 
+ id="x12-260012r447"></a><span id="textcolor3894"> </span><span id="textcolor3895">"msg/Sphere.msg"</span> 
+<a 
+ id="x12-260014r448"></a><span id="textcolor3896"> </span><span id="textcolor3897">"srv/AddThreeInts.srv"</span> 
+<a 
+ id="x12-260016r449"></a><span id="textcolor3898"> </span><span id="textcolor3899">DEPENDENCIES</span><span id="textcolor3900"> </span><span id="textcolor3901">geometry_msgs</span><span id="textcolor3902"> </span><span id="textcolor3903"># Add packages that above messages</span> 
+<a 
+ id="x12-260018r450"></a><span id="textcolor3904"> </span><span id="textcolor3905">#depend on, in this case geometry_msgs for Sphere.msg</span> 
+<a 
+ id="x12-260020r451"></a><span id="textcolor3906">)</span></div></pre>
+
+<a 
+ id="paragraph*.111"></a>
+<!--l. 533--><p class="noindent" ><span class="paragraphHead"><a 
+ id="x12-261000"></a>Package.xml</span>
+Because the interfaces rely on <span id="textcolor3907"><code class="verb">rosidl_default_generators</code></span> for generating language-specific code, you need to declare
+a build tool dependency on it. <span id="textcolor3908"><code class="verb">rosidl_default_runtime</code></span> is a runtime or execution-stage dependency, needed to
+be able to use the interfaces later. The <span id="textcolor3909"><code class="verb">rosidl_interface_packages</code></span> is the name of the dependency group that
+your package, <span id="textcolor3910"><code class="verb">tutorial_interfaces</code></span>, should be associated with, declared using the <span id="textcolor3911"><code class="verb">&lt;member_of_group&gt;</code></span> tag.
+</p><!--l. 542--><p class="noindent" >Add the following lines within the <span id="textcolor3912"><code class="verb">&lt;package&gt;</code></span> element of package.xml:
+</p><!--l. 1--><p class="noindent" >
+
+</p>
+<pre><div id="fancyvrb278" style='padding:20px;border-radius: 3px;'><a 
+ id="x12-261002r456"></a><span id="textcolor3913">&lt;depend</span><span id="textcolor3914">&gt;</span>geometry_msgs<span id="textcolor3915">&lt;/depend&gt;</span> 
+<a 
+ id="x12-261004r457"></a><span id="textcolor3916">&lt;buildtool_depend</span><span id="textcolor3917">&gt;</span>rosidl_default_generators<span id="textcolor3918">&lt;/buildtool_depend&gt;</span> 
+<a 
+ id="x12-261006r458"></a><span id="textcolor3919">&lt;exec_depend</span><span id="textcolor3920">&gt;</span>rosidl_default_runtime<span id="textcolor3921">&lt;/exec_depend&gt;</span> 
+<a 
+ id="x12-261008r459"></a><span id="textcolor3922">&lt;member_of_group</span><span id="textcolor3923">&gt;</span>rosidl_interface_packages<span id="textcolor3924">&lt;/member_of_group&gt;</span></div></pre>
+
+<a 
+ id="paragraph*.112"></a>
+<!--l. 546--><p class="noindent" ><span class="paragraphHead"><a 
+ id="x12-262000"></a>Building  the  Package</span>
+Now that all the parts of your custom interfaces package are in place, you can build
+the package. In the root of your workspace (<span id="textcolor3925"><code class="verb">~/ros2_ws</code></span>), run the following command:
+</p><!--l. 1--><p class="noindent" >
+
+</p>
+<pre><div id="fancyvrb279" style='padding:20px;border-radius: 3px;'><a 
+ id="x12-262002r464"></a>colcon<span id="textcolor3926"> </span>build<span id="textcolor3927"> </span>--packages-select<span id="textcolor3928"> </span>tutorial_interfaces</div></pre>
+<!--l. 553--><p class="noindent" >Now the interfaces will be discoverable by other ROS 2 packages.
+
+<a 
+ id="paragraph*.113"></a></p>
+<!--l. 555--><p class="noindent" ><span class="paragraphHead"><a 
+ id="x12-263000"></a>Confirming  the  Creation</span>
+In a new terminal, run the following command from within your workspace (<span id="textcolor3929"><code class="verb">ros2_ws</code></span>) to source it:
+</p><!--l. 1--><p class="noindent" >
+
+</p>
+<pre><div id="fancyvrb280" style='padding:20px;border-radius: 3px;'><a 
+ id="x12-263002r469"></a><span id="textcolor3930">source</span><span id="textcolor3931"> </span>install/setup.bash</div></pre>
+<!--l. 561--><p class="noindent" >Now you can confirm that your interface creation worked by using the ros2 interface show
+command. The output you see in your terminal should look similar to the following:
+</p><!--l. 1--><p class="noindent" >
+
+</p>
+<pre><div id="fancyvrb281" style='padding:20px;border-radius: 3px;'><a 
+ id="x12-263004r474"></a>ros2<span id="textcolor3932"> </span>interface<span id="textcolor3933"> </span>show<span id="textcolor3934"> </span>tutorial_interfaces/msg/Num</div></pre>
+<div class="tcolorbox tcolorbox" id="tcolobox-102">     
+<div class="tcolorbox-content"><pre><div id="fancyvrb282" style='padding:20px;border-radius: 3px;'><a 
+ id="x12-263006r1"></a>int64 num</div></pre>
+ 
+</div> 
+</div>
+                                                                                
+                                                                                
+<!--l. 568--><p class="noindent" >
+</p>
+<h3 class="sectionHead"><span class="titlemark">10.7</span>  <a 
+ id="x12-26400010.7"></a>Using  Parameters  in  a  Class</h3>
+<!--l. 570--><p class="noindent" >When making your own nodes you will sometimes need to add parameters that can be set from the launch file.
+</p><!--l. 573--><p class="noindent" >This tutorial will show you how to create those parameters in a Python class, and how to set them in a launch file.
+
+<a 
+ id="paragraph*.114"></a></p>
+<!--l. 576--><p class="noindent" ><span class="paragraphHead"><a 
+ id="x12-265000"></a>Creating  a  Package</span>
+Open a new terminal and source your ROS 2 installation so that ros2 commands will work.
+</p><!--l. 580--><p class="noindent" >Follow these instructions to create a new workspace named <span id="textcolor3935"><code class="verb">ros2_ws</code></span>.
+</p><!--l. 582--><p class="noindent" >Recall that packages should be created in the src directory, not the root of the workspace. Navigate into <span id="textcolor3936"><code class="verb">ros2_ws/src</code></span> and create a new package:
+</p><!--l. 1--><p class="noindent" >
+
+</p>
+<pre><div id="fancyvrb283" style='padding:20px;border-radius: 3px;'><a 
+ id="x12-265002r490"></a>ros2<span id="textcolor3937"> </span>pkg<span id="textcolor3938"> </span>create<span id="textcolor3939"> </span>--build-type<span id="textcolor3940"> </span>ament_python<span id="textcolor3941"> </span><span id="textcolor3942">\</span> 
+<a 
+ id="x12-265004r491"></a><span id="textcolor3943">    </span>--license<span id="textcolor3944"> </span>Apache-2.0<span id="textcolor3945"> </span>python_parameters<span id="textcolor3946"> </span><span id="textcolor3947">\</span> 
+<a 
+ id="x12-265006r492"></a><span id="textcolor3948">    </span>--dependencies<span id="textcolor3949"> </span>rclpy</div></pre>
+<!--l. 587--><p class="noindent" >Your terminal will return a message verifying the creation of your package <span id="textcolor3950"><code class="verb">python_parameters</code></span> and all its necessary files and folders.
+</p><!--l. 590--><p class="noindent" >The <span id="textcolor3951"><code class="verb">--dependencies</code></span> argument will automatically add the necessary dependency lines to <span id="textcolor3952"><code class="verb">package.xml</code></span> and CMakeLists.txt.
+
+<a 
+ id="paragraph*.115"></a></p>
+<!--l. 593--><p class="noindent" ><span class="paragraphHead"><a 
+ id="x12-266000"></a>Updating  the  Package  Manifesto</span>
+Because you used the <span id="textcolor3953"><code class="verb">--dependencies</code></span> option during package creation, you dont have to manually add dependencies to package.xml or CMakeLists.txt.
+</p><!--l. 598--><p class="noindent" >As always, though, make sure to add the description, maintainer email and name, and license information to package.xml.
+</p><!--l. 1--><p class="noindent" >
+
+</p>
+<pre><div id="fancyvrb284" style='padding:20px;border-radius: 3px;'><a 
+ id="x12-266002r498"></a><span id="textcolor3954">&lt;description</span><span id="textcolor3955">&gt;</span>Python<span id="textcolor3956"> </span>parameter<span id="textcolor3957"> </span>tutorial<span id="textcolor3958">&lt;/description&gt;</span> 
+<a 
+ id="x12-266004r499"></a><span id="textcolor3959">&lt;maintainer</span><span id="textcolor3960"> </span><span id="textcolor3961">email=</span><span id="textcolor3962">"you@email.com"</span><span id="textcolor3963">&gt;</span>Your<span id="textcolor3964"> </span>Name<span id="textcolor3965">&lt;/maintainer&gt;</span> 
+<a 
+ id="x12-266006r500"></a><span id="textcolor3966">&lt;license</span><span id="textcolor3967">&gt;</span>Apache<span id="textcolor3968"> </span>License<span id="textcolor3969"> </span>2.0<span id="textcolor3970">&lt;/license&gt;</span></div></pre>
+
+<a 
+ id="paragraph*.116"></a>
+<!--l. 603--><p class="noindent" ><span class="paragraphHead"><a 
+ id="x12-267000"></a>Writing  our  Python  Code</span>
+Inside the <span id="textcolor3971"><code class="verb">ros2_ws/src/python_parameters/python_parameters</code></span> directory, create a new file called <span id="textcolor3972"><code class="verb">python_parameters_node.py</code></span> and paste the following code within:
+</p><!--l. 1--><p class="noindent" >
+
+</p>
+<pre><div id="fancyvrb285" style='padding:20px;border-radius: 3px;'><a 
+ id="x12-267002r505"></a><span id="textcolor3973">import</span><span id="textcolor3974"> </span><span id="textcolor3975">rclpy</span> 
+<a 
+ id="x12-267004r506"></a><span id="textcolor3976">import</span><span id="textcolor3977"> </span><span id="textcolor3978">rclpy</span><span id="textcolor3979">.</span><span id="textcolor3980">node</span> 
+<a 
+ id="x12-267006r507"></a> 
+<a 
+ id="x12-267008r508"></a><span id="textcolor3981">class</span><span id="textcolor3982"> </span><span id="textcolor3983">MinimalParam</span><span id="textcolor3984">(</span><span id="textcolor3985">rclpy</span><span id="textcolor3986">.</span><span id="textcolor3987">node</span><span id="textcolor3988">.</span><span id="textcolor3989">Node</span><span id="textcolor3990">)</span><span id="textcolor3991">:</span> 
+<a 
+ id="x12-267010r509"></a>   <span id="textcolor3992">def</span><span id="textcolor3993"> </span><span id="textcolor3994">__init__</span><span id="textcolor3995">(</span><span id="textcolor3996">self</span><span id="textcolor3997">)</span><span id="textcolor3998">:</span> 
+<a 
+ id="x12-267012r510"></a>      <span id="textcolor3999">super</span><span id="textcolor4000">(</span><span id="textcolor4001">)</span><span id="textcolor4002">.</span><span id="textcolor4003">__init__</span><span id="textcolor4004">(</span><span id="textcolor4005">&#x0027;</span><span id="textcolor4006">minimal_param_node</span><span id="textcolor4007">&#x0027;</span><span id="textcolor4008">)</span> 
+<a 
+ id="x12-267014r511"></a> 
+<a 
+ id="x12-267016r512"></a>      <span id="textcolor4009">self</span><span id="textcolor4010">.</span><span id="textcolor4011">declare_parameter</span><span id="textcolor4012">(</span><span id="textcolor4013">&#x0027;</span><span id="textcolor4014">my_parameter</span><span id="textcolor4015">&#x0027;</span><span id="textcolor4016">,</span> <span id="textcolor4017">&#x0027;</span><span id="textcolor4018">world</span><span id="textcolor4019">&#x0027;</span><span id="textcolor4020">)</span> 
+<a 
+ id="x12-267018r513"></a> 
+<a 
+ id="x12-267020r514"></a>      <span id="textcolor4021">self</span><span id="textcolor4022">.</span><span id="textcolor4023">timer</span> <span id="textcolor4024">=</span> <span id="textcolor4025">self</span><span id="textcolor4026">.</span><span id="textcolor4027">create_timer</span><span id="textcolor4028">(</span><span id="textcolor4029">1</span><span id="textcolor4030">,</span> <span id="textcolor4031">self</span><span id="textcolor4032">.</span><span id="textcolor4033">timer_callback</span><span id="textcolor4034">)</span> 
+<a 
+ id="x12-267022r515"></a> 
+<a 
+ id="x12-267024r516"></a>   <span id="textcolor4035">def</span><span id="textcolor4036"> </span><span id="textcolor4037">timer_callback</span><span id="textcolor4038">(</span><span id="textcolor4039">self</span><span id="textcolor4040">)</span><span id="textcolor4041">:</span> 
+<a 
+ id="x12-267026r517"></a>      <span id="textcolor4042">my_param</span> <span id="textcolor4043">=</span> <span id="textcolor4044">self</span><span id="textcolor4045">.</span><span id="textcolor4046">get_parameter</span><span id="textcolor4047">(</span><span id="textcolor4048">&#x0027;</span><span id="textcolor4049">my_parameter</span><span id="textcolor4050">&#x0027;</span><span id="textcolor4051">)</span><span id="textcolor4052">.</span><span id="textcolor4053">get_parameter_value</span><span id="textcolor4054">(</span><span id="textcolor4055">)</span><span id="textcolor4056">.</span><span id="textcolor4057">string_value</span> 
+<a 
+ id="x12-267028r518"></a> 
+<a 
+ id="x12-267030r519"></a>      <span id="textcolor4058">self</span><span id="textcolor4059">.</span><span id="textcolor4060">get_logger</span><span id="textcolor4061">(</span><span id="textcolor4062">)</span><span id="textcolor4063">.</span><span id="textcolor4064">info</span><span id="textcolor4065">(</span><span id="textcolor4066">&#x0027;</span><span id="textcolor4067">Hello </span><span id="textcolor4068">%s</span><span id="textcolor4069">!</span><span id="textcolor4070">&#x0027;</span> <span id="textcolor4071">%</span> <span id="textcolor4072">my_param</span><span id="textcolor4073">)</span> 
+<a 
+ id="x12-267032r520"></a> 
+<a 
+ id="x12-267034r521"></a>      <span id="textcolor4074">my_new_param</span> <span id="textcolor4075">=</span> <span id="textcolor4076">rclpy</span><span id="textcolor4077">.</span><span id="textcolor4078">parameter</span><span id="textcolor4079">.</span><span id="textcolor4080">Parameter</span><span id="textcolor4081">(</span> 
+<a 
+ id="x12-267036r522"></a>         <span id="textcolor4082">&#x0027;</span><span id="textcolor4083">my_parameter</span><span id="textcolor4084">&#x0027;</span><span id="textcolor4085">,</span> 
+<a 
+ id="x12-267038r523"></a>         <span id="textcolor4086">rclpy</span><span id="textcolor4087">.</span><span id="textcolor4088">Parameter</span><span id="textcolor4089">.</span><span id="textcolor4090">Type</span><span id="textcolor4091">.</span><span id="textcolor4092">STRING</span><span id="textcolor4093">,</span> 
+<a 
+ id="x12-267040r524"></a>         <span id="textcolor4094">&#x0027;</span><span id="textcolor4095">world</span><span id="textcolor4096">&#x0027;</span> 
+<a 
+ id="x12-267042r525"></a>      <span id="textcolor4097">)</span> 
+<a 
+ id="x12-267044r526"></a>      <span id="textcolor4098">all_new_parameters</span> <span id="textcolor4099">=</span> <span id="textcolor4100">[</span><span id="textcolor4101">my_new_param</span><span id="textcolor4102">]</span> 
+<a 
+ id="x12-267046r527"></a>      <span id="textcolor4103">self</span><span id="textcolor4104">.</span><span id="textcolor4105">set_parameters</span><span id="textcolor4106">(</span><span id="textcolor4107">all_new_parameters</span><span id="textcolor4108">)</span> 
+<a 
+ id="x12-267048r528"></a> 
+<a 
+ id="x12-267050r529"></a><span id="textcolor4109">def</span><span id="textcolor4110"> </span><span id="textcolor4111">main</span><span id="textcolor4112">(</span><span id="textcolor4113">)</span><span id="textcolor4114">:</span> 
+<a 
+ id="x12-267052r530"></a>   <span id="textcolor4115">rclpy</span><span id="textcolor4116">.</span><span id="textcolor4117">init</span><span id="textcolor4118">(</span><span id="textcolor4119">)</span> 
+<a 
+ id="x12-267054r531"></a>   <span id="textcolor4120">node</span> <span id="textcolor4121">=</span> <span id="textcolor4122">MinimalParam</span><span id="textcolor4123">(</span><span id="textcolor4124">)</span> 
+<a 
+ id="x12-267056r532"></a>   <span id="textcolor4125">rclpy</span><span id="textcolor4126">.</span><span id="textcolor4127">spin</span><span id="textcolor4128">(</span><span id="textcolor4129">node</span><span id="textcolor4130">)</span> 
+<a 
+ id="x12-267058r533"></a> 
+<a 
+ id="x12-267060r534"></a><span id="textcolor4131">if</span> <span id="textcolor4132">__name__</span> <span id="textcolor4133">==</span> <span id="textcolor4134">&#x0027;</span><span id="textcolor4135">__main__</span><span id="textcolor4136">&#x0027;</span><span id="textcolor4137">:</span> 
+<a 
+ id="x12-267062r535"></a>   <span id="textcolor4138">main</span><span id="textcolor4139">(</span><span id="textcolor4140">)</span></div></pre>
+
+<a 
+ id="paragraph*.117"></a>
+<!--l. 610--><p class="noindent" ><span class="paragraphHead"><a 
+ id="x12-268000"></a>Code  Demystified</span>
+The import statements at the top are used to import the package dependencies.
+</p><!--l. 614--><p class="noindent" >The next piece of code creates the class and the constructor. The line <span id="textcolor4141"><code class="verb">self.declare_parameter(&#x0027;my_parameter&#x0027;, &#x0027;world&#x0027;)</code></span> of
+the constructor creates a parameter with the name <span id="textcolor4142"><code class="verb">my_parameter</code></span> and a default value of world. The parameter
+type is inferred from the default value, so in this case it would be set to a string type. Next the timer is
+initialized with a period of 1, which causes the <span id="textcolor4143"><code class="verb">timer_callback</code></span> function to be executed once a second.
+</p><!--l. 1--><p class="noindent" >
+
+</p>
+<pre><div id="fancyvrb286" style='padding:20px;border-radius: 3px;'><a 
+ id="x12-268002r540"></a><span id="textcolor4144">class</span><span id="textcolor4145"> </span><span id="textcolor4146">MinimalParam</span><span id="textcolor4147">(</span><span id="textcolor4148">rclpy</span><span id="textcolor4149">.</span><span id="textcolor4150">node</span><span id="textcolor4151">.</span><span id="textcolor4152">Node</span><span id="textcolor4153">)</span><span id="textcolor4154">:</span> 
+<a 
+ id="x12-268004r541"></a>   <span id="textcolor4155">def</span><span id="textcolor4156"> </span><span id="textcolor4157">__init__</span><span id="textcolor4158">(</span><span id="textcolor4159">self</span><span id="textcolor4160">)</span><span id="textcolor4161">:</span> 
+<a 
+ id="x12-268006r542"></a>      <span id="textcolor4162">super</span><span id="textcolor4163">(</span><span id="textcolor4164">)</span><span id="textcolor4165">.</span><span id="textcolor4166">__init__</span><span id="textcolor4167">(</span><span id="textcolor4168">&#x0027;</span><span id="textcolor4169">minimal_param_node</span><span id="textcolor4170">&#x0027;</span><span id="textcolor4171">)</span> 
+<a 
+ id="x12-268008r543"></a> 
+<a 
+ id="x12-268010r544"></a>      <span id="textcolor4172">self</span><span id="textcolor4173">.</span><span id="textcolor4174">declare_parameter</span><span id="textcolor4175">(</span><span id="textcolor4176">&#x0027;</span><span id="textcolor4177">my_parameter</span><span id="textcolor4178">&#x0027;</span><span id="textcolor4179">,</span> <span id="textcolor4180">&#x0027;</span><span id="textcolor4181">world</span><span id="textcolor4182">&#x0027;</span><span id="textcolor4183">)</span> 
+<a 
+ id="x12-268012r545"></a> 
+<a 
+ id="x12-268014r546"></a>      <span id="textcolor4184">self</span><span id="textcolor4185">.</span><span id="textcolor4186">timer</span> <span id="textcolor4187">=</span> <span id="textcolor4188">self</span><span id="textcolor4189">.</span><span id="textcolor4190">create_timer</span><span id="textcolor4191">(</span><span id="textcolor4192">1</span><span id="textcolor4193">,</span> <span id="textcolor4194">self</span><span id="textcolor4195">.</span><span id="textcolor4196">timer_callback</span><span id="textcolor4197">)</span></div></pre>
+<!--l. 623--><p class="noindent" >The first line of our <span id="textcolor4198"><code class="verb">timer_callback</code></span> function gets the parameter <span id="textcolor4199"><code class="verb">my_parameter</code></span> from the node, and stores it in <span id="textcolor4200"><code class="verb">my_param</code></span>. Next the
+<span id="textcolor4201"><code class="verb">get_logger</code></span> function ensures the event is logged. The <span id="textcolor4202"><code class="verb">set_parameters</code></span> function then sets the parameter <span id="textcolor4203"><code class="verb">my_parameter</code></span> back to the default
+string value world. In the case that the user changed the parameter externally, this ensures it is always reset back to the original.
+</p><!--l. 1--><p class="noindent" >
+
+</p>
+<pre><div id="fancyvrb287" style='padding:20px;border-radius: 3px;'><a 
+ id="x12-268016r551"></a><span id="textcolor4204">def</span><span id="textcolor4205"> </span><span id="textcolor4206">timer_callback</span><span id="textcolor4207">(</span><span id="textcolor4208">self</span><span id="textcolor4209">)</span><span id="textcolor4210">:</span> 
+<a 
+ id="x12-268018r552"></a>   <span id="textcolor4211">my_param</span> <span id="textcolor4212">=</span> <span id="textcolor4213">self</span><span id="textcolor4214">.</span><span id="textcolor4215">get_parameter</span><span id="textcolor4216">(</span><span id="textcolor4217">&#x0027;</span><span id="textcolor4218">my_parameter</span><span id="textcolor4219">&#x0027;</span><span id="textcolor4220">)</span><span id="textcolor4221">.</span><span id="textcolor4222">get_parameter_value</span><span id="textcolor4223">(</span><span id="textcolor4224">)</span><span id="textcolor4225">.</span><span id="textcolor4226">string_value</span> 
+<a 
+ id="x12-268020r553"></a> 
+<a 
+ id="x12-268022r554"></a>   <span id="textcolor4227">self</span><span id="textcolor4228">.</span><span id="textcolor4229">get_logger</span><span id="textcolor4230">(</span><span id="textcolor4231">)</span><span id="textcolor4232">.</span><span id="textcolor4233">info</span><span id="textcolor4234">(</span><span id="textcolor4235">&#x0027;</span><span id="textcolor4236">Hello </span><span id="textcolor4237">%s</span><span id="textcolor4238">!</span><span id="textcolor4239">&#x0027;</span> <span id="textcolor4240">%</span> <span id="textcolor4241">my_param</span><span id="textcolor4242">)</span> 
+<a 
+ id="x12-268024r555"></a> 
+<a 
+ id="x12-268026r556"></a>   <span id="textcolor4243">my_new_param</span> <span id="textcolor4244">=</span> <span id="textcolor4245">rclpy</span><span id="textcolor4246">.</span><span id="textcolor4247">parameter</span><span id="textcolor4248">.</span><span id="textcolor4249">Parameter</span><span id="textcolor4250">(</span> 
+<a 
+ id="x12-268028r557"></a>      <span id="textcolor4251">&#x0027;</span><span id="textcolor4252">my_parameter</span><span id="textcolor4253">&#x0027;</span><span id="textcolor4254">,</span> 
+<a 
+ id="x12-268030r558"></a>      <span id="textcolor4255">rclpy</span><span id="textcolor4256">.</span><span id="textcolor4257">Parameter</span><span id="textcolor4258">.</span><span id="textcolor4259">Type</span><span id="textcolor4260">.</span><span id="textcolor4261">STRING</span><span id="textcolor4262">,</span> 
+<a 
+ id="x12-268032r559"></a>      <span id="textcolor4263">&#x0027;</span><span id="textcolor4264">world</span><span id="textcolor4265">&#x0027;</span> 
+<a 
+ id="x12-268034r560"></a>   <span id="textcolor4266">)</span> 
+<a 
+ id="x12-268036r561"></a>   <span id="textcolor4267">all_new_parameters</span> <span id="textcolor4268">=</span> <span id="textcolor4269">[</span><span id="textcolor4270">my_new_param</span><span id="textcolor4271">]</span> 
+<a 
+ id="x12-268038r562"></a>   <span id="textcolor4272">self</span><span id="textcolor4273">.</span><span id="textcolor4274">set_parameters</span><span id="textcolor4275">(</span><span id="textcolor4276">all_new_parameters</span><span id="textcolor4277">)</span></div></pre>
+<!--l. 631--><p class="noindent" >Following the <span id="textcolor4278"><code class="verb">timer_callback</code></span> is our main. Here ROS 2 is initialized, an instance of the
+MinimalParam class is constructed, and rclpy.spin starts processing data from the node.
+</p><!--l. 1--><p class="noindent" >
+
+</p>
+<pre><div id="fancyvrb288" style='padding:20px;border-radius: 3px;'><a 
+ id="x12-268040r567"></a><span id="textcolor4279">def</span><span id="textcolor4280"> </span><span id="textcolor4281">main</span><span id="textcolor4282">(</span><span id="textcolor4283">)</span><span id="textcolor4284">:</span> 
+<a 
+ id="x12-268042r568"></a>   <span id="textcolor4285">rclpy</span><span id="textcolor4286">.</span><span id="textcolor4287">init</span><span id="textcolor4288">(</span><span id="textcolor4289">)</span> 
+<a 
+ id="x12-268044r569"></a>   <span id="textcolor4290">node</span> <span id="textcolor4291">=</span> <span id="textcolor4292">MinimalParam</span><span id="textcolor4293">(</span><span id="textcolor4294">)</span> 
+<a 
+ id="x12-268046r570"></a>   <span id="textcolor4295">rclpy</span><span id="textcolor4296">.</span><span id="textcolor4297">spin</span><span id="textcolor4298">(</span><span id="textcolor4299">node</span><span id="textcolor4300">)</span> 
+<a 
+ id="x12-268048r571"></a> 
+<a 
+ id="x12-268050r572"></a><span id="textcolor4301">if</span> <span id="textcolor4302">__name__</span> <span id="textcolor4303">==</span> <span id="textcolor4304">&#x0027;</span><span id="textcolor4305">__main__</span><span id="textcolor4306">&#x0027;</span><span id="textcolor4307">:</span> 
+<a 
+ id="x12-268052r573"></a>   <span id="textcolor4308">main</span><span id="textcolor4309">(</span><span id="textcolor4310">)</span></div></pre>
+
+                                                                                
+                                                                                
+<a 
+ id="paragraph*.118"></a>
+<!--l. 636--><p class="noindent" ><span class="paragraphHead"><a 
+ id="x12-269000"></a>(Optional)  Adding  a  Parameter  Descriptor</span>
+Optionally, you can set a descriptor for the parameter. Descriptors allow you to specify a text description of the parameter and
+its constraints, like making it read-only, specifying a range, etc. For that to work, the <span id="textcolor4311"><code class="verb">__init__</code></span> code has to be changed to:
+</p><!--l. 1--><p class="noindent" >
+
+</p>
+<pre><div id="fancyvrb289" style='padding:20px;border-radius: 3px;'><a 
+ id="x12-269002r580"></a><span id="textcolor4312"># ...</span> 
+<a 
+ id="x12-269004r581"></a> 
+<a 
+ id="x12-269006r582"></a><span id="textcolor4313">class</span><span id="textcolor4314"> </span><span id="textcolor4315">MinimalParam</span><span id="textcolor4316">(</span><span id="textcolor4317">rclpy</span><span id="textcolor4318">.</span><span id="textcolor4319">node</span><span id="textcolor4320">.</span><span id="textcolor4321">Node</span><span id="textcolor4322">)</span><span id="textcolor4323">:</span> 
+<a 
+ id="x12-269008r583"></a>   <span id="textcolor4324">def</span><span id="textcolor4325"> </span><span id="textcolor4326">__init__</span><span id="textcolor4327">(</span><span id="textcolor4328">self</span><span id="textcolor4329">)</span><span id="textcolor4330">:</span> 
+<a 
+ id="x12-269010r584"></a>      <span id="textcolor4331">super</span><span id="textcolor4332">(</span><span id="textcolor4333">)</span><span id="textcolor4334">.</span><span id="textcolor4335">__init__</span><span id="textcolor4336">(</span><span id="textcolor4337">&#x0027;</span><span id="textcolor4338">minimal_param_node</span><span id="textcolor4339">&#x0027;</span><span id="textcolor4340">)</span> 
+<a 
+ id="x12-269012r585"></a> 
+<a 
+ id="x12-269014r586"></a>      <span id="textcolor4341">from</span><span id="textcolor4342"> </span><span id="textcolor4343">rcl_interfaces</span><span id="textcolor4344">.</span><span id="textcolor4345">msg</span><span id="textcolor4346"> </span><span id="textcolor4347">import</span> <span id="textcolor4348">ParameterDescriptor</span> 
+<a 
+ id="x12-269016r587"></a>      <span id="textcolor4349">my_parameter_descriptor</span> <span id="textcolor4350">=</span> <span id="textcolor4351">ParameterDescriptor</span><span id="textcolor4352">(</span><span id="textcolor4353">description</span><span id="textcolor4354">=</span><span id="textcolor4355">&#x0027;</span><span id="textcolor4356">This parameter is mine!</span><span id="textcolor4357">&#x0027;</span><span id="textcolor4358">)</span> 
+<a 
+ id="x12-269018r588"></a> 
+<a 
+ id="x12-269020r589"></a>      <span id="textcolor4359">self</span><span id="textcolor4360">.</span><span id="textcolor4361">declare_parameter</span><span id="textcolor4362">(</span><span id="textcolor4363">&#x0027;</span><span id="textcolor4364">my_parameter</span><span id="textcolor4365">&#x0027;</span><span id="textcolor4366">,</span> <span id="textcolor4367">&#x0027;</span><span id="textcolor4368">world</span><span id="textcolor4369">&#x0027;</span><span id="textcolor4370">,</span> <span id="textcolor4371">my_parameter_descriptor</span><span id="textcolor4372">)</span> 
+<a 
+ id="x12-269022r590"></a> 
+<a 
+ id="x12-269024r591"></a>      <span id="textcolor4373">self</span><span id="textcolor4374">.</span><span id="textcolor4375">timer</span> <span id="textcolor4376">=</span> <span id="textcolor4377">self</span><span id="textcolor4378">.</span><span id="textcolor4379">create_timer</span><span id="textcolor4380">(</span><span id="textcolor4381">1</span><span id="textcolor4382">,</span> <span id="textcolor4383">self</span><span id="textcolor4384">.</span><span id="textcolor4385">timer_callback</span><span id="textcolor4386">)</span></div></pre>
+<!--l. 644--><p class="noindent" >The rest of the code remains the same. Once you run the node, you can then run ros2
+param describe <span id="textcolor4387"><code class="verb">/minimal_param_node my_parameter</code></span> to see the type and description.
+
+<a 
+ id="paragraph*.119"></a></p>
+<!--l. 647--><p class="noindent" ><span class="paragraphHead"><a 
+ id="x12-270000"></a>Adding  an  Entry  Point</span>
+Open the setup.py file. Again, match the maintainer, <span id="textcolor4388"><code class="verb">maintainer_email</code></span>, description and license fields to your package.xml:
+</p><!--l. 1--><p class="noindent" >
+
+</p>
+<pre><div id="fancyvrb290" style='padding:20px;border-radius: 3px;'><a 
+ id="x12-270002r598"></a><span id="textcolor4389">maintainer</span><span id="textcolor4390">=</span><span id="textcolor4391">&#x0027;</span><span id="textcolor4392">YourName</span><span id="textcolor4393">&#x0027;</span><span id="textcolor4394">,</span> 
+<a 
+ id="x12-270004r599"></a><span id="textcolor4395">maintainer_email</span><span id="textcolor4396">=</span><span id="textcolor4397">&#x0027;</span><span id="textcolor4398">you@email.com</span><span id="textcolor4399">&#x0027;</span><span id="textcolor4400">,</span> 
+<a 
+ id="x12-270006r600"></a><span id="textcolor4401">description</span><span id="textcolor4402">=</span><span id="textcolor4403">&#x0027;</span><span id="textcolor4404">Python parameter tutorial</span><span id="textcolor4405">&#x0027;</span><span id="textcolor4406">,</span> 
+<a 
+ id="x12-270008r601"></a><span id="textcolor4407">license</span><span id="textcolor4408">=</span><span id="textcolor4409">&#x0027;</span><span id="textcolor4410">Apache License 2.0</span><span id="textcolor4411">&#x0027;</span><span id="textcolor4412">,</span></div></pre>
+<!--l. 654--><p class="noindent" >Add the following line within the <span id="textcolor4413"><code class="verb">console_scripts</code></span> brackets of the <span id="textcolor4414"><code class="verb">entry_points</code></span> field:
+</p><!--l. 1--><p class="noindent" >
+
+</p>
+<pre><div id="fancyvrb291" style='padding:20px;border-radius: 3px;'><a 
+ id="x12-270010r607"></a><span id="textcolor4415">entry_points</span><span id="textcolor4416">=</span><span id="textcolor4417">{</span> 
+<a 
+ id="x12-270012r608"></a>   <span id="textcolor4418">&#x0027;</span><span id="textcolor4419">console_scripts</span><span id="textcolor4420">&#x0027;</span><span id="textcolor4421">:</span> <span id="textcolor4422">[</span> 
+<a 
+ id="x12-270014r609"></a>      <span id="textcolor4423">&#x0027;</span><span id="textcolor4424">minimal_param_node = python_parameters.python_parameters_node:main</span><span id="textcolor4425">&#x0027;</span><span id="textcolor4426">,</span> 
+<a 
+ id="x12-270016r610"></a>   <span id="textcolor4427">]</span><span id="textcolor4428">,</span> 
+<a 
+ id="x12-270018r611"></a><span id="textcolor4429">}</span><span id="textcolor4430">,</span></div></pre>
+
+<a 
+ id="paragraph*.120"></a>
+<!--l. 658--><p class="noindent" ><span class="paragraphHead"><a 
+ id="x12-271000"></a>Building  and  Running  the  Code</span>
+Its good practice to run rosdep in the root of your workspace (<span id="textcolor4431"><code class="verb">ros2_ws</code></span>) to check for missing dependencies before building:
+</p><!--l. 1--><p class="noindent" >
+
+</p>
+<pre><div id="fancyvrb292" style='padding:20px;border-radius: 3px;'><a 
+ id="x12-271002r621"></a>rosdep<span id="textcolor4432"> </span>install<span id="textcolor4433"> </span>-i<span id="textcolor4434"> </span>--from-path<span id="textcolor4435"> </span>src<span id="textcolor4436"> </span>--rosdistro<span id="textcolor4437"> </span>humble<span id="textcolor4438"> </span>-y</div></pre>
+<!--l. 665--><p class="noindent" >Navigate back to the root of your workspace, <span id="textcolor4439"><code class="verb">ros2_ws</code></span>, and build your new package:
+</p><!--l. 1--><p class="noindent" >
+
+</p>
+<pre><div id="fancyvrb293" style='padding:20px;border-radius: 3px;'><a 
+ id="x12-271004r626"></a>colcon<span id="textcolor4440"> </span>build<span id="textcolor4441"> </span>--packages-select<span id="textcolor4442"> </span>python_parameters</div></pre>
+<!--l. 669--><p class="noindent" >Open a new terminal, navigate to <span id="textcolor4443"><code class="verb">ros2_ws</code></span>, and source the setup files:
+</p><!--l. 1--><p class="noindent" >
+
+</p>
+<pre><div id="fancyvrb294" style='padding:20px;border-radius: 3px;'><a 
+ id="x12-271006r631"></a><span id="textcolor4444">source</span><span id="textcolor4445"> </span>install/setup.bash</div></pre>
+<!--l. 673--><p class="noindent" >Now run the node. The terminal should return Hello world! every second:
+</p><!--l. 1--><p class="noindent" >
+
+</p>
+<pre><div id="fancyvrb295" style='padding:20px;border-radius: 3px;'><a 
+ id="x12-271008r636"></a>ros2<span id="textcolor4446"> </span>run<span id="textcolor4447"> </span>python_parameters<span id="textcolor4448"> </span>minimal_param_node</div></pre>
+<div class="tcolorbox tcolorbox" id="tcolobox-103">     
+<div class="tcolorbox-content"><pre><div id="fancyvrb296" style='padding:20px;border-radius: 3px;'><a 
+ id="x12-271010r1"></a>[INFO] [parameter_node]: Hello world!</div></pre>
+ 
+</div> 
+</div>
+<!--l. 678--><p class="noindent" >Now you can see the default value of your parameter, but you want to be able to set it yourself. There are two ways to accomplish this.
+
+                                                                                
+                                                                                
+<a 
+ id="paragraph*.121"></a></p>
+<!--l. 681--><p class="noindent" ><span class="paragraphHead"><a 
+ id="x12-272000"></a>Changing  Output  using  the  Console</span>
+Make  sure  the  node  is  running:
+</p><!--l. 1--><p class="noindent" >
+
+</p>
+<pre><div id="fancyvrb297" style='padding:20px;border-radius: 3px;'><a 
+ id="x12-272002r649"></a>ros2<span id="textcolor4449"> </span>run<span id="textcolor4450"> </span>python_parameters<span id="textcolor4451"> </span>minimal_param_node</div></pre>
+<!--l. 687--><p class="noindent" >Open another terminal, source the setup files from inside <span id="textcolor4452"><code class="verb">ros2_ws</code></span> again, and enter the following line:
+</p><!--l. 1--><p class="noindent" >
+
+</p>
+<pre><div id="fancyvrb298" style='padding:20px;border-radius: 3px;'><a 
+ id="x12-272004r654"></a>ros2<span id="textcolor4453"> </span>param<span id="textcolor4454"> </span>list</div></pre>
+<!--l. 692--><p class="noindent" >There you will see the custom parameter <span id="textcolor4455"><code class="verb">my_parameter</code></span>. To change it, simply run the following line in the console:
+</p><!--l. 1--><p class="noindent" >
+
+</p>
+<pre><div id="fancyvrb299" style='padding:20px;border-radius: 3px;'><a 
+ id="x12-272006r659"></a>ros2<span id="textcolor4456"> </span>param<span id="textcolor4457"> </span><span id="textcolor4458">set</span><span id="textcolor4459"> </span>/minimal_param_node<span id="textcolor4460"> </span>my_parameter<span id="textcolor4461"> </span>earth</div></pre>
+<!--l. 697--><p class="noindent" >You know it went well if you get the output Set parameter successful. If you look at the other
+terminal, you should see the output change to <span id="textcolor4462"><code class="verb">[INFO] [minimal_param_node]: Hello earth!</code></span>
+</p><!--l. 700--><p class="noindent" >Since the node afterwards set the parameter back to world, further outputs show <span id="textcolor4463"><code class="verb">[INFO] [minimal_param_node]: Hello world!</code></span>
+
+<a 
+ id="paragraph*.122"></a></p>
+<!--l. 703--><p class="noindent" ><span class="paragraphHead"><a 
+ id="x12-273000"></a>Changing  using  the  Launch  File</span>
+You can also set parameters in a launch file, but first you will need to add a launch directory. Inside the <span id="textcolor4464"><code class="verb">ros2_ws/src/python_parameters/</code></span>
+directory, create a new directory called launch. In there, create a new file called <span id="textcolor4465"><code class="verb">python_parameters_launch.py</code></span>
+</p><!--l. 1--><p class="noindent" >
+
+</p>
+<pre><div id="fancyvrb300" style='padding:20px;border-radius: 3px;'><a 
+ id="x12-273002r666"></a><span id="textcolor4466">from</span><span id="textcolor4467"> </span><span id="textcolor4468">launch</span><span id="textcolor4469"> </span><span id="textcolor4470">import</span> <span id="textcolor4471">LaunchDescription</span> 
+<a 
+ id="x12-273004r667"></a><span id="textcolor4472">from</span><span id="textcolor4473"> </span><span id="textcolor4474">launch_ros</span><span id="textcolor4475">.</span><span id="textcolor4476">actions</span><span id="textcolor4477"> </span><span id="textcolor4478">import</span> <span id="textcolor4479">Node</span> 
+<a 
+ id="x12-273006r668"></a> 
+<a 
+ id="x12-273008r669"></a> 
+<a 
+ id="x12-273010r670"></a><span id="textcolor4480">def</span><span id="textcolor4481"> </span><span id="textcolor4482">generate_launch_description</span><span id="textcolor4483">(</span><span id="textcolor4484">)</span><span id="textcolor4485">:</span> 
+<a 
+ id="x12-273012r671"></a>   <span id="textcolor4486">return</span> <span id="textcolor4487">LaunchDescription</span><span id="textcolor4488">(</span><span id="textcolor4489">[</span> 
+<a 
+ id="x12-273014r672"></a>      <span id="textcolor4490">Node</span><span id="textcolor4491">(</span> 
+<a 
+ id="x12-273016r673"></a>         <span id="textcolor4492">package</span><span id="textcolor4493">=</span><span id="textcolor4494">&#x0027;</span><span id="textcolor4495">python_parameters</span><span id="textcolor4496">&#x0027;</span><span id="textcolor4497">,</span> 
+<a 
+ id="x12-273018r674"></a>         <span id="textcolor4498">executable</span><span id="textcolor4499">=</span><span id="textcolor4500">&#x0027;</span><span id="textcolor4501">minimal_param_node</span><span id="textcolor4502">&#x0027;</span><span id="textcolor4503">,</span> 
+<a 
+ id="x12-273020r675"></a>         <span id="textcolor4504">name</span><span id="textcolor4505">=</span><span id="textcolor4506">&#x0027;</span><span id="textcolor4507">custom_minimal_param_node</span><span id="textcolor4508">&#x0027;</span><span id="textcolor4509">,</span> 
+<a 
+ id="x12-273022r676"></a>         <span id="textcolor4510">output</span><span id="textcolor4511">=</span><span id="textcolor4512">&#x0027;</span><span id="textcolor4513">screen</span><span id="textcolor4514">&#x0027;</span><span id="textcolor4515">,</span> 
+<a 
+ id="x12-273024r677"></a>         <span id="textcolor4516">emulate_tty</span><span id="textcolor4517">=</span><span id="textcolor4518">True</span><span id="textcolor4519">,</span> 
+<a 
+ id="x12-273026r678"></a>         <span id="textcolor4520">parameters</span><span id="textcolor4521">=</span><span id="textcolor4522">[</span> 
+<a 
+ id="x12-273028r679"></a>            <span id="textcolor4523">{</span><span id="textcolor4524">&#x0027;</span><span id="textcolor4525">my_parameter</span><span id="textcolor4526">&#x0027;</span><span id="textcolor4527">:</span> <span id="textcolor4528">&#x0027;</span><span id="textcolor4529">earth</span><span id="textcolor4530">&#x0027;</span><span id="textcolor4531">}</span> 
+<a 
+ id="x12-273030r680"></a>         <span id="textcolor4532">]</span> 
+<a 
+ id="x12-273032r681"></a>      <span id="textcolor4533">)</span> 
+<a 
+ id="x12-273034r682"></a>   <span id="textcolor4534">]</span><span id="textcolor4535">)</span></div></pre>
+<!--l. 711--><p class="noindent" >Here you can see that we set <span id="textcolor4536"><code class="verb">my_parameter</code></span> to earth when we launch our node <span id="textcolor4537"><code class="verb">parameter_node</code></span>.
+By adding the two lines below, we ensure our output is printed in our console.
+</p><!--l. 1--><p class="noindent" >
+
+</p>
+<pre><div id="fancyvrb301" style='padding:20px;border-radius: 3px;'><a 
+ id="x12-273036r687"></a><span id="textcolor4538">output</span><span id="textcolor4539">=</span><span id="textcolor4540">"screen"</span>, 
+<a 
+ id="x12-273038r688"></a><span id="textcolor4541">emulate_tty</span><span id="textcolor4542">=</span>True,</div></pre>
+<!--l. 717--><p class="noindent" >Now open the setup.py file. Add the import statements to the top of the file, and the other new statement to the <span id="textcolor4543"><code class="verb">data_files</code></span> parameter to include all launch files:
+</p><!--l. 1--><p class="noindent" >
+
+</p>
+<pre><div id="fancyvrb302" style='padding:20px;border-radius: 3px;'><a 
+ id="x12-273040r693"></a>import<span id="textcolor4544"> </span>os 
+<a 
+ id="x12-273042r694"></a>from<span id="textcolor4545"> </span>glob<span id="textcolor4546"> </span>import<span id="textcolor4547"> </span>glob 
+<a 
+ id="x12-273044r695"></a><span id="textcolor4548"># ...</span> 
+<a 
+ id="x12-273046r696"></a> 
+<a 
+ id="x12-273048r697"></a>setup<span id="textcolor4549">(</span> 
+<a 
+ id="x12-273050r698"></a><span id="textcolor4550"> </span><span id="textcolor4551"># ...</span> 
+<a 
+ id="x12-273052r699"></a><span id="textcolor4552"> </span><span id="textcolor4553">data_files</span><span id="textcolor4554">=</span><span id="textcolor4555">[</span> 
+<a 
+ id="x12-273054r700"></a><span id="textcolor4556">    </span><span id="textcolor4557"># ...</span> 
+<a 
+ id="x12-273056r701"></a><span id="textcolor4558">    </span><span id="textcolor4559">(</span>os.path.join<span id="textcolor4560">(</span><span id="textcolor4561">&#x0027;share&#x0027;</span>,<span id="textcolor4562"> </span>package_name,<span id="textcolor4563"> </span><span id="textcolor4564">&#x0027;launch&#x0027;</span><span id="textcolor4565">)</span>,<span id="textcolor4566"> </span>glob<span id="textcolor4567">(</span><span id="textcolor4568">&#x0027;launch/*&#x0027;</span><span id="textcolor4569">)</span><span id="textcolor4570">)</span>, 
+<a 
+ id="x12-273058r702"></a><span id="textcolor4571">   </span><span id="textcolor4572">]</span> 
+<a 
+ id="x12-273060r703"></a><span id="textcolor4573"> </span><span id="textcolor4574">)</span></div></pre>
+<!--l. 722--><p class="noindent" >Open a console and navigate to the root of your workspace, <span id="textcolor4575"><code class="verb">ros2_ws</code></span>, and build your new package:
+</p><!--l. 1--><p class="noindent" >
+
+</p>
+<pre><div id="fancyvrb303" style='padding:20px;border-radius: 3px;'><a 
+ id="x12-273062r709"></a>colcon<span id="textcolor4576"> </span>build<span id="textcolor4577"> </span>--packages-select<span id="textcolor4578"> </span>python_parameters</div></pre>
+<!--l. 727--><p class="noindent" >Then  source  the  setup  files  in  a  new  terminal:
+</p><!--l. 1--><p class="noindent" >
+
+</p>
+<pre><div id="fancyvrb304" style='padding:20px;border-radius: 3px;'><a 
+ id="x12-273064r714"></a><span id="textcolor4579">source</span><span id="textcolor4580"> </span>install/setup.bash</div></pre>
+<!--l. 731--><p class="noindent" >Now run the node using the launch file we have just created. The terminal should return the following message the first time:
+</p><!--l. 1--><p class="noindent" >
+
+</p>
+<pre><div id="fancyvrb305" style='padding:20px;border-radius: 3px;'><a 
+ id="x12-273066r719"></a>ros2<span id="textcolor4581"> </span>launch<span id="textcolor4582"> </span>python_parameters<span id="textcolor4583"> </span>python_parameters_launch.py</div></pre>
+<div class="tcolorbox tcolorbox" id="tcolobox-104">     
+<div class="tcolorbox-content"><pre><div id="fancyvrb306" style='padding:20px;border-radius: 3px;'><a 
+ id="x12-273068r1"></a>[INFO] [custom_minimal_param_node]: Hello earth!</div></pre>
+ 
+</div> 
+</div>
+<!--l. 736--><p class="noindent" >Further outputs should show <span id="textcolor4584"><code class="verb">[INFO] [minimal_param_node]: Hello world!</code></span> every second.
+                                                                                
+                                                                                
+</p><!--l. 738--><p class="noindent" >
+</p>
+<h3 class="sectionHead"><span class="titlemark">10.8</span>  <a 
+ id="x12-27400010.8"></a>Managing  Dependencies</h3>
+
+<h4 class="subsectionHead"><span class="titlemark">10.8.1</span>  <a 
+ id="x12-27500010.8.1"></a>Explaining  Rosdep</h4>
+<!--l. 742--><p class="noindent" >rosdep is a dependency management utility that can work with packages and external libraries. It is a
+command-line utility for identifying and installing dependencies to build or install a package. rosdep is not a
+package manager in its own right; it is a meta-package manager that uses its own knowledge of the system
+and the dependencies to find the appropriate package to install on a particular platform. The actual
+installation is done using the system package manager (e.g. apt on Debian/Ubuntu, dnf on Fedora/RHEL, etc).
+</p><!--l. 749--><p class="noindent" >It is most often invoked before building a workspace, where it is used to install the dependencies of the packages within that workspace.
+</p><!--l. 752--><p class="noindent" >It has the ability to work over a single package or over a directory of packages (e.g. workspace).
+</p>
+<div class="warning">
+<!--l. 760--><p class="noindent" >While the name suggests it is for ROS, rosdep is semi-agnostic to ROS. You can utilize this powerful tool in
+non-ROS software projects by installing it as a standalone Python package. Successfully running rosdep relies on
+rosdep keys to be available, which can be downloaded from a public git repository with a few simple commands. </p></div>
+
+<h4 class="subsectionHead"><span class="titlemark">10.8.2</span>  <a 
+ id="x12-27600010.8.2"></a>Explaining  Pacakge  Manifesto</h4>
+<!--l. 764--><p class="noindent" >The package.xml is the file in your software where rosdep finds the set of dependencies. It is important that
+the list of dependencies in the package.xml is complete and correct, which allows all of the tooling to determine
+the packages dependencies. Missing or incorrect dependencies can lead to users not being able to use your
+package, to packages in a workspace being built out-of-order, and to packages not being able to be released.
+</p><!--l. 770--><p class="noindent" >The dependencies in the package.xml file are generally referred to as rosdep keys. These dependencies are manually populated in the
+package.xml file by the packages creators and should be an exhaustive list of any non-builtin libraries and packages it requires.
+</p><!--l. 774--><p class="noindent" >These are represented in the following tags (see REP-149 for the full specification):
+</p>     
+<dl class="description"><dt class="description">
+<span id="textcolor4585"><code class="verb"><depend></code></span> 
+</dt><dd 
+class="description">
+<!--l. 777--><p class="noindent" >     
+These
+are
+dependencies
+that
+should
+be
+provided
+at
+both
+build
+time
+and
+run
+time
+for
+your
+package.
+For
+C++
+packages,
+if
+in
+doubt,
+use
+this
+tag.
+                                                                                
+                                                                                
+     
+Pure
+Python
+packages
+generally
+dont
+have
+a
+build
+phase,
+so
+should
+never
+use
+this
+and
+should
+use
+<span id="textcolor4586"><code class="verb">&lt;exec_depend&gt;</code></span>
+instead.
+</p>     
+</dd>
+<dt class="description">
+<span id="textcolor4587"><code class="verb"><build_depend></code></span> 
+</dt><dd 
+class="description">
+<!--l. 781--><p class="noindent" >     
+If
+you
+only
+use
+a
+particular
+dependency
+for
+building
+your
+package,
+and
+not
+at
+execution
+time,
+you
+can
+use
+the
+<span id="textcolor4588"><code class="verb">&lt;build_depend&gt;</code></span>
+tag.
+</p>     
+<!--l. 784--><p class="noindent" >With
+this
+type
+of
+dependency,
+an
+installed
+binary
+of
+your
+package
+does
+not
+require
+that
+particular
+package
+to
+be
+installed.
+                                                                                
+                                                                                
+     
+</p>
+<!--l. 787--><p class="noindent" >However,
+that
+can
+create
+a
+problem
+if
+your
+package
+exports
+a
+header
+that
+includes
+a
+header
+from
+this
+dependency.
+In
+that
+case
+you
+also
+need
+a
+<span id="textcolor4589"><code class="verb">&lt;build_export_depend&gt;</code></span>.</p></dd></dl>
+                                                                                
+                                                                                
+<!--l. 791--><p class="noindent" >
+</p>
+<h3 class="sectionHead"><span class="titlemark">10.9</span>  <a 
+ id="x12-27700010.9"></a>Creating  an  Action</h3>
+<!--l. 793--><p class="noindent" >You learned about actions previously in the Understanding actions tutorial. Like the other communication types and their
+respective interfaces (topics/msg and services/srv), you can also custom-define actions in your packages. This tutorial shows you
+how to define and build an action that you can use with the action server and action client you will write in the next tutorial.
+</p><!--l. 799--><p class="noindent" >Before we start, let’s setup everything and make sure the requisites are in order:
+</p><!--l. 1--><p class="noindent" >
+
+</p>
+<pre><div id="fancyvrb307" style='padding:20px;border-radius: 3px;'><a 
+ id="x12-277002r734"></a>mkdir<span id="textcolor4590"> </span>-p<span id="textcolor4591"> </span>ros2_ws/src<span id="textcolor4592"> </span><span id="textcolor4593"># you can reuse an existing workspace </span> 
+<a 
+ id="x12-277004r735"></a><span id="textcolor4594">cd</span><span id="textcolor4595"> </span>ros2_ws/src 
+<a 
+ id="x12-277006r736"></a>ros2<span id="textcolor4596"> </span>pkg<span id="textcolor4597"> </span>create<span id="textcolor4598"> </span>action_tutorials_interfaces</div></pre>
+
+<a 
+ id="paragraph*.123"></a>
+<!--l. 803--><p class="noindent" ><span class="paragraphHead"><a 
+ id="x12-278000"></a>Defining  an  Action</span>
+Actions  are  defined  in  <span id="textcolor4599"><code class="verb">.action</code></span> files  of  the  form:
+</p><!--l. 1--><p class="noindent" >
+
+</p>
+<pre><div id="fancyvrb308" style='padding:20px;border-radius: 3px;'><a 
+ id="x12-278002r741"></a># Request 
+<a 
+ id="x12-278004r742"></a>--- 
+<a 
+ id="x12-278006r743"></a># Result 
+<a 
+ id="x12-278008r744"></a>--- 
+<a 
+ id="x12-278010r745"></a># Feedback</div></pre>
+<!--l. 809--><p class="noindent" >An action definition is made up of three message definitions separated by <span id="textcolor4600"><code class="verb">---</code></span>.
+</p><!--l. 811--><p class="noindent" >A request message is sent from an action client to an action server initiating a new goal.
+</p><!--l. 813--><p class="noindent" >A result message is sent from an action server to an action client when a goal is done.
+</p><!--l. 815--><p class="noindent" >Feedback messages are periodically sent from an action server to an action client with updates about a goal.
+</p><!--l. 818--><p class="noindent" >An instance of an action is typically referred to as a goal.
+</p><!--l. 820--><p class="noindent" >Say we want to define a new action Fibonacci for computing the Fibonacci sequence.
+</p><!--l. 822--><p class="noindent" >Create an action directory in our ROS 2 package <span id="textcolor4601"><code class="verb">action_tutorials_interfaces</code></span>:
+</p><!--l. 1--><p class="noindent" >
+
+</p>
+<pre><div id="fancyvrb309" style='padding:20px;border-radius: 3px;'><a 
+ id="x12-278012r750"></a><span id="textcolor4602">cd</span><span id="textcolor4603"> </span>action_tutorials_interfaces 
+<a 
+ id="x12-278014r751"></a>mkdir<span id="textcolor4604"> </span>action</div></pre>
+<!--l. 826--><p class="noindent" >Within the action directory, create a file called Fibonacci.action with the following contents:
+</p><!--l. 1--><p class="noindent" >
+
+</p>
+<pre><div id="fancyvrb310" style='padding:20px;border-radius: 3px;'><a 
+ id="x12-278016r756"></a>int32 order 
+<a 
+ id="x12-278018r757"></a>--- 
+<a 
+ id="x12-278020r758"></a>int32[] sequence 
+<a 
+ id="x12-278022r759"></a>--- 
+<a 
+ id="x12-278024r760"></a>int32[] partial_sequence</div></pre>
+<!--l. 830--><p class="noindent" >The goal request is the order of the Fibonacci sequence we want to compute, the
+result is the final sequence, and the feedback is the <span id="textcolor4605"><code class="verb">partial_sequence</code></span> computed so far.
+
+<a 
+ id="paragraph*.124"></a></p>
+<!--l. 832--><p class="noindent" ><span class="paragraphHead"><a 
+ id="x12-279000"></a>Building  an  Action</span>
+Before we can use the new Fibonacci action type in our code, we must pass the definition to the rosidl code generation pipeline.
+</p><!--l. 837--><p class="noindent" >This is accomplished by adding the following lines to our CMakeLists.txt before the <span id="textcolor4606"><code class="verb">ament_package()</code></span> line, in the <span id="textcolor4607"><code class="verb">action_tutorials_interfaces</code></span>:
+</p><!--l. 1--><p class="noindent" >
+
+</p>
+<pre><div id="fancyvrb311" style='padding:20px;border-radius: 3px;'><a 
+ id="x12-279002r767"></a><span id="textcolor4608">find_package</span><span id="textcolor4609">(</span><span id="textcolor4610">rosidl_default_generators</span><span id="textcolor4611"> </span><span id="textcolor4612">REQUIRED</span><span id="textcolor4613">)</span> 
+<a 
+ id="x12-279004r768"></a> 
+<a 
+ id="x12-279006r769"></a><span id="textcolor4614">rosidl_generate_interfaces</span><span id="textcolor4615">(</span><span id="textcolor4616">${</span><span id="textcolor4617">PROJECT_NAME</span><span id="textcolor4618">}</span> 
+<a 
+ id="x12-279008r770"></a><span id="textcolor4619"> </span><span id="textcolor4620">"action/Fibonacci.action"</span> 
+<a 
+ id="x12-279010r771"></a><span id="textcolor4621">)</span></div></pre>
+<!--l. 842--><p class="noindent" >We should also add the required dependencies to our package.xml:
+</p><!--l. 1--><p class="noindent" >
+
+</p>
+<pre><div id="fancyvrb312" style='padding:20px;border-radius: 3px;'><a 
+ id="x12-279012r776"></a><span id="textcolor4622">&lt;buildtool_depend</span><span id="textcolor4623">&gt;</span>rosidl_default_generators<span id="textcolor4624">&lt;/buildtool_depend&gt;</span> 
+<a 
+ id="x12-279014r777"></a><span id="textcolor4625">&lt;depend</span><span id="textcolor4626">&gt;</span>action_msgs<span id="textcolor4627">&lt;/depend&gt;</span> 
+<a 
+ id="x12-279016r778"></a><span id="textcolor4628">&lt;member_of_group</span><span id="textcolor4629">&gt;</span>rosidl_interface_packages<span id="textcolor4630">&lt;/member_of_group&gt;</span></div></pre>
+<!--l. 846--><p class="noindent" >Note, we need to depend on <span id="textcolor4631"><code class="verb">action_msgs</code></span> since action definitions include additional metadata (e.g. goal IDs).
+</p><!--l. 849--><p class="noindent" >We should now be able to build the package containing the Fibonacci action definition:
+</p><!--l. 1--><p class="noindent" >
+
+</p>
+<pre><div id="fancyvrb313" style='padding:20px;border-radius: 3px;'><a 
+ id="x12-279018r783"></a><span id="textcolor4632">cd</span><span id="textcolor4633"> </span>~/ros2_ws<span id="textcolor4634"> </span><span id="textcolor4635"># Change to the root of the workspace</span> 
+<a 
+ id="x12-279020r784"></a>colcon<span id="textcolor4636"> </span>build<span id="textcolor4637"> </span><span id="textcolor4638"># Build</span></div></pre>
+                                                                                
+                                                                                
+<!--l. 853--><p class="noindent" >Were  done!
+</p><!--l. 855--><p class="noindent" >By convention, action types will be prefixed by their package name and the word action. So when we want
+to refer to our new action, it will have the full name <span id="textcolor4639"><code class="verb">action_tutorials_interfaces/action/Fibonacci</code></span>.
+</p><!--l. 857--><p class="noindent" >We can check that our action built successfully with the command line tool:
+</p><!--l. 1--><p class="noindent" >
+
+</p>
+<pre><div id="fancyvrb314" style='padding:20px;border-radius: 3px;'><a 
+ id="x12-279022r789"></a>.<span id="textcolor4640"> </span>install/setup.bash<span id="textcolor4641">  </span><span id="textcolor4642"># Source our workspace.</span> 
+<a 
+ id="x12-279024r790"></a><span id="textcolor4643"># Check that our action definition exists</span> 
+<a 
+ id="x12-279026r791"></a>ros2<span id="textcolor4644"> </span>interface<span id="textcolor4645"> </span>show<span id="textcolor4646"> </span>action_tutorials_interfaces/action/Fibonacci<span id="textcolor4647">  </span></div></pre>
+<!--l. 861--><p class="noindent" >You should see the Fibonacci action definition printed to the screen.
+                                                                                
+                                                                                
+</p><!--l. 863--><p class="noindent" >
+</p>
+<h3 class="sectionHead"><span class="titlemark">10.10</span>  <a 
+ id="x12-28000010.10"></a>Writing  an  Action  Server  and  Client</h3>
+<!--l. 865--><p class="noindent" >Actions are a form of asynchronous communication in ROS 2. Action clients send goal
+requests to action servers. Action servers send goal feedback and results to action clients.
+
+<a 
+ id="paragraph*.125"></a></p>
+<!--l. 868--><p class="noindent" ><span class="paragraphHead"><a 
+ id="x12-281000"></a>Writing  an  Action  Server</span>
+Lets focus on writing an action server that computes the Fibonacci sequence using the action we created in the Creating an action tutorial.
+</p><!--l. 873--><p class="noindent" >Until now, youve created packages and used ros2 run to run your nodes. To keep things simple in this tutorial, however, well scope the
+action server to a single file. If youd like to see what a complete package for the actions tutorials looks like, check out <span id="textcolor4648"><code class="verb">action_tutorials</code></span>.
+</p><!--l. 878--><p class="noindent" >Open a new file in your home directory, lets call it <span id="textcolor4649"><code class="verb">fibonacci_action_server.py</code></span>, and add the following code:
+</p><!--l. 1--><p class="noindent" >
+
+</p>
+<pre><div id="fancyvrb315" style='padding:20px;border-radius: 3px;'><a 
+ id="x12-281002r802"></a><span id="textcolor4650">import</span><span id="textcolor4651"> </span><span id="textcolor4652">rclpy</span> 
+<a 
+ id="x12-281004r803"></a><span id="textcolor4653">from</span><span id="textcolor4654"> </span><span id="textcolor4655">rclpy</span><span id="textcolor4656">.</span><span id="textcolor4657">action</span><span id="textcolor4658"> </span><span id="textcolor4659">import</span> <span id="textcolor4660">ActionServer</span> 
+<a 
+ id="x12-281006r804"></a><span id="textcolor4661">from</span><span id="textcolor4662"> </span><span id="textcolor4663">rclpy</span><span id="textcolor4664">.</span><span id="textcolor4665">node</span><span id="textcolor4666"> </span><span id="textcolor4667">import</span> <span id="textcolor4668">Node</span> 
+<a 
+ id="x12-281008r805"></a> 
+<a 
+ id="x12-281010r806"></a><span id="textcolor4669">from</span><span id="textcolor4670"> </span><span id="textcolor4671">action_tutorials_interfaces</span><span id="textcolor4672">.</span><span id="textcolor4673">action</span><span id="textcolor4674"> </span><span id="textcolor4675">import</span> <span id="textcolor4676">Fibonacci</span> 
+<a 
+ id="x12-281012r807"></a> 
+<a 
+ id="x12-281014r808"></a> 
+<a 
+ id="x12-281016r809"></a><span id="textcolor4677">class</span><span id="textcolor4678"> </span><span id="textcolor4679">FibonacciActionServer</span><span id="textcolor4680">(</span><span id="textcolor4681">Node</span><span id="textcolor4682">)</span><span id="textcolor4683">:</span> 
+<a 
+ id="x12-281018r810"></a> 
+<a 
+ id="x12-281020r811"></a>   <span id="textcolor4684">def</span><span id="textcolor4685"> </span><span id="textcolor4686">__init__</span><span id="textcolor4687">(</span><span id="textcolor4688">self</span><span id="textcolor4689">)</span><span id="textcolor4690">:</span> 
+<a 
+ id="x12-281022r812"></a>      <span id="textcolor4691">super</span><span id="textcolor4692">(</span><span id="textcolor4693">)</span><span id="textcolor4694">.</span><span id="textcolor4695">__init__</span><span id="textcolor4696">(</span><span id="textcolor4697">&#x0027;</span><span id="textcolor4698">fibonacci_action_server</span><span id="textcolor4699">&#x0027;</span><span id="textcolor4700">)</span> 
+<a 
+ id="x12-281024r813"></a>      <span id="textcolor4701">self</span><span id="textcolor4702">.</span><span id="textcolor4703">_action_server</span> <span id="textcolor4704">=</span> <span id="textcolor4705">ActionServer</span><span id="textcolor4706">(</span> 
+<a 
+ id="x12-281026r814"></a>         <span id="textcolor4707">self</span><span id="textcolor4708">,</span> 
+<a 
+ id="x12-281028r815"></a>         <span id="textcolor4709">Fibonacci</span><span id="textcolor4710">,</span> 
+<a 
+ id="x12-281030r816"></a>         <span id="textcolor4711">&#x0027;</span><span id="textcolor4712">fibonacci</span><span id="textcolor4713">&#x0027;</span><span id="textcolor4714">,</span> 
+<a 
+ id="x12-281032r817"></a>         <span id="textcolor4715">self</span><span id="textcolor4716">.</span><span id="textcolor4717">execute_callback</span><span id="textcolor4718">)</span> 
+<a 
+ id="x12-281034r818"></a> 
+<a 
+ id="x12-281036r819"></a>   <span id="textcolor4719">def</span><span id="textcolor4720"> </span><span id="textcolor4721">execute_callback</span><span id="textcolor4722">(</span><span id="textcolor4723">self</span><span id="textcolor4724">,</span> <span id="textcolor4725">goal_handle</span><span id="textcolor4726">)</span><span id="textcolor4727">:</span> 
+<a 
+ id="x12-281038r820"></a>      <span id="textcolor4728">self</span><span id="textcolor4729">.</span><span id="textcolor4730">get_logger</span><span id="textcolor4731">(</span><span id="textcolor4732">)</span><span id="textcolor4733">.</span><span id="textcolor4734">info</span><span id="textcolor4735">(</span><span id="textcolor4736">&#x0027;</span><span id="textcolor4737">Executing goal...</span><span id="textcolor4738">&#x0027;</span><span id="textcolor4739">)</span> 
+<a 
+ id="x12-281040r821"></a>      <span id="textcolor4740">result</span> <span id="textcolor4741">=</span> <span id="textcolor4742">Fibonacci</span><span id="textcolor4743">.</span><span id="textcolor4744">Result</span><span id="textcolor4745">(</span><span id="textcolor4746">)</span> 
+<a 
+ id="x12-281042r822"></a>      <span id="textcolor4747">return</span> <span id="textcolor4748">result</span> 
+<a 
+ id="x12-281044r823"></a> 
+<a 
+ id="x12-281046r824"></a> 
+<a 
+ id="x12-281048r825"></a><span id="textcolor4749">def</span><span id="textcolor4750"> </span><span id="textcolor4751">main</span><span id="textcolor4752">(</span><span id="textcolor4753">args</span><span id="textcolor4754">=</span><span id="textcolor4755">None</span><span id="textcolor4756">)</span><span id="textcolor4757">:</span> 
+<a 
+ id="x12-281050r826"></a>   <span id="textcolor4758">rclpy</span><span id="textcolor4759">.</span><span id="textcolor4760">init</span><span id="textcolor4761">(</span><span id="textcolor4762">args</span><span id="textcolor4763">=</span><span id="textcolor4764">args</span><span id="textcolor4765">)</span> 
+<a 
+ id="x12-281052r827"></a> 
+<a 
+ id="x12-281054r828"></a>   <span id="textcolor4766">fibonacci_action_server</span> <span id="textcolor4767">=</span> <span id="textcolor4768">FibonacciActionServer</span><span id="textcolor4769">(</span><span id="textcolor4770">)</span> 
+<a 
+ id="x12-281056r829"></a> 
+<a 
+ id="x12-281058r830"></a>   <span id="textcolor4771">rclpy</span><span id="textcolor4772">.</span><span id="textcolor4773">spin</span><span id="textcolor4774">(</span><span id="textcolor4775">fibonacci_action_server</span><span id="textcolor4776">)</span> 
+<a 
+ id="x12-281060r831"></a> 
+<a 
+ id="x12-281062r832"></a> 
+<a 
+ id="x12-281064r833"></a><span id="textcolor4777">if</span> <span id="textcolor4778">__name__</span> <span id="textcolor4779">==</span> <span id="textcolor4780">&#x0027;</span><span id="textcolor4781">__main__</span><span id="textcolor4782">&#x0027;</span><span id="textcolor4783">:</span> 
+<a 
+ id="x12-281066r834"></a>   <span id="textcolor4784">main</span><span id="textcolor4785">(</span><span id="textcolor4786">)</span></div></pre>
+</article></div>
+</article></div>
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+<!--l. 1--><p class="noindent" >
+                                                                                
+                                                                                
+</p><!--l. 1--><p class="noindent" ><a 
+ id="likesection.126"></a><a 
+ id="x12-281067x"></a>
+                                                                                
+                                                                                
+</p>
+<!--l. 1--><div class="crosslinks"><p class="noindent"><a 
+href="MobileRoboticsLectureBookli2.html" >NEXT</a><a 
+href="MobileRoboticsLectureBookch9.html" >PREV</a><a 
+href="index.html" >TOP</a></p></div>
+<!--l. 1--><p class="noindent" ><a 
+ id="tailMobileRoboticsLectureBookch10.html"></a></p> 
+</body> 
+</html>

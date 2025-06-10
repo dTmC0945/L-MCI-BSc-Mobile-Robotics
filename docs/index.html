@@ -1,205 +1,1127 @@
-<!DOCTYPE html> 
-<html lang="en-US" xml:lang="en-US" > 
-<head>
-<title></title> 
-<meta  charset="utf-8" /> 
-<meta name="generator" content="TeX4ht (https://tug.org/tex4ht/)" /> 
-<meta name="viewport" content="width=device-width,initial-scale=1" /> 
-<link rel="stylesheet" type="text/css" href="MobileRoboticsLectureBook.css" /> 
-<meta name="src" content="MobileRoboticsLectureBook.tex" /> 
- <script type="text/javascript" id="MathJax-script" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/mml-chtml.js"></script>  
- <link rel="stylesheet" type="text/css" href="flatweb.css"> 
- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script> 
- <script src="flatjs.js"></script> <link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@11.3.1/styles/stackoverflow-light.min.css" /> 
- <script src="https://unpkg.com/@highlightjs/cdn-assets@11.3.1/highlight.min.js"></script> 
- <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/cpp.min.js"></script> 
- <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/makefile.min.js"></script> 
- </script><script src="https://unpkg.com/highlightjs-copy/dist/highlightjs-copy.min.js"></script> 
- <link rel="stylesheet" href="https://unpkg.com/highlightjs-copy/dist/highlightjs-copy.min.css"/> 
- <script src="flatjs.js"></script> <header> 
- </header> 
- </head><body 
->                                                                       
-                                                                                
-                                                                                
-                                                                                
-<!--l. 43--><p class="noindent" ><a 
- id="chapter*.1"></a>
-</p>
-<div class="tableofcontents">
-<span class="chapterToc" >1 <a 
-href="MobileRoboticsLectureBookch1.html#x3-20001" id="QQ2-3-2">Mobile Robot Localisation</a></span>
-<br /><span class="sectionToc" >1.1  <a 
-href="MobileRoboticsLectureBookch1.html#x3-30001.1" id="QQ2-3-3">Introduction</a></span>
-<br /><span class="sectionToc" >1.2  <a 
-href="MobileRoboticsLectureBookch1.html#x3-40001.2" id="QQ2-3-6">The problems of Noise and Aliasing</a></span>
-<br /><span class="sectionToc" >1.3  <a 
-href="MobileRoboticsLectureBookch1.html#x3-80001.3" id="QQ2-3-10">Localisation v. Hard-Coded Navigation</a></span>
-<br /><span class="sectionToc" >1.4  <a 
-href="MobileRoboticsLectureBookch1.html#x3-90001.4" id="QQ2-3-15">Representing Belief</a></span>
-<br /><span class="sectionToc" >1.5  <a 
-href="MobileRoboticsLectureBookch1.html#x3-120001.5" id="QQ2-3-19">Representing Maps</a></span>
-<br /><span class="sectionToc" >1.6  <a 
-href="MobileRoboticsLectureBookch1.html#x3-160001.6" id="QQ2-3-26">Probabilistic Map-Based Localisation</a></span>
-<br /><span class="sectionToc" >1.7  <a 
-href="MobileRoboticsLectureBookch1.html#x3-240001.7" id="QQ2-3-36">Other Examples of Localisation Methods</a></span>
-<br /><span class="sectionToc" >1.8  <a 
-href="MobileRoboticsLectureBookch1.html#x3-290001.8" id="QQ2-3-43">Building Maps</a></span>
-<br /><span class="chapterToc" >2 <a 
-href="MobileRoboticsLectureBookch2.html#x4-340002" id="QQ2-4-52">Welcome to Linux</a></span>
-<br /><span class="sectionToc" >2.1  <a 
-href="MobileRoboticsLectureBookch2.html#x4-350002.1" id="QQ2-4-53">Learning the Linux Command Line</a></span>
-<br /><span class="sectionToc" >2.2  <a 
-href="MobileRoboticsLectureBookch2.html#x4-420002.2" id="QQ2-4-65">Installation</a></span>
-<br /><span class="sectionToc" >2.3  <a 
-href="MobileRoboticsLectureBookch2.html#x4-430002.3" id="QQ2-4-66">Docker</a></span>
-<br /><span class="chapterToc" >3 <a 
-href="MobileRoboticsLectureBookch3.html#x5-460003" id="QQ2-5-70">Command Line Fundamentals</a></span>
-<br /><span class="sectionToc" >3.1  <a 
-href="MobileRoboticsLectureBookch3.html#x5-470003.1" id="QQ2-5-71">Introduction</a></span>
-<br /><span class="sectionToc" >3.2  <a 
-href="MobileRoboticsLectureBookch3.html#x5-480003.2" id="QQ2-5-73">The Structure of Commands</a></span>
-<br /><span class="sectionToc" >3.3  <a 
-href="MobileRoboticsLectureBookch3.html#x5-500003.3" id="QQ2-5-76">Helpful Keyboard Shortcuts for the Terminal</a></span>
-<br /><span class="sectionToc" >3.4  <a 
-href="MobileRoboticsLectureBookch3.html#x5-510003.4" id="QQ2-5-77">When you need help with Commands</a></span>
-<br /><span class="sectionToc" >3.5  <a 
-href="MobileRoboticsLectureBookch3.html#x5-520003.5" id="QQ2-5-78">Additional Information</a></span>
-<br /><span class="chapterToc" >4 <a 
-href="MobileRoboticsLectureBookch4.html#x6-560004" id="QQ2-6-82">Working with Files and Folders</a></span>
-<br /><span class="sectionToc" >4.1  <a 
-href="MobileRoboticsLectureBookch4.html#x6-570004.1" id="QQ2-6-83">Introduction</a></span>
-<br /><span class="sectionToc" >4.2  <a 
-href="MobileRoboticsLectureBookch4.html#x6-580004.2" id="QQ2-6-84">A Detailed Look in ls Command</a></span>
-<br /><span class="sectionToc" >4.3  <a 
-href="MobileRoboticsLectureBookch4.html#x6-590004.3" id="QQ2-6-85">Creating and Removing Folders</a></span>
-<br /><span class="sectionToc" >4.4  <a 
-href="MobileRoboticsLectureBookch4.html#x6-600004.4" id="QQ2-6-86">Move, Copy and Delete Files and Folders</a></span>
-<br /><span class="sectionToc" >4.5  <a 
-href="MobileRoboticsLectureBookch4.html#x6-610004.5" id="QQ2-6-87">Role to Users and sudo</a></span>
-<br /><span class="sectionToc" >4.6  <a 
-href="MobileRoboticsLectureBookch4.html#x6-620004.6" id="QQ2-6-89">File Permissions</a></span>
-<br /><span class="sectionToc" >4.7  <a 
-href="MobileRoboticsLectureBookch4.html#x6-650004.7" id="QQ2-6-94">Hard and Symbolic Links</a></span>
-<br /><span class="sectionToc" >4.8  <a 
-href="MobileRoboticsLectureBookch4.html#x6-680004.8" id="QQ2-6-97">The Linux File System</a></span>
-<br /><span class="sectionToc" >4.9  <a 
-href="MobileRoboticsLectureBookch4.html#x6-690004.9" id="QQ2-6-98">Common Command-Line Tools and Tasks</a></span>
-<br /><span class="sectionToc" >4.10  <a 
-href="MobileRoboticsLectureBookch4.html#x6-730004.10" id="QQ2-6-103">Advanced Topics</a></span>
-<br /><span class="chapterToc" >5 <a 
-href="MobileRoboticsLectureBookch5.html#x7-760005" id="QQ2-7-106">Installation</a></span>
-<br /><span class="sectionToc" >5.1  <a 
-href="MobileRoboticsLectureBookch5.html#x7-770005.1" id="QQ2-7-107">ROS 2 Humble Hawksbill</a></span>
-<br /><span class="sectionToc" >5.2  <a 
-href="MobileRoboticsLectureBookch5.html#x7-830005.2" id="QQ2-7-113">Auto-Install Script</a></span>
-<br /><span class="chapterToc" >6 <a 
-href="MobileRoboticsLectureBookch6.html#x8-840006" id="QQ2-8-114">ROS Concepts</a></span>
-<br /><span class="sectionToc" >6.1  <a 
-href="MobileRoboticsLectureBookch6.html#x8-850006.1" id="QQ2-8-115">Introduction</a></span>
-<br /><span class="sectionToc" >6.2  <a 
-href="MobileRoboticsLectureBookch6.html#x8-860006.2" id="QQ2-8-116">Publisher and Subscriber Architecture</a></span>
-<br /><span class="sectionToc" >6.3  <a 
-href="MobileRoboticsLectureBookch6.html#x8-870006.3" id="QQ2-8-117">Nodes - The Building Blocks</a></span>
-<br /><span class="sectionToc" >6.4  <a 
-href="MobileRoboticsLectureBookch6.html#x8-880006.4" id="QQ2-8-118">The Discovery Process</a></span>
-                                                                                
-                                                                                
-<br /><span class="sectionToc" >6.5  <a 
-href="MobileRoboticsLectureBookch6.html#x8-890006.5" id="QQ2-8-119">Communication Between Nodes</a></span>
-<br /><span class="sectionToc" >6.6  <a 
-href="MobileRoboticsLectureBookch6.html#x8-990006.6" id="QQ2-8-129">Topics</a></span>
-<br /><span class="sectionToc" >6.7  <a 
-href="MobileRoboticsLectureBookch6.html#x8-1030006.7" id="QQ2-8-133">Services</a></span>
-<br /><span class="sectionToc" >6.8  <a 
-href="MobileRoboticsLectureBookch6.html#x8-1060006.8" id="QQ2-8-136">Actions</a></span>
-<br /><span class="sectionToc" >6.9  <a 
-href="MobileRoboticsLectureBookch6.html#x8-1090006.9" id="QQ2-8-139">Parameters</a></span>
-<br /><span class="sectionToc" >6.10  <a 
-href="MobileRoboticsLectureBookch6.html#x8-1180006.10" id="QQ2-8-148">Working with Command Line</a></span>
-<br /><span class="sectionToc" >6.11  <a 
-href="MobileRoboticsLectureBookch6.html#x8-1190006.11" id="QQ2-8-149">Launch File</a></span>
-<br /><span class="chapterToc" >7 <a 
-href="MobileRoboticsLectureBookch7.html#x9-1200007" id="QQ2-9-150">Command Line Tools</a></span>
-<br /><span class="sectionToc" >7.1  <a 
-href="MobileRoboticsLectureBookch7.html#x9-1210007.1" id="QQ2-9-151">Setting the Environment</a></span>
-<br /><span class="sectionToc" >7.2  <a 
-href="MobileRoboticsLectureBookch7.html#x9-1260007.2" id="QQ2-9-156">Turtles and Graphs</a></span>
-<br /><span class="sectionToc" >7.3  <a 
-href="MobileRoboticsLectureBookch7.html#x9-1340007.3" id="QQ2-9-165">A Deeper Look into Nodes</a></span>
-<br /><span class="sectionToc" >7.4  <a 
-href="MobileRoboticsLectureBookch7.html#x9-1390007.4" id="QQ2-9-170">Working with Topics</a></span>
-<br /><span class="sectionToc" >7.5  <a 
-href="MobileRoboticsLectureBookch7.html#x9-1450007.5" id="QQ2-9-179">Working with Services</a></span>
-<br /><span class="sectionToc" >7.6  <a 
-href="MobileRoboticsLectureBookch7.html#x9-1520007.6" id="QQ2-9-186">Working with Parameters</a></span>
-<br /><span class="sectionToc" >7.7  <a 
-href="MobileRoboticsLectureBookch7.html#x9-1590007.7" id="QQ2-9-193">A Practical Look into Actions</a></span>
-<br /><span class="sectionToc" >7.8  <a 
-href="MobileRoboticsLectureBookch7.html#x9-1630007.8" id="QQ2-9-197">Launching Nodes</a></span>
-</div>
-                                                                                
-                                                                                
-                                                                                
-                                                                                
-<!--l. 10--><p class="noindent" >
-                                                                                
-                                                                                
-</p>
-                                                                                
-                                                                                
-                                                                                
-                                                                                
-<!--l. 30--><p class="noindent" >
-                                                                                
-                                                                                
-</p>
-                                                                                
-                                                                                
-                                                                                
-                                                                                
-
-                                                                                
-                                                                                
-                                                                                
-                                                                                
-<!--l. 28--><p class="noindent" >
-                                                                                
-                                                                                
-</p>
-                                                                                
-                                                                                
-                                                                                
-                                                                                
-<!--l. 16--><p class="noindent" >
-                                                                                
-                                                                                
-</p>
-                                                                                
-                                                                                
-                                                                                
-                                                                                
-<!--l. 10--><p class="noindent" >
-                                                                                
-                                                                                
-</p>
-                                                                                
-                                                                                
-                                                                                
-                                                                                
-
-                                                                                
-                                                                                
-                                                                                
-                                                                                
-<!--l. 1--><p class="noindent" >
-                                                                                
-                                                                                
-</p><!--l. 1--><p class="noindent" ><a 
- id="chapter*.61"></a>
-</p> 
-</body> 
+<!DOCTYPE html>
+<html lang="en-US" xml:lang="en-US">
+ <head>
+  <title>
+   Contents
+  </title>
+  <meta charset="utf-8"/>
+  <meta content="TeX4ht (https://tug.org/tex4ht/)" name="generator"/>
+  <meta content="width=device-width,initial-scale=1" name="viewport"/>
+  <link href="MobileRoboticsLectureBook.css" rel="stylesheet" type="text/css"/>
+  <meta content="MobileRoboticsLectureBook.tex" name="src"/>
+  <script async="async" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/mml-chtml.js" type="text/javascript">
+  </script>
+  <link href="flatweb.css" rel="stylesheet" type="text/css"/>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js">
+  </script>
+  <script src="flatjs.js">
+  </script>
+  <link href="http://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css"/>
+  <link href="https://unpkg.com/nord-highlightjs@0.1.0/dist/nord.css" rel="stylesheet" type="text/css">
+   <script src="https://unpkg.com/@highlightjs/cdn-assets@11.3.1/highlight.min.js">
+   </script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/dockerfile.min.js">
+   </script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/cmake.min.js">
+   </script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/cpp.min.js">
+   </script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/makefile.min.js">
+   </script>
+   <script src="https://unpkg.com/highlightjs-copy/dist/highlightjs-copy.min.js">
+   </script>
+   <link href="https://unpkg.com/highlightjs-copy/dist/highlightjs-copy.min.css" rel="stylesheet">
+    <script src="flatjs.js">
+    </script>
+    <header>
+    </header>
+   </link>
+  </link>
+ </head>
+ <body>
+  <!--l. 47-->
+  <nav class="wide">
+   <div class="contents">
+    <h3 style="font-weight:lighter;padding: 20px 0 20px 0;">
+     WebBook
+    </h3>
+    <h2>
+     Table of Contents
+    </h2>
+    <div style="margin: 50px auto;">
+     <h3>
+      Lecture Sources
+     </h3>
+     <div style="align-content: center;">
+      <div class="lecbook-text" style="/*! float: right; *//*! width: 100px; *//*! position: absolute; *//*! right: 90px; *//*! top: 220px; */">
+       <span style='font: 400 12px/18px "Source Sans Pro", sans-serif;font-size: 12px;text-align: center;text-transform: uppercase;letter-spacing: 1px;'>
+        Lecture Book
+       </span>
+      </div>
+     </div>
+    </div>
+    <div id="author-info" style="position: absolute; bottom: 0; padding-bottom: 10px;">
+     <div id="author-logo">
+      <img src="figures/logo.svg" style="margin: 10px 0; width: 75%;"/>
+     </div>
+     <h4 style="color:#7aa0b8; font-weight:lighter;">
+      WebBook | D. T. McGuiness, P.hD
+     </h4>
+    </div>
+   </div>
+  </nav>
+  <div class="page">
+   <article class="chapter">
+    <h1 class="chapterHead">
+     Mobile Robotics
+    </h1>
+    <div class="tableofcontents">
+     <span class="chapterToc">
+      1
+      <a href="MobileRoboticsLectureBookch1.html#x3-20001">
+       Locomotion
+      </a>
+     </span>
+     <br/>
+     <span class="sectionToc">
+      1.1
+      <a href="MobileRoboticsLectureBookch1.html#x3-30001.1">
+       Introduction
+      </a>
+     </span>
+     <br/>
+     <span class="subsectionToc">
+      1.1.1
+      <a href="MobileRoboticsLectureBookch1.html#x3-40001.1.1" id="QQ2-3-8">
+       Key Issues for Locomotion
+      </a>
+     </span>
+     <br/>
+     <span class="sectionToc">
+      1.2
+      <a href="MobileRoboticsLectureBookch1.html#x3-50001.2">
+       Legged Mobile Robots
+      </a>
+     </span>
+     <br/>
+     <span class="subsectionToc">
+      1.2.1
+      <a href="MobileRoboticsLectureBookch1.html#x3-70001.2.1" id="QQ2-3-17">
+       Examples of Legged Robot Locomotion
+      </a>
+     </span>
+     <br/>
+     <span class="sectionToc">
+      1.3
+      <a href="MobileRoboticsLectureBookch1.html#x3-120001.3">
+       Wheeled Mobile Robots
+      </a>
+     </span>
+     <br/>
+     <span class="subsectionToc">
+      1.3.1
+      <a href="MobileRoboticsLectureBookch1.html#x3-130001.3.1" id="QQ2-3-28">
+       Design
+      </a>
+     </span>
+     <br/>
+     <span class="subsectionToc">
+      1.3.2
+      <a href="MobileRoboticsLectureBookch1.html#x3-160001.3.2" id="QQ2-3-33">
+       Stability
+      </a>
+     </span>
+     <br/>
+     <span class="subsectionToc">
+      1.3.3
+      <a href="MobileRoboticsLectureBookch1.html#x3-170001.3.3" id="QQ2-3-34">
+       Manoeuvrability
+      </a>
+     </span>
+     <br/>
+     <span class="subsectionToc">
+      1.3.4
+      <a href="MobileRoboticsLectureBookch1.html#x3-180001.3.4" id="QQ2-3-35">
+       Controllability
+      </a>
+     </span>
+     <br/>
+     <span class="subsectionToc">
+      1.3.5
+      <a href="MobileRoboticsLectureBookch1.html#x3-190001.3.5" id="QQ2-3-37">
+       Case Studies for Wheeled Motion
+      </a>
+     </span>
+     <br/>
+     <span class="subsectionToc">
+      1.3.6
+      <a href="MobileRoboticsLectureBookch1.html#x3-260001.3.6" id="QQ2-3-44">
+       Walking Wheels
+      </a>
+     </span>
+     <br/>
+     <span class="chapterToc">
+      2
+      <a href="MobileRoboticsLectureBookch2.html#x4-270002">
+       Perception
+      </a>
+     </span>
+     <br/>
+     <span class="sectionToc">
+      2.1
+      <a href="MobileRoboticsLectureBookch2.html#x4-280002.1">
+       Introduction
+      </a>
+     </span>
+     <br/>
+     <span class="subsectionToc">
+      2.1.1
+      <a href="MobileRoboticsLectureBookch2.html#x4-290002.1.1" id="QQ2-4-47">
+       Sensors for Mobile Robotics
+      </a>
+     </span>
+     <br/>
+     <span class="subsectionToc">
+      2.1.2
+      <a href="MobileRoboticsLectureBookch2.html#x4-300002.1.2" id="QQ2-4-48">
+       Sensor Classification
+      </a>
+     </span>
+     <br/>
+     <span class="subsectionToc">
+      2.1.3
+      <a href="MobileRoboticsLectureBookch2.html#x4-310002.1.3" id="QQ2-4-49">
+       Characterising Sensor Performance
+      </a>
+     </span>
+     <br/>
+     <span class="subsectionToc">
+      2.1.4
+      <a href="MobileRoboticsLectureBookch2.html#x4-370002.1.4" id="QQ2-4-55">
+       Wheel and Motor Sensors
+      </a>
+     </span>
+     <br/>
+     <span class="sectionToc">
+      2.2
+      <a href="MobileRoboticsLectureBookch2.html#x4-460002.2">
+       Active Ranging
+      </a>
+     </span>
+     <br/>
+     <span class="subsectionToc">
+      2.2.1
+      <a href="MobileRoboticsLectureBookch2.html#x4-480002.2.1" id="QQ2-4-70">
+       The Ultrasonic Sensor
+      </a>
+     </span>
+     <br/>
+     <span class="subsectionToc">
+      2.2.2
+      <a href="MobileRoboticsLectureBookch2.html#x4-550002.2.2" id="QQ2-4-85">
+       Motion and Speed Sensors
+      </a>
+     </span>
+     <br/>
+     <span class="sectionToc">
+      2.3
+      <a href="MobileRoboticsLectureBookch2.html#x4-570002.3">
+       Vision Based Sensors
+      </a>
+     </span>
+     <br/>
+     <span class="subsectionToc">
+      2.3.1
+      <a href="MobileRoboticsLectureBookch2.html#x4-590002.3.1" id="QQ2-4-94">
+       CMOS Technology
+      </a>
+     </span>
+     <br/>
+     <span class="subsectionToc">
+      2.3.2
+      <a href="MobileRoboticsLectureBookch2.html#x4-600002.3.2" id="QQ2-4-97">
+       Visual Ranging Sensors
+      </a>
+     </span>
+     <br/>
+     <span class="subsectionToc">
+      2.3.3
+      <a href="MobileRoboticsLectureBookch2.html#x4-610002.3.3" id="QQ2-4-98">
+       Depth from Focus
+      </a>
+     </span>
+     <br/>
+     <span class="sectionToc">
+      2.4
+      <a href="MobileRoboticsLectureBookch2.html#x4-620002.4">
+       Feature Extraction
+      </a>
+     </span>
+     <br/>
+     <span class="subsectionToc">
+      2.4.1
+      <a href="MobileRoboticsLectureBookch2.html#x4-630002.4.1" id="QQ2-4-102">
+       Defining Feature
+      </a>
+     </span>
+     <br/>
+     <span class="subsectionToc">
+      2.4.2
+      <a href="MobileRoboticsLectureBookch2.html#x4-640002.4.2" id="QQ2-4-103">
+       Using Range Data
+      </a>
+     </span>
+     <br/>
+     <span class="chapterToc">
+      3
+      <a href="MobileRoboticsLectureBookch3.html#x5-670003">
+       Mobile Robot Localisation
+      </a>
+     </span>
+     <br/>
+     <span class="sectionToc">
+      3.1
+      <a href="MobileRoboticsLectureBookch3.html#x5-680003.1">
+       Introduction
+      </a>
+     </span>
+     <br/>
+     <span class="sectionToc">
+      3.2
+      <a href="MobileRoboticsLectureBookch3.html#x5-690003.2">
+       The problems of Noise and Aliasing
+      </a>
+     </span>
+     <br/>
+     <span class="subsectionToc">
+      3.2.1
+      <a href="MobileRoboticsLectureBookch3.html#x5-700003.2.1" id="QQ2-5-111">
+       Sensor Noise
+      </a>
+     </span>
+     <br/>
+     <span class="subsectionToc">
+      3.2.2
+      <a href="MobileRoboticsLectureBookch3.html#x5-710003.2.2" id="QQ2-5-112">
+       Sensor Aliasing
+      </a>
+     </span>
+     <br/>
+     <span class="subsectionToc">
+      3.2.3
+      <a href="MobileRoboticsLectureBookch3.html#x5-720003.2.3" id="QQ2-5-113">
+       Effector Noise
+      </a>
+     </span>
+     <br/>
+     <span class="sectionToc">
+      3.3
+      <a href="MobileRoboticsLectureBookch3.html#x5-730003.3">
+       Localisation v. Hard-Coded Navigation
+      </a>
+     </span>
+     <br/>
+     <span class="sectionToc">
+      3.4
+      <a href="MobileRoboticsLectureBookch3.html#x5-740003.4">
+       Representing Belief
+      </a>
+     </span>
+     <br/>
+     <span class="subsectionToc">
+      3.4.1
+      <a href="MobileRoboticsLectureBookch3.html#x5-750003.4.1" id="QQ2-5-120">
+       Single Hypothesis Belief
+      </a>
+     </span>
+     <br/>
+     <span class="subsectionToc">
+      3.4.2
+      <a href="MobileRoboticsLectureBookch3.html#x5-760003.4.2" id="QQ2-5-122">
+       Multiple Hypothesis Belief
+      </a>
+     </span>
+     <br/>
+     <span class="sectionToc">
+      3.5
+      <a href="MobileRoboticsLectureBookch3.html#x5-770003.5">
+       Representing Maps
+      </a>
+     </span>
+     <br/>
+     <span class="subsectionToc">
+      3.5.1
+      <a href="MobileRoboticsLectureBookch3.html#x5-780003.5.1" id="QQ2-5-125">
+       Continuous Representation
+      </a>
+     </span>
+     <br/>
+     <span class="subsectionToc">
+      3.5.2
+      <a href="MobileRoboticsLectureBookch3.html#x5-790003.5.2" id="QQ2-5-128">
+       Decomposition Methods
+      </a>
+     </span>
+     <br/>
+     <span class="subsectionToc">
+      3.5.3
+      <a href="MobileRoboticsLectureBookch3.html#x5-800003.5.3" id="QQ2-5-129">
+       Current Challenges
+      </a>
+     </span>
+     <br/>
+     <span class="sectionToc">
+      3.6
+      <a href="MobileRoboticsLectureBookch3.html#x5-810003.6">
+       Probabilistic Map-Based Localisation
+      </a>
+     </span>
+     <br/>
+     <span class="subsectionToc">
+      3.6.1
+      <a href="MobileRoboticsLectureBookch3.html#x5-820003.6.1" id="QQ2-5-131">
+       Introduction
+      </a>
+     </span>
+     <br/>
+     <span class="subsectionToc">
+      3.6.2
+      <a href="MobileRoboticsLectureBookch3.html#x5-830003.6.2" id="QQ2-5-132">
+       Markov Localisation
+      </a>
+     </span>
+     <br/>
+     <span class="subsectionToc">
+      3.6.3
+      <a href="MobileRoboticsLectureBookch3.html#x5-860003.6.3" id="QQ2-5-136">
+       Kalman Filter Localisation
+      </a>
+     </span>
+     <br/>
+     <span class="subsectionToc">
+      3.6.4
+      <a href="MobileRoboticsLectureBookch3.html#x5-870003.6.4" id="QQ2-5-137">
+       An Implementation of Kalman Filter
+      </a>
+     </span>
+     <br/>
+     <span class="sectionToc">
+      3.7
+      <a href="MobileRoboticsLectureBookch3.html#x5-890003.7">
+       Other Examples of Localisation Methods
+      </a>
+     </span>
+     <br/>
+     <span class="subsectionToc">
+      3.7.1
+      <a href="MobileRoboticsLectureBookch3.html#x5-900003.7.1" id="QQ2-5-141">
+       Landmark-based Navigation
+      </a>
+     </span>
+     <br/>
+     <span class="subsectionToc">
+      3.7.2
+      <a href="MobileRoboticsLectureBookch3.html#x5-910003.7.2" id="QQ2-5-143">
+       Globally Unique Localisation
+      </a>
+     </span>
+     <br/>
+     <span class="subsectionToc">
+      3.7.3
+      <a href="MobileRoboticsLectureBookch3.html#x5-920003.7.3" id="QQ2-5-144">
+       Positioning Beacon systems
+      </a>
+     </span>
+     <br/>
+     <span class="subsectionToc">
+      3.7.4
+      <a href="MobileRoboticsLectureBookch3.html#x5-930003.7.4" id="QQ2-5-146">
+       Route-Based Localisation
+      </a>
+     </span>
+     <br/>
+     <span class="sectionToc">
+      3.8
+      <a href="MobileRoboticsLectureBookch3.html#x5-940003.8">
+       Building Maps
+      </a>
+     </span>
+     <br/>
+     <span class="subsectionToc">
+      3.8.1
+      <a href="MobileRoboticsLectureBookch3.html#x5-950003.8.1" id="QQ2-5-149">
+       Stochastic Map Technique
+      </a>
+     </span>
+     <br/>
+     <span class="subsectionToc">
+      3.8.2
+      <a href="MobileRoboticsLectureBookch3.html#x5-960003.8.2" id="QQ2-5-151">
+       Other Mapping Techniques
+      </a>
+     </span>
+     <br/>
+     <span class="chapterToc">
+      4
+      <a href="MobileRoboticsLectureBookch4.html#x6-990004">
+       Welcome to Linux
+      </a>
+     </span>
+     <br/>
+     <span class="sectionToc">
+      4.1
+      <a href="MobileRoboticsLectureBookch4.html#x6-1000004.1">
+       Learning the Linux Command Line
+      </a>
+     </span>
+     <br/>
+     <span class="subsectionToc">
+      4.1.1
+      <a href="MobileRoboticsLectureBookch4.html#x6-1010004.1.1" id="QQ2-6-158">
+       A Short History on Computer Interfaces
+      </a>
+     </span>
+     <br/>
+     <span class="subsectionToc">
+      4.1.2
+      <a href="MobileRoboticsLectureBookch4.html#x6-1030004.1.2" id="QQ2-6-163">
+       Linux is a Nutshell
+      </a>
+     </span>
+     <br/>
+     <span class="subsectionToc">
+      4.1.3
+      <a href="MobileRoboticsLectureBookch4.html#x6-1060004.1.3" id="QQ2-6-167">
+       Linux Distributions
+      </a>
+     </span>
+     <br/>
+     <span class="sectionToc">
+      4.2
+      <a href="MobileRoboticsLectureBookch4.html#x6-1070004.2">
+       Installation
+      </a>
+     </span>
+     <br/>
+     <span class="sectionToc">
+      4.3
+      <a href="MobileRoboticsLectureBookch4.html#x6-1080004.3">
+       Docker
+      </a>
+     </span>
+     <br/>
+     <span class="subsectionToc">
+      4.3.1
+      <a href="MobileRoboticsLectureBookch4.html#x6-1090004.3.1" id="QQ2-6-172">
+       Dockerfile
+      </a>
+     </span>
+     <br/>
+     <span class="subsectionToc">
+      4.3.2
+      <a href="MobileRoboticsLectureBookch4.html#x6-1100004.3.2" id="QQ2-6-173">
+       Running the Container
+      </a>
+     </span>
+     <br/>
+     <span class="chapterToc">
+      5
+      <a href="MobileRoboticsLectureBookch5.html#x7-1110005">
+       Command Line Fundamentals
+      </a>
+     </span>
+     <br/>
+     <span class="sectionToc">
+      5.1
+      <a href="MobileRoboticsLectureBookch5.html#x7-1120005.1">
+       Introduction
+      </a>
+     </span>
+     <br/>
+     <span class="sectionToc">
+      5.2
+      <a href="MobileRoboticsLectureBookch5.html#x7-1130005.2">
+       The Structure of Commands
+      </a>
+     </span>
+     <br/>
+     <span class="subsectionToc">
+      5.2.1
+      <a href="MobileRoboticsLectureBookch5.html#x7-1140005.2.1" id="QQ2-7-179">
+       Some Rules Regarding the Syntax
+      </a>
+     </span>
+     <br/>
+     <span class="sectionToc">
+      5.3
+      <a href="MobileRoboticsLectureBookch5.html#x7-1150005.3">
+       Helpful Keyboard Shortcuts for the Terminal
+      </a>
+     </span>
+     <br/>
+     <span class="sectionToc">
+      5.4
+      <a href="MobileRoboticsLectureBookch5.html#x7-1160005.4">
+       When you need help with Commands
+      </a>
+     </span>
+     <br/>
+     <span class="sectionToc">
+      5.5
+      <a href="MobileRoboticsLectureBookch5.html#x7-1170005.5">
+       Additional Information
+      </a>
+     </span>
+     <br/>
+     <span class="subsectionToc">
+      5.5.1
+      <a href="MobileRoboticsLectureBookch5.html#x7-1180005.5.1" id="QQ2-7-183">
+       Use Tab completion on the Shell
+      </a>
+     </span>
+     <br/>
+     <span class="subsectionToc">
+      5.5.2
+      <a href="MobileRoboticsLectureBookch5.html#x7-1190005.5.2" id="QQ2-7-184">
+       The info command
+      </a>
+     </span>
+     <br/>
+     <span class="subsectionToc">
+      5.5.3
+      <a href="MobileRoboticsLectureBookch5.html#x7-1200005.5.3" id="QQ2-7-185">
+       The whatis command
+      </a>
+     </span>
+     <br/>
+     <span class="chapterToc">
+      6
+      <a href="MobileRoboticsLectureBookch6.html#x8-1210006">
+       Working with Files and Folders
+      </a>
+     </span>
+     <br/>
+     <span class="sectionToc">
+      6.1
+      <a href="MobileRoboticsLectureBookch6.html#x8-1220006.1">
+       Introduction
+      </a>
+     </span>
+     <br/>
+     <span class="sectionToc">
+      6.2
+      <a href="MobileRoboticsLectureBookch6.html#x8-1230006.2">
+       A Detailed Look in ls Command
+      </a>
+     </span>
+     <br/>
+     <span class="sectionToc">
+      6.3
+      <a href="MobileRoboticsLectureBookch6.html#x8-1240006.3">
+       Creating and Removing Folders
+      </a>
+     </span>
+     <br/>
+     <span class="sectionToc">
+      6.4
+      <a href="MobileRoboticsLectureBookch6.html#x8-1250006.4">
+       Move, Copy and Delete Files and Folders
+      </a>
+     </span>
+     <br/>
+     <span class="sectionToc">
+      6.5
+      <a href="MobileRoboticsLectureBookch6.html#x8-1260006.5">
+       Role to Users and sudo
+      </a>
+     </span>
+     <br/>
+     <span class="sectionToc">
+      6.6
+      <a href="MobileRoboticsLectureBookch6.html#x8-1270006.6">
+       File Permissions
+      </a>
+     </span>
+     <br/>
+     <span class="sectionToc">
+      6.7
+      <a href="MobileRoboticsLectureBookch6.html#x8-1300006.7">
+       Hard and Symbolic Links
+      </a>
+     </span>
+     <br/>
+     <span class="subsectionToc">
+      6.7.1
+      <a href="MobileRoboticsLectureBookch6.html#x8-1310006.7.1" id="QQ2-8-199">
+       Symbolic Links
+      </a>
+     </span>
+     <br/>
+     <span class="sectionToc">
+      6.8
+      <a href="MobileRoboticsLectureBookch6.html#x8-1330006.8">
+       The Linux File System
+      </a>
+     </span>
+     <br/>
+     <span class="sectionToc">
+      6.9
+      <a href="MobileRoboticsLectureBookch6.html#x8-1340006.9">
+       Common Command-Line Tools and Tasks
+      </a>
+     </span>
+     <br/>
+     <span class="subsectionToc">
+      6.9.1
+      <a href="MobileRoboticsLectureBookch6.html#x8-1350006.9.1" id="QQ2-8-203">
+       The UNIX Philosophy
+      </a>
+     </span>
+     <br/>
+     <span class="subsectionToc">
+      6.9.2
+      <a href="MobileRoboticsLectureBookch6.html#x8-1360006.9.2" id="QQ2-8-205">
+       Connecting Commands with Pipes
+      </a>
+     </span>
+     <br/>
+     <span class="subsectionToc">
+      6.9.3
+      <a href="MobileRoboticsLectureBookch6.html#x8-1370006.9.3" id="QQ2-8-206">
+       Viewing Text Files with cat, head, tail, and less
+      </a>
+     </span>
+     <br/>
+     <span class="sectionToc">
+      6.10
+      <a href="MobileRoboticsLectureBookch6.html#x8-1380006.10">
+       Advanced Topics
+      </a>
+     </span>
+     <br/>
+     <span class="subsectionToc">
+      6.10.1
+      <a href="MobileRoboticsLectureBookch6.html#x8-1390006.10.1" id="QQ2-8-208">
+       Find Linux Distribution and Kernel Information
+      </a>
+     </span>
+     <br/>
+     <span class="subsectionToc">
+      6.10.2
+      <a href="MobileRoboticsLectureBookch6.html#x8-1400006.10.2" id="QQ2-8-209">
+       Find System Hardware and Disk Information
+      </a>
+     </span>
+     <br/>
+     <span class="chapterToc">
+      7
+      <a href="MobileRoboticsLectureBookch7.html#x9-1410007">
+       Installation
+      </a>
+     </span>
+     <br/>
+     <span class="sectionToc">
+      7.1
+      <a href="MobileRoboticsLectureBookch7.html#x9-1420007.1">
+       ROS 2 Humble Hawksbill
+      </a>
+     </span>
+     <br/>
+     <span class="subsectionToc">
+      7.1.1
+      <a href="MobileRoboticsLectureBookch7.html#x9-1430007.1.1" id="QQ2-9-212">
+       Introduction
+      </a>
+     </span>
+     <br/>
+     <span class="subsectionToc">
+      7.1.2
+      <a href="MobileRoboticsLectureBookch7.html#x9-1440007.1.2" id="QQ2-9-213">
+       Setting up the Local
+      </a>
+     </span>
+     <br/>
+     <span class="subsectionToc">
+      7.1.3
+      <a href="MobileRoboticsLectureBookch7.html#x9-1450007.1.3" id="QQ2-9-214">
+       Setting Up the Source Files
+      </a>
+     </span>
+     <br/>
+     <span class="subsectionToc">
+      7.1.4
+      <a href="MobileRoboticsLectureBookch7.html#x9-1460007.1.4" id="QQ2-9-215">
+       Install ROS 2 Packages
+      </a>
+     </span>
+     <br/>
+     <span class="subsectionToc">
+      7.1.5
+      <a href="MobileRoboticsLectureBookch7.html#x9-1470007.1.5" id="QQ2-9-216">
+       Setting Up the Environment
+      </a>
+     </span>
+     <br/>
+     <span class="sectionToc">
+      7.2
+      <a href="MobileRoboticsLectureBookch7.html#x9-1480007.2">
+       Auto-Install Script
+      </a>
+     </span>
+     <br/>
+     <span class="chapterToc">
+      8
+      <a href="MobileRoboticsLectureBookch8.html#x10-1490008">
+       ROS Concepts
+      </a>
+     </span>
+     <br/>
+     <span class="sectionToc">
+      8.1
+      <a href="MobileRoboticsLectureBookch8.html#x10-1500008.1">
+       Introduction
+      </a>
+     </span>
+     <br/>
+     <span class="sectionToc">
+      8.2
+      <a href="MobileRoboticsLectureBookch8.html#x10-1510008.2">
+       Publisher and Subscriber Architecture
+      </a>
+     </span>
+     <br/>
+     <span class="sectionToc">
+      8.3
+      <a href="MobileRoboticsLectureBookch8.html#x10-1520008.3">
+       Nodes - The Building Blocks
+      </a>
+     </span>
+     <br/>
+     <span class="sectionToc">
+      8.4
+      <a href="MobileRoboticsLectureBookch8.html#x10-1530008.4">
+       The Discovery Process
+      </a>
+     </span>
+     <br/>
+     <span class="sectionToc">
+      8.5
+      <a href="MobileRoboticsLectureBookch8.html#x10-1540008.5">
+       Communication Between Nodes
+      </a>
+     </span>
+     <br/>
+     <span class="subsectionToc">
+      8.5.1
+      <a href="MobileRoboticsLectureBookch8.html#x10-1550008.5.1" id="QQ2-10-224">
+       Description
+      </a>
+     </span>
+     <br/>
+     <span class="subsectionToc">
+      8.5.2
+      <a href="MobileRoboticsLectureBookch8.html#x10-1560008.5.2" id="QQ2-10-225">
+       Messages
+      </a>
+     </span>
+     <br/>
+     <span class="sectionToc">
+      8.6
+      <a href="MobileRoboticsLectureBookch8.html#x10-1640008.6">
+       Topics
+      </a>
+     </span>
+     <br/>
+     <span class="subsectionToc">
+      8.6.1
+      <a href="MobileRoboticsLectureBookch8.html#x10-1650008.6.1" id="QQ2-10-234">
+       Publisher - Subscriber Architecture
+      </a>
+     </span>
+     <br/>
+     <span class="subsectionToc">
+      8.6.2
+      <a href="MobileRoboticsLectureBookch8.html#x10-1660008.6.2" id="QQ2-10-235">
+       Anonymity
+      </a>
+     </span>
+     <br/>
+     <span class="subsectionToc">
+      8.6.3
+      <a href="MobileRoboticsLectureBookch8.html#x10-1670008.6.3" id="QQ2-10-236">
+       Strongly-Typed
+      </a>
+     </span>
+     <br/>
+     <span class="sectionToc">
+      8.7
+      <a href="MobileRoboticsLectureBookch8.html#x10-1680008.7">
+       Services
+      </a>
+     </span>
+     <br/>
+     <span class="subsectionToc">
+      8.7.1
+      <a href="MobileRoboticsLectureBookch8.html#x10-1690008.7.1" id="QQ2-10-238">
+       Service Server
+      </a>
+     </span>
+     <br/>
+     <span class="sectionToc">
+      8.8
+      <a href="MobileRoboticsLectureBookch8.html#x10-1710008.8">
+       Actions
+      </a>
+     </span>
+     <br/>
+     <span class="subsectionToc">
+      8.8.1
+      <a href="MobileRoboticsLectureBookch8.html#x10-1720008.8.1" id="QQ2-10-241">
+       Action Server
+      </a>
+     </span>
+     <br/>
+     <span class="subsectionToc">
+      8.8.2
+      <a href="MobileRoboticsLectureBookch8.html#x10-1730008.8.2" id="QQ2-10-242">
+       Action Client
+      </a>
+     </span>
+     <br/>
+     <span class="sectionToc">
+      8.9
+      <a href="MobileRoboticsLectureBookch8.html#x10-1740008.9">
+       Parameters
+      </a>
+     </span>
+     <br/>
+     <span class="subsectionToc">
+      8.9.1
+      <a href="MobileRoboticsLectureBookch8.html#x10-1750008.9.1" id="QQ2-10-244">
+       A Detailed Look
+      </a>
+     </span>
+     <br/>
+     <span class="subsectionToc">
+      8.9.2
+      <a href="MobileRoboticsLectureBookch8.html#x10-1790008.9.2" id="QQ2-10-248">
+       Parameter Interaction
+      </a>
+     </span>
+     <br/>
+     <span class="sectionToc">
+      8.10
+      <a href="MobileRoboticsLectureBookch8.html#x10-1830008.10">
+       Working with Command Line
+      </a>
+     </span>
+     <br/>
+     <span class="sectionToc">
+      8.11
+      <a href="MobileRoboticsLectureBookch8.html#x10-1840008.11">
+       Launch File
+      </a>
+     </span>
+     <br/>
+     <span class="chapterToc">
+      9
+      <a href="MobileRoboticsLectureBookch9.html#x11-1850009">
+       Command Line Tools
+      </a>
+     </span>
+     <br/>
+     <span class="sectionToc">
+      9.1
+      <a href="MobileRoboticsLectureBookch9.html#x11-1860009.1">
+       Setting the Environment
+      </a>
+     </span>
+     <br/>
+     <span class="sectionToc">
+      9.2
+      <a href="MobileRoboticsLectureBookch9.html#x11-1910009.2">
+       Turtles and Graphs
+      </a>
+     </span>
+     <br/>
+     <span class="sectionToc">
+      9.3
+      <a href="MobileRoboticsLectureBookch9.html#x11-1990009.3">
+       A Deeper Look into Nodes
+      </a>
+     </span>
+     <br/>
+     <span class="sectionToc">
+      9.4
+      <a href="MobileRoboticsLectureBookch9.html#x11-2040009.4">
+       Working with Topics
+      </a>
+     </span>
+     <br/>
+     <span class="sectionToc">
+      9.5
+      <a href="MobileRoboticsLectureBookch9.html#x11-2100009.5">
+       Working with Services
+      </a>
+     </span>
+     <br/>
+     <span class="sectionToc">
+      9.6
+      <a href="MobileRoboticsLectureBookch9.html#x11-2170009.6">
+       Working with Parameters
+      </a>
+     </span>
+     <br/>
+     <span class="sectionToc">
+      9.7
+      <a href="MobileRoboticsLectureBookch9.html#x11-2240009.7">
+       A Practical Look into Actions
+      </a>
+     </span>
+     <br/>
+     <span class="sectionToc">
+      9.8
+      <a href="MobileRoboticsLectureBookch9.html#x11-2280009.8">
+       Launching Nodes
+      </a>
+     </span>
+     <br/>
+     <span class="chapterToc">
+      10
+      <a href="MobileRoboticsLectureBookch10.html#x12-23000010">
+       Client Libraries
+      </a>
+     </span>
+     <br/>
+     <span class="sectionToc">
+      10.1
+      <a href="MobileRoboticsLectureBookch10.html#x12-23100010.1">
+       Getting Started with Colcon
+      </a>
+     </span>
+     <br/>
+     <span class="sectionToc">
+      10.2
+      <a href="MobileRoboticsLectureBookch10.html#x12-23600010.2">
+       Creating a Workspace
+      </a>
+     </span>
+     <br/>
+     <span class="sectionToc">
+      10.3
+      <a href="MobileRoboticsLectureBookch10.html#x12-24200010.3">
+       Creating a Package
+      </a>
+     </span>
+     <br/>
+     <span class="sectionToc">
+      10.4
+      <a href="MobileRoboticsLectureBookch10.html#x12-24400010.4">
+       Writing a Simple Publisher &amp; Subscriber
+      </a>
+     </span>
+     <br/>
+     <span class="subsectionToc">
+      10.4.1
+      <a href="MobileRoboticsLectureBookch10.html#x12-24600010.4.1" id="QQ2-12-319">
+       Writing the Publisher Node
+      </a>
+     </span>
+     <br/>
+     <span class="subsectionToc">
+      10.4.2
+      <a href="MobileRoboticsLectureBookch10.html#x12-25100010.4.2" id="QQ2-12-324">
+       Writing the Subscriber Node
+      </a>
+     </span>
+     <br/>
+     <span class="subsectionToc">
+      10.4.3
+      <a href="MobileRoboticsLectureBookch10.html#x12-25400010.4.3" id="QQ2-12-327">
+       Building and Running
+      </a>
+     </span>
+     <br/>
+     <span class="sectionToc">
+      10.5
+      <a href="MobileRoboticsLectureBookch10.html#x12-25500010.5">
+       Creating Custom msg and srv Files
+      </a>
+     </span>
+     <br/>
+     <span class="subsectionToc">
+      10.5.1
+      <a href="MobileRoboticsLectureBookch10.html#x12-25700010.5.1" id="QQ2-12-330">
+       Creating Custom Definitions
+      </a>
+     </span>
+     <br/>
+     <span class="sectionToc">
+      10.6
+      <a href="MobileRoboticsLectureBookch10.html#x12-26000010.6">
+       CMakeList
+      </a>
+     </span>
+     <br/>
+     <span class="sectionToc">
+      10.7
+      <a href="MobileRoboticsLectureBookch10.html#x12-26400010.7">
+       Using Parameters in a Class
+      </a>
+     </span>
+     <br/>
+     <span class="sectionToc">
+      10.8
+      <a href="MobileRoboticsLectureBookch10.html#x12-27400010.8">
+       Managing Dependencies
+      </a>
+     </span>
+     <br/>
+     <span class="subsectionToc">
+      10.8.1
+      <a href="MobileRoboticsLectureBookch10.html#x12-27500010.8.1" id="QQ2-12-348">
+       Explaining Rosdep
+      </a>
+     </span>
+     <br/>
+     <span class="subsectionToc">
+      10.8.2
+      <a href="MobileRoboticsLectureBookch10.html#x12-27600010.8.2" id="QQ2-12-349">
+       Explaining Pacakge Manifesto
+      </a>
+     </span>
+     <br/>
+     <span class="sectionToc">
+      10.9
+      <a href="MobileRoboticsLectureBookch10.html#x12-27700010.9">
+       Creating an Action
+      </a>
+     </span>
+     <br/>
+     <span class="sectionToc">
+      10.10
+      <a href="MobileRoboticsLectureBookch10.html#x12-28000010.10">
+       Writing an Action Server and Client
+      </a>
+     </span>
+     <br/>
+     <span class="addchapToc">
+      <a href="MobileRoboticsLectureBookad1.html#x14-283000" id="QQ2-14-356">
+       Bibliography
+      </a>
+     </span>
+    </div>
+   </article>
+  </div>
+  <div class="page">
+   <article class="chapter">
+    <!--l. 8-->
+    <!--l. 8-->
+    <p class="noindent">
+     <a id="tailMobileRoboticsLectureBookli1.html">
+     </a>
+    </p>
+   </article>
+  </div>
+ </body>
 </html>
-                                                                                
-
-
