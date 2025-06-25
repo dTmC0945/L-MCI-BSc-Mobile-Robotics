@@ -7,16 +7,15 @@
   - [[#lecture-sources][Lecture Sources]]
   - [[#content-and-unit-distribution][Content and Unit Distribution]]
   - [[#lecture-table-of-contents][Lecture Table of Contents]]
+  - [[#documentation][Documentation]]
   - [[#related-links][Related Links]]
 
 ** Lecture Information
 
-- The goal of this lecture is to introduce to you mobile robotics, from its
-  mechanical construction, to planning and to controlling
-- This lecture will start with mathematical ideas and will continue with Linux
-  and ROS programming.
-
-The structure for this lecture is as follows.
+- The goal of this lecture is to introduce you the field of  mobile robotics,
+  from its mechanical construction, to planning, to controlling, and simulating.
+- We will start with mechanical concept, then mathematical ideas and continue
+  on with Linux and ROS programming.
 
 | DESCRIPTION        | VALUE                                       |
 | Official Name      | Mobile Robotics                             |
@@ -24,7 +23,7 @@ The structure for this lecture is as follows.
 | Module Code        | MECH-B-4-MRV-MRO-ILV                        |
 | Degree             | B.Sc                                        |
 | Program Name       | Mechatronik Design Innovation               |
-| Lecture Name       | Drive Systems                               |
+| Lecture Name       | Mobile Robotics                             |
 | Semester           | 4                                           |
 | Season             | SS                                          |
 | Room Type          | Lecture Room                                |
@@ -38,16 +37,14 @@ The structure for this lecture is as follows.
 | UE Total           | 60                                          |
 | ECTS               | 5                                           |
 | Lecture Type       | ILV                                         |
+| Working Language   | English                                     |
 
 ** Requirements and the Learning Outcomes
 
 - The student should be comfortable with working with either python
-  and/or C++.
-
-- For a refreshment on its content the students are encouraged to read the
-  materials presented in the following repos:
-
-- [[https://github.com/dTmC0945/L-MCI-BSc-Python-for-Engineering-and-Economics][B.Sc Python for Engineering and Economics]]
+  and/or C++ and be familiar with programming concepts.
+- After completion, the student will have a good knowledge on Linux, ROS and
+  the physical aspects of mobile robotics.
 
 | REQUIREMENTS       | TAUGHT LECTURE  | CODE | DEGREE | OUTCOME           |
 | C/C++ Programming  | Programming II  | PRO2 | B.Sc   | ROS 2 Programming |
@@ -58,13 +55,14 @@ The structure for this lecture is as follows.
 
 ** Grading of the Lecture
 
-- The lecture will have two personal assignments for you to work with as
-  individuals.
+- The lecture will have two personal assignments. The former assignment
+  will comprise of mathematical and the physical nature of mobile
+  robotics and the latter will focus on the software aspect of mobile robotics.
       
-| ASSIGNMENT TYPE       | VALUE |
-| Personal Assignment A |    50 |
-| Personal Assignment B |    50 |
-| SUM                   |   100 |
+| ASSIGNMENT TYPE       | VALUE | QUANTITY |
+| Personal Assignment A |    50 |        1 |
+| Personal Assignment B |    50 |        1 |
+| SUM                   |   100 |          |
 
 ** Lecture Sources
 
@@ -101,36 +99,98 @@ goes well with the lectures.
 
 ** Lecture Table of Contents
 
-The structure of the M.Sc Drive Systems can be grouped into three (3) parts:
-
-1. Mechanics of Mobile Robotics
-2. GNU/Linux Operating System
-3. ROS 2 Programming
-
 Below is the detailed structure of the lecture.
 
-- Locomotion
+- Mobile Robot Localisation
   - Introduction
-    - Key Issues for Locomotion
-  - Legged Mobile Robots
-      - Leg Configurations and Stability
-    - Examples of Legged Robot Locomotion
-      - Single Leg
-      - Two Legs (Bipedal)
-      - Four Legs (Quadruped)
-      - Six Legs (Hexapod)
-  - Wheeled Mobile Robots
-    - Design
-    - Stability
-    - Manoeuvrability
-    - Controllability
-    - Case Studies for Wheeled Motion
-      - Synchro Drive
-      - Omnidirectional Drive
-      - Omnidirectional locomotion with three spheric wheels
-      - Omnidirectional locomotion with four swedish wheels
-      - Omnidirectional locomotion with four castor wheels and eight motors
-      - Tracked Slip/Skid Locomotion
-    - Walking Wheels
+  - The problems of Noise and Aliasing
+    - Sensor Noise
+    - Sensor Aliasing
+    - Effector Noise
+    - An Error Model for Odometric Position Estimation
+  - Localisation v. Hard-Coded Navigation
+  - Representing Belief
+    - Single Hypothesis Belief
+    - Multiple Hypothesis Belief
+  - Representing Maps
+    - Continuous Representation
+    - Decomposition Methods
+    - Current Challenges
+->      
+  - Probabilistic Map-Based Localisation
+    - Introduction
+    - Markov Localisation
+      - Application of Probability for Localisation
+      - Application: Markov Localisation using a Topological Map
+    - Kalman Filter Localisation
+    - An Implementation of Kalman Filter
+      - A Gentle Introduction to Kalman Filter Theory
+      - Kalman Filter Localisation
+  - Other Examples of Localisation Methods
+    - Landmark-based Navigation
+    - Globally Unique Localisation
+    - Positioning Beacon systems
+    - Route-Based Localisation
+  - Building Maps
+    - Stochastic Map Technique
+    - Other Mapping Techniques
+      - Cyclic Environments
+      - Dynamic Environments
+- ROS Concepts
+  - Introduction
+  - Publisher and Subscriber Architecture
+  - Nodes - The Building Blocks
+  - The Discovery Process
+  - Communication Between Nodes
+    - Description
+    - Messages
+      - Services
+      - Actions
+  - Topics
+    - Publisher - Subscriber Architecture
+    - Anonymity
+    - Strongly-Typed
+  - Services
+    - Service Server
+      - Service Client
+  - Actions
+    - Action Server
+    - Action Client
+  - Parameters
+    - A Detailed Look
+      - Declaring Parameters
+      - Types of Parameters
+      - Parameter Callbacks
+    - Parameter Interaction
+  - Working with Command Line
+  - Launch File
+    - ROS DOMAIN ID
+      - Choosing a domain ID (short version)
+      - Choosing a domain ID (long version)
+    - Client Libraries
+      - Supported Client Libraries
+  - Intermediate Concepts
+    - Defining the ROS Domain
+      - Participant Constraints
+    - ROS 2 Middleware Vendors
+  - Configuring Quality of Service
+    - Topic Statistics
+  - Advanced Concepts
+    - The Build System
+- Command Line Tools
+  - Setting the Environment
+  - Turtles and Graphs
+  - A Deeper Look into Nodes
+  - Working with Topics
+  - Working with Services
+  - Working with Parameters
+  - A Practical Look into Actions
+  - Launching Nodes
+
+** Documentation
+
+For any student in need of a LaTeX class designed from the ground-up for
+assignment/lab/thesis/slide for MCI needs please have a look at ~mcidoc~ class
+hosted at [[https://github.com/dTmC0945/C-MCI-LaTeX-Class-mcidoc][GitHub]].
 
 (-DTMc 2025)

@@ -1,0 +1,7250 @@
+<!DOCTYPE html>
+<html lang="en-US" xml:lang="en-US">
+ <head>
+  <title>
+   1 Locomotion
+  </title>
+  <meta charset="utf-8"/>
+  <meta content="TeX4ht (https://tug.org/tex4ht/)" name="generator"/>
+  <meta content="width=device-width,initial-scale=1" name="viewport"/>
+  <link href="MobileRoboticsLectureBook.css" rel="stylesheet" type="text/css"/>
+  <meta content="MobileRoboticsLectureBook.tex" name="src"/>
+  <script async="async" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/mml-chtml.js" type="text/javascript">
+  </script>
+  <link href="flatweb.css" rel="stylesheet" type="text/css"/>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js">
+  </script>
+  <script src="flatjs.js">
+  </script>
+  <link href="http://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css"/>
+  <link href="https://unpkg.com/nord-highlightjs@0.1.0/dist/nord.css" rel="stylesheet" type="text/css"/>
+  <script src="https://unpkg.com/@highlightjs/cdn-assets@11.3.1/highlight.min.js">
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/dockerfile.min.js">
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/cmake.min.js">
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/cpp.min.js">
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/makefile.min.js">
+  </script>
+  <script src="https://unpkg.com/highlightjs-copy/dist/highlightjs-copy.min.js">
+  </script>
+  <link href="https://unpkg.com/highlightjs-copy/dist/highlightjs-copy.min.css" rel="stylesheet"/>
+  <script src="flatjs.js">
+  </script>
+  <header>
+  </header>
+ </head>
+ <body id="top">
+  <nav class="wide">
+   <div class="contents">
+    <h3 style="font-weight:lighter; padding: 20px 0 20px 0;">
+     1
+   
+     
+   
+
+   Locomotion
+    </h3>
+    <h4 style="font-weight:lighter">
+     Chapter Table of Contents
+    </h4>
+    <ul>
+     <div class="chapterTOCS">
+      <li>
+       <span class="sectionToc">
+        <small>
+         1.1
+        </small>
+        <a href="#x3-30001.1">
+         Introduction
+        </a>
+       </span>
+      </li>
+      <li>
+       <span class="subsectionToc" style="font-size:12px;margin:0px;">
+        <small>
+         1.1.1
+        </small>
+        <a href="#x3-40001.1.1">
+         Key Issues for Locomotion
+        </a>
+       </span>
+      </li>
+      <li>
+       <span class="sectionToc">
+        <small>
+         1.2
+        </small>
+        <a href="#x3-50001.2">
+         Legged Mobile Robots
+        </a>
+       </span>
+      </li>
+      <li>
+       <span class="subsectionToc" style="font-size:12px;margin:0px;">
+        <small>
+         1.2.1
+        </small>
+        <a href="#x3-70001.2.1">
+         Examples of Legged Robot Locomotion
+        </a>
+       </span>
+      </li>
+      <li>
+       <span class="sectionToc">
+        <small>
+         1.3
+        </small>
+        <a href="#x3-120001.3">
+         Wheeled Mobile Robots
+        </a>
+       </span>
+      </li>
+      <li>
+       <span class="subsectionToc" style="font-size:12px;margin:0px;">
+        <small>
+         1.3.1
+        </small>
+        <a href="#x3-130001.3.1">
+         Design
+        </a>
+       </span>
+      </li>
+      <li>
+       <span class="subsectionToc" style="font-size:12px;margin:0px;">
+        <small>
+         1.3.2
+        </small>
+        <a href="#x3-160001.3.2">
+         Stability
+        </a>
+       </span>
+      </li>
+      <li>
+       <span class="subsectionToc" style="font-size:12px;margin:0px;">
+        <small>
+         1.3.3
+        </small>
+        <a href="#x3-170001.3.3">
+         Manoeuvrability
+        </a>
+       </span>
+      </li>
+      <li>
+       <span class="subsectionToc" style="font-size:12px;margin:0px;">
+        <small>
+         1.3.4
+        </small>
+        <a href="#x3-180001.3.4">
+         Controllability
+        </a>
+       </span>
+      </li>
+      <li>
+       <span class="subsectionToc" style="font-size:12px;margin:0px;">
+        <small>
+         1.3.5
+        </small>
+        <a href="#x3-190001.3.5">
+         Case Studies for Wheeled Motion
+        </a>
+       </span>
+      </li>
+      <li>
+       <span class="subsectionToc" style="font-size:12px;margin:0px;">
+        <small>
+         1.3.6
+        </small>
+        <a href="#x3-260001.3.6">
+         Walking Wheels
+        </a>
+       </span>
+      </li>
+     </div>
+    </ul>
+    <div class="prev-next" style="text-align: center">
+     <p class="noindent">
+      <a href="MobileRoboticsLectureBookch2.html" style="float:right; font-size:10px">
+       NEXT →
+      </a>
+      <a href="index.html" style="float:left; font-size:10px">
+       ← PREV
+      </a>
+      <a href="index.html">
+       TOP
+      </a>
+     </p>
+    </div>
+    <div id="author-info" style="bottom: 0; padding-bottom: 10px;">
+     <div id="author-logo">
+      <img src="figures/logo.svg" style="margin: 10px 0;"/>
+      <div>
+       <div>
+        <h4 style="color:#7aa0b8; font-weight:lighter;">
+         WebBook | D. T. McGuiness, P.hD
+        </h4>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </nav>
+  <div class="page">
+   <article class="chapter">
+    <h1 class="chapterHead">
+     <div class="number">
+      1
+     </div>
+     <a id="x3-20001">
+     </a>
+     Locomotion
+    </h1>
+    <div class="section-control" style="text-align: center">
+     <a id="prev-section" onclick="goPrev()" style="float:left;">
+      ← Previous Section
+     </a>
+     <a id="next-section" onclick="goNext()" style="float:right;">
+      Next Section →
+     </a>
+    </div>
+    <div class="section-head" id="section-1" sec="section-1">
+     <h2 class="sectionHead">
+      <a aria-label="Link to this section in PDF version" class="pdf-link" href="MobileRoboticsLectureBook.pdf#section.1.1" style="color: red;  position: absolute;  left: -30px;" target="_blank">
+       <svg class="bi bi-file-pdf" fill="currentColor" height="20" viewbox="0 0 16 16" width="20" xmlns="http://www.w3.org/2000/svg">
+        <path d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z">
+        </path>
+        <path d="M4.603 12.087a.81.81 0 0 1-.438-.42c-.195-.388-.13-.776.08-1.102.198-.307.526-.568.897-.787a7.68 7.68 0 0 1 1.482-.645 19.701 19.701 0 0 0 1.062-2.227 7.269 7.269 0 0 1-.43-1.295c-.086-.4-.119-.796-.046-1.136.075-.354.274-.672.65-.823.192-.077.4-.12.602-.077a.7.7 0 0 1 .477.365c.088.164.12.356.127.538.007.187-.012.395-.047.614-.084.51-.27 1.134-.52 1.794a10.954 10.954 0 0 0 .98 1.686 5.753 5.753 0 0 1 1.334.05c.364.065.734.195.96.465.12.144.193.32.2.518.007.192-.047.382-.138.563a1.04 1.04 0 0 1-.354.416.856.856 0 0 1-.51.138c-.331-.014-.654-.196-.933-.417a5.716 5.716 0 0 1-.911-.95 11.642 11.642 0 0 0-1.997.406 11.311 11.311 0 0 1-1.021 1.51c-.29.35-.608.655-.926.787a.793.793 0 0 1-.58.029zm1.379-1.901c-.166.076-.32.156-.459.238-.328.194-.541.383-.647.547-.094.145-.096.25-.04.361.01.022.02.036.026.044a.27.27 0 0 0 .035-.012c.137-.056.355-.235.635-.572a8.18 8.18 0 0 0 .45-.606zm1.64-1.33a12.647 12.647 0 0 1 1.01-.193 11.666 11.666 0 0 1-.51-.858 20.741 20.741 0 0 1-.5 1.05zm2.446.45c.15.162.296.3.435.41.24.19.407.253.498.256a.107.107 0 0 0 .07-.015.307.307 0 0 0 .094-.125.436.436 0 0 0 .059-.2.095.095 0 0 0-.026-.063c-.052-.062-.2-.152-.518-.209a3.881 3.881 0 0 0-.612-.053zM8.078 5.8a6.7 6.7 0 0 0 .2-.828c.031-.188.043-.343.038-.465a.613.613 0 0 0-.032-.198.517.517 0 0 0-.145.04c-.087.035-.158.106-.196.283-.04.192-.03.469.046.822.024.111.054.227.09.346z">
+        </path>
+       </svg>
+      </a>
+      <small class="titlemark">
+       1.1
+      </small>
+      <a id="x3-30001.1">
+      </a>
+      Introduction
+     </h2>
+     <p class="noindent">
+      An
+      <a class="glossary" href="MobileRoboticsLectureBookli2.html#glo:amr">
+       Autonomous Mobile Robotics (AMR)
+      </a>
+      needs locomotion mechanisms which enable it to move
+      <alert style="color: #821131;">
+       unbounded
+      </alert>
+      throughout its environment. However, as with everything in engineering our solution
+comes with options, and so the selection of a robot’s approach to locomotion is an important aspect of
+mobile robot design. In laboratory settings, there are robots that can walk, jump, run, slide, swim, fly
+and of course roll.
+     </p>
+     <div class="knowledge">
+      <p class="noindent">
+       Most locomotion mechanisms have been inspired by biological counterparts, shown in
+       <span id="bold" style="font-weight:bold;">
+        Fig.
+       </span>
+       <a href="#x3-3001r1">
+        1.1
+       </a>.
+      </p>
+     </div>
+     <p class="noindent">
+      There is, however, one <alert style="color: #821131;">(1)</alert> exception where there is, practically,
+      <span id="bold" style="font-weight:bold;">
+       NO
+      </span>
+      natural equivalent:
+     </p>
+     <p class="noindent">
+     </p>
+     <div class="quoteblock">
+      <p class="noindent">
+       Actively powered wheel is a human invention achieving high efficiency on flat ground.
+      </p>
+     </div>
+     <div class="figure">
+      <p class="noindent">
+       <img alt="PIC" height="" src="figures/Locomotion/raster/locomotion-mechanisms.png" width="150%"/>
+       <a id="x3-3001r1">
+       </a>
+      </p>
+      <figcaption class="caption">
+       <span class="id">
+        Figure
+       1.1:
+       </span>
+       <span class="content">
+        Types of locomotion mechanisms used in biological systems <span class="cite"><a href="MobileRoboticsLectureBookad1.html#siegwart2011introduction">[1]</a></span>.
+       </span>
+      </figcaption>
+     </div>
+     <p class="noindent">
+      This
+mechanism
+is
+      <span id="bold" style="font-weight:bold;">
+       NOT
+      </span>
+      completely
+foreign
+to
+biological
+systems
+      <alert style="color: #821131;">
+       <span id="bold" style="font-weight:bold;">
+        <sup class="textsuperscript">
+         1
+        </sup>
+       </span>
+      </alert>
+      <span class="marginnote">
+       <alert style="color: #821131;">
+        <span id="bold" style="font-weight:bold;">
+         <sup class="textsuperscript">
+          1
+         </sup>
+        </span>
+       </alert>
+       <span id="textcolor1">
+        While
+       this
+       statement
+       is
+       practically
+       true,
+       single
+       cell
+       organism
+       use
+       a
+       similar
+       locomotion
+       to
+       what
+       we
+       call
+       wheel <a id="x3-3003"></a><span class="cite"><a href="MobileRoboticsLectureBookad1.html#labarbera1983wheels">[2]</a></span>.
+       </span>
+      </span>
+      .
+     Our
+     bi-pedal
+     walking
+     system
+     can
+     be
+     approximated
+     by
+     a
+     rolling
+     polygon,
+     with
+     sides
+     equal
+     in
+     length
+     to
+     the
+     span
+     of
+     the
+     step.
+     As
+     the
+     step
+     size
+     decreases,
+     the
+     polygon
+     approaches
+     a
+     circle
+     or
+     wheel.
+     But
+     nature
+     did
+     not
+     develop
+     a
+     fully
+     rotating,
+     actively
+     powered
+     joint,
+     which
+     is
+     the
+     technology
+     necessary
+     for
+     wheeled
+     locomotion.
+     </p>
+     <p class="noindent">
+      Biological systems succeed in moving through a wide variety of harsh environments. Therefore it
+     can be desirable to copy their selection of locomotion mechanisms
+      <alert style="color: #821131;">
+       <span id="bold" style="font-weight:bold;">
+        <sup class="textsuperscript">
+         2
+        </sup>
+       </span>
+      </alert>
+      <span class="marginnote">
+       <alert style="color: #821131;">
+        <span id="bold" style="font-weight:bold;">
+         <sup class="textsuperscript">
+          2
+         </sup>
+        </span>
+       </alert>
+       <span id="textcolor2">
+        Scientifically, this is called
+        <span id="bold" style="font-weight:bold;">
+         Biomimetics
+        </span> <a id="x3-3004"></a><span class="cite"><a href="MobileRoboticsLectureBookad1.html#vincent2006biomimetics">[3]</a></span>
+       </span>
+      </span>
+      . Replicating nature in this regard, however, is extremely difficult for several reasons.
+     </p>
+     <ul class="itemize1">
+      <li class="itemize">
+       <p class="noindent">
+        Mechanical complexity is easily achieved in biological systems through structural replication.
+       </p>
+       <div class="quoteblock">
+        <p class="noindent">
+         Cell
+        division,
+        in
+        combination
+        with
+        specialisation,
+        can
+        readily
+        produce
+        a
+        millipede
+        with
+        several
+        hundred
+        legs
+        and
+        several
+        tens
+        of
+        thousands
+        of
+        individually
+        sensed
+        cilia
+         <alert style="color: #821131;">
+          <span id="bold" style="font-weight:bold;">
+           <sup class="textsuperscript">
+            3
+           </sup>
+          </span>
+         </alert>
+         <span class="marginnote">
+          <alert style="color: #821131;">
+           <span id="bold" style="font-weight:bold;">
+            <sup class="textsuperscript">
+             3
+            </sup>
+           </span>
+          </alert>
+          <span id="textcolor4">
+           short
+          eyelash-like
+          filament
+          that
+          is
+          numerous
+          on
+          tissue
+          cells
+          of
+          most
+          animals
+          and
+          provides
+          the
+          means
+          for
+          locomotion
+          of
+          protozoans
+          of
+          the
+           <italic>
+            phylum
+Ciliophora
+           </italic>
+          </span>
+         </span>
+         .
+        In
+        man-made
+        structures,
+        each
+        part
+        must
+        be
+        fabricated
+        individually,
+        and
+        therefore,
+        no
+        such
+        economies
+        of
+        scale
+        exist.
+        </p>
+       </div>
+      </li>
+      <li class="itemize">
+       <p class="noindent">
+        Cell is a microscopic building block that enables extreme miniaturisation. With very small size and weight, insects achieve
+       a level of robustness that we have not been able to match with human fabrication techniques.
+       </p>
+      </li>
+      <li class="itemize">
+       <p class="noindent">
+        The biological energy storage system and the muscular and hydraulic activation systems used in animals and
+       insects achieve torque, response time and conversion efficiencies that far exceed similarly scaled man-made
+       systems.
+       </p>
+      </li>
+     </ul>
+     <p class="noindent">
+      Based on these aforementioned limitations, mobile robots generally generate motion, either using wheeled mechanisms, a well-known human
+     technology for vehicles, or using a small number of articulated legs, the simplest of the biological approaches to locomotion (shown in
+      <span id="bold" style="font-weight:bold;">
+       Fig.
+      </span>
+      <a href="#x3-3005r2">
+       1.2
+      </a>
+      ).
+     </p>
+     <div class="figure">
+      <p class="noindent">
+       <img alt="PIC" height="" src="figures/Locomotion/raster/bipedal-motion.png" width="150%"/>
+       <a id="x3-3005r2">
+       </a>
+      </p>
+      <figcaption class="caption">
+       <span class="id">
+        Figure
+       1.2:
+       </span>
+       <span class="content">
+        Bipedal motion is not unique to only humans as a wide variety of animals show bipedal motion <span class="cite"><a href="MobileRoboticsLectureBookad1.html#druelle2023convergence">[4]</a></span>.
+       </span>
+      </figcaption>
+     </div>
+     <p class="noindent">
+      In general, legged locomotion requires higher
+      <a class="glossary" href="MobileRoboticsLectureBookli2.html#glo:dof">
+       Degrees of Freedom (DoF)
+      </a>
+      and therefore greater mechanical complexity than
+     wheeled locomotion <a id="x3-3007"></a><span class="cite"><a href="MobileRoboticsLectureBookad1.html#lyons2005rotational">[5]</a></span>. Wheels, in addition to being simple, are extremely well suited to flat ground. As
+      <span id="bold" style="font-weight:bold;">
+       Fig.
+      </span>
+      <a href="#x3-3008r3">
+       1.3
+      </a>
+      depicts,
+     on flat surfaces wheeled locomotion is one to two orders of magnitude more efficient than legged locomotion.
+     </p>
+     <div class="quoteblock">
+      <p class="noindent">
+       The
+      railway
+      is
+      ideally
+      engineered
+      for
+      wheeled
+      locomotion
+      because
+      rolling
+      friction
+      is
+      minimised
+      using
+      a
+      hard
+      and
+      flat
+      steel
+      surface.
+      </p>
+     </div>
+     <div class="figure">
+      <img alt="PIC" height="" src="figures/Locomotion/figures-1.svg" width="150%"/>
+      <a id="x3-3008r3">
+      </a>
+      <figcaption class="caption">
+       <span class="id">
+        Figure
+       1.3:
+       </span>
+       <span class="content">
+        Specific power versus attainable speed of various locomotion mechanisms (Adapted from <span class="cite"><a href="MobileRoboticsLectureBookad1.html#siegwart2011introduction">[1]</a></span>).
+       </span>
+      </figcaption>
+     </div>
+     <p class="noindent">
+      But as the surface becomes soft, wheeled locomotion accumulates inefficiencies due to
+      <span id="bold" style="font-weight:bold;">
+       rolling friction
+      </span>
+      while legged locomotion suffers much less because it consists only of
+      <span id="bold" style="font-weight:bold;">
+       point contacts
+      </span>
+      with the ground.
+     This is demonstrated in figure 2.3 by the dramatic loss of efficiency in the case of a tire on soft ground.
+     </p>
+     <div class="warning">
+      <p class="noindent">
+       the efficiency of wheeled locomotion depends on environmental qualities, such as the flatness and hardness of the ground, while the efficiency
+      of legged locomotion depends on the leg mass and body mass, both of which the robot must support at various points in a legged gait.
+      </p>
+     </div>
+     <p class="noindent">
+      It is understandable therefore nature favours legged locomotion, as locomotion systems in nature must
+     operate on rough and unstructured terrain. For example, in the case of insects in a forest the vertical
+     variation in ground height is often an order of magnitude greater than the total height of the insect.
+     </p>
+     <aside class="wrapfig-r">
+      <div class="center">
+       <p class="noindent">
+       </p>
+       <p class="noindent">
+        <img alt="PIC" height="" src="figures/Locomotion/raster/robotrac.png" width="100%"/>
+        <a id="x3-3010r4">
+        </a>
+       </p>
+       <figcaption class="caption">
+        <span class="id">
+         Figure
+        1.4:
+        </span>
+        <span class="content">
+         RoboTrac,   a   hybrid   wheel-leg
+        vehicle for rough terrain.
+        </span>
+       </figcaption>
+      </div>
+     </aside>
+     <p class="noindent">
+      By the same token, the human environment frequently consists of engineered, smooth surfaces both indoors and
+     outdoors. Therefore, it is also understandable that virtually all industrial applications of mobile robotics
+     utilise some form of wheeled locomotion. Recently, for more natural outdoor environments, there has been
+     some progress toward hybrid and legged industrial robots such as the forestry robot <a id="x3-3011"></a><span class="cite"><a href="MobileRoboticsLectureBookad1.html#schweitzer1991robotrac">[6]</a></span> shown in
+      <span id="bold" style="font-weight:bold;">
+       Fig.
+      </span>
+      <a href="#x3-3010r4">
+       1.4
+      </a>.
+     </p>
+     <p class="noindent">
+      In the next section, we present general considerations that concern all forms of mobile robot locomotion.
+     Following this will be overviews of legged locomotion and wheeled locomotion techniques for mobile robots.
+     </p>
+     <h3 class="subsectionHead">
+      <a aria-label="Link to this section in PDF version" class="pdf-link" href="MobileRoboticsLectureBook.pdf#subsection.1.1.1" style="color: red;  position: absolute;  left: -30px;" target="_blank">
+       <svg class="bi bi-file-pdf" fill="currentColor" height="20" viewbox="0 0 16 16" width="20" xmlns="http://www.w3.org/2000/svg">
+        <path d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z">
+        </path>
+        <path d="M4.603 12.087a.81.81 0 0 1-.438-.42c-.195-.388-.13-.776.08-1.102.198-.307.526-.568.897-.787a7.68 7.68 0 0 1 1.482-.645 19.701 19.701 0 0 0 1.062-2.227 7.269 7.269 0 0 1-.43-1.295c-.086-.4-.119-.796-.046-1.136.075-.354.274-.672.65-.823.192-.077.4-.12.602-.077a.7.7 0 0 1 .477.365c.088.164.12.356.127.538.007.187-.012.395-.047.614-.084.51-.27 1.134-.52 1.794a10.954 10.954 0 0 0 .98 1.686 5.753 5.753 0 0 1 1.334.05c.364.065.734.195.96.465.12.144.193.32.2.518.007.192-.047.382-.138.563a1.04 1.04 0 0 1-.354.416.856.856 0 0 1-.51.138c-.331-.014-.654-.196-.933-.417a5.716 5.716 0 0 1-.911-.95 11.642 11.642 0 0 0-1.997.406 11.311 11.311 0 0 1-1.021 1.51c-.29.35-.608.655-.926.787a.793.793 0 0 1-.58.029zm1.379-1.901c-.166.076-.32.156-.459.238-.328.194-.541.383-.647.547-.094.145-.096.25-.04.361.01.022.02.036.026.044a.27.27 0 0 0 .035-.012c.137-.056.355-.235.635-.572a8.18 8.18 0 0 0 .45-.606zm1.64-1.33a12.647 12.647 0 0 1 1.01-.193 11.666 11.666 0 0 1-.51-.858 20.741 20.741 0 0 1-.5 1.05zm2.446.45c.15.162.296.3.435.41.24.19.407.253.498.256a.107.107 0 0 0 .07-.015.307.307 0 0 0 .094-.125.436.436 0 0 0 .059-.2.095.095 0 0 0-.026-.063c-.052-.062-.2-.152-.518-.209a3.881 3.881 0 0 0-.612-.053zM8.078 5.8a6.7 6.7 0 0 0 .2-.828c.031-.188.043-.343.038-.465a.613.613 0 0 0-.032-.198.517.517 0 0 0-.145.04c-.087.035-.158.106-.196.283-.04.192-.03.469.046.822.024.111.054.227.09.346z">
+        </path>
+       </svg>
+      </a>
+      <small class="titlemark">
+       1.1.1
+      </small>
+      <a id="x3-40001.1.1">
+      </a>
+      Key  Issues  for  Locomotion
+     </h3>
+     <p class="noindent">
+      Locomotion  is  the
+      <alert style="color: #821131;">
+       complement  of  manipulation
+      </alert>
+      :
+     </p>
+     <ul class="itemize1">
+      <li class="itemize">
+       <p class="noindent">
+        In
+       manipulation,
+       the
+       robot
+       arm
+       is
+       fixed
+       but
+       moves
+       objects
+       in
+       the
+       workspace
+       by
+       imparting
+       force
+       to
+       them.
+       </p>
+      </li>
+      <li class="itemize">
+       <p class="noindent">
+        In
+       locomotion,
+       the
+       environment
+       is
+       fixed
+       and
+       the
+       robot
+       moves
+       by
+       imparting
+       force
+       to
+       the
+       environment.
+       </p>
+      </li>
+     </ul>
+     <p class="noindent">
+      For both cases, the scientific basis is the
+      <alert style="color: #821131;">
+       study of actuators
+      </alert>
+      which generate interaction forces, and
+     mechanisms that implement desired kinematic and dynamic properties. Locomotion and manipulation
+     therefore share the same core issues of stability, contact characteristics and environmental type:
+     </p>
+     <div class="columns-2">
+      <ul class="itemize1">
+       <li class="itemize">
+        <p class="noindent">
+         Stability
+        </p>
+        <ul class="itemize2">
+         <li class="itemize">
+          <p class="noindent">
+           number
+          and
+          geometry
+          of
+          contact
+          points
+          </p>
+         </li>
+         <li class="itemize">
+          <p class="noindent">
+           centre
+          of
+          gravity
+          </p>
+         </li>
+         <li class="itemize">
+          <p class="noindent">
+           static/dynamic
+          stability
+          </p>
+         </li>
+         <li class="itemize">
+          <p class="noindent">
+           inclination
+          of
+          terrain
+          </p>
+         </li>
+        </ul>
+       </li>
+       <li class="itemize">
+        <p class="noindent">
+         characteristics of contact
+        </p>
+        <ul class="itemize2">
+         <li class="itemize">
+          <p class="noindent">
+           contact
+          point/path
+          size
+          and
+          shape
+          </p>
+         </li>
+         <li class="itemize">
+          <p class="noindent">
+           angle
+          of
+          contact
+          </p>
+         </li>
+         <li class="itemize">
+          <p class="noindent">
+           friction
+          </p>
+         </li>
+        </ul>
+       </li>
+       <li class="itemize">
+        <p class="noindent">
+         type of environment
+        </p>
+        <ul class="itemize2">
+         <li class="itemize">
+          <p class="noindent">
+           structure
+          </p>
+         </li>
+         <li class="itemize">
+          <p class="noindent">
+           medium
+          (e.g.,
+          water,
+          air,
+          soft
+          or
+          hard
+          ground)
+          </p>
+         </li>
+        </ul>
+       </li>
+      </ul>
+     </div>
+     <p class="noindent">
+      A theoretical analysis of locomotion begins with mechanics and physics. From this starting point, we can
+     formally define and analyse all manner of mobile robot locomotion systems. However, this Lecture Book puts
+     more emphasis on the mobile robot navigation problem, particularly on the topics of perception, localisation
+     and cognition. Therefore, we will not delve deeply into the physical basis of locomotion. Nevertheless, two
+     remaining sections in this chapter present overviews of issues in legged locomotion and wheeled locomotion.
+     </p>
+     <p class="noindent">
+     </p>
+    </div>
+    <div class="section-head" id="section-2" sec="section-2">
+     <h2 class="sectionHead">
+      <a aria-label="Link to this section in PDF version" class="pdf-link" href="MobileRoboticsLectureBook.pdf#section.1.2" style="color: red;  position: absolute;  left: -30px;" target="_blank">
+       <svg class="bi bi-file-pdf" fill="currentColor" height="20" viewbox="0 0 16 16" width="20" xmlns="http://www.w3.org/2000/svg">
+        <path d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z">
+        </path>
+        <path d="M4.603 12.087a.81.81 0 0 1-.438-.42c-.195-.388-.13-.776.08-1.102.198-.307.526-.568.897-.787a7.68 7.68 0 0 1 1.482-.645 19.701 19.701 0 0 0 1.062-2.227 7.269 7.269 0 0 1-.43-1.295c-.086-.4-.119-.796-.046-1.136.075-.354.274-.672.65-.823.192-.077.4-.12.602-.077a.7.7 0 0 1 .477.365c.088.164.12.356.127.538.007.187-.012.395-.047.614-.084.51-.27 1.134-.52 1.794a10.954 10.954 0 0 0 .98 1.686 5.753 5.753 0 0 1 1.334.05c.364.065.734.195.96.465.12.144.193.32.2.518.007.192-.047.382-.138.563a1.04 1.04 0 0 1-.354.416.856.856 0 0 1-.51.138c-.331-.014-.654-.196-.933-.417a5.716 5.716 0 0 1-.911-.95 11.642 11.642 0 0 0-1.997.406 11.311 11.311 0 0 1-1.021 1.51c-.29.35-.608.655-.926.787a.793.793 0 0 1-.58.029zm1.379-1.901c-.166.076-.32.156-.459.238-.328.194-.541.383-.647.547-.094.145-.096.25-.04.361.01.022.02.036.026.044a.27.27 0 0 0 .035-.012c.137-.056.355-.235.635-.572a8.18 8.18 0 0 0 .45-.606zm1.64-1.33a12.647 12.647 0 0 1 1.01-.193 11.666 11.666 0 0 1-.51-.858 20.741 20.741 0 0 1-.5 1.05zm2.446.45c.15.162.296.3.435.41.24.19.407.253.498.256a.107.107 0 0 0 .07-.015.307.307 0 0 0 .094-.125.436.436 0 0 0 .059-.2.095.095 0 0 0-.026-.063c-.052-.062-.2-.152-.518-.209a3.881 3.881 0 0 0-.612-.053zM8.078 5.8a6.7 6.7 0 0 0 .2-.828c.031-.188.043-.343.038-.465a.613.613 0 0 0-.032-.198.517.517 0 0 0-.145.04c-.087.035-.158.106-.196.283-.04.192-.03.469.046.822.024.111.054.227.09.346z">
+        </path>
+       </svg>
+      </a>
+      <small class="titlemark">
+       1.2
+      </small>
+      <a id="x3-50001.2">
+      </a>
+      Legged  Mobile  Robots
+     </h2>
+     <aside class="wrapfig-r">
+      <div class="center">
+       <p class="noindent">
+       </p>
+       <p class="noindent">
+        <img alt="PIC" height="" src="figures/Locomotion/raster/dung-beetle.jpg" width="100%"/>
+        <a id="x3-5001r5">
+        </a>
+       </p>
+       <figcaption class="caption">
+        <span class="id">
+         Figure
+        1.5:
+        </span>
+        <span class="content">
+         Dug-beetle  are  a  great  example
+        for  legged  mobile  robotics <span class="cite"><a href="MobileRoboticsLectureBookad1.html#thor2018dung">[7]</a></span>  as  not  only
+        they can manoeuvre in their environment using
+        legged motion, they can also manipulate their
+        environment and generate rotational motion <span class="cite"><a href="MobileRoboticsLectureBookad1.html#Jones2018Dung">[8]</a></span>.
+        </span>
+       </figcaption>
+      </div>
+     </aside>
+     <p class="noindent">
+      Legged locomotion is characterised by a
+      <alert style="color: #821131;">
+       series of point contacts between the robot and the ground
+      </alert>
+      . The primary advantages
+     include adaptability and manoeuvrability in rough terrain. Because only a set of point contacts is required, the quality of the
+     ground between those points does not matter, so long as the robot can maintain adequate ground clearance. In
+     addition, a walking robot is capable of crossing a hole or chasm so long as its reach exceeds the width of the hole. A
+     final advantage of legged locomotion is the potential to manipulate objects in the environment with great skill.
+     </p>
+     <div class="quoteblock">
+      <p class="noindent">
+       The
+      dung
+      beetle,
+      is
+      capable
+      of
+      rolling
+      a
+      ball
+      while
+      locomotion
+      as
+      a
+      result
+      of
+      its
+      dexterous
+      front
+      legs
+      shown
+      in
+       <span id="bold" style="font-weight:bold;">
+        Fig.
+       </span>
+       <a href="#x3-5001r5">
+        1.5
+       </a>.
+      </p>
+     </div>
+     <p class="noindent">
+      The main disadvantages of legged locomotion include
+      <alert style="color: #821131;">
+       power and mechanical complexity
+      </alert>
+      . The leg, which
+     may include several
+      <a class="glossary" href="MobileRoboticsLectureBookli2.html#glo:dof">
+       DoF
+      </a>, must be capable of sustaining part of the robot’s total weight, and in many
+     robots must be capable of lifting and lowering the robot. Additionally, high manoeuvrability will only be
+     achieved if the legs have a sufficient number of
+      <a class="glossary" href="MobileRoboticsLectureBookli2.html#glo:dof">
+       DoF
+      </a>
+      to impart forces in a number of different directions.
+      <a id="subsubsection*.2">
+      </a>
+     </p>
+     <h5 class="subsubsectionHead">
+      <a id="x3-6000">
+      </a>
+      Leg  Configurations  and  Stability
+     </h5>
+     <p class="noindent">
+      Because legged robots are biologically inspired, it is instructive to examine biologically successful legged systems.
+     A number of different leg configurations have been successful in a variety or organisms seen in
+      <span id="bold" style="font-weight:bold;">
+       Fig.
+      </span>
+      <a href="#x3-6007r6">
+       1.6
+      </a>.
+     </p>
+     <figure class="figure">
+      <div class="subfigure" style="width:32%;">
+       <p class="noindent">
+       </p>
+       <p class="noindent">
+        <img alt="PIC" height="" src="figures/Locomotion/raster/locomotion-bipedal.jpg" width=""/>
+        <a id="x3-6001r1">
+        </a>
+       </p>
+       <div class="caption">
+        <span class="id">
+         (a)
+        </span>
+        <span class="content">
+         Bipedal motion <span class="cite"><a href="MobileRoboticsLectureBookad1.html#Sharp2018">[9]</a></span>.
+        </span>
+       </div>
+      </div>
+      <div class="subfigure" style="width:32%;">
+       <p class="noindent">
+       </p>
+       <p class="noindent">
+        <img alt="PIC" height="" src="figures/Locomotion/raster/locomotion-quadpedal.jpg" width=""/>
+        <a id="x3-6003r2">
+        </a>
+       </p>
+       <div class="caption">
+        <span class="id">
+         (b)
+        </span>
+        <span class="content">
+         Quadpedal motion <span class="cite"><a href="MobileRoboticsLectureBookad1.html#Porges2008">[10]</a></span>.
+        </span>
+       </div>
+      </div>
+      <div class="subfigure" style="width:32%;">
+       <p class="noindent">
+       </p>
+       <p class="noindent">
+        <img alt="PIC" height="" src="figures/Locomotion/raster/locomotion-hexapedal.jpg" width=""/>
+        <a id="x3-6005r3">
+        </a>
+       </p>
+       <div class="caption">
+        <span class="id">
+         (c)
+        </span>
+        <span class="content">
+         Hexapedal motion <span class="cite"><a href="MobileRoboticsLectureBookad1.html#BrittanicaAnt2025">[11]</a></span>
+        </span>
+       </div>
+      </div>
+      <a id="x3-6007r6">
+      </a>
+      <div class="caption">
+       <span class="id">
+        Figure
+       1.6:
+       </span>
+       <span class="content">
+        Types of motions used by different animals.
+       </span>
+      </div>
+     </figure>
+     <p class="noindent">
+      Large
+     animals
+     such
+     as
+     mammals
+     and
+     reptiles
+     have
+     four
+     <alert style="color: #821131;">(4)</alert>legs
+     whereas
+     insects
+     have
+     six
+     <alert style="color: #821131;">(6)</alert>or
+     more
+     legs.
+     In
+     some
+     mammals,
+     the
+     ability
+     to
+     walk
+     on
+     only
+     two
+     <alert style="color: #821131;">(2)</alert>legs
+     has
+     been
+     perfected.
+     Especially
+     in
+     the
+     case
+     of
+     humans,
+     balance
+     has
+     progressed
+     to
+     the
+     point
+     that
+     we
+     can
+     even
+     jump
+     with
+     one
+     leg
+      <alert style="color: #821131;">
+       <span id="bold" style="font-weight:bold;">
+        <sup class="textsuperscript">
+         4
+        </sup>
+       </span>
+      </alert>
+      <span class="marginnote">
+       <alert style="color: #821131;">
+        <span id="bold" style="font-weight:bold;">
+         <sup class="textsuperscript">
+          4
+         </sup>
+        </span>
+       </alert>
+       <span id="textcolor12">
+        In
+       child
+       development,
+       one
+       of
+       the
+       tests
+       used
+       to
+       determine
+       if
+       the
+       child
+       is
+       acquiring
+       advanced
+       locomotion
+       skills
+       is
+       the
+       ability
+       to
+       jump
+       on
+       one
+       leg <a id="x3-6008"></a><span class="cite"><a href="MobileRoboticsLectureBookad1.html#song2025impact">[12]</a></span>.
+       </span>
+      </span>
+      .
+     This
+     exceptional
+     manoeuvrability
+     comes
+     at
+     a
+     price:
+     </p>
+     <div class="warning">
+      <p class="noindent">
+       Bipedal
+      motion
+      is
+      much
+      more
+      complex
+      active
+      control
+      to
+      maintain
+      balance.
+      </p>
+     </div>
+     <p class="noindent">
+      In
+     contrast,
+     a
+     creature
+     with
+     three
+     <alert style="color: #821131;">(3)</alert>
+     legs
+     can
+     exhibit
+     a
+     static,
+     stable
+     pose
+     provided
+     that
+     it
+     can
+     ensure
+     that
+     its
+     centre
+     of
+     gravity
+     is
+     within
+     the
+     tripod
+     of
+     ground
+     contact.
+     Static
+     stability,
+     demonstrated
+     by
+     a
+     three-legged
+     stool,
+     means
+     that
+     balance
+     is
+     maintained
+     with
+     no
+     need
+     for
+     motion.
+     A
+     small
+     deviation
+     from
+     stability
+      <alert style="color: #821131;">
+       <span id="bold" style="font-weight:bold;">
+        <sup class="textsuperscript">
+         5
+        </sup>
+       </span>
+      </alert>
+      <span class="marginnote">
+       <alert style="color: #821131;">
+        <span id="bold" style="font-weight:bold;">
+         <sup class="textsuperscript">
+          5
+         </sup>
+        </span>
+       </alert>
+       <span id="textcolor13">
+        e.g.,
+       such
+       as
+       gently
+       pushing
+       the
+       stool
+       </span>
+      </span>
+      is
+     passively
+     corrected
+     towards
+     the
+     stable
+     pose
+     when
+     the
+     upsetting
+     force
+     stops.
+     But
+     a
+     robot
+     must
+     be
+     able
+     to
+     lift
+     its
+     legs
+     in
+     order
+     to
+     walk.
+     To
+     achieve
+     static
+     walking,
+     a
+     robot
+      <span id="bold" style="font-weight:bold;">
+       must
+      </span>
+      have
+     at
+     least
+     six
+     <alert style="color: #821131;">(6)</alert>legs <a id="x3-6009"></a><span class="cite"><a href="MobileRoboticsLectureBookad1.html#bottcher2006principles">[13]</a></span>.
+     In
+     such
+     a
+     configuration,
+     it
+     is
+     possible
+     to
+     design
+     a
+     gait
+      <alert style="color: #821131;">
+       <span id="bold" style="font-weight:bold;">
+        <sup class="textsuperscript">
+         6
+        </sup>
+       </span>
+      </alert>
+      <span class="marginnote">
+       <alert style="color: #821131;">
+        <span id="bold" style="font-weight:bold;">
+         <sup class="textsuperscript">
+          6
+         </sup>
+        </span>
+       </alert>
+       <span id="textcolor14">
+        the
+       pattern
+       of
+       steps
+       of
+       an
+       animal
+       at
+       a
+       particular
+       speed.
+       </span>
+      </span>
+      in
+     which
+     a
+     statically
+     stable
+     tripod
+     of
+     legs
+     is
+     in
+     contact
+     with
+     the
+     ground
+     at
+     all
+     times.
+     </p>
+     <p class="noindent">
+      Insects
+      <alert style="color: #821131;">
+       <span id="bold" style="font-weight:bold;">
+        <sup class="textsuperscript">
+         7
+        </sup>
+       </span>
+      </alert>
+      <span class="marginnote">
+       <alert style="color: #821131;">
+        <span id="bold" style="font-weight:bold;">
+         <sup class="textsuperscript">
+          7
+         </sup>
+        </span>
+       </alert>
+       <span id="textcolor15">
+        such
+       as
+       spiders,
+       ant,
+       beetles,
+       …
+       </span>
+      </span>
+      are
+     immediately
+     able
+     to
+     walk
+     when
+     born.
+     For
+     them,
+     the
+     problem
+     of
+     balance
+     during
+     walking
+     is
+     relatively
+     simple.
+     Mammals,
+     with
+     four
+     <alert style="color: #821131;">(4)</alert>
+     legs,
+     cannot
+     achieve
+     static
+     walking,
+     but
+     are
+     able
+     to
+     stand
+     easily
+     on
+     four
+     <alert style="color: #821131;">(4)</alert>
+     legs.
+     Fauns
+      <alert style="color: #821131;">
+       <span id="bold" style="font-weight:bold;">
+        <sup class="textsuperscript">
+         8
+        </sup>
+       </span>
+      </alert>
+      <span class="marginnote">
+       <alert style="color: #821131;">
+        <span id="bold" style="font-weight:bold;">
+         <sup class="textsuperscript">
+          8
+         </sup>
+        </span>
+       </alert>
+       <span id="textcolor16">
+        a
+       baby
+       deer
+       </span>
+      </span>
+      ,
+     for
+     example,
+     spend
+     several
+     minutes
+     attempting
+     to
+     stand
+     before
+     they
+     are
+     able
+     to
+     do
+     so,
+     then
+     spend
+     several
+     more
+     minutes
+     learning
+     to
+     walk
+     without
+     falling <a id="x3-6010"></a><span class="cite"><a href="MobileRoboticsLectureBookad1.html#krzywinski1984growth">[14]</a></span>.
+     Humans,
+     with
+     two
+     <alert style="color: #821131;">(2)</alert>
+     legs,
+     cannot
+     even
+     stand
+     in
+     one
+     place
+     with
+     static
+     stability.
+     Infants
+     require
+     months
+     to
+     stand
+     and
+     walk,
+     and
+     even
+     longer
+     to
+     learn
+     to
+     jump,
+     run
+     and
+     stand
+     on
+     one
+     leg.
+     </p>
+     <aside class="wrapfig-r">
+      <div class="center">
+       <p class="noindent">
+       </p>
+       <p class="noindent">
+        <img alt="PIC" height="" src="figures/Locomotion/raster/caterpillar-locomotion.png" width="100%"/>
+        <a id="x3-6011r7">
+        </a>
+       </p>
+       <figcaption class="caption">
+        <span class="id">
+         Figure
+        1.7:
+        </span>
+        <span class="content">
+         Main locomotory gaits in
+         <italic>
+          Pleurotya
+         </italic>
+         caterpillar <span class="cite"><a href="MobileRoboticsLectureBookad1.html#brackenbury1997caterpillar">[15]</a></span>.
+        </span>
+       </figcaption>
+      </div>
+     </aside>
+     <p class="noindent">
+      There
+     is
+     also
+     the
+     potential
+     for
+     great
+     variety
+     in
+     the
+     complexity
+     of
+     each
+     individual
+     leg.
+     Once
+     again,
+     the
+     biological
+     world
+     provides
+     ample
+     examples
+     at
+     both
+     extremes.
+     For
+     instance,
+     in
+     the
+     case
+     of
+     the
+     caterpillar,
+     each
+     leg
+     is
+     extended
+     using
+     hydraulic
+     pressure
+     by
+     constricting
+     the
+     body
+     cavity
+     and
+     forcing
+     an
+     increase
+     in
+     pressure,
+     and
+     each
+     leg
+     is
+     retracted
+     longitudinally
+     by
+     relaxing
+     the
+     hydraulic
+     pressure,
+     then
+     activating
+     a
+     single
+     tensile
+     muscle
+     that
+     pulls
+     the
+     leg
+     in
+     towards
+     the
+     body,
+     seen
+     in
+      <span id="bold" style="font-weight:bold;">
+       Fig.
+      </span>
+      <a href="#x3-6011r7">
+       1.7
+      </a>.
+     Each
+     leg
+     has
+     only
+     a
+     single
+      <a class="glossary" href="MobileRoboticsLectureBookli2.html#glo:dof">
+       DoF
+      </a>,
+     which
+     is
+     oriented
+     longitudinally
+     along
+     the
+     leg.
+     Forward
+     locomotion
+     depends
+     on
+     the
+     hydraulic
+     pressure
+     in
+     the
+     body,
+     which
+     extends
+     the
+     distance
+     between
+     pairs
+     of
+     legs.
+     The
+     caterpillar
+     leg
+     is
+     therefore
+     mechanically
+     very
+     simple,
+     using
+     a
+     minimal
+     number
+     of
+     extrinsic
+     muscles
+     to
+     achieve
+     complex
+     overall
+     locomotion.
+     </p>
+     <p class="noindent">
+      At
+     the
+     other
+     extreme,
+     the
+     human
+     leg
+     has
+     more
+     than
+     six
+     <alert style="color: #821131;">(6)</alert>
+     major
+     degrees
+     of
+     freedom,
+     combined
+     with
+     further
+     actuation
+     at
+     the
+     toes,
+     shown
+     in
+      <span id="bold" style="font-weight:bold;">
+       Fig.
+      </span>
+      <a href="#x3-6015r8">
+       1.8
+      </a>.
+     There
+     are
+     more
+     than
+     50
+     muscles
+     in
+     each
+     lower
+     limb
+     and
+     at
+     least
+     half
+     of
+     them
+     participate
+     actively
+     in
+     the
+     control
+     of
+     leg
+     motion
+     [
+      <a id="x3-6013">
+      </a>
+      <a href="MobileRoboticsLectureBookad1.html#winter1991biomechanics">
+       16
+      </a>,
+      <a id="x3-6014">
+      </a>
+      <a href="MobileRoboticsLectureBookad1.html#lacquaniti2012patterned">
+       17
+      </a>
+      ].
+     </p>
+     <aside class="wrapfig-r">
+      <div class="center">
+       <p class="noindent">
+       </p>
+       <p class="noindent">
+        <img alt="PIC" height="" src="figures/Locomotion/raster/human-leg-dof.jpg" width="100%"/>
+        <a id="x3-6015r8">
+        </a>
+       </p>
+       <figcaption class="caption">
+        <span class="id">
+         Figure
+        1.8:
+        </span>
+        <span class="content">
+         The
+         <a class="glossary" href="MobileRoboticsLectureBookli2.html#glo:dof">
+          DoF
+         </a>
+         a human leg has <span class="cite"><a href="MobileRoboticsLectureBookad1.html#pons2008wearable">[18]</a></span>.
+        </span>
+       </figcaption>
+       <img alt="PIC" height="" src="figures/Locomotion/raster/leg-3-dof.png" width="100%"/>
+       <a id="x3-6017r9">
+       </a>
+       <figcaption class="caption">
+        <span class="id">
+         Figure
+        1.9:
+        </span>
+        <span class="content">
+         An  example  of  a  leg  possessing
+        three <alert style="color: #821131;">(3)</alert>
+         <a class="glossary" href="MobileRoboticsLectureBookli2.html#glo:dof">
+          DoF
+         </a> <span class="cite"><a href="MobileRoboticsLectureBookad1.html#zyhowski2023adaptive">[19]</a></span>.
+        </span>
+       </figcaption>
+      </div>
+     </aside>
+     <p class="noindent">
+      In
+     the
+     case
+     of
+     legged
+     mobile
+     robots,
+     a
+     minimum
+     of
+     two
+     <alert style="color: #821131;">(2)</alert>
+      <a class="glossary" href="MobileRoboticsLectureBookli2.html#glo:dof">
+       DoF
+      </a>
+      is
+     generally
+     required
+     to
+     move
+     a
+     leg
+     forward
+     by
+     lifting
+     the
+     left
+     and
+     swinging
+     it
+     forward.
+     More
+     common
+     is
+     the
+     addition
+     of
+     a
+      <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML">
+       <msup>
+        <mrow>
+         <mstyle class="text">
+          <mtext>
+           3
+          </mtext>
+         </mstyle>
+        </mrow>
+        <mrow>
+         <mstyle class="text">
+          <mtext>
+           rd
+          </mtext>
+         </mstyle>
+        </mrow>
+       </msup>
+      </math>
+      <a class="glossary" href="MobileRoboticsLectureBookli2.html#glo:dof">
+       DoF
+      </a>
+      for
+     more
+     complex
+     manoeuvres,
+     resulting
+     in
+     legs
+     such
+     as
+     those
+     shown
+     in
+      <span id="bold" style="font-weight:bold;">
+       Fig.
+      </span>
+      <a href="#x3-6017r9">
+       1.9
+      </a>.
+     Recent
+     successes
+     in
+     the
+     creation
+     of
+     bipedal
+     walking
+     robots
+     have
+     added
+     a
+     fourth
+     DOF
+     at
+     the
+     ankle
+     joint <a id="x3-6019"></a><span class="cite"><a href="MobileRoboticsLectureBookad1.html#lee2013investigation">[20]</a></span>.
+     The
+     ankle
+     enables
+     more
+     consistent
+     ground
+     contact
+     by
+     actuating
+     the
+     pose
+     of
+     the
+     sole
+     of
+     the
+     foot.
+     In
+     general,
+     adding
+      <a class="glossary" href="MobileRoboticsLectureBookli2.html#glo:dof">
+       DoF
+      </a>
+      to
+     a
+     robot
+     leg
+     increases
+     the
+     manoeuvrability
+     of
+     the
+     robot,
+     both
+     augmenting
+     the
+     range
+     of
+     terrains
+     on
+     which
+     it
+     can
+     travel
+     and
+     the
+     ability
+     of
+     the
+     robot
+     to
+     travel
+     with
+     a
+     variety
+     of
+     gaits.
+     The
+     primary
+     disadvantages
+     of
+     additional
+     joints
+     and
+     actuators
+     is,
+     of
+     course,
+     energy,
+     control
+     and
+     mass.
+     Additional
+     actuators
+     require
+     energy
+     and
+     control,
+     and
+     they
+     also
+     add
+     to
+     leg
+     mass,
+     further
+     increasing
+     power
+     and
+     load
+     requirements
+     on
+     existing
+     actuators.
+     </p>
+     <p class="noindent">
+      In
+     the
+     case
+     of
+     a
+     multi-legged
+     mobile
+     robot,
+     there
+     is
+     the
+     issue
+     of
+     leg
+     coordination
+     for
+     locomotion,
+     or
+     gait
+     control.
+     </p>
+     <div class="warning">
+      <p class="noindent">
+       The
+      number
+      of
+      possible
+      gaits
+      depends
+      on
+      the
+      number
+      of
+      legs <a id="x3-6020"></a><span class="cite"><a href="MobileRoboticsLectureBookad1.html#alexander1989optimization">[21]</a></span>.
+      </p>
+     </div>
+     <p class="noindent">
+      The
+     gait
+     is
+     a
+     sequence
+     of
+     lift
+     and
+     release
+     events
+     for
+     the
+     individual
+     legs.
+     For
+     a
+     mobile
+     robot
+     with
+      <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML">
+       <mi>
+        k
+       </mi>
+      </math>
+      legs,
+     the
+     total
+     number
+     of
+     possible
+     events
+      <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML">
+       <mi>
+        N
+       </mi>
+      </math>
+      for
+     a
+     walking
+     machine
+     is:
+     </p>
+     <table class="equation">
+      <tr>
+       <td>
+        <p class="noindent">
+        </p>
+        <math class="equation" display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+         <mstyle class="label" id="x3-6021r1">
+         </mstyle>
+         <mi>
+          N
+         </mi>
+         <mo class="MathClass-rel" stretchy="false">
+          =
+         </mo>
+         <msup>
+          <mrow>
+           <mrow>
+            <mo fence="true" form="prefix">
+             (
+            </mo>
+            <mrow>
+             <mn>
+              2
+             </mn>
+             <mi>
+              k
+             </mi>
+             <mo class="MathClass-bin" stretchy="false">
+              −
+             </mo>
+             <mn>
+              1
+             </mn>
+            </mrow>
+            <mo fence="true" form="postfix">
+             )
+            </mo>
+           </mrow>
+          </mrow>
+          <mrow>
+          </mrow>
+         </msup>
+         <mo class="MathClass-punc" stretchy="false">
+          !
+         </mo>
+        </math>
+       </td>
+       <td class="eq-no">
+        (1.1)
+       </td>
+      </tr>
+     </table>
+     <p class="noindent">
+      For
+     a
+     bipedal
+     walker
+     (
+      <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML">
+       <mi>
+        k
+       </mi>
+      </math>
+      =2)
+     legs
+     the
+     number
+     of
+     possible
+     events
+      <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML">
+       <mi>
+        N
+       </mi>
+      </math>
+      is:
+     </p>
+     <table class="equation">
+      <tr>
+       <td>
+        <p class="noindent">
+        </p>
+        <math class="equation" display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+         <mstyle class="label" id="x3-6022r2">
+         </mstyle>
+         <mi>
+          N
+         </mi>
+         <mo class="MathClass-rel" stretchy="false">
+          =
+         </mo>
+         <msup>
+          <mrow>
+           <mrow>
+            <mo fence="true" form="prefix">
+             (
+            </mo>
+            <mrow>
+             <mn>
+              2
+             </mn>
+             <mi>
+              k
+             </mi>
+             <mo class="MathClass-bin" stretchy="false">
+              −
+             </mo>
+             <mn>
+              1
+             </mn>
+            </mrow>
+            <mo fence="true" form="postfix">
+             )
+            </mo>
+           </mrow>
+          </mrow>
+          <mrow>
+          </mrow>
+         </msup>
+         <mo class="MathClass-punc" stretchy="false">
+          !
+         </mo>
+         <mo class="MathClass-rel" stretchy="false">
+          =
+         </mo>
+         <mn>
+          3
+         </mn>
+         <mo class="MathClass-punc" stretchy="false">
+          !
+         </mo>
+         <mo class="MathClass-rel" stretchy="false">
+          =
+         </mo>
+         <mn>
+          3
+         </mn>
+         <mo class="MathClass-bin" stretchy="false">
+          ⋅
+         </mo>
+         <mn>
+          2
+         </mn>
+         <mo class="MathClass-bin" stretchy="false">
+          ⋅
+         </mo>
+         <mn>
+          1
+         </mn>
+         <mo class="MathClass-rel" stretchy="false">
+          =
+         </mo>
+         <mn>
+          6
+         </mn>
+        </math>
+       </td>
+       <td class="eq-no">
+        (1.2)
+       </td>
+      </tr>
+     </table>
+     <p class="noindent">
+      The
+     six
+     <alert style="color: #821131;">(6)</alert>
+     different
+     events
+     are:
+     </p>
+     <ul class="itemize1">
+      <li class="itemize">
+       <p class="noindent">
+        lift
+       right
+       leg
+       </p>
+      </li>
+      <li class="itemize">
+       <p class="noindent">
+        lift
+       left
+       leg
+       </p>
+      </li>
+      <li class="itemize">
+       <p class="noindent">
+        release
+       right
+       leg
+       </p>
+      </li>
+      <li class="itemize">
+       <p class="noindent">
+        release
+       left
+       leg
+       </p>
+      </li>
+      <li class="itemize">
+       <p class="noindent">
+        lift
+       both
+       legs
+       together
+       </p>
+      </li>
+      <li class="itemize">
+       <p class="noindent">
+        release
+       both
+       legs
+       together
+       </p>
+      </li>
+     </ul>
+     <p class="noindent">
+      As
+     can
+     we
+     see,
+     this
+     list
+     of
+     possible
+     events
+     quickly
+     grows
+     quite
+     large.
+     For
+     example,
+     a
+     robot
+     with
+     six
+     <alert style="color: #821131;">(6)</alert>
+     legs
+     has
+     far
+     more
+     gaits
+     theoretically:
+     </p>
+     <table class="equation">
+      <tr>
+       <td>
+        <p class="noindent">
+        </p>
+        <math class="equation" display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+         <mstyle class="label" id="x3-6023r3">
+         </mstyle>
+         <mi>
+          N
+         </mi>
+         <mo class="MathClass-rel" stretchy="false">
+          =
+         </mo>
+         <mn>
+          1
+         </mn>
+         <mn>
+          1
+         </mn>
+         <mo class="MathClass-punc" stretchy="false">
+          !
+         </mo>
+         <mo class="MathClass-rel" stretchy="false">
+          =
+         </mo>
+         <mstyle class="text">
+          <mtext>
+           39916800
+          </mtext>
+         </mstyle>
+        </math>
+       </td>
+       <td class="eq-no">
+        (1.3)
+       </td>
+      </tr>
+     </table>
+     <p class="noindent">
+     </p>
+     <aside class="wrapfig-r">
+      <div class="center">
+       <p class="noindent">
+       </p>
+       <p class="noindent">
+        <img alt="PIC" height="" src="figures/Locomotion/raster/hopper.jpg" width="100%"/>
+        <a id="x3-6024r10">
+        </a>
+       </p>
+       <figcaption class="caption">
+        <span class="id">
+         Figure
+        1.10:
+        </span>
+        <span class="content">
+         The Raibert hopper <span class="cite"><a href="MobileRoboticsLectureBookad1.html#MITRaibert1984">[22]</a></span>.
+        </span>
+       </figcaption>
+      </div>
+     </aside>
+     <h3 class="subsectionHead">
+      <a aria-label="Link to this section in PDF version" class="pdf-link" href="MobileRoboticsLectureBook.pdf#subsection.1.2.1" style="color: red;  position: absolute;  left: -30px;" target="_blank">
+       <svg class="bi bi-file-pdf" fill="currentColor" height="20" viewbox="0 0 16 16" width="20" xmlns="http://www.w3.org/2000/svg">
+        <path d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z">
+        </path>
+        <path d="M4.603 12.087a.81.81 0 0 1-.438-.42c-.195-.388-.13-.776.08-1.102.198-.307.526-.568.897-.787a7.68 7.68 0 0 1 1.482-.645 19.701 19.701 0 0 0 1.062-2.227 7.269 7.269 0 0 1-.43-1.295c-.086-.4-.119-.796-.046-1.136.075-.354.274-.672.65-.823.192-.077.4-.12.602-.077a.7.7 0 0 1 .477.365c.088.164.12.356.127.538.007.187-.012.395-.047.614-.084.51-.27 1.134-.52 1.794a10.954 10.954 0 0 0 .98 1.686 5.753 5.753 0 0 1 1.334.05c.364.065.734.195.96.465.12.144.193.32.2.518.007.192-.047.382-.138.563a1.04 1.04 0 0 1-.354.416.856.856 0 0 1-.51.138c-.331-.014-.654-.196-.933-.417a5.716 5.716 0 0 1-.911-.95 11.642 11.642 0 0 0-1.997.406 11.311 11.311 0 0 1-1.021 1.51c-.29.35-.608.655-.926.787a.793.793 0 0 1-.58.029zm1.379-1.901c-.166.076-.32.156-.459.238-.328.194-.541.383-.647.547-.094.145-.096.25-.04.361.01.022.02.036.026.044a.27.27 0 0 0 .035-.012c.137-.056.355-.235.635-.572a8.18 8.18 0 0 0 .45-.606zm1.64-1.33a12.647 12.647 0 0 1 1.01-.193 11.666 11.666 0 0 1-.51-.858 20.741 20.741 0 0 1-.5 1.05zm2.446.45c.15.162.296.3.435.41.24.19.407.253.498.256a.107.107 0 0 0 .07-.015.307.307 0 0 0 .094-.125.436.436 0 0 0 .059-.2.095.095 0 0 0-.026-.063c-.052-.062-.2-.152-.518-.209a3.881 3.881 0 0 0-.612-.053zM8.078 5.8a6.7 6.7 0 0 0 .2-.828c.031-.188.043-.343.038-.465a.613.613 0 0 0-.032-.198.517.517 0 0 0-.145.04c-.087.035-.158.106-.196.283-.04.192-.03.469.046.822.024.111.054.227.09.346z">
+        </path>
+       </svg>
+      </a>
+      <small class="titlemark">
+       1.2.1
+      </small>
+      <a id="x3-70001.2.1">
+      </a>
+      Examples
+     of
+     Legged
+     Robot
+     Locomotion
+     </h3>
+     <p class="noindent">
+      Although
+     there
+     are
+     no
+     high-volume
+     industrial
+     applications
+     to
+     date,
+     legged
+     locomotion
+     is
+     an
+     important
+     area
+     of
+     long-term
+     research.
+     Several
+     interesting
+     designs
+     are
+     presented
+     below,
+     beginning
+     with
+     the
+     one-legged
+     robot
+     and
+     finishing
+     with
+     six-legged
+     robots.
+      <a id="subsubsection*.3">
+      </a>
+     </p>
+     <h5 class="subsubsectionHead">
+      <a id="x3-8000">
+      </a>
+      Single
+     Leg
+     </h5>
+     <p class="noindent">
+      The
+     minimum
+     number
+     of
+     legs
+     a
+     legged
+     robot
+     can
+     have
+     is,
+     of
+     course,
+     one.
+     Minimising
+     the
+     number
+     of
+     legs
+     is
+     beneficial
+     for
+     several
+     reasons.
+     </p>
+     <ul class="itemize1">
+      <li class="itemize">
+       <p class="noindent">
+        Body
+       mass
+       is
+       particularly
+       important
+       to
+       walking
+       machines,
+       and
+       the
+       single
+       leg
+       minimises
+       cumulative
+       leg
+       mass.
+       </p>
+      </li>
+      <li class="itemize">
+       <p class="noindent">
+        Leg
+       coordination
+       is
+       required
+       when
+       a
+       robot
+       has
+       several
+       legs,
+       but
+       with
+       one
+       leg
+       no
+       such
+       coordination
+       is
+       needed.
+       </p>
+      </li>
+      <li class="itemize">
+       <p class="noindent">
+        The one-legged robot maximises the basic advantage of legged locomotion: legs have single points of contact with the
+       ground in lieu of an entire track as with wheels.
+       </p>
+       <div class="quoteblock">
+        <p class="noindent">
+         A
+        single
+        legged
+        robot
+        requires
+        only
+        a
+        sequence
+        of
+        single
+        contacts,
+        making
+        it
+        useful
+        in
+        rough
+        terrain.
+        </p>
+       </div>
+      </li>
+     </ul>
+     <p class="noindent">
+      Perhaps
+     most
+     importantly,
+     a
+     hopping
+     robot
+     can
+     dynamically
+     cross
+     a
+     gap
+     that
+     is
+     larger
+     than
+     its
+     stride
+     by
+     taking
+     a
+     running
+     start,
+     whereas
+     a
+     multi-legged
+     walking
+     robot
+     that
+     cannot
+     run
+     is
+     limited
+     to
+     crossing
+     gaps
+     that
+     are
+     as
+     large
+     as
+     its
+     reach.
+     </p>
+     <p class="noindent">
+      The
+     major
+     challenge
+     of
+     creating
+     a
+     single-leg
+     robot
+     is
+      <alert style="color: #821131;">
+       balance
+      </alert>
+      .
+     For
+     a
+     robot
+     with
+     one
+     leg,
+     static
+     walking
+     is
+     not
+     only
+     impossible,
+     but
+     static
+     stability
+     when
+     stationary
+     is
+     also
+     impossible.
+     The
+     robot
+     must
+     actively
+     balance
+     itself
+     by
+     either
+     changing
+     its
+     centre
+     of
+     gravity
+     or
+     by
+     imparting
+     corrective
+     forces.
+     Thus,
+     the
+     successful
+     single-leg
+     robot
+      <span id="bold" style="font-weight:bold;">
+       must
+be
+dynamically
+stable
+      </span>
+      .
+     </p>
+     <p class="noindent">
+      <span id="bold" style="font-weight:bold;">
+       Fig.
+      </span>
+      <a href="#x3-6024r10">
+       1.10
+      </a>
+      shows
+     the
+     Raibert
+     Hopper
+     [
+      <a id="x3-8001">
+      </a>
+      <a href="MobileRoboticsLectureBookad1.html#murthy19843d">
+       23
+      </a>,
+      <a id="x3-8002">
+      </a>
+      <a href="MobileRoboticsLectureBookad1.html#raibert1984experiments">
+       24
+      </a>
+      ],
+     one
+     of
+     the
+     most
+     well-known
+     single-leg
+     hopping
+     robots
+     created.
+     </p>
+     <aside class="wrapfig-r">
+      <div class="center">
+       <p class="noindent">
+       </p>
+       <p class="noindent">
+        <img alt="PIC" height="" src="figures/Locomotion/raster/bowleg.jpg" width="100%"/>
+        <a id="x3-8003r11">
+        </a>
+       </p>
+       <figcaption class="caption">
+        <span class="id">
+         Figure
+        1.11:
+        </span>
+        <span class="content">
+         The 2D single Bow Leg Hopper.
+        </span>
+       </figcaption>
+       <img alt="PIC" height="" src="figures/Locomotion/raster/honda-asimo.jpg" width="100%"/>
+       <a id="x3-8004r12">
+       </a>
+       <figcaption class="caption">
+        <span class="id">
+         Figure
+        1.12:
+        </span>
+        <span class="content">
+         The New ASIMO introduced in
+        2005 <span class="cite"><a href="MobileRoboticsLectureBookad1.html#Asimo2005">[25]</a></span>.
+        </span>
+       </figcaption>
+      </div>
+     </aside>
+     <p class="noindent">
+      This
+     robot
+     makes
+     continuous
+     corrections
+     to
+     body
+     attitude
+     and
+     to
+     robot
+     velocity
+     by
+     adjusting
+     the
+     leg
+     angle
+     with
+     respect
+     to
+     the
+     body.
+     The
+     actuation
+     is
+     hydraulic,
+     including
+     high-power
+     longitudinal
+     extension
+     of
+     the
+     leg
+     during
+     stance
+     to
+     hop
+     back
+     into
+     the
+     air.
+     Although
+     powerful,
+     these
+     actuators
+     require
+     a
+     large,
+     off-board
+     hydraulic
+     pump
+     to
+     be
+     connected
+     to
+     the
+     robot
+     at
+     all
+     times.
+      <span id="bold" style="font-weight:bold;">
+       Fig.
+      </span>
+      <a href="#x3-8003r11">
+       1.11
+      </a>
+      shows
+     a
+     more
+     energy
+     efficient
+     design
+     developed <a id="x3-8006"></a><span class="cite"><a href="MobileRoboticsLectureBookad1.html#brown1998bow">[26]</a></span>.
+     Instead
+     of
+     supplying
+     power
+     by
+     means
+     of
+     an
+     off-board
+     hydraulic
+     pump,
+     the
+     Bow
+     Leg
+     Hopper
+     is
+     designed
+     to
+     capture
+     the
+     kinetic
+     energy
+     of
+     the
+     robot
+     as
+     it
+     lands
+     using
+     an
+     efficient
+     bow
+     spring
+     leg.
+     This
+     spring
+     returns
+     approximately
+     85%
+     of
+     the
+     energy,
+     meaning
+     that
+     stable
+     hopping
+     requires
+     only
+     the
+     addition
+     of
+     15%
+     of
+     the
+     required
+     energy
+     on
+     each
+     hop.
+     This
+     robot,
+     which
+     is
+     constrained
+     along
+     one
+     axis
+     by
+     a
+     boom,
+     has
+     demonstrated
+     continuous
+     hopping
+     for
+     20
+     minutes
+     using
+     a
+     single
+     set
+     of
+     batteries
+     carried
+     on
+     board
+     the
+     robot.
+     As
+     with
+     the
+     Raibert
+     Hopper,
+     the
+     Bow
+     Leg
+     Hopper
+     controls
+     velocity
+     by
+     changing
+     the
+     angle
+     of
+     the
+     leg
+     to
+     the
+     body
+     at
+     the
+     hip
+     joint.
+     The
+     paper
+     of
+     Ringrose <a id="x3-8007"></a><span class="cite"><a href="MobileRoboticsLectureBookad1.html#ringrose1997self">[27]</a></span>
+     demonstrates
+     the
+     very
+     important
+     duality
+     of
+     mechanics
+     and
+     controls
+     as
+     applied
+     to
+     a
+     single
+     leg
+     hopping
+     machine.
+     Often
+     clever
+     mechanical
+     design
+     can
+     perform
+     the
+     same
+     operations
+     as
+     complex
+     active
+     control
+     circuitry.
+     In
+     this
+     robot,
+     the
+     physical
+     shape
+     of
+     the
+     foot
+     is
+     exactly
+     the
+     right
+     curve
+     so
+     that
+     when
+     the
+     robot
+     lands
+     without
+     being
+     perfectly
+     vertical,
+     the
+     proper
+     corrective
+     force
+     is
+     provided
+     from
+     the
+     impact,
+     making
+     the
+     robot
+     vertical
+     by
+     the
+     next
+     landing.
+     This
+     robot
+     is
+     dynamically
+     stable,
+     and
+     is
+     furthermore
+     passive.
+     </p>
+     <div class="knowledge">
+      <p class="noindent">
+       The
+      correction
+      is
+      provided
+      by
+      physical
+      interactions
+      between
+      the
+      robot
+      and
+      its
+      environment,
+      with
+      no
+      computer
+      nor
+      any
+      active
+      control
+      in
+      the
+      loop.
+      </p>
+     </div>
+     <a id="subsubsection*.4">
+     </a>
+     <h5 class="subsubsectionHead">
+      <a id="x3-9000">
+      </a>
+      Two
+     Legs
+     (Bipedal)
+     </h5>
+     <p class="noindent">
+      A
+     variety
+     of
+     successful
+     bipedal
+     robots
+     have
+     been
+     demonstrated.
+     Two-legged
+     robots
+     have
+     been
+     shown
+     to
+     run,
+     jump,
+     travel
+     up
+     and
+     down
+     stairs
+     and
+     even
+     do
+     aerial
+     tricks
+     such
+     as
+     somersaults.
+      <span id="bold" style="font-weight:bold;">
+       Fig.
+      </span>
+      <a href="#x3-8004r12">
+       1.12
+      </a>
+      shows
+     the
+     Honda
+     P2
+     bipedal
+     robot,
+     which
+     is
+     the
+     product
+     of
+     tens
+     of
+     millions
+     of
+     research
+     dollars
+     and
+     more
+     than
+     a
+     decade
+     of
+     work.
+     This
+     biped
+     can
+     walk
+     on
+     slopes,
+     climb
+     and
+     descend
+     stairs,
+     and
+     push
+     shopping
+     carts.
+     The
+     crucial
+     technology
+     that
+     enables
+     this
+     robot
+     is
+     Honda’s
+     research
+     into
+     the
+     fabrication
+     of
+     extremely
+     high
+     torque,
+     low
+     mass
+     motors
+     that
+     serve
+     as
+     the
+     robot’s
+     joints.
+     In
+     the
+     case
+     of
+     P2,
+     the
+     most
+     significant
+     obstacle
+     that
+     remains
+     is
+     energy
+     capacity,
+     efficiency
+     and
+     autonomous
+     navigation.
+     This
+     robot
+     can
+     operate
+     for
+     only
+     about
+     20
+     minutes
+     with
+     on-board
+     power.
+     An
+     important
+     feature
+     of
+     bipedal
+     robots
+     is
+     their
+     anthropomorphic
+     shape.
+     They
+     can
+     be
+     built
+     to
+     have
+     the
+     same
+     approximate
+     dimensions
+     as
+     humans,
+     and
+     this
+     makes
+     them
+     excellent
+     vehicles
+     for
+     research
+     in
+     human-robot
+     interaction.
+     </p>
+     <aside class="wrapfig-r">
+      <img alt="PIC" height="" src="figures/Locomotion/raster/flamingo.jpg" width="100%"/>
+      <a id="x3-9001r13">
+      </a>
+      <figcaption class="caption">
+       <span class="id">
+        Figure
+       1.13:
+       </span>
+       <span class="content">
+        Spring  Flamingo  is  a  planar
+       bipedal walking robot <span class="cite"><a href="MobileRoboticsLectureBookad1.html#Flamingo2000">[28]</a></span>.
+       </span>
+      </figcaption>
+     </aside>
+     <p class="noindent">
+      Bipedal
+     robots
+     can
+     only
+     be
+     statically
+     stable
+     within
+     some
+     limits,
+     and
+     so
+     robots
+     such
+     as
+     P2
+     and
+     Wabian
+     generally
+     must
+     perform
+     continuous
+     balance-correcting
+     servoing
+     even
+     when
+     standing
+     still.
+     Furthermore,
+     each
+     leg
+     must
+     have
+     sufficient
+     capacity
+     to
+     support
+     the
+     full
+     weight
+     of
+     the
+     robot.
+     In
+     the
+     case
+     of
+     four-legged
+     robots,
+     the
+     balance
+     problem
+     is
+     facilitated
+     along
+     with
+     the
+     load
+     requirements
+     of
+     each
+     leg.
+     An
+     elegant
+     design
+     of
+     a
+     biped
+     robot
+     is
+     the
+     Spring
+     Flamingo
+     of
+     MIT
+     seen
+     in
+      <span id="bold" style="font-weight:bold;">
+       Fig.
+      </span>
+      <a href="#x3-9001r13">
+       1.13
+      </a>.
+     This
+     robot
+     inserts
+     springs
+     in
+     series
+     with
+     the
+     leg
+     actuators
+     to
+     achieve
+     a
+     more
+     elastic
+     gait.
+     Combined
+     with
+     "kneecaps"
+     that
+     limit
+     knee
+     joint
+     angles,
+     the
+     Flamingo
+     achieves
+     surprisingly
+     biomimetic
+     motion.
+      <a id="subsubsection*.5">
+      </a>
+     </p>
+     <h5 class="subsubsectionHead">
+      <a id="x3-10000">
+      </a>
+      Four
+     Legs
+     (Quadruped)
+     </h5>
+     <p class="noindent">
+      Although
+     standing
+     still
+     on
+     four
+     legs
+     is
+     passively
+     stable,
+     walking
+     remains
+     challenging
+     because
+     to
+     remain
+     stable
+     the
+     robot’s
+     center
+     of
+     gravity
+     must
+     be
+     actively
+     shifted
+     during
+     the
+     gait.
+     Sony
+     recently
+     invested
+     several
+     million
+     dollars
+     to
+     develop
+     a
+     four-legged
+     robot
+     (figure
+     2.14).
+     To
+     cre-
+     ate
+     this
+     robot,
+     Sony
+     created
+     both
+     a
+     new
+     robot
+     operating
+     system
+     that
+     is
+     near
+     real-time
+     and
+     invented
+     new
+     geared
+     servomotors
+     that
+     are
+     sufficiently
+     high
+     torque
+     to
+     support
+     the
+     robot,
+     yet
+     backdriveable
+     for
+     safety.
+     In
+     addition
+     to
+     developing
+     custom
+     motors
+     and
+     software,
+     Sony
+     incorporated
+     a
+     color
+     vision
+     system
+     that
+     enables
+     Aibo
+     to
+     chase
+     a
+     brightly
+     colored
+     ball.
+     The
+     robot
+     is
+     able
+     to
+     function
+     for
+     at
+     most
+     one
+     hour
+     before
+     requiring
+     recharging.
+     Early
+     sales
+     of
+     the
+     robot
+     have
+     been
+     very
+     strong,
+     with
+     more
+     than
+     60,000
+     units
+     sold
+     in
+     the
+     first
+     year.
+     Nevertheless,
+     the
+     number
+     of
+     motors
+     and
+     the
+     technology
+     investment
+     behind
+     this
+     robot
+     dog
+     have
+     resulted
+     in
+     a
+     very
+     high
+     price
+     of
+     approximately
+     1500.
+     Four
+     legged
+     robots
+     have
+     the
+     potential
+     to
+     serve
+     as
+     effective
+     artifacts
+     for
+     research
+     in
+     human-
+     robot
+     interaction
+     (fig.
+     2.15).
+     Humans
+     can
+     treat
+     the
+     Sony
+     robot,
+     for
+     example,
+     as
+     a
+     pet
+     and
+     might
+     develop
+     an
+     emotional
+     relationship
+     similar
+     to
+     that
+     between
+     man
+     and
+     dog.
+     Furthermore,
+     Sony
+     has
+     designed
+     Aibo’s
+     walking
+     style
+     and
+     general
+     behavior
+     to
+     emulate
+     learning
+     and
+     maturation,
+     resulting
+     in
+     dynamic
+     behavior
+     over
+     time
+     that
+     is
+     more
+     interesting
+     for
+     the
+     owner
+     who
+     can
+     track
+     the
+     changing
+     behavior.
+     As
+     the
+     challenges
+     of
+     high
+     energy
+     storage
+     and
+     motor
+     technology
+     are
+     solved,
+     it
+     is
+     likely
+     that
+     quadruped
+     robots
+     much
+     more
+     capable
+     than
+     Aibo
+     will
+     become
+     common
+     throughout
+     the
+     human
+     environment.
+      <a id="subsubsection*.6">
+      </a>
+     </p>
+     <h5 class="subsubsectionHead">
+      <a id="x3-11000">
+      </a>
+      Six
+     Legs
+     (Hexapod)
+     </h5>
+     <p class="noindent">
+      Six
+     legged
+     configurations
+     have
+     been
+     extremely
+     popular
+     in
+     mobile
+     robotics
+     because
+     of
+     their
+     static
+     stability
+     during
+     walking,
+     thus
+     reducing
+     the
+     control
+     complexity
+     (figure
+     2.16
+     and
+     2.17).
+     In
+     most
+     cases,
+     each
+     leg
+     has
+     3
+     DOF,
+     including
+     hip
+     flexion,
+     knee
+     flexion
+     and
+     hip
+     abduction
+     (figure
+     2.6).
+     </p>
+     <aside class="wrapfig-r">
+      <div class="center">
+       <p class="noindent">
+       </p>
+       <p class="noindent">
+        <img alt="PIC" height="" src="figures/Locomotion/raster/genghis.png" width="100%"/>
+        <a id="x3-11001r14">
+        </a>
+       </p>
+       <figcaption class="caption">
+        <span class="id">
+         Figure
+        1.14:
+        </span>
+        <span class="content">
+         Genghis,            one            of
+        the most famous walking robots from MIT uses
+        hobby servomotors as its actuators.
+        </span>
+       </figcaption>
+      </div>
+     </aside>
+     <p class="noindent">
+      Genghis
+     is
+     a
+     commercially
+     available
+     hobby
+     robot
+     that
+     has
+     six
+     legs,
+     each
+     of
+     which
+     has
+     2
+     DOF
+     provided
+     by
+     hobby
+     servos
+     (figure
+     2.18).
+     Such
+     a
+     robot,
+     which
+     consists
+     only
+     of
+     hip
+     flexion
+     and
+     hip
+     abduction,
+     has
+     less
+     maneuverability
+     in
+     rough
+     terrain
+     but
+     performs
+     quite
+     well
+     on
+     flat
+     ground.
+     Because
+     it
+     consists
+     of
+     a
+     straightforward
+     arrangement
+     of
+     servo
+     motors
+     and
+     straight
+     legs,
+     such
+     robots
+     can
+     be
+     readily
+     built
+     by
+     a
+     robot
+     hobbyist.
+     Insects,
+     which
+     are
+     arguably
+     the
+     most
+     successful
+     locomoting
+     creatures
+     on
+     earth,
+     excel
+     at
+     traversing
+     all
+     forms
+     of
+     terrain
+     with
+     six
+     legs,
+     even
+     upside
+     down.
+     Currently,
+     the
+     gap
+     between
+     the
+     capabilities
+     of
+     six-legged
+     insects
+     and
+     artificial
+     six-legged
+     robots
+     is
+     still
+     quite
+     large.
+     Interestingly,
+     this
+     is
+     not
+     due
+     to
+     a
+     lack
+     of
+     sufficient
+     numbers
+     of
+     degrees
+     of
+     freedom
+     on
+     the
+     robots.
+     Rather,
+     insects
+     combine
+     a
+     small
+     number
+     of
+     active
+     degrees
+     of
+     freedom
+     with
+     passive
+     structures,
+     such
+     as
+     microscopic
+     barbs
+     and
+     textured
+     pads,
+     that
+     increase
+     the
+     gripping
+     strength
+     of
+     each
+     leg
+     significantly.
+     Robotic
+     research
+     into
+     such
+     passive
+     tip
+     structures
+     has
+     only
+     recently
+     begun.
+     For
+     example,
+     a
+     research
+     group
+     is
+     attempting
+     to
+     recreate
+     the
+     complete
+     mechanical
+     function
+     of
+     the
+     cockroach
+     leg
+     (Roland,
+     reference
+     in
+     notes
+     (Espenschied
+     et
+     al.)).
+     It
+     is
+     clear
+     from
+     all
+     of
+     the
+     above
+     examples
+     that
+     legged
+     robots
+     have
+     much
+     progress
+     to
+     make
+     before
+     they
+     are
+     competitive
+     with
+     thei24
+     Autonomous
+     Mobile
+     Robots
+     have
+     been
+     realised
+     recently,
+     primarily
+     due
+     to
+     advances
+     in
+     motor
+     design.
+     Creating
+     actuation
+     systems
+     that
+     approach
+     the
+     efficiency
+     of
+     animal
+     muscle
+     remains
+     far
+     from
+     the
+     reach
+     of
+     robotics,
+     as
+     does
+     energy
+     storage
+     with
+     the
+     energy
+     densities
+     found
+     in
+     organic
+     life
+     forms
+     </p>
+     <p class="noindent">
+     </p>
+    </div>
+    <div class="section-head" id="section-3" sec="section-3">
+     <h2 class="sectionHead">
+      <a aria-label="Link to this section in PDF version" class="pdf-link" href="MobileRoboticsLectureBook.pdf#section.1.3" style="color: red;  position: absolute;  left: -30px;" target="_blank">
+       <svg class="bi bi-file-pdf" fill="currentColor" height="20" viewbox="0 0 16 16" width="20" xmlns="http://www.w3.org/2000/svg">
+        <path d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z">
+        </path>
+        <path d="M4.603 12.087a.81.81 0 0 1-.438-.42c-.195-.388-.13-.776.08-1.102.198-.307.526-.568.897-.787a7.68 7.68 0 0 1 1.482-.645 19.701 19.701 0 0 0 1.062-2.227 7.269 7.269 0 0 1-.43-1.295c-.086-.4-.119-.796-.046-1.136.075-.354.274-.672.65-.823.192-.077.4-.12.602-.077a.7.7 0 0 1 .477.365c.088.164.12.356.127.538.007.187-.012.395-.047.614-.084.51-.27 1.134-.52 1.794a10.954 10.954 0 0 0 .98 1.686 5.753 5.753 0 0 1 1.334.05c.364.065.734.195.96.465.12.144.193.32.2.518.007.192-.047.382-.138.563a1.04 1.04 0 0 1-.354.416.856.856 0 0 1-.51.138c-.331-.014-.654-.196-.933-.417a5.716 5.716 0 0 1-.911-.95 11.642 11.642 0 0 0-1.997.406 11.311 11.311 0 0 1-1.021 1.51c-.29.35-.608.655-.926.787a.793.793 0 0 1-.58.029zm1.379-1.901c-.166.076-.32.156-.459.238-.328.194-.541.383-.647.547-.094.145-.096.25-.04.361.01.022.02.036.026.044a.27.27 0 0 0 .035-.012c.137-.056.355-.235.635-.572a8.18 8.18 0 0 0 .45-.606zm1.64-1.33a12.647 12.647 0 0 1 1.01-.193 11.666 11.666 0 0 1-.51-.858 20.741 20.741 0 0 1-.5 1.05zm2.446.45c.15.162.296.3.435.41.24.19.407.253.498.256a.107.107 0 0 0 .07-.015.307.307 0 0 0 .094-.125.436.436 0 0 0 .059-.2.095.095 0 0 0-.026-.063c-.052-.062-.2-.152-.518-.209a3.881 3.881 0 0 0-.612-.053zM8.078 5.8a6.7 6.7 0 0 0 .2-.828c.031-.188.043-.343.038-.465a.613.613 0 0 0-.032-.198.517.517 0 0 0-.145.04c-.087.035-.158.106-.196.283-.04.192-.03.469.046.822.024.111.054.227.09.346z">
+        </path>
+       </svg>
+      </a>
+      <small class="titlemark">
+       1.3
+      </small>
+      <a id="x3-120001.3">
+      </a>
+      Wheeled
+     Mobile
+     Robots
+     </h2>
+     <p class="noindent">
+      The
+     wheel
+     has
+     been
+     by
+     far
+     the
+     most
+     popular
+     locomotion
+     mechanism
+     in
+     mobile
+     robotics
+     and
+     in
+     man-made
+     vehicles
+     in
+     general.
+      <alert style="color: #821131;">
+       <span id="bold" style="font-weight:bold;">
+        <sup class="textsuperscript">
+         9
+        </sup>
+       </span>
+      </alert>
+      <span class="marginnote">
+       <alert style="color: #821131;">
+        <span id="bold" style="font-weight:bold;">
+         <sup class="textsuperscript">
+          9
+         </sup>
+        </span>
+       </alert>
+       <span id="textcolor26">
+        This
+       should
+       be
+       clear
+       as
+       wheel
+       motion
+       is
+       one
+       of
+       the
+       most
+       efficient
+       method
+       of
+       converting
+       energy
+       to
+       motion.
+       </span>
+      </span>
+      It
+     can
+     achieve
+     high
+     efficiencies,
+     as
+     demonstrated
+     in
+     figure
+     2.3,
+     and
+     does
+     so
+     with
+     a
+     relatively
+     simple
+     mechanical
+     implementation.
+     In
+     addition,
+     balance
+     is
+     not
+     usually
+     a
+     research
+     problem
+     in
+     wheeled
+     robot
+     designs,
+     because
+     wheeled
+     robots
+     are
+     almost
+     always
+     designed
+     so
+     that
+     all
+     wheels
+     are
+     in
+     ground
+     contact
+     at
+     all
+     times.
+     </p>
+     <aside class="wrapfig-l">
+      <div class="center">
+       <p class="noindent">
+       </p>
+       <p class="noindent">
+        <img alt="PIC" height="" src="figures/Locomotion/raster/titanvii.png" width="100%"/>
+        <a id="x3-12001r15">
+        </a>
+       </p>
+       <figcaption class="caption">
+        <span class="id">
+         Figure
+        1.15:
+        </span>
+        <span class="content">
+         Genghis, one of the most famous
+        walking  robots  from  MIT  uses  hobby  ser-
+        vomotors as its actuators.
+        </span>
+       </figcaption>
+      </div>
+     </aside>
+     <p class="noindent">
+      Therefore,
+      <alert style="color: #821131;">
+       three
+wheels
+are
+sufficient
+to
+guarantee
+stable
+balance
+      </alert>
+      ,
+     although
+     as
+     we
+     will
+     see
+     below,
+     two-wheeled
+     robots
+     can
+     also
+     be
+     stable.
+     When
+     more
+     than
+     three
+     wheels
+     are
+     used,
+     a
+     suspension
+     system
+     is
+     required
+     in
+     order
+     to
+     allow
+     all
+     wheels
+     to
+     maintain
+     ground
+     contact
+     when
+     the
+     robot
+     encounters
+     uneven
+     terrain.
+     Instead
+     of
+     worrying
+     about
+     balance,
+     researchers
+     in
+     wheeled
+     robots
+     tends
+     to
+     focus
+     on
+     the
+     problems
+     of
+      <alert style="color: #821131;">
+       traction
+      </alert>
+      and
+      <alert style="color: #821131;">
+       stability
+      </alert>
+      ,
+     maneuverability
+     and
+     control:
+     </p>
+     <div class="quoteblock">
+      <p class="noindent">
+       can
+      the
+      robot
+      wheels
+      provide
+      sufficient
+      traction
+      and
+      stability
+      for
+      the
+      robot
+      to
+      cover
+      all
+      of
+      the
+      desired
+      terrain,
+      and
+      does
+      the
+      robot’s
+      wheeled
+      configuration
+      enable
+      sufficient
+      control
+      over
+      the
+      velocity
+      of
+      the
+      robot?
+      </p>
+     </div>
+     <h3 class="subsectionHead">
+      <a aria-label="Link to this section in PDF version" class="pdf-link" href="MobileRoboticsLectureBook.pdf#subsection.1.3.1" style="color: red;  position: absolute;  left: -30px;" target="_blank">
+       <svg class="bi bi-file-pdf" fill="currentColor" height="20" viewbox="0 0 16 16" width="20" xmlns="http://www.w3.org/2000/svg">
+        <path d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z">
+        </path>
+        <path d="M4.603 12.087a.81.81 0 0 1-.438-.42c-.195-.388-.13-.776.08-1.102.198-.307.526-.568.897-.787a7.68 7.68 0 0 1 1.482-.645 19.701 19.701 0 0 0 1.062-2.227 7.269 7.269 0 0 1-.43-1.295c-.086-.4-.119-.796-.046-1.136.075-.354.274-.672.65-.823.192-.077.4-.12.602-.077a.7.7 0 0 1 .477.365c.088.164.12.356.127.538.007.187-.012.395-.047.614-.084.51-.27 1.134-.52 1.794a10.954 10.954 0 0 0 .98 1.686 5.753 5.753 0 0 1 1.334.05c.364.065.734.195.96.465.12.144.193.32.2.518.007.192-.047.382-.138.563a1.04 1.04 0 0 1-.354.416.856.856 0 0 1-.51.138c-.331-.014-.654-.196-.933-.417a5.716 5.716 0 0 1-.911-.95 11.642 11.642 0 0 0-1.997.406 11.311 11.311 0 0 1-1.021 1.51c-.29.35-.608.655-.926.787a.793.793 0 0 1-.58.029zm1.379-1.901c-.166.076-.32.156-.459.238-.328.194-.541.383-.647.547-.094.145-.096.25-.04.361.01.022.02.036.026.044a.27.27 0 0 0 .035-.012c.137-.056.355-.235.635-.572a8.18 8.18 0 0 0 .45-.606zm1.64-1.33a12.647 12.647 0 0 1 1.01-.193 11.666 11.666 0 0 1-.51-.858 20.741 20.741 0 0 1-.5 1.05zm2.446.45c.15.162.296.3.435.41.24.19.407.253.498.256a.107.107 0 0 0 .07-.015.307.307 0 0 0 .094-.125.436.436 0 0 0 .059-.2.095.095 0 0 0-.026-.063c-.052-.062-.2-.152-.518-.209a3.881 3.881 0 0 0-.612-.053zM8.078 5.8a6.7 6.7 0 0 0 .2-.828c.031-.188.043-.343.038-.465a.613.613 0 0 0-.032-.198.517.517 0 0 0-.145.04c-.087.035-.158.106-.196.283-.04.192-.03.469.046.822.024.111.054.227.09.346z">
+        </path>
+       </svg>
+      </a>
+      <small class="titlemark">
+       1.3.1
+      </small>
+      <a id="x3-130001.3.1">
+      </a>
+      Design
+     </h3>
+     <p class="noindent">
+      As
+     we
+     will
+     see,
+     there
+     is
+     a
+     very
+     large
+     space
+     of
+     possible
+     wheel
+     configurations
+     when
+     we
+     considers
+     possible
+     techniques
+     for
+     mobile
+     robot
+     locomotion.
+     We
+     will
+     begin
+     by
+     discussing
+     the
+     wheel
+     in
+     detail,
+     as
+     there
+     are
+     a
+     number
+     of
+     different
+     wheel
+     types
+     with
+     specific
+     strengths
+     and
+     weaknesses.
+     Then,
+     we
+     will
+     examine
+     complete
+     wheel
+     configurations
+     that
+     deliver
+     particular
+     forms
+     of
+     locomotion
+     for
+     a
+     mobile
+     robot.
+     </p>
+     <h5 class="likesubsubsectionHead">
+      <a id="x3-14000">
+      </a>
+      Wheel
+     Design
+     </h5>
+     <p class="noindent">
+      There
+     are
+     four
+     <alert style="color: #821131;">(4)</alert>
+     major
+     wheel
+     classes,
+     as
+     shown
+     in
+      <span id="bold" style="font-weight:bold;">
+       Fig.
+      </span>
+      <a href="#x3-14001r16">
+       1.16
+      </a>.
+     They
+     differ
+     widely
+     in
+     their
+     kinematics,
+     and
+     therefore
+     the
+     choice
+     of
+     wheel
+     type
+     has
+     a
+     large
+     effect
+     on
+     the
+     overall
+     kinematics
+     of
+     the
+     mobile
+     robot.
+     </p>
+     <div class="figure">
+      <p class="noindent">
+       <img alt="PIC" height="" src="figures/Locomotion/raster/wheel-types.png" width="150%"/>
+       <a id="x3-14001r16">
+       </a>
+      </p>
+      <figcaption class="caption">
+       <span class="id">
+        Figure
+       1.16:
+       </span>
+       <span class="content">
+        The four basic wheel types a)Standard wheel: Two degrees of freedom; rotation around the (motorized)
+       wheel axle and the contact point b)castor wheel: Two degrees of freedom; rotation around an offset
+       steering joint c)Swedish wheel: Three degrees of freedom; rotation around the (motorized) wheel axle,
+       around the rollers and around the contact point
+       </span>
+      </figcaption>
+     </div>
+     <p class="noindent">
+      The
+     standard
+     wheel
+     and
+     the
+     castor
+     wheel
+     have
+     a
+      <alert style="color: #821131;">
+       primary
+axis
+of
+rotation
+      </alert>
+      and
+     therefore
+     are
+     highly
+     directional.
+     To
+     move
+     in
+     a
+     different
+     direction,
+     the
+     wheel
+     must
+     be
+     steered
+     first
+     along
+     a
+     vertical
+     axis.
+     The
+     key
+     difference
+     between
+     these
+     two
+     <alert style="color: #821131;">(2)</alert>
+     wheels
+     is
+     that
+     the
+     standard
+     wheel
+     can
+     accomplish
+     this
+     steering
+     motion
+     with
+     no
+     side
+     effects,
+     as
+     the
+     centre
+     of
+     rotation
+     passes
+     through
+     the
+     contact
+     patch
+     with
+     the
+     ground,
+     while
+     the
+     castor
+     wheel
+     rotates
+     around
+     an
+     offset
+     axis,
+     causing
+     a
+     force
+     to
+     be
+     imparted
+     to
+     the
+     robot
+     chassis
+     during
+     steering.
+     </p>
+     <p class="noindent">
+      The
+     mecanum
+     wheel
+      <alert style="color: #821131;">
+       <span id="bold" style="font-weight:bold;">
+        <sup class="textsuperscript">
+         10
+        </sup>
+       </span>
+      </alert>
+      <span class="marginnote">
+       <alert style="color: #821131;">
+        <span id="bold" style="font-weight:bold;">
+         <sup class="textsuperscript">
+          10
+         </sup>
+        </span>
+       </alert>
+       <span id="textcolor27">
+        Sometimes
+       known
+       as
+       Swedish
+       wheel
+       or
+       Ilon
+       wheel
+       after
+       its
+       inventor
+       Bengt
+       Erland
+       Ilon <a id="x3-14002"></a><span class="cite"><a href="MobileRoboticsLectureBookad1.html#erland1974rad">[29]</a></span>.
+       </span>
+      </span>
+      and
+     the
+     spherical
+     wheel
+     are
+     both
+     designs
+     that
+     are
+     less
+     constrained
+     by
+     directionality
+     than
+     the
+     conventional
+     standard
+     wheel.
+     The
+     swedish
+     wheel
+     functions
+     as
+     a
+     normal
+     wheel,
+     but
+     provides
+     low
+     resistance
+     in
+     another
+     direction
+     as
+     well,
+     sometimes
+     perpendicular
+     to
+     the
+     conventional
+     direction
+     as
+     in
+     the
+     swedish
+     90
+     and
+     sometimes
+     at
+     an
+     intermediate
+     angle
+     as
+     in
+     the
+     swedish
+     45.
+     The
+     small
+     rollers
+     attached
+     around
+     the
+     circumference
+     of
+     the
+     wheel
+     are
+     passive
+     and
+     the
+     wheel’s
+     primary
+     axis
+     serves
+     as
+     the
+     only
+     actively
+     powered
+     joint.
+     The
+     key
+     advantage
+     of
+     this
+     design
+     is
+     that,
+     although
+     the
+     wheel
+     rotation
+     is
+     powered
+     only
+     along
+     the
+     one
+     principal
+     axis
+     (through
+     the
+     axle),
+     the
+     wheel
+     can
+     kinematically
+     move
+     with
+     very
+     little
+     friction
+     along
+     many
+     possible
+     trajectories,
+     not
+     just
+     forward
+     and
+     backward.
+     </p>
+     <p class="noindent">
+      The
+     spherical
+     wheel
+     is
+     a
+     truly
+     omnidirectional
+     wheel,
+     often
+     designed
+     so
+     that
+     it
+     may
+     be
+     actively
+     powered
+     to
+     spin
+     along
+     any
+     direction.
+     One
+     mechanism
+     for
+     implementing
+     this
+     spherical
+     design
+     imitates
+     the
+     computer
+     mouse,
+     providing
+     actively
+     powered
+     rollers
+     that
+     rest
+     against
+     the
+     top
+     surface
+     of
+     the
+     sphere
+     and
+     impart
+     rotational
+     force.
+     </p>
+     <p class="noindent">
+      Regardless
+     of
+     what
+     wheel
+     is
+     used,
+     in
+     robots
+     designed
+     for
+     all-terrain
+     environments
+     and
+     in
+     robots
+     with
+     more
+     than
+     three
+     <alert style="color: #821131;">(3)</alert>
+     wheels,
+     a
+     suspension
+     system
+     is
+     normally
+     required
+     to
+     maintain
+     wheel
+     contact
+     with
+     the
+     ground.
+     One
+     of
+     the
+     simplest
+     approaches
+     to
+     suspension
+     is
+     to
+     design
+     flexibility
+     into
+     the
+     wheel
+     itself.
+     For
+     instance,
+     in
+     the
+     case
+     of
+     some
+     four-wheeled
+     indoor
+     robots
+     that
+     use
+     castor
+     wheels,
+     manufacturers
+     have
+     applied
+     a
+     deformeable
+     tire
+     of
+     soft
+     rubber
+     to
+     the
+     wheel
+     in
+     order
+     to
+     create
+     a
+     primitive
+     suspension.
+     Of
+     course,
+     this
+     limited
+     solution
+     cannot
+     compete
+     with
+     a
+     sophisticated
+     suspension
+     system
+     in
+     applications
+     where
+     the
+     robot
+     needs
+     a
+     more
+     dynamic
+     suspension
+     for
+     significantly
+     non-flat
+     terrain.
+     </p>
+     <h5 class="likesubsubsectionHead">
+      <a id="x3-15000">
+      </a>
+      Wheel  Geometry
+     </h5>
+     <p class="noindent">
+      The choice of wheel types for a mobile robot is strongly linked to the choice of wheel arrangement, or wheel geometry.
+     When designing a mobile robot locomotion we must consider these two <alert style="color: #821131;">(2)</alert>
+     issues simultaneously. Why does wheel
+     type and wheel geometry matter? Three fundamental characteristics of a robot are governed by these choices:
+     </p>
+     <ul class="itemize1">
+      <li class="itemize">
+       <p class="noindent">
+        maneuverability,
+       </p>
+      </li>
+      <li class="itemize">
+       <p class="noindent">
+        controllability
+       </p>
+      </li>
+      <li class="itemize">
+       <p class="noindent">
+        stability.
+       </p>
+      </li>
+     </ul>
+     <p class="noindent">
+      Unlike
+     automobiles,
+     which
+     are
+     largely
+     designed
+     for
+     a
+     highly
+     standardised
+     environment
+      <alert style="color: #821131;">
+       <span id="bold" style="font-weight:bold;">
+        <sup class="textsuperscript">
+         11
+        </sup>
+       </span>
+      </alert>
+      <span class="marginnote">
+       <alert style="color: #821131;">
+        <span id="bold" style="font-weight:bold;">
+         <sup class="textsuperscript">
+          11
+         </sup>
+        </span>
+       </alert>
+       <span id="textcolor31">
+        such
+       as
+       the
+       road
+       network
+       </span>
+      </span>
+      ,
+     mobile
+     robots
+     are
+     designed
+     for
+     applications
+     in
+     a
+     wide
+     variety
+     of
+     situations.
+     Automobiles
+     all
+     share
+     similar
+     wheel
+     configurations
+     as
+     there
+     is
+     one
+     region
+     in
+     the
+     design
+     space
+     that
+     maximises
+     maneuverability,
+     controllability
+     and
+     stability
+     for
+     their
+     standard
+     environment:
+     </p>
+     <div class="quoteblock">
+      <p class="noindent">
+       the
+      paved
+      road.
+      </p>
+     </div>
+     <p class="noindent">
+      However,
+     there
+     is
+     no
+     single
+     wheel
+     configuration
+     that
+     maximises
+     these
+     qualities
+     for
+     the
+     variety
+     of
+     environments
+     faced
+     by
+     different
+     mobile
+     robots.
+     So,
+     we
+     will
+     see
+     great
+     variety
+     in
+     the
+     wheel
+     configurations
+     of
+     mobile
+     robots.
+     In
+     fact,
+     few
+     robots
+     use
+     the
+     Ackerman
+     wheel
+     configuration
+     of
+     the
+     automobile
+     because
+     of
+     its
+     poor
+     maneuverability,
+     with
+     the
+     exception
+     of
+     mobile
+     robots
+     designed
+     for
+     the
+     road
+     system
+     (figure
+     2.20).
+     </p>
+     <div class="figure">
+      <p class="noindent">
+       <img alt="PIC" height="" src="figures/Locomotion/raster/navlab.jpg" width="150%"/>
+       <a id="x3-15001r17">
+       </a>
+      </p>
+      <figcaption class="caption">
+       <span class="id">
+        Figure
+       1.17:
+       </span>
+       <span class="content">
+        NAVLAB I, the first autonomous highway vehicle that steers and controls the throttle using vision and
+       radar sensors <span class="cite"><a href="MobileRoboticsLectureBookad1.html#dowling1990navlab">[30]</a></span>.
+       </span>
+      </figcaption>
+     </div>
+     <p class="noindent">
+      Table
+     2.1
+     gives
+     an
+     overview
+     of
+     wheel
+     configurations
+     ordered
+     by
+     the
+     number
+     of
+     wheels.
+     This
+     table
+     shows
+     both
+     the
+     selection
+     of
+     particular
+     wheel
+     types
+     and
+     their
+     geometric
+     configuration
+     on
+     the
+     robot
+     chassis.
+     Note
+     that
+     some
+     of
+     the
+     configurations
+     shown
+     are
+     of
+     little
+     use
+     in
+     mobile
+     robot
+     applications.
+     For
+     instance,
+     the
+     2-wheeled
+     bicycle
+     arrangement
+     has
+     moderate
+     maneu-
+     verability
+     and
+     poor
+     controllability.
+     Like
+     a
+     single-leg
+     hopping
+     machine,
+     it
+     can
+     never
+     stand
+     still.
+     Nevertheless,
+     this
+     table
+     provides
+     an
+     indication
+     of
+     the
+     large
+     variety
+     of
+     wheel
+     configura-
+     tions
+     that
+     are
+     possible
+     in
+     mobile
+     robot
+     design.
+     </p>
+     <h3 class="subsectionHead">
+      <a aria-label="Link to this section in PDF version" class="pdf-link" href="MobileRoboticsLectureBook.pdf#subsection.1.3.2" style="color: red;  position: absolute;  left: -30px;" target="_blank">
+       <svg class="bi bi-file-pdf" fill="currentColor" height="20" viewbox="0 0 16 16" width="20" xmlns="http://www.w3.org/2000/svg">
+        <path d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z">
+        </path>
+        <path d="M4.603 12.087a.81.81 0 0 1-.438-.42c-.195-.388-.13-.776.08-1.102.198-.307.526-.568.897-.787a7.68 7.68 0 0 1 1.482-.645 19.701 19.701 0 0 0 1.062-2.227 7.269 7.269 0 0 1-.43-1.295c-.086-.4-.119-.796-.046-1.136.075-.354.274-.672.65-.823.192-.077.4-.12.602-.077a.7.7 0 0 1 .477.365c.088.164.12.356.127.538.007.187-.012.395-.047.614-.084.51-.27 1.134-.52 1.794a10.954 10.954 0 0 0 .98 1.686 5.753 5.753 0 0 1 1.334.05c.364.065.734.195.96.465.12.144.193.32.2.518.007.192-.047.382-.138.563a1.04 1.04 0 0 1-.354.416.856.856 0 0 1-.51.138c-.331-.014-.654-.196-.933-.417a5.716 5.716 0 0 1-.911-.95 11.642 11.642 0 0 0-1.997.406 11.311 11.311 0 0 1-1.021 1.51c-.29.35-.608.655-.926.787a.793.793 0 0 1-.58.029zm1.379-1.901c-.166.076-.32.156-.459.238-.328.194-.541.383-.647.547-.094.145-.096.25-.04.361.01.022.02.036.026.044a.27.27 0 0 0 .035-.012c.137-.056.355-.235.635-.572a8.18 8.18 0 0 0 .45-.606zm1.64-1.33a12.647 12.647 0 0 1 1.01-.193 11.666 11.666 0 0 1-.51-.858 20.741 20.741 0 0 1-.5 1.05zm2.446.45c.15.162.296.3.435.41.24.19.407.253.498.256a.107.107 0 0 0 .07-.015.307.307 0 0 0 .094-.125.436.436 0 0 0 .059-.2.095.095 0 0 0-.026-.063c-.052-.062-.2-.152-.518-.209a3.881 3.881 0 0 0-.612-.053zM8.078 5.8a6.7 6.7 0 0 0 .2-.828c.031-.188.043-.343.038-.465a.613.613 0 0 0-.032-.198.517.517 0 0 0-.145.04c-.087.035-.158.106-.196.283-.04.192-.03.469.046.822.024.111.054.227.09.346z">
+        </path>
+       </svg>
+      </a>
+      <small class="titlemark">
+       1.3.2
+      </small>
+      <a id="x3-160001.3.2">
+      </a>
+      Stability
+     </h3>
+     <p class="noindent">
+      Surprisingly,
+     the
+     minimum
+     number
+     of
+     wheels
+     required
+     for
+     static
+     stability
+     is
+     two
+     <alert style="color: #821131;">(2)</alert>.
+     As
+     shown
+     above,
+     a
+     two-wheel
+     differential
+     drive
+     robot
+     can
+     achieve
+     static
+     stability
+     if
+     the
+     center
+     of
+     mass
+     is
+     below
+     the
+     wheel
+     axle.
+     Cye
+     is
+     a
+     commercial
+     mobile
+     robot
+     that
+     uses
+     this
+     wheel
+     configuration
+     </p>
+     <p class="noindent">
+      However,
+     under
+     ordinary
+     circumstances
+     such
+     a
+     solution
+     requires
+     wheel
+     diameters
+     that
+     are
+     impractically
+     large.
+     Dynamics
+     can
+     also
+     cause
+     a
+     two-wheeled
+     robot
+     to
+     strike
+     the
+     floor
+     with
+     a
+     third
+     point
+     of
+     contact,
+     for
+     instance
+     with
+     sufficiently
+     high
+     motor
+     torques
+     from
+     standstill.
+     Conventionally,
+     static
+     stability
+     requires
+     a
+     minimum
+     of
+     three
+     <alert style="color: #821131;">(3)</alert>wheels,
+     with
+     the
+     additional
+     caveat
+     that
+     the
+     center
+     of
+     gravity
+     must
+     be
+     contained
+     within
+     the
+     triangle
+     formed
+     by
+     the
+     ground
+     contact
+     points
+     of
+     the
+     wheels.
+     Stability
+     can
+     be
+     further
+     improved
+     by
+     adding
+     more
+     wheels,
+     although
+     once
+     the
+     number
+     of
+     contact
+     points
+     exceeds
+     three,
+     the
+     hyperstatic
+     nature
+     of
+     the
+     geometry
+     will
+     require
+     some
+     form
+     of
+     flexible
+     suspension
+     on
+     uneven
+     terrain.
+     </p>
+     <h3 class="subsectionHead">
+      <a aria-label="Link to this section in PDF version" class="pdf-link" href="MobileRoboticsLectureBook.pdf#subsection.1.3.3" style="color: red;  position: absolute;  left: -30px;" target="_blank">
+       <svg class="bi bi-file-pdf" fill="currentColor" height="20" viewbox="0 0 16 16" width="20" xmlns="http://www.w3.org/2000/svg">
+        <path d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z">
+        </path>
+        <path d="M4.603 12.087a.81.81 0 0 1-.438-.42c-.195-.388-.13-.776.08-1.102.198-.307.526-.568.897-.787a7.68 7.68 0 0 1 1.482-.645 19.701 19.701 0 0 0 1.062-2.227 7.269 7.269 0 0 1-.43-1.295c-.086-.4-.119-.796-.046-1.136.075-.354.274-.672.65-.823.192-.077.4-.12.602-.077a.7.7 0 0 1 .477.365c.088.164.12.356.127.538.007.187-.012.395-.047.614-.084.51-.27 1.134-.52 1.794a10.954 10.954 0 0 0 .98 1.686 5.753 5.753 0 0 1 1.334.05c.364.065.734.195.96.465.12.144.193.32.2.518.007.192-.047.382-.138.563a1.04 1.04 0 0 1-.354.416.856.856 0 0 1-.51.138c-.331-.014-.654-.196-.933-.417a5.716 5.716 0 0 1-.911-.95 11.642 11.642 0 0 0-1.997.406 11.311 11.311 0 0 1-1.021 1.51c-.29.35-.608.655-.926.787a.793.793 0 0 1-.58.029zm1.379-1.901c-.166.076-.32.156-.459.238-.328.194-.541.383-.647.547-.094.145-.096.25-.04.361.01.022.02.036.026.044a.27.27 0 0 0 .035-.012c.137-.056.355-.235.635-.572a8.18 8.18 0 0 0 .45-.606zm1.64-1.33a12.647 12.647 0 0 1 1.01-.193 11.666 11.666 0 0 1-.51-.858 20.741 20.741 0 0 1-.5 1.05zm2.446.45c.15.162.296.3.435.41.24.19.407.253.498.256a.107.107 0 0 0 .07-.015.307.307 0 0 0 .094-.125.436.436 0 0 0 .059-.2.095.095 0 0 0-.026-.063c-.052-.062-.2-.152-.518-.209a3.881 3.881 0 0 0-.612-.053zM8.078 5.8a6.7 6.7 0 0 0 .2-.828c.031-.188.043-.343.038-.465a.613.613 0 0 0-.032-.198.517.517 0 0 0-.145.04c-.087.035-.158.106-.196.283-.04.192-.03.469.046.822.024.111.054.227.09.346z">
+        </path>
+       </svg>
+      </a>
+      <small class="titlemark">
+       1.3.3
+      </small>
+      <a id="x3-170001.3.3">
+      </a>
+      Manoeuvrability
+     </h3>
+     <p class="noindent">
+      Some
+     robots
+     are
+     omnidirectional,
+     meaning
+     that
+     they
+     can
+     move
+     at
+     any
+     time
+     in
+     any
+     direction
+     along
+     the
+     ground
+     plane
+      <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML">
+       <msup>
+        <mrow>
+         <mrow>
+          <mo fence="true" form="prefix">
+           (
+          </mo>
+          <mrow>
+           <mi>
+            X
+           </mi>
+           <mo class="MathClass-punc" stretchy="false">
+            ,
+           </mo>
+           <mspace class="thinspace" width="0.17em">
+           </mspace>
+           <mi>
+            Y
+           </mi>
+          </mrow>
+          <mo fence="true" form="postfix">
+           )
+          </mo>
+         </mrow>
+        </mrow>
+        <mrow>
+        </mrow>
+       </msup>
+      </math>
+      regardless
+     of
+     the
+     orientation
+     of
+     the
+     robot
+     around
+     its
+     vertical
+     axis.
+     This
+     level
+     of
+     maneuverability
+     requires
+     wheels
+     that
+     can
+     move
+     in
+     more
+     than
+     just
+     a
+     single
+     direction,
+     and
+     so
+     omnidirectional
+     robots
+     usually
+     employ
+     swedish
+     or
+     spherical
+     wheels
+     that
+     are
+     powered.
+     A
+     good
+     example
+     is
+     Uranus,
+     shown
+     in
+     figure
+     2.24.
+     This
+     robot
+     uses
+     four
+     swedish
+     wheels
+     to
+     rotate
+     and
+     translate
+     independently
+     and
+     without
+     constraints.
+     In
+     general,
+     the
+     ground
+     clearance
+     of
+     robots
+     with
+     swedish
+     and
+     spherical
+     wheels
+     is
+     somewhat
+     limited,
+     due
+     to
+     the
+     mechanical
+     constraints
+     of
+     constructing
+     omnidirectional
+     wheels.
+     An
+     inter-
+     esting
+     recent
+     solution
+     to
+     the
+     problem
+     of
+     omnidirectional
+     navigation
+     while
+     solving
+     this
+     ground
+     clearance
+     problem
+     is
+     the
+     four
+     castor-wheeled
+     configuration
+     in
+     which
+     each
+     castor
+     wheel
+     is
+     actively
+     steered
+     and
+     actively
+     translated.
+     In
+     this
+     configuration,
+     the
+     robot
+     is
+     truly
+     om-
+     nidirectional
+     because,
+     even
+     if
+     the
+     castor
+     wheels
+     are
+     facing
+     a
+     direction
+     perpendicular
+     to
+     the
+     desired
+     direction
+     of
+     travel,
+     the
+     robot
+     can
+     still
+     move
+     in
+     the
+     desired
+     direction
+     by
+     steering
+     these
+     wheels.
+     Because
+     the
+     vertical
+     axis
+     is
+     offset
+     from
+     the
+     ground
+     contact
+     path,
+     the
+     result
+     of
+     this
+     steering
+     motion
+     is
+     robot
+     motion.
+     </p>
+     <p class="noindent">
+      In
+     the
+     research
+     community,
+     another
+     classes
+     of
+     mobile
+     robots
+     are
+     popular
+     which
+     achieve
+     high
+     maneuverability,
+     only
+     slightly
+     inferior
+     to
+     that
+     of
+     the
+     omnidirectional
+     configurations.
+     In
+     such
+     robots,
+     motion
+     in
+     a
+     particular
+     direction
+     may
+     initially
+     require
+     a
+     rotational
+     motion.
+     With
+     a
+     cir-
+     cular
+     chassis
+     and
+     an
+     axis
+     of
+     rotation
+     at
+     the
+     center
+     of
+     the
+     robot,
+     such
+     a
+     robot
+     can
+     spin
+     without
+     changing
+     its
+     ground
+     footprint.
+     The
+     most
+     popular
+     such
+     robot
+     is
+     the
+     two-wheel
+     differential
+     drive
+     robot
+     where
+     the
+     two
+     wheels
+     rotate
+     around
+     the
+     center
+     point
+     of
+     the
+     robot.
+     One
+     or
+     two
+     ad-
+     ditional
+     ground
+     contact
+     points
+     may
+     be
+     used
+     for
+     stability,
+     based
+     on
+     the
+     application
+     specifics.
+     </p>
+     <p class="noindent">
+      In
+     contrast
+     to
+     the
+     above
+     configurations,
+     consider
+     the
+     Ackerman
+     steering
+     configuration
+     com-
+     mon
+     in
+     automobiles.
+     Such
+     a
+     vehicle
+     typically
+     has
+     a
+     turning
+     diameter
+     that
+     is
+     larger
+     than
+     the
+     car.
+     Furthermore,
+     for
+     such
+     a
+     vehicle
+     to
+     move
+     sideways
+     requires
+     a
+     parking
+     maneuver
+     consist-
+     ing
+     of
+     repeated
+     changes
+     in
+     direction
+     forward
+     and
+     backward.
+     Nevertheless,
+     Ackerman
+     steer-
+     ing
+     geometries
+     have
+     been
+     especially
+     popular
+     in
+     the
+     hobby
+     robotics
+     market,
+     where
+     a
+     robot
+     can
+     be
+     built
+     by
+     starting
+     with
+     a
+     remote-control
+     race
+     car
+     kit
+     and
+     adding
+     sensing
+     and
+     autonomy
+     to
+     the
+     existing
+     mechanism.
+     In
+     addition,
+     the
+     limited
+     maneuverability
+     of
+     Ackerman
+     steering
+     has
+     an
+     important
+     advantage:
+     its
+     directionality
+     and
+     steering
+     geometry
+     provide
+     it
+     with
+     very
+     good
+     lateral
+     stability
+     in
+     high
+     speed
+     turns.
+     </p>
+     <h3 class="subsectionHead">
+      <a aria-label="Link to this section in PDF version" class="pdf-link" href="MobileRoboticsLectureBook.pdf#subsection.1.3.4" style="color: red;  position: absolute;  left: -30px;" target="_blank">
+       <svg class="bi bi-file-pdf" fill="currentColor" height="20" viewbox="0 0 16 16" width="20" xmlns="http://www.w3.org/2000/svg">
+        <path d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z">
+        </path>
+        <path d="M4.603 12.087a.81.81 0 0 1-.438-.42c-.195-.388-.13-.776.08-1.102.198-.307.526-.568.897-.787a7.68 7.68 0 0 1 1.482-.645 19.701 19.701 0 0 0 1.062-2.227 7.269 7.269 0 0 1-.43-1.295c-.086-.4-.119-.796-.046-1.136.075-.354.274-.672.65-.823.192-.077.4-.12.602-.077a.7.7 0 0 1 .477.365c.088.164.12.356.127.538.007.187-.012.395-.047.614-.084.51-.27 1.134-.52 1.794a10.954 10.954 0 0 0 .98 1.686 5.753 5.753 0 0 1 1.334.05c.364.065.734.195.96.465.12.144.193.32.2.518.007.192-.047.382-.138.563a1.04 1.04 0 0 1-.354.416.856.856 0 0 1-.51.138c-.331-.014-.654-.196-.933-.417a5.716 5.716 0 0 1-.911-.95 11.642 11.642 0 0 0-1.997.406 11.311 11.311 0 0 1-1.021 1.51c-.29.35-.608.655-.926.787a.793.793 0 0 1-.58.029zm1.379-1.901c-.166.076-.32.156-.459.238-.328.194-.541.383-.647.547-.094.145-.096.25-.04.361.01.022.02.036.026.044a.27.27 0 0 0 .035-.012c.137-.056.355-.235.635-.572a8.18 8.18 0 0 0 .45-.606zm1.64-1.33a12.647 12.647 0 0 1 1.01-.193 11.666 11.666 0 0 1-.51-.858 20.741 20.741 0 0 1-.5 1.05zm2.446.45c.15.162.296.3.435.41.24.19.407.253.498.256a.107.107 0 0 0 .07-.015.307.307 0 0 0 .094-.125.436.436 0 0 0 .059-.2.095.095 0 0 0-.026-.063c-.052-.062-.2-.152-.518-.209a3.881 3.881 0 0 0-.612-.053zM8.078 5.8a6.7 6.7 0 0 0 .2-.828c.031-.188.043-.343.038-.465a.613.613 0 0 0-.032-.198.517.517 0 0 0-.145.04c-.087.035-.158.106-.196.283-.04.192-.03.469.046.822.024.111.054.227.09.346z">
+        </path>
+       </svg>
+      </a>
+      <small class="titlemark">
+       1.3.4
+      </small>
+      <a id="x3-180001.3.4">
+      </a>
+      Controllability
+     </h3>
+     <div class="figure">
+      <p class="noindent">
+       <img alt="PIC" height="" src="figures/Locomotion/raster/ackermann-drive.jpg" width="150%"/>
+       <a id="x3-18001r18">
+       </a>
+      </p>
+      <figcaption class="caption">
+       <span class="id">
+        Figure
+       1.18:
+       </span>
+       <span class="content">
+        Example of an Ackerman drive used mostly in automotive industry <span class="cite"><a href="MobileRoboticsLectureBookad1.html#ackerman2025">[31]</a></span>.
+       </span>
+      </figcaption>
+     </div>
+     <p class="noindent">
+      There
+     is
+     generally
+     an
+      <alert style="color: #821131;">
+       inverse
+correlation
+      </alert>
+      between
+     controllability
+     and
+     maneuverability.
+     For
+     example,
+     the
+     omni-directional
+     designs
+     such
+     as
+     the
+     four
+     castor-wheeled
+     configuration
+     require
+     significant
+     processing
+     to
+     convert
+     desired
+     rotational
+     and
+     translational
+     velocities
+     to
+     individual
+     wheel
+     commands.
+     Furthermore,
+     such
+     omni-directional
+     designs
+     often
+     have
+     greater
+     degrees
+     of
+     freedom
+     at
+     the
+     wheel.
+     For
+     instance,
+     the
+     swedish
+     wheel
+     has
+     a
+     set
+     of
+     free
+     rollers
+     along
+     the
+     wheel
+     perimeter.
+     These
+     degrees
+     of
+     freedom
+     cause
+     an
+      <alert style="color: #821131;">
+       accumulation
+of
+slippage
+      </alert>
+      ,
+     tend
+     to
+     reduce
+     dead-reckoning
+     accuracy
+     and
+     increase
+     the
+     design
+     complexity.
+     </p>
+     <p class="noindent">
+      Controlling
+     an
+     omnidirectional
+     robot
+     for
+     a
+     specific
+     direction
+     of
+     travel
+     is
+     also
+     more
+     difficult
+     and
+     often
+     less
+     accurate
+     when
+     compared
+     to
+     less
+     manoeuvrable
+     designs.
+     </p>
+     <div class="quoteblock">
+      <p class="noindent">
+       For
+      example,
+      an
+      Ackerman
+      steering
+      vehicle
+      can
+      go
+      straight
+      simply
+      by
+      locking
+      the
+      steerable
+      wheels
+      and
+      driving
+      the
+      drive
+      wheels,
+      which
+      can
+      be
+      seen
+      in
+       <span id="bold" style="font-weight:bold;">
+        Fig.
+       </span>
+       <a href="#x3-18001r18">
+        1.18
+       </a>.
+      </p>
+     </div>
+     <p class="noindent">
+      In
+     a
+     differential
+     drive
+     vehicle,
+     the
+     two
+     <alert style="color: #821131;">(2)</alert>
+     motors
+     attached
+     to
+     the
+     two
+     wheels
+     must
+     be
+     driven
+     along
+     exactly
+     the
+     same
+     velocity
+     profile,
+     which
+     can
+     be
+     challenging
+     considering
+     variations
+     between
+     wheels,
+     motors
+     and
+     environmental
+     differences.
+     With
+     four-wheel
+     om-
+     nidrive,
+     such
+     as
+     the
+     Uranus
+     robot
+     which
+     has
+     four
+     swedish
+     wheels,
+     the
+     problem
+     is
+     even
+     harder
+     because
+     all
+     four
+     wheels
+     must
+     be
+     driven
+     at
+     exactly
+     the
+     same
+     speed
+     for
+     the
+     robot
+     to
+     travel
+     in
+     a
+     perfectly
+     straight
+     line.
+     </p>
+     <p class="noindent">
+      In
+     summary,
+     there
+     is
+      <span id="bold" style="font-weight:bold;">
+       NO
+      </span>
+      “ideal”
+     drive
+     configuration
+     that
+     simultaneously
+     maximises
+     stability,
+     manoeuvrability
+     and
+     controllability.
+     Each
+     mobile
+     robot
+     application
+     places
+     unique
+     constraints
+     on
+     the
+     robot
+     design
+     problem,
+     and
+     the
+     designer’s
+     task
+     is
+     to
+     choose
+     the
+     most
+     appropriate
+     drive
+     configuration
+     possible
+     from
+     among
+     this
+     space
+     of
+     compromises.
+     </p>
+     <h3 class="subsectionHead">
+      <a aria-label="Link to this section in PDF version" class="pdf-link" href="MobileRoboticsLectureBook.pdf#subsection.1.3.5" style="color: red;  position: absolute;  left: -30px;" target="_blank">
+       <svg class="bi bi-file-pdf" fill="currentColor" height="20" viewbox="0 0 16 16" width="20" xmlns="http://www.w3.org/2000/svg">
+        <path d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z">
+        </path>
+        <path d="M4.603 12.087a.81.81 0 0 1-.438-.42c-.195-.388-.13-.776.08-1.102.198-.307.526-.568.897-.787a7.68 7.68 0 0 1 1.482-.645 19.701 19.701 0 0 0 1.062-2.227 7.269 7.269 0 0 1-.43-1.295c-.086-.4-.119-.796-.046-1.136.075-.354.274-.672.65-.823.192-.077.4-.12.602-.077a.7.7 0 0 1 .477.365c.088.164.12.356.127.538.007.187-.012.395-.047.614-.084.51-.27 1.134-.52 1.794a10.954 10.954 0 0 0 .98 1.686 5.753 5.753 0 0 1 1.334.05c.364.065.734.195.96.465.12.144.193.32.2.518.007.192-.047.382-.138.563a1.04 1.04 0 0 1-.354.416.856.856 0 0 1-.51.138c-.331-.014-.654-.196-.933-.417a5.716 5.716 0 0 1-.911-.95 11.642 11.642 0 0 0-1.997.406 11.311 11.311 0 0 1-1.021 1.51c-.29.35-.608.655-.926.787a.793.793 0 0 1-.58.029zm1.379-1.901c-.166.076-.32.156-.459.238-.328.194-.541.383-.647.547-.094.145-.096.25-.04.361.01.022.02.036.026.044a.27.27 0 0 0 .035-.012c.137-.056.355-.235.635-.572a8.18 8.18 0 0 0 .45-.606zm1.64-1.33a12.647 12.647 0 0 1 1.01-.193 11.666 11.666 0 0 1-.51-.858 20.741 20.741 0 0 1-.5 1.05zm2.446.45c.15.162.296.3.435.41.24.19.407.253.498.256a.107.107 0 0 0 .07-.015.307.307 0 0 0 .094-.125.436.436 0 0 0 .059-.2.095.095 0 0 0-.026-.063c-.052-.062-.2-.152-.518-.209a3.881 3.881 0 0 0-.612-.053zM8.078 5.8a6.7 6.7 0 0 0 .2-.828c.031-.188.043-.343.038-.465a.613.613 0 0 0-.032-.198.517.517 0 0 0-.145.04c-.087.035-.158.106-.196.283-.04.192-.03.469.046.822.024.111.054.227.09.346z">
+        </path>
+       </svg>
+      </a>
+      <small class="titlemark">
+       1.3.5
+      </small>
+      <a id="x3-190001.3.5">
+      </a>
+      Case
+     Studies
+     for
+     Wheeled
+     Motion
+     </h3>
+     <p class="noindent">
+      Now
+     let’s
+     describe
+     four
+     <alert style="color: #821131;">(4)</alert>
+     specific
+     wheel
+     configurations,
+     in
+     order
+     to
+     demonstrate
+     concrete
+     applications
+     of
+     the
+     concepts
+     above
+     to
+     mobile
+     robots
+     built
+     for
+     real-world
+     activities.
+      <a id="subsubsection*.7">
+      </a>
+     </p>
+     <h5 class="subsubsectionHead">
+      <a id="x3-20000">
+      </a>
+      Synchro
+     Drive
+     </h5>
+     <p class="noindent">
+      The
+     synchro
+     drive
+     configuration
+     (figure
+     2.22)
+     is
+     a
+     popular
+     arrangement
+     of
+     wheels
+     in
+     indoor
+     mobile
+     robot
+     applications.
+     It
+     is
+     an
+     interesting
+     configuration
+     because,
+     although
+     there
+     are
+     three
+     driven
+     and
+     steered
+     wheels,
+     only
+     two
+     motors
+     are
+     used
+     in
+     total.
+     The
+     one
+     translation
+     motor
+     sets
+     the
+     speed
+     of
+     all
+     three
+     wheels
+     together,
+     and
+     the
+     one
+     steering
+     motor
+     spins
+     all
+     the
+     wheels
+     together
+     about
+     each
+     of
+     their
+     individual
+     vertical
+     steering
+     axes.
+     But
+     note
+     that
+     the
+     wheels
+     are
+     being
+     steered
+     with
+     respect
+     to
+     the
+     robot
+     chassis,
+     and
+     therefore
+     there
+     is
+     no
+     direct
+     way
+     of
+     re-orienting
+     the
+     robot
+     chassis.
+     In
+     fact,
+     the
+     chassis
+     orientation
+     does
+     drift
+     over
+     time
+     due
+     to
+     uneven
+     tire
+     slippage,
+     causing
+     rotational
+     dead-reckoning
+     error.
+     </p>
+     <p class="noindent">
+      Synchro
+     drive
+     is
+     particularly
+     advantageous
+     in
+     cases
+     where
+     omnidirectionality
+     is
+     needed.
+     So
+     long
+     as
+     each
+     vertical
+     steering
+     axis
+     is
+     aligned
+     with
+     the
+     contact
+     path
+     of
+     each
+     tire,
+     the
+     robot
+     can
+     always
+     re-orient
+     its
+     wheels
+     and
+     move
+     along
+     a
+     new
+     trajectory
+     without
+     changing
+     its
+     footprint.
+     Of
+     course,
+     if
+     the
+     robot
+     chassis
+     has
+     directionality
+     and
+     the
+     designers
+     intend
+     to
+     re-orient
+     the
+     chassis
+     purposefully,
+     then
+     synchro
+     drive
+     is
+     only
+     appropriate
+     when
+     combined
+     with
+     an
+     independently
+     rotating
+     turret
+     that
+     attaches
+     to
+     the
+     wheel
+     chassis.
+     Commercial
+     research
+     robots
+     such
+     as
+     the
+     Nomadics
+     150
+     or
+     the
+     RWI
+     B21r
+     have
+     been
+     sold
+     with
+     this
+     configuration
+     (figure
+     1.12).
+     In
+     terms
+     of
+     dead-reckoning,
+     synchro
+     drive
+     systems
+     are
+     generally
+     superior
+     to
+     true
+     omni-directional
+     configurations
+     but
+     inferior
+     to
+     differential
+     drive
+     and
+     Ackerman
+     steering
+     systems.
+     There
+     are
+     two
+     main
+     reasons
+     for
+     this.
+     First
+     and
+     foremost,
+     the
+     translation
+     motor
+     generally
+     drives
+     the
+     three
+     wheels
+     using
+     a
+     single
+     belt.
+     Due
+     to
+     slop
+     and
+     backlash
+     in
+     the
+     drivetrain,
+     whenever
+     the
+     drive
+     motor
+     engages,
+     the
+     closest
+     wheel
+     begins
+     spinning
+     before
+     the
+     furthest
+     wheel,
+     causing
+     a
+     small
+     change
+     in
+     the
+     orientation
+     of
+     the
+     chassis.
+     With
+     additional
+     changes
+     in
+     motor
+     speed,
+     these
+     small
+     angular
+     shifts
+     accumulate
+     to
+     create
+     a
+     large
+     error
+     in
+     orientation
+     during
+     dead-reckoning.
+     Second,
+     the
+     mobile
+     robot
+     has
+     no
+     direct
+     control
+     over
+     the
+     orientation
+     of
+     the
+     chassis.
+     Depending
+     on
+     the
+     orientation
+     of
+     the
+     chassis,
+     the
+     wheel
+     thrust
+     can
+     be
+     highly
+     asymmetric,
+     with
+     two
+     wheels
+     on
+     one
+     side
+     and
+     the
+     third
+     wheel
+     alone,
+     or
+     symmetric,
+     with
+     one
+     wheel
+     on
+     each
+     side
+     and
+     one
+     wheel
+     straight
+     ahead
+     or
+     behind,
+     as
+     shown
+     in
+     (2.22).
+     The
+     asymmetric
+     cases
+     results
+     in
+     a
+     variety
+     of
+     errors
+     when
+     tire-ground
+     slippage
+     can
+     occur,
+     again
+     causing
+     errors
+     in
+     dead-reckoning
+     of
+     robot
+     orientation.
+      <a id="subsubsection*.8">
+      </a>
+     </p>
+     <h5 class="subsubsectionHead">
+      <a id="x3-21000">
+      </a>
+      Omnidirectional
+     Drive
+     </h5>
+     <p class="noindent">
+      As
+     we
+     will
+     see
+     later
+     in
+     chapter
+     3.4.2,
+     omnidirectional
+     movement
+     is
+     be
+     of
+     great
+     interest
+     for
+     complete
+     maneuverability.
+     Omnidirectional
+     robots
+     that
+     are
+     able
+     to
+     move
+     in
+     any
+     direction
+     (
+     )
+     at
+     any
+     time
+     are
+     also
+     holonomic
+     (see
+     chapter
+     3.4.2).
+     They
+     can
+     be
+     realized
+     by
+     either
+     using
+     spheric,
+     castor
+     or
+     swedish
+     wheels.
+     Three
+     examples
+     of
+     such
+     holonomic
+     robots
+     are
+     pre-
+     sented
+     below.
+      <a id="subsubsection*.9">
+      </a>
+     </p>
+     <h5 class="subsubsectionHead">
+      <a id="x3-22000">
+      </a>
+      Omnidirectional
+     locomotion
+     with
+     three
+     spheric
+     wheels
+     </h5>
+     <p class="noindent">
+      The
+     omnidirectional
+     robot
+     depicted
+     in
+     figure
+     2.23
+     is
+     based
+     on
+     three
+     spheric
+     wheels,
+     each
+     ac-
+     tuated
+     by
+     one
+     motor.
+     In
+     this
+     design,
+     the
+     spheric
+     wheels
+     are
+     suspended
+     by
+     three
+     contact
+     points,
+     two
+     given
+     by
+     spherical
+     bearings
+     and
+     one
+     by
+     the
+     a
+     wheel
+     connected
+     to
+     the
+     motor
+     axle.
+     This
+     concept
+     provides
+     excellent
+     maneuverability
+     and
+     is
+     simple
+     in
+     design.
+     However,
+     it
+     is
+     limited
+     to
+     flat
+     surfaces
+     and
+     small
+     loads,
+     and
+     it
+     is
+     quite
+     difficult
+     to
+     find
+     round
+     wheels
+     with
+     high
+     fric-
+     tion
+     coefficients
+      <a id="subsubsection*.10">
+      </a>
+     </p>
+     <h5 class="subsubsectionHead">
+      <a id="x3-23000">
+      </a>
+      Omnidirectional
+     locomotion
+     with
+     four
+     swedish
+     wheels
+     </h5>
+     <p class="noindent">
+      The
+     omnidirectional
+     arrangement
+     depicted
+     in
+     figure
+     2.24
+     has
+     been
+     used
+     successfully
+     on
+     sev-
+     eral
+     research
+     robots,
+     including
+     the
+     CMU
+     Uranus.
+     This
+     configuration
+     consists
+     of
+     four
+     swedish
+     45
+     degree
+     wheels,
+     each
+     driven
+     by
+     a
+     separate
+     motor.
+     By
+     varying
+     the
+     direction
+     of
+     rotation
+     and
+     relative
+     speeds
+     of
+     the
+     four
+     wheels,
+     the
+     robot
+     can
+     be
+     moved
+     along
+     any
+     trajectory
+     in
+     the
+     plane
+     </p>
+     <p class="noindent">
+      and,
+     even
+     more
+     impressively,
+     can
+     simultaneously
+     spin
+     around
+     its
+     vertical
+     axis.
+     For
+     example,
+     when
+     all
+     four
+     wheels
+     spin
+     "forward"
+     or
+     "backward",
+     the
+     robot
+     as
+     a
+     whole
+     moves
+     in
+     a
+     straight
+     line
+     forward
+     and
+     backward,
+     respectively.
+     However,
+     when
+     one
+     diagonal
+     pair
+     of
+     wheels
+     is
+     spun
+     in
+     the
+     same
+     direction
+     and
+     the
+     other
+     diagonal
+     pair
+     is
+     spun
+     in
+     the
+     opposite
+     direction,
+     the
+     robot
+     moves
+     laterally.
+     This
+     four-wheel
+     arrangement
+     of
+     swedish
+     wheels
+     is
+     not
+     minimal
+     in
+     terms
+     of
+     control
+     motors.
+     Because
+     there
+     are
+     only
+     3
+     degrees
+     of
+     freedom
+     in
+     the
+     plane,
+     one
+     can
+     build
+     a
+     three-wheeled
+     om-
+     nidirectional
+     robot
+     chassis
+     using
+     three
+     swedish
+     90
+     degree
+     wheels
+     as
+     shown
+     in
+     Table
+     2.1.
+     However,
+     existing
+     examples
+     such
+     as
+     Uranus
+     have
+     been
+     designed
+     with
+     four
+     wheels
+     due
+     to
+     ca-
+     pacity
+     and
+     stability
+     considerations.
+     One
+     application
+     for
+     which
+     such
+     omnidirectional
+     designs
+     are
+     particular
+     amenable
+     is
+     mobile
+     manipulation.
+     In
+     this
+     case,
+     it
+     is
+     desirable
+     to
+     reduce
+     the
+     degrees
+     of
+     freedom
+     of
+     the
+     manipulator
+     arm
+     to
+     save
+     arm
+     mass
+     by
+     using
+     the
+     mobile
+     robot
+     chassis
+     motion
+     for
+     gross
+     motion.
+     As
+     with
+     humans,
+     it
+     would
+     be
+     ideal
+     if
+     the
+     base
+     could
+     move
+     omnidirectionally
+     without
+     greatly
+     impact-
+      <a id="subsubsection*.11">
+      </a>
+     </p>
+     <h5 class="subsubsectionHead">
+      <a id="x3-24000">
+      </a>
+      Omnidirectional
+     locomotion
+     with
+     four
+     castor
+     wheels
+     and
+     eight
+     motors
+     </h5>
+     <p class="noindent">
+      Another
+     solution
+     for
+     omnidirectionality
+     is
+     to
+     use
+     castor
+     wheels.
+     This
+     is
+     done
+     for
+     the
+     Nomad
+     XR4000
+     form
+     Nomadics
+     (fig.
+     2.25)
+     giving
+     it
+     an
+     excellent
+     maneuverability.
+     Unfortunately
+     Nomadics
+     Technology
+     has
+     ceased
+     the
+     production
+     of
+     mobile
+     robots.
+     The
+     above
+     two
+     examples
+     are
+     drawn
+     from
+     Table
+     2.1,
+     but
+     this
+     is
+     not
+     an
+     exhaustive
+     list
+     of
+     all
+     wheeled
+     locomotion
+     techniques.
+     Hybrid
+     approaches
+     that
+     combine
+     legged
+     and
+     wheeled
+     loco-
+     motion,
+     or
+     tracked
+     and
+     wheeled
+     locomotion,
+     can
+     also
+     offer
+     particular
+     advantages.
+     Below
+     are
+     two
+     unique
+     designs
+     created
+     for
+     specialized
+     applications.
+      <a id="subsubsection*.12">
+      </a>
+     </p>
+     <h5 class="subsubsectionHead">
+      <a id="x3-25000">
+      </a>
+      Tracked
+     Slip/Skid
+     Locomotion
+     </h5>
+     <p class="noindent">
+      In
+     the
+     wheel
+     configurations
+     discussed
+     above,
+     we
+     have
+     made
+     the
+     assumption
+     that
+     wheels
+     are
+     not
+     allowed
+     to
+     skid
+     against
+     the
+     surface.
+     An
+     alternative
+     form
+     of
+     steering,
+     termed
+     slip/skid,
+     may
+     be
+     used
+     to
+     re-orient
+     the
+     robot
+     by
+     spinning
+     wheels
+     that
+     are
+     facing
+     the
+     same
+     direction
+     at
+     different
+     speeds
+     or
+     in
+     opposite
+     directions.
+     The
+     army
+     tank
+     operates
+     this
+     way,
+     and
+     Nanokhod,
+     pictured
+     below
+     (figure
+     2.26)
+     is
+     an
+     example
+     of
+     a
+     mobile
+     robot
+     based
+     on
+     the
+     same
+     concept.
+     Robots
+     that
+     make
+     use
+     of
+     tread
+     have
+     much
+     larger
+     ground
+     contact
+     patches,
+     and
+     this
+     can
+     signif-
+     icantly
+     improve
+     their
+     maneuverability
+     in
+     loose
+     terrain
+     compared
+     to
+     conventional
+     wheeled
+     designs.
+     However,
+     due
+     to
+     this
+     large
+     ground
+     contact
+     patch,
+     changing
+     the
+     orientation
+     of
+     the
+     ro-
+     bot
+     usually
+     requires
+     a
+     skidding
+     turn,
+     wherein
+     a
+     large
+     portion
+     of
+     the
+     track
+     must
+     slide
+     against
+     the
+     terrain.
+     The
+     disadvantage
+     of
+     such
+     configurations
+     is
+     coupled
+     to
+     the
+     slip/skid
+     steering.
+     Because
+     of
+     the
+     large
+     amount
+     of
+     skidding
+     during
+     a
+     turn,
+     the
+     exact
+     center
+     of
+     rotation
+     of
+     the
+     robot
+     is
+     hard
+     to
+     predict
+     and
+     the
+     exact
+     change
+     in
+     position
+     and
+     orientation
+     is
+     also
+     subject
+     to
+     variations
+     depend-
+     ing
+     on
+     the
+     ground
+     friction.
+     Therefore,
+     dead-reckoning
+     on
+     such
+     robots
+     is
+     highly
+     inaccurate.
+     This
+     is
+     the
+     trade-off
+     that
+     is
+     made
+     in
+     return
+     for
+     extremely
+     good
+     maneuverability
+     and
+     traction
+     over
+     rough
+     and
+     loose
+     terrain.
+     Furthermore,
+     a
+     slip/skid
+     approach
+     on
+     a
+     high-friction
+     surface
+     can
+     quickly
+     overcome
+     the
+     torque
+     capabilities
+     of
+     the
+     motors
+     being
+     used.
+     In
+     terms
+     of
+     power
+     efficiency,
+     this
+     approach
+     is
+     reasonably
+     efficient
+     on
+     loose
+     terrain
+     but
+     extremely
+     inefficient
+     otherwise.
+     </p>
+     <h3 class="subsectionHead">
+      <a aria-label="Link to this section in PDF version" class="pdf-link" href="MobileRoboticsLectureBook.pdf#subsection.1.3.6" style="color: red;  position: absolute;  left: -30px;" target="_blank">
+       <svg class="bi bi-file-pdf" fill="currentColor" height="20" viewbox="0 0 16 16" width="20" xmlns="http://www.w3.org/2000/svg">
+        <path d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z">
+        </path>
+        <path d="M4.603 12.087a.81.81 0 0 1-.438-.42c-.195-.388-.13-.776.08-1.102.198-.307.526-.568.897-.787a7.68 7.68 0 0 1 1.482-.645 19.701 19.701 0 0 0 1.062-2.227 7.269 7.269 0 0 1-.43-1.295c-.086-.4-.119-.796-.046-1.136.075-.354.274-.672.65-.823.192-.077.4-.12.602-.077a.7.7 0 0 1 .477.365c.088.164.12.356.127.538.007.187-.012.395-.047.614-.084.51-.27 1.134-.52 1.794a10.954 10.954 0 0 0 .98 1.686 5.753 5.753 0 0 1 1.334.05c.364.065.734.195.96.465.12.144.193.32.2.518.007.192-.047.382-.138.563a1.04 1.04 0 0 1-.354.416.856.856 0 0 1-.51.138c-.331-.014-.654-.196-.933-.417a5.716 5.716 0 0 1-.911-.95 11.642 11.642 0 0 0-1.997.406 11.311 11.311 0 0 1-1.021 1.51c-.29.35-.608.655-.926.787a.793.793 0 0 1-.58.029zm1.379-1.901c-.166.076-.32.156-.459.238-.328.194-.541.383-.647.547-.094.145-.096.25-.04.361.01.022.02.036.026.044a.27.27 0 0 0 .035-.012c.137-.056.355-.235.635-.572a8.18 8.18 0 0 0 .45-.606zm1.64-1.33a12.647 12.647 0 0 1 1.01-.193 11.666 11.666 0 0 1-.51-.858 20.741 20.741 0 0 1-.5 1.05zm2.446.45c.15.162.296.3.435.41.24.19.407.253.498.256a.107.107 0 0 0 .07-.015.307.307 0 0 0 .094-.125.436.436 0 0 0 .059-.2.095.095 0 0 0-.026-.063c-.052-.062-.2-.152-.518-.209a3.881 3.881 0 0 0-.612-.053zM8.078 5.8a6.7 6.7 0 0 0 .2-.828c.031-.188.043-.343.038-.465a.613.613 0 0 0-.032-.198.517.517 0 0 0-.145.04c-.087.035-.158.106-.196.283-.04.192-.03.469.046.822.024.111.054.227.09.346z">
+        </path>
+       </svg>
+      </a>
+      <small class="titlemark">
+       1.3.6
+      </small>
+      <a id="x3-260001.3.6">
+      </a>
+      Walking
+     Wheels
+     </h3>
+     <p class="noindent">
+      Walking robots might offer the best maneuverability in rough terrain. However, they are in- efficient on flat ground and need
+     sophisticated control. Hybrid solutions, combining the adaptability of legs with the efficiency of wheels offer an interesting
+     compromise. Solutions that passively adapt to the terrain are of particular interest for field and space robotics. The
+     Sojourner robot of NASA/JPL (fig. 1.2) represents such a hybrid solution, able to overcome objects up to the size
+     of the wheels. A more advanced mobile robot design for similar appli- cations has recently been produced by
+     EPFL (fig. 2.27). This robot, called Shrimp2, has 6 motorized wheels and is capable of climbing objects up to two
+     times its wheel diameter [84,85]. This enables it to climb regular stairs though the robot is even smaller than
+     the So- journer. Using a rhombus configuration, the Shrimp has a steering wheel in the front and the rear, and
+     two wheels arranged on a bogy on each side. The front wheel has a spring suspen- sion to guarantee optimal
+     ground contact of all wheels at any time. The steering of the rover is realized by synchronizing the steering of the
+     front and rear wheels and the speed differ- ence of the bogy wheels. This allows for high precision maneuvers and
+     turning on the spot with minimum slip/skid of the four center wheels. The use of parallel articulations for the front
+     wheel and the bogies creates a virtual center of rotation at the level of the wheel axis. This ensures maximum
+     stability and climbing abilities even for very low friction coeffi- cients between the wheel and the ground. As mobile
+     robotics research matures we find ourselves able to design more intricate me- chanical systems. At the same time,
+     the control problems of inverse kinematics and dynam2 Locomotion 37 R. Siegwart, EPFL, Illah Nourbakhsh,
+     CMU ics are now so readily conquered that these complex mechanics can in general be controlled. So, in the near
+     future, you should expect to see a great number of unique, hybrid mobile ro- bots that draw together advantages
+     from several of the underlying locomotion mechanisms that we have discussed in this chapter. They will each be
+     technologically impressive, and each will be designed as the expert robot for its particular environmental niche.
+     </p>
+    </div>
+   </article>
+   <footer>
+    <div class="next">
+     <p class="noindent">
+      <a href="MobileRoboticsLectureBookch2.html" style="float: right;">
+       Next Chapter →
+      </a>
+      <a href="index.html" style="float: left;">
+       ← Previous Chapter
+      </a>
+      <a href="index.html">
+       TOP
+      </a>
+     </p>
+    </div>
+   </footer>
+  </div>
+  <div class="page">
+   <article class="chapter">
+    <p class="noindent">
+     <a id="tailMobileRoboticsLectureBookch1.html">
+     </a>
+    </p>
+   </article>
+  </div>
+ </body>
+</html>
